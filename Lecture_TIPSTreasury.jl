@@ -277,7 +277,7 @@ md"""
 
 # ╔═╡ e991ab0b-f2e9-403b-a157-c382268ae80b
 md"""
-### Treasury Bill (T-Bill)
+### Treasury Bill (T-bill)
 - Short-term securities with maturities of 4, 13, 26, and 52 weeks.
 - Treasury bills do not pay interest before maturity.
   - This is often referred to as a _discount security_ or _zero-coupon security_.
