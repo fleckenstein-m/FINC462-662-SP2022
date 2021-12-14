@@ -1,0 +1,17 @@
+The inflation-indexed 10 year note reference CPI level.  
+To find the CPI-U for a date in Janurary 1997, take the difference 
+between the 2 index levels then divide by the actual number of days 
+in the month.  Next, multiply the result by the date and subtract1 (i.e. January 7 would be 6).  
+Add to the January 1 value.  
+For example: 
+Jan 1 level = 158.3: 
+Feb 1 level = 158.6; 
+158.6 - 158.3 = .30; 
+.30/31 days = .0096774; 
+.0096774 * 6 = .05806 
+CPI-U for Jan 7 = 158.3 + .05806 = 158.35806. 
+The CPI-U is then turned into a ratio to caclulate the accretion factor 
+by taking the index on the date and dividing by the index at issue.  
+For example, CPI-U for Jan 15; the official issue date of the bond is 158.43548.  
+CPI-U for Jan 25 is 158.53226.  
+The index ratio for Jan 25 is 158.53226/158.43458 = 1.00061
