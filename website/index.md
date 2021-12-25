@@ -4,7 +4,7 @@
 
 * **Instructor:** Matthias Fleckenstein, [mflecken@udel.edu](mailto:mflecken@udel.edu)
 * **Class Times:** Tuesdays and Thursdays 9.30-10:45am
-* **Class Location:** TBD
+* **Class Location:** Alfred Lerner Hall, Room 230
 
 @def mintoclevel=2 
 @def maxtoclevel=3
