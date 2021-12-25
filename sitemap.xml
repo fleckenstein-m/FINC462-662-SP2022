@@ -14,6 +14,18 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>lecture03/index.html</loc>
+    <lastmod>2021-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>lecture02/index.html</loc>
+    <lastmod>2021-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>README/</loc>
     <lastmod>2021-12-25</lastmod>
     <changefreq>monthly</changefreq>
