@@ -50,7 +50,7 @@ Additional resources are
 
 ## Grading Policy
 
-Your final grade is based on i) two midterm exam,s ii) a final exam, and iii) class participation. Grading is on a curve. This means that you will be ranked relative to all students in both sections based on your midterm, final, homework assignments, and quizzes. The weighting shown below under Final Grade Breakdown determines your final rank among all students enrolled in the sections I teach.
+Your final grade is based on i) two midterm exams, ii) a final exam, and iii) class participation. Grading is on a curve. This means that you will be ranked relative to all students in both sections based on your midterm, final, homework assignments, and quizzes. The weighting shown below under Final Grade Breakdown determines your final rank among all students enrolled in the sections I teach.
 
 - 10% Class Participation
 - 30% Midterm 1
