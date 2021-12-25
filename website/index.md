@@ -31,7 +31,7 @@ FINC 311 (Principles of Finance) and 314 (Investments) are prerequisites. A good
 
 ## Course Syllabus
 
-[Syllabus](../assets/syllabus.pdf)
+[Syllabus](./assets/syllabus.pdf)
 
 
 ## Course Materials
