@@ -1,1 +1,1 @@
-{{ plutonotebookpage  ../Lecture_01/Lecture_01.jl }}
+{{ plutonotebookpage  ../notebooks/Lecture_01/Lecture_01.jl }}
