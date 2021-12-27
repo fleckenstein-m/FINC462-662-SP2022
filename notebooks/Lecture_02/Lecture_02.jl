@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.3
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -116,6 +116,10 @@ begin
 	display("")
 end
 
+# ╔═╡ a2f22b9d-13f8-4e39-b7dd-14b905d987ab
+#add button to trigger presentation mode
+html"<button onclick='present()'>present</button>"
+
 # ╔═╡ 731c88b4-7daf-480d-b163-7003a5fbd41f
 begin 
 	html"""
@@ -134,7 +138,7 @@ begin
 	<p align=center style="font-size:25px; font-family:family:Georgia"> Spring 2022 <p>
 	<p style="padding-bottom:0.5cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> Prof. Matt Fleckenstein </div>
-	<p style="padding-bottom:0.5cm"> </p>
+	<p style="padding-bottom:0.05cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> University of Delaware, 
 	Lerner College of Business and Economics </div>
 	<p style="padding-bottom:0cm"> </p>
@@ -212,6 +216,11 @@ begin
 	end
 end
 
+# ╔═╡ f89f6fc4-cb6f-4d7b-84c9-f8a18e764427
+md"""
+##
+"""
+
 # ╔═╡ 313959e0-eea6-449a-a6b8-29c9394e50b6
 LocalResource("./TreasuryOutstandingSIFMA.svg",:width => 900)
 
@@ -259,8 +268,18 @@ begin
 end
 
 
+# ╔═╡ c8f703dc-5a1c-4c39-b9a4-c3dd0a2806d8
+md"""
+##
+"""
+
 # ╔═╡ 13a58974-2ae8-4596-933f-5d2b5b8f5a23
 LocalResource("./TreasuryIssuanceSIFMA.svg",:width => 900)
+
+# ╔═╡ c7b5fcd2-a727-4bde-aae3-cd39dfb9a43b
+md"""
+##
+"""
 
 # ╔═╡ e89beeee-1ad9-4440-ba95-9bd0eb6bfe72
 md"""
@@ -270,6 +289,11 @@ _Note_: Issuance is long-term instruments only.\
 
 # ╔═╡ 7f91ba74-ccca-4f08-8252-9de7f956b285
 LocalResource("./TreasuryIssuanceSIFMA.png",:width => 900)
+
+# ╔═╡ 84009ee2-cfc3-437c-8782-d370b8b8c4f6
+md"""
+##
+"""
 
 # ╔═╡ a2df8dc1-f6da-4816-85b9-c7caadc03584
 #Treasury Market Total Amount Outstanding vs Equity
@@ -604,6 +628,11 @@ md"""
 **Question**: What do Bidder 1 to Bidder 6 get awarded in the auction?
 """
 
+# ╔═╡ adeb0d3f-602d-4401-8a15-09b8d885ef40
+md"""
+##
+"""
+
 # ╔═╡ 290c5c6d-f2ab-4707-a298-99e9d678a72e
 md"""
 → The Treasury works its way down the list of competitive bids and accepts the total amount submitted at the lowest possible bid yields (hightest prices) until the full offering amount has been awarded.
@@ -620,6 +649,11 @@ md"""
 |    	 	| 		 	| 				|                  |  **\$4.0 billion**   |   
 """
 
+# ╔═╡ 6a64ec0a-6f67-428c-afbf-b67a4ae3568b
+md"""
+##
+"""
+
 # ╔═╡ 1a7a0375-507e-4a5b-befc-c88208ab8394
 md"""
 - At this point there are \$4 billion remaining for competitive bidding.
@@ -631,6 +665,11 @@ md"""
 $$\frac{\textrm{Remaining Comptetitive Offering}}{\textrm{Total Bids at Stop-Out Rate}} = \frac{\$4 \textrm{ billion}}{\$6\textrm{ billion}} = 66.7\%$$
 
 - Bidder 3 and Bidder 4 each get a partial allocation of \$2 billion (66.67% x \$3.0 billion)
+"""
+
+# ╔═╡ 9c1a34f3-2ad5-4f14-b77b-a941fdff79bf
+md"""
+##
 """
 
 # ╔═╡ 12aea81d-c470-4fd5-b769-46040c3676e2
@@ -651,42 +690,6 @@ md"""
 ## General Auction Timing
 [General Auction Timing](https://www.treasurydirect.gov/instit/auctfund/work/auctime/auctime.htm)
 """
-
-# ╔═╡ 617539a4-ce24-46cd-9124-9dad0f1a3eb9
-md"""
-## Question 1
-> What is a Treasury Bill?
-"""
-
-# ╔═╡ a0b85fc3-79dd-4712-9628-a28398c50531
-md"""
-!!! hint
-    A Treasury Bill is a short-term fixed-income security issued by the U.S. Treasury with time-to-maturity of less than one year. A Treasury Bill does not pay coupon interest.
-"""
-
-# ╔═╡ 9db65279-d4cd-4ec4-9cb8-faa9f3900b52
-md"""
-## Question 2
-> What is the longest time-to-maturity of Treasury bonds in years?
-"""
-
-# ╔═╡ 85d4544e-9090-4fa7-8970-14586e5f4649
-@bind fld NumberField(0:100, default=20)
-
-# ╔═╡ 7e5a0741-8b10-4f30-bdbe-72a374dee0f0
-begin
-	if fld == 30.0 
-		md"""
-		!!! correct
-		Well done!
-		"""
-	else
-		md"""
-		!!! warning "Incorrect"
-		Keep working on it!
-		"""
-	end
-end
 
 # ╔═╡ 53c77ef1-899d-47c8-8a30-ea38380d1614
 md"""
@@ -1181,7 +1184,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1243,10 +1246,6 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
-
-[[OpenBLAS_jll]]
-deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
-uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1344,7 +1343,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["SHA", "Serialization"]
+deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1674,10 +1673,6 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
-[[libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
-uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1724,76 +1719,79 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
+# ╟─a2f22b9d-13f8-4e39-b7dd-14b905d987ab
 # ╟─25448e4a-345b-4bd6-9cdb-a6a280cfd22c
 # ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
-# ╠═a5de5746-3df0-45b4-a62c-3daf36f015a5
-# ╠═69dca09e-b572-436f-90c6-187af17cf027
-# ╠═6498b10d-bece-42bf-a32b-631224857753
-# ╠═95db374b-b10d-4877-a38d-1d0ac45877c4
-# ╠═10a73b76-b6ad-4081-b8b1-21363608618e
-# ╠═b33e1473-e374-441b-a6a4-6c2a7b079c98
-# ╠═7bb29c12-c0a0-4eb0-a4d6-bd9c52443751
-# ╠═313959e0-eea6-449a-a6b8-29c9394e50b6
-# ╠═e20b95fa-e038-4d3b-82ca-8a38262c64c4
-# ╠═2bf62523-a0f1-400e-9178-79062e0a171e
-# ╠═206df1a6-bf12-4957-93f7-472ee89594c4
-# ╠═13a58974-2ae8-4596-933f-5d2b5b8f5a23
-# ╠═e89beeee-1ad9-4440-ba95-9bd0eb6bfe72
-# ╠═7f91ba74-ccca-4f08-8252-9de7f956b285
-# ╠═a2df8dc1-f6da-4816-85b9-c7caadc03584
-# ╠═5db80dee-c643-4cc1-bca4-00b1ffd0a948
-# ╠═0357258e-8133-4ef3-946f-5134a9560b9d
-# ╠═ae67f236-60ec-4c2e-abd3-9ea537200ca3
-# ╠═d25744ad-fbe3-4f08-b17a-d00d51bcb2b8
-# ╠═d296b99d-588d-48ac-8e0c-a0bcbde72c56
-# ╠═40df1177-48cf-4cb2-9860-11d2d9f0a450
-# ╠═4567e3a2-24fb-494f-8005-801b03ffeabf
-# ╠═76774fcb-f806-4db2-b653-fe69720f43a7
-# ╠═a440a28f-04af-4248-8f2b-c8e6a726c07a
-# ╠═fef5577e-025f-4afc-9fd9-aa025146858e
-# ╠═cf1fa1d8-da24-4f48-8762-affa1f58279a
-# ╠═d69cce2c-dce4-4369-b3db-968c0b4d3dc6
-# ╠═ccba5159-b6bb-4c98-8f04-8dd91c032146
-# ╠═f50d144b-6d62-4b3f-b85a-d76861ea2ae0
-# ╠═c4aa9ab9-5502-4676-8b6a-5b55cc645e03
-# ╠═f481451a-6949-4604-811b-6b4c530fd644
-# ╠═992074c6-d6d5-4417-9edc-0229a0333070
-# ╠═cc282e0d-9faa-4808-b506-335e9097f2fe
-# ╠═d44298e3-5763-4249-8140-5eefb80adb49
-# ╠═0f801b78-6b89-48f4-ad96-e7336094e024
-# ╠═c1165da4-1149-42d2-8841-a38d7cbc131d
-# ╠═7759dee0-da42-4796-ae60-e8bbe507f52e
-# ╠═a8973960-ab9f-435b-a089-a6da9b4e24ec
-# ╠═db0a2d77-11b1-4f54-819c-d43b0e18002b
-# ╠═03393752-d39f-45a3-8157-520f361058ab
-# ╠═fea57e60-5e7b-4b5d-84a3-f16ca0279799
-# ╠═0608bb54-8495-4365-810c-5f9010f0eed6
-# ╠═c85dc38a-af8c-4c79-821c-2e9c90399318
-# ╠═c1c539c2-afe1-41f4-9c26-29b5a0acfba1
-# ╠═35f529cd-9642-4bd9-a2f7-90018d1936be
-# ╠═094387ed-e45a-4d07-a4e6-0d3f08fda046
-# ╠═43e798f2-a8de-4920-9e44-9c56ba965670
-# ╠═d8e7db96-9471-424d-a616-2c1327d23c77
-# ╠═96a2e1f6-b15d-446f-8828-c4c099fca07d
-# ╠═940baa2d-4117-4961-95a9-2043f3adc374
-# ╠═a84b0684-0388-47ac-a338-2a52b5254a75
-# ╠═57e22195-f876-4bab-a346-c1221a7607a3
-# ╠═7792e937-3487-4d29-b2ba-c1b1d335e4b0
-# ╠═f2324049-7f96-4ad6-9eb6-6f8856fdf6fc
-# ╠═22e9ecfc-72c3-43e1-9214-b907c5cd7d07
-# ╠═86254e63-de75-42c9-9b1e-e0a414cd0f63
-# ╠═290c5c6d-f2ab-4707-a298-99e9d678a72e
-# ╠═785bff43-7920-494d-b59c-2fa6c8cd2391
-# ╠═1a7a0375-507e-4a5b-befc-c88208ab8394
-# ╠═12aea81d-c470-4fd5-b769-46040c3676e2
-# ╠═4694dcaf-e8c4-4c99-9020-25f7227c4fd3
-# ╠═617539a4-ce24-46cd-9124-9dad0f1a3eb9
-# ╟─a0b85fc3-79dd-4712-9628-a28398c50531
-# ╠═9db65279-d4cd-4ec4-9cb8-faa9f3900b52
-# ╟─85d4544e-9090-4fa7-8970-14586e5f4649
-# ╟─7e5a0741-8b10-4f30-bdbe-72a374dee0f0
-# ╠═53c77ef1-899d-47c8-8a30-ea38380d1614
-# ╠═670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
-# ╠═2ee2c328-5ebe-488e-94a9-2fce2200484c
+# ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
+# ╟─69dca09e-b572-436f-90c6-187af17cf027
+# ╟─6498b10d-bece-42bf-a32b-631224857753
+# ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
+# ╟─10a73b76-b6ad-4081-b8b1-21363608618e
+# ╟─b33e1473-e374-441b-a6a4-6c2a7b079c98
+# ╟─7bb29c12-c0a0-4eb0-a4d6-bd9c52443751
+# ╟─f89f6fc4-cb6f-4d7b-84c9-f8a18e764427
+# ╟─313959e0-eea6-449a-a6b8-29c9394e50b6
+# ╟─e20b95fa-e038-4d3b-82ca-8a38262c64c4
+# ╟─2bf62523-a0f1-400e-9178-79062e0a171e
+# ╟─206df1a6-bf12-4957-93f7-472ee89594c4
+# ╟─c8f703dc-5a1c-4c39-b9a4-c3dd0a2806d8
+# ╟─13a58974-2ae8-4596-933f-5d2b5b8f5a23
+# ╟─c7b5fcd2-a727-4bde-aae3-cd39dfb9a43b
+# ╟─e89beeee-1ad9-4440-ba95-9bd0eb6bfe72
+# ╟─7f91ba74-ccca-4f08-8252-9de7f956b285
+# ╟─84009ee2-cfc3-437c-8782-d370b8b8c4f6
+# ╟─a2df8dc1-f6da-4816-85b9-c7caadc03584
+# ╟─5db80dee-c643-4cc1-bca4-00b1ffd0a948
+# ╟─0357258e-8133-4ef3-946f-5134a9560b9d
+# ╟─ae67f236-60ec-4c2e-abd3-9ea537200ca3
+# ╟─d25744ad-fbe3-4f08-b17a-d00d51bcb2b8
+# ╟─d296b99d-588d-48ac-8e0c-a0bcbde72c56
+# ╟─40df1177-48cf-4cb2-9860-11d2d9f0a450
+# ╟─4567e3a2-24fb-494f-8005-801b03ffeabf
+# ╟─76774fcb-f806-4db2-b653-fe69720f43a7
+# ╟─a440a28f-04af-4248-8f2b-c8e6a726c07a
+# ╟─fef5577e-025f-4afc-9fd9-aa025146858e
+# ╟─cf1fa1d8-da24-4f48-8762-affa1f58279a
+# ╟─d69cce2c-dce4-4369-b3db-968c0b4d3dc6
+# ╟─ccba5159-b6bb-4c98-8f04-8dd91c032146
+# ╟─f50d144b-6d62-4b3f-b85a-d76861ea2ae0
+# ╟─c4aa9ab9-5502-4676-8b6a-5b55cc645e03
+# ╟─f481451a-6949-4604-811b-6b4c530fd644
+# ╟─992074c6-d6d5-4417-9edc-0229a0333070
+# ╟─cc282e0d-9faa-4808-b506-335e9097f2fe
+# ╟─d44298e3-5763-4249-8140-5eefb80adb49
+# ╟─0f801b78-6b89-48f4-ad96-e7336094e024
+# ╟─c1165da4-1149-42d2-8841-a38d7cbc131d
+# ╟─7759dee0-da42-4796-ae60-e8bbe507f52e
+# ╟─a8973960-ab9f-435b-a089-a6da9b4e24ec
+# ╟─db0a2d77-11b1-4f54-819c-d43b0e18002b
+# ╟─03393752-d39f-45a3-8157-520f361058ab
+# ╟─fea57e60-5e7b-4b5d-84a3-f16ca0279799
+# ╟─0608bb54-8495-4365-810c-5f9010f0eed6
+# ╟─c85dc38a-af8c-4c79-821c-2e9c90399318
+# ╟─c1c539c2-afe1-41f4-9c26-29b5a0acfba1
+# ╟─35f529cd-9642-4bd9-a2f7-90018d1936be
+# ╟─094387ed-e45a-4d07-a4e6-0d3f08fda046
+# ╟─43e798f2-a8de-4920-9e44-9c56ba965670
+# ╟─d8e7db96-9471-424d-a616-2c1327d23c77
+# ╟─96a2e1f6-b15d-446f-8828-c4c099fca07d
+# ╟─940baa2d-4117-4961-95a9-2043f3adc374
+# ╟─a84b0684-0388-47ac-a338-2a52b5254a75
+# ╟─57e22195-f876-4bab-a346-c1221a7607a3
+# ╟─7792e937-3487-4d29-b2ba-c1b1d335e4b0
+# ╟─f2324049-7f96-4ad6-9eb6-6f8856fdf6fc
+# ╟─22e9ecfc-72c3-43e1-9214-b907c5cd7d07
+# ╟─86254e63-de75-42c9-9b1e-e0a414cd0f63
+# ╟─adeb0d3f-602d-4401-8a15-09b8d885ef40
+# ╟─290c5c6d-f2ab-4707-a298-99e9d678a72e
+# ╟─785bff43-7920-494d-b59c-2fa6c8cd2391
+# ╟─6a64ec0a-6f67-428c-afbf-b67a4ae3568b
+# ╟─1a7a0375-507e-4a5b-befc-c88208ab8394
+# ╟─9c1a34f3-2ad5-4f14-b77b-a941fdff79bf
+# ╟─12aea81d-c470-4fd5-b769-46040c3676e2
+# ╟─4694dcaf-e8c4-4c99-9020-25f7227c4fd3
+# ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
+# ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
+# ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
