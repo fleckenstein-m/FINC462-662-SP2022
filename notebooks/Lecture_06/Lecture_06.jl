@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.3
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -302,6 +302,11 @@ select!(GSW_m,:Date,:Year,:Month,:)
 filter!(:Year => (x->x>=2000),GSW_m)
 
 end
+
+# ╔═╡ e87659c1-ea1e-4485-b8da-fec178615a4a
+md"""
+##
+"""
 
 # ╔═╡ f37a7c80-872d-4e08-9658-9b9a37a92ee5
 begin
@@ -1843,7 +1848,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1905,10 +1910,6 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
-
-[[OpenBLAS_jll]]
-deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
-uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2006,7 +2007,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["SHA", "Serialization"]
+deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -2331,10 +2332,6 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
-[[libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
-uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -2404,6 +2401,7 @@ version = "0.9.1+5"
 # ╟─d6c5298a-cccf-4755-a03d-966ac514fd28
 # ╟─477c6ad9-47dd-4aaa-ae17-9a8317a79ba0
 # ╟─85033a37-df2b-4fe6-a111-a420b90f256f
+# ╟─e87659c1-ea1e-4485-b8da-fec178615a4a
 # ╟─f37a7c80-872d-4e08-9658-9b9a37a92ee5
 # ╟─aca4ed6c-2124-4f0f-bc53-8c763e8e2daa
 # ╟─ff03f612-4eef-4128-968f-26965106e558

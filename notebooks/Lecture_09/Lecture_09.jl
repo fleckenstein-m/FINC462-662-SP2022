@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.3
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -509,7 +509,7 @@ Markdown.parse("
 - Thus, we buy ``z`` units of Bond Z such that we pay as much for the position in Bond Z as we receive from the short position in Bond X. In doing this, we have a zero cash flow today.
 - Since we short ``x=1`` units of Bond X, we receive the market price of Bond X in the amount of ``P= \$ $(P6m_1)`` today. 
 - Since the price of 1 unit of Bond Z is ``P= \$ $(P1y_1)``, we need to buy more than one unit. Specifically, we buy
-``\$z=\\frac{ $(P6m_1)}{$(P1y_1)}=$(roundmult(P6m_1/P1y_1,1e-4)) \\textrm{ units}\$ `` units.
+``\$z=\\frac{ $(P6m_1)}{$(P1y_1)}=$(roundmult(P6m_1/P1y_1,1e-4)) \\textrm{ units}\$ `` 
 ")
 
 # ╔═╡ 0099b4ec-061d-4370-ac30-34339a66b5ce
@@ -2296,7 +2296,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -2370,10 +2370,6 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
-
-[[OpenBLAS_jll]]
-deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
-uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2481,7 +2477,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["SHA", "Serialization"]
+deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -2823,10 +2819,6 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
-[[libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
-uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -2875,9 +2867,9 @@ version = "0.9.1+5"
 # ╔═╡ Cell order:
 # ╟─41d7b190-2a14-11ec-2469-7977eac40f12
 # ╟─f78f3c79-46e0-42d1-93a3-91cbd7ccb371
-# ╟─61887938-ec20-45c9-8ab8-b812fefcda3c
 # ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
 # ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
+# ╟─61887938-ec20-45c9-8ab8-b812fefcda3c
 # ╟─6498b10d-bece-42bf-a32b-631224857753
 # ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
 # ╟─d1b0ba85-b06b-4f01-af36-4c6f61e72607

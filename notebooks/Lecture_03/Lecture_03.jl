@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.3
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -356,6 +356,7 @@ begin
 	p191=102
 	p192=18
 	p193=1
+	display("")
 end
 
 # ╔═╡ 9a1aa162-d274-4af7-8f13-5a9d6bab98b0
@@ -468,6 +469,16 @@ Markdown.parse("""
 - Suppose you own \$ 100 par value of this Treasury note and that $(daysAI_1) days have passed since the previous coupon cash flow.
 - The next coupon cash flow in $(180-daysAI_1) days is 
 \$\\frac{$cpnAI_1\\%}{2} \\times 100 = $((cpnAI_1/100)/2*100)\$	
+
+""")
+
+# ╔═╡ 64f2d537-0735-440a-a040-008bc75d4e46
+md"""
+##
+"""
+
+# ╔═╡ 20fc5dfa-55a2-4b90-b57d-9e57e2430ae1
+Markdown.parse("""
 - Now, suppose you decide to sell the Treasury note.
 - When you sell the Treasury note, you no longer receive the coupon cash flow in $(180-daysAI_1). 
 - The buyer receives the full coupon interest of \$ $((cpnAI_1/100)/2*100).
@@ -1315,7 +1326,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1377,10 +1388,6 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
-
-[[OpenBLAS_jll]]
-deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
-uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1478,7 +1485,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["SHA", "Serialization"]
+deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1797,10 +1804,6 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
-[[libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
-uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1900,6 +1903,8 @@ version = "0.9.1+5"
 # ╟─18026407-34e8-4a96-aaaf-410d495f9568
 # ╟─6acadc8a-dbb7-4193-9df7-09504755476b
 # ╟─362273d3-e019-4953-a1dd-21699f7a7def
+# ╟─64f2d537-0735-440a-a040-008bc75d4e46
+# ╟─20fc5dfa-55a2-4b90-b57d-9e57e2430ae1
 # ╟─2cf47487-36c3-4a28-976e-06a58675b306
 # ╟─577c5da8-de61-4f41-96f3-957c4fa93cd2
 # ╟─cedc6044-5eb2-4e95-98c7-e5831597a258
