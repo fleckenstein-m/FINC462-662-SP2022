@@ -5,6 +5,7 @@
 * **Instructor:** Matthias Fleckenstein, [mflecken@udel.edu](mailto:mflecken@udel.edu)
 * **Class Times:** Tuesdays and Thursdays 9.30-10:45am
 * **Class Location:** Alfred Lerner Hall, Room 230
+* **Office Hours:** Mondays, 8.00am - 10.00am, Zoom, [Link](https://udel.zoom.us/j/98351364047)
 
 @def mintoclevel=2 
 @def maxtoclevel=3
@@ -20,6 +21,19 @@
 \toc
 
 ---
+
+# Class Times
+
+|             | FINC-462         | FINC-462/662     |
+| --------    | --------------   | --------------   |
+| Day(s)      | Tue, Thu         | Tue              |
+| Time        | 9.30am-10.45am   | 6.00pm-8.45pm    |
+| Location    | Lerner Hall 230 | Lerner Hall 230 |
+
+# Course Webpage
+- [https://fleckenstein-m.github.io/FINC462-662-SP2022/](https://fleckenstein-m.github.io/FINC462-662-SP2022/)
+
+
 
 ## Course Overview
 
@@ -38,7 +52,7 @@ FINC 311 (Principles of Finance) and 314 (Investments) are prerequisites. A good
 
 All course materials will be posted on the course webpage at [https://fleckenstein-m.github.io/FINC462-662-SP2022/](https://fleckenstein-m.github.io/FINC462-662-SP2022/).
 
-The recommended textbook is [Bond Markets, Analysis, and Strategies, Tenth Edition](https://mitpress.mit.edu/books/bond-markets-analysis-and-strategies-tenth-edition).  
+The recommended textbook is [Bond Markets, Analysis, and Strategies, Tenth Edition](https://mitpress.mit.edu/books/bond-markets-analysis-and-strategies-tenth-edition) by Frank J. Fabozzi and Francesco A. Fabozzi.
 
 Additional resources are
 
@@ -50,20 +64,20 @@ Additional resources are
 
 ## Grading Policy
 
-Your final grade is based on i) two midterm exams, ii) a final exam, and iii) class participation. Grading is on a curve. This means that you will be ranked relative to all students in both sections based on your midterm, final, homework assignments, and quizzes. The weighting shown below under Final Grade Breakdown determines your final rank among all students enrolled in the sections I teach.
+Your final grade is based on i) two midterm exams, ii) a final exam, and iii) class participation. Grading is on a curve. This means that you will be ranked relative to all students in both sections based on your two midterms, the final exam, and quizzes. The weighting shown below under Final Grade Breakdown determines your final rank among all students enrolled in the sections I teach.
 
-- 10% Class Participation
+- 10% Class Participation/ Quizzes
 - 30% Midterm 1
-  - *March 22, 2022*
+  - *March 8, 2022*
 - 30% Midterm 2
-  - *April 21, 2022*
+  - *April 12, 2022*
 - 30% Final Exam
   - *May 17, 2022*
 
 
 ## Assessment Component: Class Participation
 
-- You are expected to come to class and be prepared to answer questions on the material. *Homework assignments* are self-graded and will not be collected. I reserve to give *quizzes* in class. These will not officially be announced beforehand. The in-class quizzes will be modeled on the examples in the lecture material, after the topic is covered. 
+- You are expected to come to class and be prepared to answer questions on the material. *Homework assignments* are self-graded and will not be collected. I reserve the right to give *quizzes* in class. These will not officially be announced beforehand. The in-class quizzes will be modeled on the examples in the lecture material, after the topic is covered. Quizzes are graded and count towards your Class Participation score.  
 
 
 ## Course Outline

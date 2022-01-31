@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.17.1
 
 using Markdown
 using InteractiveUtils
@@ -65,7 +65,7 @@ begin
 	#Sets the height of displayed tables
 	html"""<style>
 		pluto-output.scroll_y {
-			max-height: 550px; /* changed this from 400 to 550 */
+			max-height: 650px; /* changed this from 400 to 550 */
 		}
 		"""
 	
@@ -250,7 +250,7 @@ _Source: SIFMA_
 # ╔═╡ 0130b7fb-e5ff-4d6c-bc0e-23d75ff911e1
 @bind cat_Out MultiSelect(["Treasury","Corporate Debt","Municipal","Mortgage-Related","Federal Agency Securities","Asset-Backed","Money Markets"]; default=["Treasury"])
 
-# ╔═╡ 35fc249f-6541-4ab3-9349-0967514b1e45
+# ╔═╡ a0a97d35-7d4f-4e9e-ab8e-786cc7e3f47c
 #Fixed Income Market Amounts Outstanding
 begin
 	FI_Out = DataFrame()
@@ -264,6 +264,44 @@ begin
 		FI_Out = DataFrame(xlsxFile...)
 				
 		for catSelect in cat_Out
+			println(catSelect)
+			plotData = select(FI_Out, "Year","$(catSelect)")
+			rename!(plotData,"Year" => :x, "$(catSelect)" => :y)
+			dropmissing!(plotData)
+			transform!(plotData, :y => ByRow(x->x/1000), renamecols=false)
+			minX = 1975
+			maxX = 2025
+			minY = 0.0
+			maxY = 25.0
+			plot!(plot_Outstanding, plotData.x,plotData.y, 
+				xlim=(minX,maxX), ylim=(minY, maxY),
+				ylabel="Trillions of Dollars",label="$(catSelect)",
+				legend = :topleft, title="Amount Outstanding")	
+			
+		end
+		plot(plot_Outstanding)
+	end
+end
+
+# ╔═╡ ecac0637-b2dc-4ed5-8edc-daaa4805945b
+md"""
+##
+"""
+
+# ╔═╡ 35fc249f-6541-4ab3-9349-0967514b1e45
+#Fixed Income Market Amounts Outstanding
+let
+	FI_Out = DataFrame()
+	plot_Outstanding = plot()
+	let
+		file="./US-Fixed-Income-Securities-Statistics-SIFMA.xlsx"
+		sheet="Outstanding"
+		cols="A:I"
+		startrow = 8
+		xlsxFile = XLSX.readtable(file, sheet, cols; first_row=startrow, header=true, 			infer_eltypes=true)
+		FI_Out = DataFrame(xlsxFile...)
+				
+		for catSelect in ["Treasury","Corporate Debt","Municipal","Mortgage-Related","Federal Agency Securities","Asset-Backed","Money Markets"]
 			println(catSelect)
 			plotData = select(FI_Out, "Year","$(catSelect)")
 			rename!(plotData,"Year" => :x, "$(catSelect)" => :y)
@@ -337,6 +375,45 @@ end
 
 
 
+# ╔═╡ 7ee55c7a-2b59-49f1-b8f3-ee7804c79a73
+md"""
+##
+"""
+
+# ╔═╡ c571c733-ccc5-45b7-a235-ead7bf33ea2f
+#Fixed Income Market Amounts Issued
+let
+	FI_Iss = DataFrame()
+	plot_Issuance = plot()
+	let
+		file="./US-Fixed-Income-Securities-Statistics-SIFMA.xlsx"
+		sheet="Issuance"
+		cols="A:H"
+		startrow = 8
+		xlsxFile = XLSX.readtable(file, sheet, cols; first_row=startrow, 
+			header=true, infer_eltypes=true)
+		FI_Iss = DataFrame(xlsxFile...)
+		
+		for catSelect in ["Treasury","Corporate Debt","Municipal","Mortgage-Related","Federal Agency Securities","Asset-Backed"]
+			println(catSelect)
+			plotData = select(FI_Iss, "Year","$(catSelect)")
+			rename!(plotData,"Year" => :x, "$(catSelect)" => :y)
+			dropmissing!(plotData)
+			transform!(plotData, :y => ByRow(x->x/1000), renamecols=false)
+			minX = 1994
+			maxX = 2021
+			minY = 0.0
+			maxY = 4.0
+			plot!(plot_Issuance, plotData.x,plotData.y, 
+				xlim=(minX,maxX), ylim=(minY, maxY),
+				ylabel="Trillions of Dollars",label="$(catSelect)",
+				legend = :topleft, title="Amount Issued")	
+			
+		end
+		plot(plot_Issuance)
+	end
+end
+
 # ╔═╡ a9c9ff84-eb18-4ba2-a462-ed627cc0187a
 md"""
 ##
@@ -389,6 +466,44 @@ begin
 end
 
 # ╔═╡ e86f6aeb-a250-4e22-afb9-4d8541e75ab2
+md"""
+##
+"""
+
+# ╔═╡ 32ff0889-f9a6-46a3-bd21-2e206f6681bf
+#Fixed Income Market Trading Volumes
+let
+	FI_Vol = DataFrame()
+	plot_Vol = plot()
+	let
+		file="./US-Fixed-Income-Securities-Statistics-SIFMA.xlsx"
+		sheet="Trading Volume"
+		cols="A:I"
+		startrow = 8
+		xlsxFile = XLSX.readtable(file, sheet, cols; first_row=startrow, 
+			header=true, infer_eltypes=true)
+		FI_Vol = DataFrame(xlsxFile...)
+		
+		for catSelect in ["Treasury","Corporate Debt","Municipal","Mortgage-Related","Federal Agency Securities","Asset-Backed"]
+			println(catSelect)
+			plotData = select(FI_Iss, "Year","$(catSelect)")
+			rename!(plotData,"Year" => :x, "$(catSelect)" => :y)
+			dropmissing!(plotData)
+			minX = 1995
+			maxX = 2021
+			minY = 0.0
+			maxY = 4000.0
+			plot!(plot_Vol, plotData.x,plotData.y, 
+				xlim=(minX,maxX), ylim=(minY, maxY),
+				ylabel="Billions of Dollars",label="$(catSelect)",
+				legend = :topleft, title="Trading Volume")	
+			
+		end
+		plot(plot_Vol)
+	end
+end
+
+# ╔═╡ cb1a56bc-b5e4-40c8-9ede-cbda489b646d
 md"""
 ##
 """
@@ -1203,9 +1318,9 @@ uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
 
 [[Ogg_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
+git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
-version = "1.3.5+0"
+version = "1.3.5+1"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1647,9 +1762,9 @@ version = "1.6.38+0"
 
 [[libvorbis_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Ogg_jll", "Pkg"]
-git-tree-sha1 = "c45f4e40e7aafe9d086379e5578947ec8b95a8fb"
+git-tree-sha1 = "b910cb81ef3fe6e78bf6acee440bda86fd6ae00c"
 uuid = "f27f6e37-5d2b-51aa-960f-b287f2bc3b7a"
-version = "1.3.7+0"
+version = "1.3.7+1"
 
 [[nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
@@ -1695,18 +1810,24 @@ version = "0.9.1+5"
 # ╟─4b97c210-4c38-45c8-81a5-6893c0ef008d
 # ╟─903653fa-1b62-49e4-82c7-e48225eab427
 # ╟─0130b7fb-e5ff-4d6c-bc0e-23d75ff911e1
+# ╟─a0a97d35-7d4f-4e9e-ab8e-786cc7e3f47c
+# ╟─ecac0637-b2dc-4ed5-8edc-daaa4805945b
 # ╟─35fc249f-6541-4ab3-9349-0967514b1e45
 # ╟─720511cd-5f25-41cc-ac9e-8f8354732cd0
 # ╟─379196cb-dac8-4d41-a6b7-933980ffed57
 # ╟─8792ed14-c5c1-4974-b0f9-a272e9a96cb2
 # ╟─17bd885d-7958-4d28-a6c4-9b83706b4423
 # ╟─e75d3487-b562-4700-8199-e1116be0ed5c
+# ╟─7ee55c7a-2b59-49f1-b8f3-ee7804c79a73
+# ╟─c571c733-ccc5-45b7-a235-ead7bf33ea2f
 # ╟─a9c9ff84-eb18-4ba2-a462-ed627cc0187a
 # ╟─e9d20365-af35-436b-9077-d566ef8dfd8d
 # ╟─553ebdae-746a-4df3-a029-1a52911181b2
 # ╟─11aac462-5dcc-4f45-a9a8-244a168a628a
 # ╟─313b3c23-1b97-4fcb-b3cd-22be145a9dba
 # ╟─e86f6aeb-a250-4e22-afb9-4d8541e75ab2
+# ╟─32ff0889-f9a6-46a3-bd21-2e206f6681bf
+# ╟─cb1a56bc-b5e4-40c8-9ede-cbda489b646d
 # ╟─96b843a5-fd97-4c52-8fa6-18377ed58efe
 # ╟─c1e4b6f4-e6d3-47b2-a91a-a87503ada4f8
 # ╟─1874911f-ffcb-49d6-aa2a-26c1fa5797f2
