@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.18.0
 
 using Markdown
 using InteractiveUtils
@@ -113,6 +113,9 @@ begin
 	#round to digits, e.g. 6 digits then prec=1e-6
 	roundmult(val, prec) = (inv_prec = 1 / prec; round(val * inv_prec) / inv_prec); 
 
+	using Logging
+	global_logger(NullLogger())
+		
 	display("")
 end
 
@@ -176,6 +179,12 @@ md"""
 
 
 [SIFMA Fixed Income Statistics](https://www.sifma.org/resources/research/fixed-income-chart)
+"""
+
+# ╔═╡ 42f7e15d-9abc-40ca-bd70-7131957907a5
+md"""
+- Why the Treasury Market matters ...
+  - [WSJ, February 1, 2022: U.S. National Debt Exceeds $30 Trillion for First Time](https://www.wsj.com/articles/u-s-national-debt-exceeds-30-trillion-for-first-time-11643766231?mod=hp_lead_pos3)
 """
 
 # ╔═╡ b33e1473-e374-441b-a6a4-6c2a7b079c98
@@ -334,7 +343,7 @@ end
 # ╔═╡ 5db80dee-c643-4cc1-bca4-00b1ffd0a948
 md"""
 ## U.S. Treasury Securities Trading Volume
-Annual data at year-end in billions of dollars.\
+Average Daily Trading Volume. Annual data at year-end in billions of dollars.\
 _Source: SIFMA_
 """
 
@@ -353,13 +362,13 @@ begin
 		FI_Vol = DataFrame(xlsxFile...)
 		
 		catSelect="Treasury"
-		plotData = select(FI_Iss, "Year","$(catSelect)")
+		plotData = select(FI_Vol, "Year","$(catSelect)")
 		rename!(plotData,"Year" => :x, "$(catSelect)" => :y)
 		dropmissing!(plotData)
 		minX = 1995
 		maxX = 2021
 		minY = 0.0
-		maxY = 4000.0
+		maxY = 650.0
 		plot!(plot_Vol, plotData.x,plotData.y, 
 			xlim=(minX,maxX), ylim=(minY, maxY),
 			ylabel="Billions of Dollars",label="$(catSelect)",
@@ -373,6 +382,24 @@ md"""
 # Types of Treasury Securities
 """
 
+# ╔═╡ fa1dcebd-4a54-433b-897c-de2929fb8233
+md"""
+>- Where to get information about U.S. Treasury securities?
+>- Go to webpage of the [U.S. Treasury](https://www.treasurydirect.gov/).
+>- In the middle panel, click on `Treasury securities Overview`.
+"""
+
+# ╔═╡ 2452e56b-2a61-4608-9ca0-55c8cdca89c6
+LocalResource("TreasuryDirect_01.png",:width => 900)
+
+# ╔═╡ f688e93c-e8b1-4718-b56e-d76bf70eef57
+md"""
+##
+"""
+
+# ╔═╡ 4914c857-5dc8-43b8-8e70-377debbc3d0c
+LocalResource("TreasuryDirect_02.png",:width => 900)
+
 # ╔═╡ d25744ad-fbe3-4f08-b17a-d00d51bcb2b8
 md"""
 # Treasury Bill (T-bill)
@@ -384,6 +411,44 @@ md"""
   - Example: a 52-week T-bill with par value of \$100 has a price of \$98.
 """
 
+# ╔═╡ 382a9c58-4baa-4ad2-9f32-7189d4881c50
+md"""
+## Example of 52-week Treasury Bill
+"""
+
+# ╔═╡ deb54591-8769-480d-98ad-32157abac2c0
+LocalResource("./BloombergTBill_01.png", :width=>900)
+
+# ╔═╡ 3578793a-e0b6-42de-941b-2db09ef99e49
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - Open a terminal and on the keyboard type `T Bill`.
+>  - In the popup window,  select `B Govt - United States Treasury Bill (Multiple Matches)`.
+>  - Next, click on one of the different Treasury bills in the list.
+>  - Then, click on `DES` on the top-right, or type `DES` on the keyboard and press enter.
+"""
+
+# ╔═╡ 82db2847-a1a1-45a3-8d29-c3ac4213591c
+md"""
+##
+"""
+
+# ╔═╡ adbc8a60-c33c-44ba-a284-fa7b676b9618
+md"""
+- Let's look at price quotes for this Treasury bill.
+- If you were to purchase this Treasury bill, would you pay \$0.8450?
+- The answer is _no_. Prices for Treasury bills are quoted in a specific way, which we will discuss in the next lecture.
+"""
+
+# ╔═╡ 1a6add34-52e1-4663-9228-f0fca63f8cc2
+LocalResource("./BloombergTBill_02.png")
+
+# ╔═╡ 8de081f6-2b7f-4d03-b565-b4ac01c2773e
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - From the `Description` page where you are currently at, type `GP` and press enter.
+"""
+
 # ╔═╡ d296b99d-588d-48ac-8e0c-a0bcbde72c56
 md"""
 # Treasury Note (T-Note)
@@ -391,6 +456,39 @@ md"""
 - Treasury notes pay interest every six months up to and including the maturity date.
   - Example: A 2-year T-note has its last interest payment in two years, and it pays interest after 6 months, 12 months, and 18 months.
 - At maturity, Treasury notes pay back their par value.
+"""
+
+# ╔═╡ 1c4db2fa-7187-4966-aa3f-9a7f56036497
+md"""
+## Example of 10-year Treasury Note
+"""
+
+# ╔═╡ 3a3b7641-ed63-4cce-a98c-a4cf1b6e603d
+LocalResource("./BloombergTNote_01.png")
+
+# ╔═╡ 2384b88b-e8dc-4e9c-9488-27828da0289d
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - Open a terminal and on the keyboard type `T Note`.
+>  - In the popup window,  select `T Govt - United States Treasury Note/Bond (Multiple Matches)`.
+>  - Next, click on one of the different Treasury notes in the list.
+>  - Then, click on `DES` on the top-right, or type `DES` on the keyboard and press enter.
+"""
+
+# ╔═╡ 0918383a-9a0b-4f8c-ba63-aaad1cf6d72c
+md"""
+- Let's look at price quotes for this Treasury note.
+- If you were to purchase this Treasury note, would you pay \$95.02?
+- The answer is _no_. Prices for Treasury notes are quoted in a specific way, which we will discuss in the next lecture.
+"""
+
+# ╔═╡ c9b876e2-cb29-4a70-9c1f-abb2dedf3fe2
+LocalResource("./BloombergTNote_02.png")
+
+# ╔═╡ d912c3cb-c1a6-46fe-af9d-25a75074b31d
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - From the `Description` page where you are currently at, type `GP` and press enter.
 """
 
 # ╔═╡ 40df1177-48cf-4cb2-9860-11d2d9f0a450
@@ -427,6 +525,39 @@ md"""
 - The interest on an FRN varies with interest rate on 13-week Treasury bills.
 """
 
+# ╔═╡ 90883b07-064f-4395-a805-ddaaad7f97fd
+md"""
+## Example of Treasury Floating Rate Note (FRN)
+"""
+
+# ╔═╡ faecc806-5f33-49c6-a463-b349cbfb8acc
+LocalResource("./BloombergFRN_01.png")
+
+# ╔═╡ c7a254a6-d877-4de0-a3e5-a64fb93ae079
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - Open a terminal and on the keyboard type `Treasury Floating Rate Note`.
+>  - In the popup window,  select `TF Govt - United States Treasury Floating Rate Note (Multiple Matches)`.
+>  - Next, click on one of the different Treasury FRNs in the list.
+>  - Then, click on `DES` on the top-right, or type `DES` on the keyboard and press enter.
+"""
+
+# ╔═╡ 9b53686c-e362-46c5-bdd9-0c388d9cd122
+LocalResource("./BloombergFRN_02.png")
+
+# ╔═╡ 9d0017a5-6b7b-4c1b-9323-7a8fdc54db77
+md"""
+- Let's look at price quotes for this Treasury FRN.
+- If you were to purchase this Treasury FRN, would you pay \$100.1674?
+- Generally, the answer is _no_. Prices for Treasury FRNs are quoted in a specific way, which we will discuss in the next lecture.
+"""
+
+# ╔═╡ 69d8c85f-3735-4bd2-bd37-1ddadab87140
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - From the `Description` page where you are currently at, type `GP` and press enter.
+"""
+
 # ╔═╡ cf1fa1d8-da24-4f48-8762-affa1f58279a
 md"""
 # Treasury Inflation Protected Securities (TIPS)
@@ -435,6 +566,51 @@ md"""
 - TIPS pay interest every six months up to and including the maturity date. At maturity, Treasury notes pay back their par value.
   - Similar to Treasury notes and bonds.
 - Key difference is that both par value and interest go up with the rate of inflation.
+"""
+
+# ╔═╡ 3000e0f6-381f-4a9c-85c1-c517af617f14
+md"""
+- Why inflation matters and why one might want to hedge against inflation.
+  - [WSJ, January 12, 2022: U.S. Inflation Hit 7% in December, Fastest Pace Since 1982](https://www.wsj.com/articles/us-inflation-consumer-price-index-december-2021-11641940760?mod=article_inline)
+  - [WSJ, February 6, 2022: What Investors Should Know About TIPS](https://www.wsj.com/articles/tips-what-investors-should-know-treasury-inflation-protected-securities-11643849892?mod=hp_lista_pos1)
+"""
+
+# ╔═╡ 5c8f4910-7b54-414a-8eb9-52104c0ff36e
+md"""
+## Example of a Treasury TIPS
+"""
+
+# ╔═╡ 972e44da-4614-4349-bcb7-edb0518fe24d
+LocalResource("./BloombergTIPS_01.png")
+
+# ╔═╡ a1c74635-2fb9-492c-8243-4232b771718b
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - Open a terminal and on the keyboard type `Treasury TIPS`.
+>  - In the popup window,  select `TII Govt - United States Treasury Inflation Indexed Bonds (Multiple Matches)`.
+>  - Next, click on one of the different Treasury bills in the list.
+>  - Then, click on `DES` on the top-right, or type `DES` on the keyboard and press enter.
+"""
+
+# ╔═╡ 45ffcfef-16f3-464a-b868-0d3f64cb6019
+md"""
+##
+"""
+
+# ╔═╡ 874afd1d-eba3-4295-9f96-7502c187b171
+md"""
+- Let's look at price quotes for this Treasury TIPS.
+- If you were to purchase this Treasury TIPS, would you pay \$105.28?
+- The answer is _no_. Prices for Treasury TIPS are quoted in a specific way, which we will discuss in the next lecture.
+"""
+
+# ╔═╡ 95110a89-1d2b-4c83-9b1c-d7dc95ab89c8
+LocalResource("./BloombergTIPS_02.png")
+
+# ╔═╡ aa70d2f6-c726-45cc-89cb-bb6afb85f065
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - From the `Description` page where you are currently at, type `GP` and press enter.
 """
 
 # ╔═╡ d69cce2c-dce4-4369-b3db-968c0b4d3dc6
@@ -483,6 +659,36 @@ md"""
 # ╔═╡ d44298e3-5763-4249-8140-5eefb80adb49
 LocalResource("./TreasurySTRIPSBloomberg.png",:width => 900)
 
+# ╔═╡ 57759a33-f026-4c15-91ba-f6af45627f1e
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - Open a terminal and on the keyboard type `Treasury STRIP`.
+>  - In the popup window,  select `S Govt - United States Treasury Strip Coupon (Multiple Matches)`.
+>  - Next, click on one of the different Treasury bills in the list.
+>  - Then, click on `DES` on the top-right, or type `DES` on the keyboard and press enter.
+"""
+
+# ╔═╡ 9c596473-76f6-4e9a-b3dd-32add39eaf92
+md"""
+##
+"""
+
+# ╔═╡ 9db71771-d778-4d43-af7a-80d8cfff97ff
+LocalResource("./BloombergSTRIPS_01.png")
+
+# ╔═╡ 36678746-8926-451d-b692-b57c620170c5
+md"""
+##
+"""
+
+# ╔═╡ 8f65e51f-01d6-4d02-bee2-f7d16f62a6c2
+md"""
+- Let's look at price quotes for this Treasury TIPS.
+"""
+
+# ╔═╡ e16d631b-befe-4657-ad03-e65b5999e49a
+LocalResource("./BloombergSTRIPS_02.png")
+
 # ╔═╡ 0f801b78-6b89-48f4-ad96-e7336094e024
 md"""
 # Treasury Auctions
@@ -508,6 +714,17 @@ md"""
 - Each auction is **announced** several days in advance by means of a Treasury Department press release or press conference.
 - The **announcement** provides details of the offering, including the _offering amount_ and the _term_ and _type_ of security being offered, and describes some of the auction rules and procedures.
 """
+
+# ╔═╡ bb28a8c2-aaa8-4400-8601-514e156a9fe6
+md"""
+> Where to get information about the Treasury auction process?
+> - Go to [TreasuryDirec.gov](https://www.treasurydirect.gov/)
+> - In the middle panel, you see multiple links to resources about Treasury auctions.
+> - For example, the learn about the auction process, click on `How Treasury auctions work`
+"""
+
+# ╔═╡ c3a14721-d694-4302-b8b2-adf887e6fb7d
+LocalResource("./TreasuryDirect_Auctions_01.png")
 
 # ╔═╡ 03393752-d39f-45a3-8157-520f361058ab
 md"""
@@ -539,6 +756,7 @@ md"""
 ## Noncompetitive Bids
 - When a noncompetitive bid is submitted, the bidder only specifies the **quantity** sought.
   - The quantity in a noncompetitive bid may not exceed $5 million.
+- For more information, visit  [How Treasury Auctions Work](https://www.treasurydirect.gov/instit/auctfund/work/work.htm).
 """
 
 # ╔═╡ 35f529cd-9642-4bd9-a2f7-90018d1936be
@@ -727,6 +945,7 @@ Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
@@ -1184,7 +1403,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1246,6 +1465,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+1"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1343,7 +1566,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1673,6 +1896,10 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1727,6 +1954,7 @@ version = "0.9.1+5"
 # ╟─6498b10d-bece-42bf-a32b-631224857753
 # ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
 # ╟─10a73b76-b6ad-4081-b8b1-21363608618e
+# ╟─42f7e15d-9abc-40ca-bd70-7131957907a5
 # ╟─b33e1473-e374-441b-a6a4-6c2a7b079c98
 # ╟─7bb29c12-c0a0-4eb0-a4d6-bd9c52443751
 # ╟─f89f6fc4-cb6f-4d7b-84c9-f8a18e764427
@@ -1744,14 +1972,45 @@ version = "0.9.1+5"
 # ╟─5db80dee-c643-4cc1-bca4-00b1ffd0a948
 # ╟─0357258e-8133-4ef3-946f-5134a9560b9d
 # ╟─ae67f236-60ec-4c2e-abd3-9ea537200ca3
+# ╟─fa1dcebd-4a54-433b-897c-de2929fb8233
+# ╟─2452e56b-2a61-4608-9ca0-55c8cdca89c6
+# ╟─f688e93c-e8b1-4718-b56e-d76bf70eef57
+# ╟─4914c857-5dc8-43b8-8e70-377debbc3d0c
 # ╟─d25744ad-fbe3-4f08-b17a-d00d51bcb2b8
+# ╟─382a9c58-4baa-4ad2-9f32-7189d4881c50
+# ╟─deb54591-8769-480d-98ad-32157abac2c0
+# ╟─3578793a-e0b6-42de-941b-2db09ef99e49
+# ╟─82db2847-a1a1-45a3-8d29-c3ac4213591c
+# ╟─adbc8a60-c33c-44ba-a284-fa7b676b9618
+# ╟─1a6add34-52e1-4663-9228-f0fca63f8cc2
+# ╟─8de081f6-2b7f-4d03-b565-b4ac01c2773e
 # ╟─d296b99d-588d-48ac-8e0c-a0bcbde72c56
+# ╟─1c4db2fa-7187-4966-aa3f-9a7f56036497
+# ╟─3a3b7641-ed63-4cce-a98c-a4cf1b6e603d
+# ╟─2384b88b-e8dc-4e9c-9488-27828da0289d
+# ╟─0918383a-9a0b-4f8c-ba63-aaad1cf6d72c
+# ╟─c9b876e2-cb29-4a70-9c1f-abb2dedf3fe2
+# ╟─d912c3cb-c1a6-46fe-af9d-25a75074b31d
 # ╟─40df1177-48cf-4cb2-9860-11d2d9f0a450
 # ╟─4567e3a2-24fb-494f-8005-801b03ffeabf
 # ╟─76774fcb-f806-4db2-b653-fe69720f43a7
 # ╟─a440a28f-04af-4248-8f2b-c8e6a726c07a
 # ╟─fef5577e-025f-4afc-9fd9-aa025146858e
+# ╟─90883b07-064f-4395-a805-ddaaad7f97fd
+# ╟─faecc806-5f33-49c6-a463-b349cbfb8acc
+# ╟─c7a254a6-d877-4de0-a3e5-a64fb93ae079
+# ╟─9b53686c-e362-46c5-bdd9-0c388d9cd122
+# ╟─9d0017a5-6b7b-4c1b-9323-7a8fdc54db77
+# ╟─69d8c85f-3735-4bd2-bd37-1ddadab87140
 # ╟─cf1fa1d8-da24-4f48-8762-affa1f58279a
+# ╟─3000e0f6-381f-4a9c-85c1-c517af617f14
+# ╟─5c8f4910-7b54-414a-8eb9-52104c0ff36e
+# ╟─972e44da-4614-4349-bcb7-edb0518fe24d
+# ╟─a1c74635-2fb9-492c-8243-4232b771718b
+# ╟─45ffcfef-16f3-464a-b868-0d3f64cb6019
+# ╟─874afd1d-eba3-4295-9f96-7502c187b171
+# ╟─95110a89-1d2b-4c83-9b1c-d7dc95ab89c8
+# ╟─aa70d2f6-c726-45cc-89cb-bb6afb85f065
 # ╟─d69cce2c-dce4-4369-b3db-968c0b4d3dc6
 # ╟─ccba5159-b6bb-4c98-8f04-8dd91c032146
 # ╟─f50d144b-6d62-4b3f-b85a-d76861ea2ae0
@@ -1760,11 +2019,19 @@ version = "0.9.1+5"
 # ╟─992074c6-d6d5-4417-9edc-0229a0333070
 # ╟─cc282e0d-9faa-4808-b506-335e9097f2fe
 # ╟─d44298e3-5763-4249-8140-5eefb80adb49
+# ╟─57759a33-f026-4c15-91ba-f6af45627f1e
+# ╟─9c596473-76f6-4e9a-b3dd-32add39eaf92
+# ╟─9db71771-d778-4d43-af7a-80d8cfff97ff
+# ╟─36678746-8926-451d-b692-b57c620170c5
+# ╟─8f65e51f-01d6-4d02-bee2-f7d16f62a6c2
+# ╟─e16d631b-befe-4657-ad03-e65b5999e49a
 # ╟─0f801b78-6b89-48f4-ad96-e7336094e024
 # ╟─c1165da4-1149-42d2-8841-a38d7cbc131d
 # ╟─7759dee0-da42-4796-ae60-e8bbe507f52e
 # ╟─a8973960-ab9f-435b-a089-a6da9b4e24ec
 # ╟─db0a2d77-11b1-4f54-819c-d43b0e18002b
+# ╟─bb28a8c2-aaa8-4400-8601-514e156a9fe6
+# ╟─c3a14721-d694-4302-b8b2-adf887e6fb7d
 # ╟─03393752-d39f-45a3-8157-520f361058ab
 # ╟─fea57e60-5e7b-4b5d-84a3-f16ca0279799
 # ╟─0608bb54-8495-4365-810c-5f9010f0eed6
