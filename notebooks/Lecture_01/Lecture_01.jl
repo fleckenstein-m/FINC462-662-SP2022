@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.18.0
 
 using Markdown
 using InteractiveUtils
@@ -113,6 +113,8 @@ begin
 	#round to digits, e.g. 6 digits then prec=1e-6
 	roundmult(val, prec) = (inv_prec = 1 / prec; round(val * inv_prec) / inv_prec); 
 
+	using Logging
+	global_logger(NullLogger())
 	display("")
 end
 
@@ -181,11 +183,36 @@ md"""
 - **NASDAQ’s definition**: “Investments that have specific and fixed interest rates or dividend rates, such as bonds.” 
 $vspace
 - **Fabozzi’s definition of a bond**: “A bond is a debt instrument requiring the issuer (also called the debtor or borrower) to repay to the lender/investor the amount borrowed plus interest over a specified period of time.”
-$vspace
-- For now, let’s just think of a fixed income security as a loan with a standardized structure.
-$vspace
-* We will also consider derivatives on fixed income securities.
+"""
 
+# ╔═╡ f978beac-b5c3-479d-83fa-66e06ad913a1
+md"""
+- Let's ask the Bloomberg terminal
+>- Open a Bloomberg terminal and type in `Fixed Income Security`.
+>- In the popup select `Search Bloomberg for 'FIXED INCOME SECURITY'`.
+>- Click the results for `Fixed Income Security`.
+"""
+
+# ╔═╡ 58dec9a4-dc2f-44d5-8528-6b7533f46246
+md"""
+##
+"""
+
+# ╔═╡ d4e0d99b-9b31-47f2-8b1a-9c446b223221
+LocalResource("./BloombergFixedIncomeSecurity.png")
+
+# ╔═╡ d89765fb-87e2-4c55-bad9-de468ced3c51
+md"""
+>**An investment that provides a return in the form of fixed periodic payments and the eventual return of principal at maturity.** Unlike a variable-income security, where payments change based on some underlying measure such as short-term interest rates, the payments of a fixed-income security are known in advance.
+
+- We will use the bolded part as our starting definition of a Fixed Income Security.
+"""
+
+# ╔═╡ 9330bfd1-bcb4-4bda-9708-66ce58c6fcba
+md"""
+- **Bottom Line**
+  - For now, let’s just think of a fixed income security as a loan with a standardized structure.
+  * We will also consider _derivatives_ on fixed income securities.
 """
 
 # ╔═╡ 73050124-dca8-48dd-87d6-8d02b1fc2f04
@@ -245,6 +272,12 @@ md"""
 ## Fixed Income Amounts Outstanding
 Year-end data in trillions of dollars. \
 _Source: SIFMA_
+"""
+
+# ╔═╡ 29fda685-8414-45d4-b512-804856766ec3
+md"""
+>- How to get SIFMA data?
+>- Go to: [SIFMA Fixed Income Data](https://www.sifma.org/resources/research/fixed-income-chart/)
 """
 
 # ╔═╡ 0130b7fb-e5ff-4d6c-bc0e-23d75ff911e1
@@ -425,12 +458,12 @@ FI_Iss
 # ╔═╡ 553ebdae-746a-4df3-a029-1a52911181b2
 md"""
 ## Fixed Income Trading Volume
-Annual data at year-end in billions of dollars.\
+Average daily trading volumes at year-end in billions of dollars.\
 _Source: SIFMA_
 """
 
 # ╔═╡ 11aac462-5dcc-4f45-a9a8-244a168a628a
-@bind cat_Vol MultiSelect(["Treasury","Corporate Debt","Municipal","Mortgage-Related","Federal Agency Securities","Asset-Backed"];default=["Treasury"])
+@bind cat_Vol MultiSelect(["Treasury","Corporate Debt","Municipal","Agency MBS","Federal Agency Securities","Asset-Backed"];default=["Treasury"])
 
 # ╔═╡ 313b3c23-1b97-4fcb-b3cd-22be145a9dba
 #Fixed Income Market Trading Volumes
@@ -448,13 +481,13 @@ begin
 		
 		for catSelect in cat_Vol
 			println(catSelect)
-			plotData = select(FI_Iss, "Year","$(catSelect)")
+			plotData = select(FI_Vol, "Year","$(catSelect)")
 			rename!(plotData,"Year" => :x, "$(catSelect)" => :y)
 			dropmissing!(plotData)
 			minX = 1995
 			maxX = 2021
 			minY = 0.0
-			maxY = 4000.0
+			maxY = 650.0
 			plot!(plot_Vol, plotData.x,plotData.y, 
 				xlim=(minX,maxX), ylim=(minY, maxY),
 				ylabel="Billions of Dollars",label="$(catSelect)",
@@ -484,15 +517,15 @@ let
 			header=true, infer_eltypes=true)
 		FI_Vol = DataFrame(xlsxFile...)
 		
-		for catSelect in ["Treasury","Corporate Debt","Municipal","Mortgage-Related","Federal Agency Securities","Asset-Backed"]
+		for catSelect in ["Treasury","Corporate Debt","Municipal","Agency MBS","Federal Agency Securities","Asset-Backed"]
 			println(catSelect)
-			plotData = select(FI_Iss, "Year","$(catSelect)")
+			plotData = select(FI_Vol, "Year","$(catSelect)")
 			rename!(plotData,"Year" => :x, "$(catSelect)" => :y)
 			dropmissing!(plotData)
 			minX = 1995
 			maxX = 2021
 			minY = 0.0
-			maxY = 4000.0
+			maxY = 650.0
 			plot!(plot_Vol, plotData.x,plotData.y, 
 				xlim=(minX,maxX), ylim=(minY, maxY),
 				ylabel="Billions of Dollars",label="$(catSelect)",
@@ -571,21 +604,68 @@ md"""
 - Perceived to be among the safest in the world.
   - S&P cut the rating of US Government debt to AA+ in August 2011. 
   - As of October 2021, still at AA+.
+  - We will discuss ratings in the next few slides.
+"""
+
+# ╔═╡ 50aac668-67cb-4800-ab43-f7e4023ba94e
+md"""
+- Why the Treasury Market matters ...
+  - [WSJ, February 1, 2022: U.S. National Debt Exceeds $30 Trillion for First Time](https://www.wsj.com/articles/u-s-national-debt-exceeds-30-trillion-for-first-time-11643766231?mod=hp_lead_pos3)
 """
 
 # ╔═╡ a18d5724-5dce-4603-b5bb-4742af02b91a
 md"""
-## Credit Rating of US Treasury Debt
+## Credit Rating of U.S. Treasury Debt
 """
 
 # ╔═╡ 6a9c208c-86a2-4e01-8205-7a068032337e
 LocalResource("CreditRatingUSTreasury.png",:width => 900)
 
+# ╔═╡ 45cf05e1-229e-4eb7-a1d0-224c5f2557dd
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - Open a terminal and on the keyboard type `1501510D US Equity` and press enter.
+>  - Next type `CRPR` (or select Credit Profile under Company Analysis)
+"""
+
+# ╔═╡ d235b427-7d13-45cb-870f-e2f58a91d2ca
+md"""
+##
+"""
+
+# ╔═╡ 1f5b8fd5-36d2-4510-8dc0-715b95f3f30b
+md"""
+- What is the meaning of these letters?
+- These are _credit ratings_ which reflect the credit quality of the issuer of a fixed income security.
+- The big-four _ratings agencies_ are Standard & Poor's (S&P), Moody's, Fitch, and DBRS Morningstar.
+"""
+
+# ╔═╡ a8bd4f9f-007a-42c5-bb16-8944473d6aeb
+md"""
+- To get a sense of what the letters in the ratings mean, let's take a look at S&P ratings.
+- The following are S&P's long-term ratings of _investment grade_ securities.
+"""
+
+# ╔═╡ 141e3e50-2438-4c74-89fe-63facd4c8f67
+LocalResource("./SPRatings_01.png")
+
 # ╔═╡ 939cc968-73d3-475a-a85e-ede03d862f62
 md"""
-## Credit Default Swaps on US Treasury Debt
+## Credit Default Swaps on U.S. Treasury Debt
 - Credit Default Swaps will be covered in more detail later in this course.
 - For now, think of the graph below as the price that investors are willing to pay to insure against a default of the US Government on its debt obligations.
+"""
+
+# ╔═╡ a1ce2642-9561-4703-8ff4-754e0598f0c3
+LocalResource("USTreasuryCDS5yr.png",:width => 900)
+
+# ╔═╡ 9822814d-758f-430a-912d-ed0d9523ee3a
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - Open a terminal and on the keyboard type `US CDS EUR SR 5Y`.
+>  - In the popup that appears click on `US CDS EUR SR 5Y D14 Corp`.
+>  - Next, type `GP` and press enter.
+>  - On the chart page click `Max` (near the top) to see the entire time series of U.S. sovereign CDS spreads.
 """
 
 # ╔═╡ ae9d94eb-ae63-44e6-b01a-161519edf403
@@ -605,6 +685,29 @@ md"""
 - Treasury Inflation Protected Securities (TIPS)
 - Treasury Floating Rate Notes (FRNs)
 """
+
+# ╔═╡ 1290f47f-9ca8-4279-a23f-37170ecc25a2
+md"""
+>- Where to get information about U.S. Treasury securities?
+>- Go to webpage of the [U.S. Treasury](https://www.treasurydirect.gov/).
+>- In the middle panel, click on `Treasury securities Overview`.
+"""
+
+# ╔═╡ 337dd389-5a0d-4ec8-bdb8-6d3e83e334f3
+md"""
+##
+"""
+
+# ╔═╡ a535af3f-32a6-4217-a9e9-f405b9963ec8
+LocalResource("TreasuryDirect_01.png",:width => 900)
+
+# ╔═╡ 45fc300f-83a9-4e47-8dfe-41f169b67ba2
+md"""
+##
+"""
+
+# ╔═╡ 3f11de71-e269-4994-960c-7df3553ce88e
+LocalResource("TreasuryDirect_02.png",:width => 900)
 
 # ╔═╡ 2c17c475-3935-4bb2-8b5e-e4257652f542
 md"""
@@ -637,6 +740,15 @@ md"""
 # ╔═╡ 40d1f962-32d5-44cb-b6ac-719b4ce3614a
 LocalResource("./UDel_Munis.png",:width => 900)
 
+# ╔═╡ 81f1d61f-0393-486b-b114-db9b35ceb371
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - Open a terminal and on the keyboard type `University of Delaware`.
+>  - In the popup window,  select `DE UNIHR Muni`.
+>  - Next, click on one of the different bonds in the list.
+>  - Then, click on `DES` on the top-right, or type `DES` on the keyboard and press enter.
+"""
+
 # ╔═╡ f85c01c0-38cb-49ec-af97-30e1f2499fd3
 md"""
 ##
@@ -661,6 +773,13 @@ md"""
 # ╔═╡ f3326606-d257-4ab1-92ce-f516f3ca4df1
 LocalResource("./UDel_Munis_4.png",:width => 900)
 
+# ╔═╡ 915c9f1b-e15e-4e7e-a02e-6a01fdd7cb50
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - From the `DES` page where you are currently at, type `GP` and press enter.
+>  - At the top, select  `Max` to see the entire time series.
+"""
+
 # ╔═╡ 8255787b-c84c-430e-b9a8-530b62aa5eff
 md"""
 # Corporate Bonds
@@ -680,6 +799,14 @@ md"""
 # ╔═╡ 4aed1554-4ce9-4eaa-8067-7729c83cd9d1
 LocalResource("./IBM_Bond.png",:width => 900)
 
+# ╔═╡ 6908f1bf-5d42-4de8-898b-5072e3945671
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - On the keyboard, type `IMB Corp` and in the popup window select `International Business Machines Corp (Multiple Matches)`.
+>  - In the list of bonds, click on one bond.
+>  - Next, click on `DES` or type `DES` and press enter.
+"""
+
 # ╔═╡ ef264664-0f09-44a2-9f3e-42e164a5607d
 md"""
 ##
@@ -687,6 +814,36 @@ md"""
 
 # ╔═╡ 2cbae609-860b-4472-b0c1-ad405566d464
 LocalResource("./IBM_Bond_2.png",:width => 900)
+
+# ╔═╡ 1c9f455c-6691-43e3-8ae2-821f2c25f8c5
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - From the `DES` page where you are currently at, type `GP` and press enter.
+>  - At the top, select  `Max` to see the entire time series.
+"""
+
+# ╔═╡ ae25ef33-44af-4e34-ac97-e621c83e174e
+md"""
+##
+"""
+
+# ╔═╡ 3e5c1634-2cd6-4fd0-974c-5f275066b2cb
+md"""
+- To get a sense of the credit quality of a coporate bond issuer (e.g. IBM), we can use credit ratings from ratings agencies (S&P, Moody's, Fitch, DBRS Morningstar).
+- We already looked at S&P's _investment grade_ ratings above when we talked about U.S. Treasury securities.
+- Since the credit quality of an issuer plays an important role for possibly more risky corporate issuers, let's look at S&P _non-investment grade_ ratings.
+"""
+
+# ╔═╡ 8c304057-8c9b-48f9-943a-a6444788d6f2
+LocalResource("./SPRatings_02.png")
+
+# ╔═╡ 15934b17-4169-4359-afac-7de51030e90f
+md"""
+##
+"""
+
+# ╔═╡ 8866ec08-b6c8-4269-a266-f156c1a670bf
+LocalResource("./SPRatings_03.png")
 
 # ╔═╡ e955bde8-a498-42de-9899-e424943e1888
 md"""
@@ -701,6 +858,14 @@ md"""
 # ╔═╡ 321cfcb5-b88d-49a2-b043-3506f20063c5
 md"""
 ## Example: Credit Card Asset Backed Securities
+"""
+
+# ╔═╡ 50ced7c1-ea95-4fa8-a1da-b29a839ba235
+LocalResource("./CNBCCreditCardRates.png")
+
+# ╔═╡ e29482dd-0ff8-43c2-9fa9-c7565b6de525
+md"""
+##
 """
 
 # ╔═╡ 945a7991-9af3-41e0-b037-b71494a0bb81
@@ -802,6 +967,7 @@ Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
@@ -1259,7 +1425,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1321,6 +1487,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+1"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1418,7 +1588,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1748,6 +1918,10 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1803,12 +1977,18 @@ version = "0.9.1+5"
 # ╟─6a1ce8fa-d7d5-4f5e-9a7a-cff44a38e5e6
 # ╟─e8c38973-2d1b-412d-96cd-c13d2b10c905
 # ╟─c7ca1e7c-3a9b-43e4-b5c1-9d35c51693b6
+# ╟─f978beac-b5c3-479d-83fa-66e06ad913a1
+# ╟─58dec9a4-dc2f-44d5-8528-6b7533f46246
+# ╟─d4e0d99b-9b31-47f2-8b1a-9c446b223221
+# ╟─d89765fb-87e2-4c55-bad9-de468ced3c51
+# ╟─9330bfd1-bcb4-4bda-9708-66ce58c6fcba
 # ╟─73050124-dca8-48dd-87d6-8d02b1fc2f04
 # ╟─87210c4f-8d7b-4ea8-a3f8-b190b7aecdbd
 # ╟─28dad357-1da2-49ce-a533-f4a0689ae02a
 # ╟─ced3e976-d8cd-4672-9855-18b9a57ff6f9
 # ╟─4b97c210-4c38-45c8-81a5-6893c0ef008d
 # ╟─903653fa-1b62-49e4-82c7-e48225eab427
+# ╟─29fda685-8414-45d4-b512-804856766ec3
 # ╟─0130b7fb-e5ff-4d6c-bc0e-23d75ff911e1
 # ╟─a0a97d35-7d4f-4e9e-ab8e-786cc7e3f47c
 # ╟─ecac0637-b2dc-4ed5-8edc-daaa4805945b
@@ -1834,28 +2014,52 @@ version = "0.9.1+5"
 # ╟─0da38ef4-6c0f-4ebc-81eb-ef8314919843
 # ╟─370971d0-6181-47f9-a9e5-b903891ebd21
 # ╟─6e1c932e-c368-422f-a32a-c33a2b880f8c
+# ╟─50aac668-67cb-4800-ab43-f7e4023ba94e
 # ╟─a18d5724-5dce-4603-b5bb-4742af02b91a
 # ╟─6a9c208c-86a2-4e01-8205-7a068032337e
+# ╟─45cf05e1-229e-4eb7-a1d0-224c5f2557dd
+# ╟─d235b427-7d13-45cb-870f-e2f58a91d2ca
+# ╟─1f5b8fd5-36d2-4510-8dc0-715b95f3f30b
+# ╟─a8bd4f9f-007a-42c5-bb16-8944473d6aeb
+# ╟─141e3e50-2438-4c74-89fe-63facd4c8f67
 # ╟─939cc968-73d3-475a-a85e-ede03d862f62
+# ╟─a1ce2642-9561-4703-8ff4-754e0598f0c3
+# ╟─9822814d-758f-430a-912d-ed0d9523ee3a
 # ╟─ae9d94eb-ae63-44e6-b01a-161519edf403
 # ╟─2430deed-808b-4ef2-bffc-568a034f2a3a
+# ╟─1290f47f-9ca8-4279-a23f-37170ecc25a2
+# ╟─337dd389-5a0d-4ec8-bdb8-6d3e83e334f3
+# ╟─a535af3f-32a6-4217-a9e9-f405b9963ec8
+# ╟─45fc300f-83a9-4e47-8dfe-41f169b67ba2
+# ╟─3f11de71-e269-4994-960c-7df3553ce88e
 # ╟─2c17c475-3935-4bb2-8b5e-e4257652f542
 # ╟─e75b8f3e-dcc7-416c-9899-c79f307448d9
 # ╟─99a81e2a-ec51-4dec-af68-96de180f3d55
 # ╟─40d1f962-32d5-44cb-b6ac-719b4ce3614a
+# ╟─81f1d61f-0393-486b-b114-db9b35ceb371
 # ╟─f85c01c0-38cb-49ec-af97-30e1f2499fd3
 # ╟─226520cb-6035-4899-a055-c378b5547fba
 # ╟─2f3ff587-88d7-48df-9530-2c97aabf06f1
 # ╟─6692b26b-2aba-4504-a00c-d5694fd62ebd
 # ╟─99ee8ec2-dcfe-429c-a886-75fded160290
 # ╟─f3326606-d257-4ab1-92ce-f516f3ca4df1
+# ╟─915c9f1b-e15e-4e7e-a02e-6a01fdd7cb50
 # ╟─8255787b-c84c-430e-b9a8-530b62aa5eff
 # ╟─008e8183-c65f-4cfd-9459-1beea1a3cc68
 # ╟─4aed1554-4ce9-4eaa-8067-7729c83cd9d1
+# ╟─6908f1bf-5d42-4de8-898b-5072e3945671
 # ╟─ef264664-0f09-44a2-9f3e-42e164a5607d
 # ╟─2cbae609-860b-4472-b0c1-ad405566d464
+# ╟─1c9f455c-6691-43e3-8ae2-821f2c25f8c5
+# ╟─ae25ef33-44af-4e34-ac97-e621c83e174e
+# ╟─3e5c1634-2cd6-4fd0-974c-5f275066b2cb
+# ╟─8c304057-8c9b-48f9-943a-a6444788d6f2
+# ╟─15934b17-4169-4359-afac-7de51030e90f
+# ╟─8866ec08-b6c8-4269-a266-f156c1a670bf
 # ╟─e955bde8-a498-42de-9899-e424943e1888
 # ╟─321cfcb5-b88d-49a2-b043-3506f20063c5
+# ╟─50ced7c1-ea95-4fa8-a1da-b29a839ba235
+# ╟─e29482dd-0ff8-43c2-9fa9-c7565b6de525
 # ╟─945a7991-9af3-41e0-b037-b71494a0bb81
 # ╟─21fb9ca7-a860-42d9-b8d4-6cca6b4afd91
 # ╟─ca08c446-33fb-4015-a201-1c68ae2bf7af
