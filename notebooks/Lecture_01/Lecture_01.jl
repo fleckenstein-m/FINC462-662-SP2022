@@ -780,6 +780,11 @@ md"""
 >  - At the top, select  `Max` to see the entire time series.
 """
 
+# ╔═╡ 97d6fb1c-280d-471d-ba5f-6ba964027d99
+md"""
+[Moody's Credit Analysis University of Delaware](https://cpb-us-w2.wpmucdn.com/sites.udel.edu/dist/0/3249/files/2019/06/UDpublishedCO2019.pdf)
+"""
+
 # ╔═╡ 8255787b-c84c-430e-b9a8-530b62aa5eff
 md"""
 # Corporate Bonds
@@ -2042,8 +2047,9 @@ version = "0.9.1+5"
 # ╟─2f3ff587-88d7-48df-9530-2c97aabf06f1
 # ╟─6692b26b-2aba-4504-a00c-d5694fd62ebd
 # ╟─99ee8ec2-dcfe-429c-a886-75fded160290
-# ╟─f3326606-d257-4ab1-92ce-f516f3ca4df1
+# ╠═f3326606-d257-4ab1-92ce-f516f3ca4df1
 # ╟─915c9f1b-e15e-4e7e-a02e-6a01fdd7cb50
+# ╟─97d6fb1c-280d-471d-ba5f-6ba964027d99
 # ╟─8255787b-c84c-430e-b9a8-530b62aa5eff
 # ╟─008e8183-c65f-4cfd-9459-1beea1a3cc68
 # ╟─4aed1554-4ce9-4eaa-8067-7729c83cd9d1
