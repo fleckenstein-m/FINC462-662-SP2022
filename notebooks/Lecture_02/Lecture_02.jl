@@ -572,6 +572,7 @@ md"""
 md"""
 - Why inflation matters and why one might want to hedge against inflation.
   - [WSJ, January 12, 2022: U.S. Inflation Hit 7% in December, Fastest Pace Since 1982](https://www.wsj.com/articles/us-inflation-consumer-price-index-december-2021-11641940760?mod=article_inline)
+  - [WSJ, February 10, 2022: U.S. Inflation Rate Accelerates to a 40-Year High of 7.5%](https://www.wsj.com/articles/us-inflation-consumer-price-index-january-2022-11644452274?mod=hp_lead_pos1)
   - [WSJ, February 6, 2022: What Investors Should Know About TIPS](https://www.wsj.com/articles/tips-what-investors-should-know-treasury-inflation-protected-securities-11643849892?mod=hp_lista_pos1)
 """
 
