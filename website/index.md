@@ -3,7 +3,7 @@
 
 
 * **Instructor:** Matthias Fleckenstein, [mflecken@udel.edu](mailto:mflecken@udel.edu)
-* **Class Times:** Tuesdays and Thursdays 9.30-10:45am
+* **Class Times:** Section 011 - Tue/Thu 9.30-10:45am; Section 050 - Tue 6.00pm - 8.45pm
 * **Class Location:** Alfred Lerner Hall, Room 230
 * **Office Hours:** Mondays, 8.00am - 10.00am, Zoom, [Link](https://udel.zoom.us/j/98351364047)
 
@@ -24,11 +24,11 @@
 
 # Class Times
 
-|             | FINC-462         | FINC-462/662     |
-| --------    | --------------   | --------------   |
-| Day(s)      | Tue, Thu         | Tue              |
-| Time        | 9.30am-10.45am   | 6.00pm-8.45pm    |
-| Location    | Lerner Hall 230 | Lerner Hall 230 |
+|             | FINC-462 (Section 011)        | FINC-462/662 (Section 050)    |
+| --------    | ----------------------------  | ---------------------------   |
+| Day(s)      | Tue, Thu                      | Tue              |
+| Time        | 9.30am-10.45am                | 6.00pm-8.45pm    |
+| Location    | Lerner Hall 230               | Lerner Hall 230 |
 
 # Course Webpage
 - [https://fleckenstein-m.github.io/FINC462-662-SP2022/](https://fleckenstein-m.github.io/FINC462-662-SP2022/)
