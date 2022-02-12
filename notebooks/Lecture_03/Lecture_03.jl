@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.18.0
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -192,6 +192,18 @@ md"""
 # ╔═╡ 6561b7a0-368c-43c6-ada9-36b83dc4a749
 LocalResource("./TreasuryNotePriceQuoteBloomberg.png",:width => 1200) 
 
+# ╔═╡ 15cb9e60-6e54-4f0e-abb2-9249bdc49677
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - On the keyboard type `T Govt`
+>  - Click on `United States Treasury Note/Bond (Multiple Matches) Govt`
+>  - On the next page, click on one of the Treasury notes/bonds.
+>  - Next, type `DES` on the keyboard and press enter.
+>  - The page you now see is the `Description` page for the Treasury you selected.
+>  - Next, type `ALLQ` and press enter.
+>  - This will display a page with quoted prices for the Treasury note/bond you selected.
+"""
+
 # ╔═╡ 30ce6f74-1d7e-465d-abf1-245881fec53b
 md"""
 ## Price Quotes for Treasury Coupon Securities
@@ -291,8 +303,8 @@ md"""
 Markdown.parse("
 **Example**:
 - Often, trading system such as Bloomberg display _fractions_ after the ``32^{\\textrm{nd}}``.
-- Suppose the price of a Treasury note is quoted as ``\\mathbf{$p11 + $p12 \\frac{$p13}{4}}``.
-- For \$100 par value, the quoted price of ``\\mathbf{$p11 + $p12 \\frac{$p13}{4}}`` refers to a dollar price of $p11 dollars plus ``($p12 + \\frac{$p13}{4})`` ``32^{\\textrm{nd}}`` of a dollar.
+- Suppose the price of a Treasury note is quoted as ``\\mathbf{$p11 - $p12 \\frac{$p13}{4}}``.
+- For \$100 par value, the quoted price of ``\\mathbf{$p11 - $p12 \\frac{$p13}{4}}`` refers to a dollar price of $p11 dollars plus ``($p12 + \\frac{$p13}{4})`` ``32^{\\textrm{nd}}`` of a dollar.
 - In short, the price is calculated as 
 	
 \$$p11 + \\frac{$p12+\\frac{$p13}{4}}{32} = $(p11+(p12+0.25*p13)/32.0)\$	
@@ -315,8 +327,8 @@ md"""
 # ╔═╡ b65c747b-f08a-408d-8e01-e921dcbd9056
 Markdown.parse("
 **Example**:
-- One last example. Suppose the price of a Treasury note is quoted as ``\\mathbf{$p14 + $p15 \\frac{$p16}{8}}``.
-- For \$100 par value, the quoted price of ``\\mathbf{$p14 + $p15 \\frac{$p16}{8}}`` refers to a dollar price of $p14 dollars plus ``($p15 + \\frac{$p16}{8})`` ``32^{\\textrm{nd}}`` of a dollar.
+- One last example. Suppose the price of a Treasury note is quoted as ``\\mathbf{$p14 - $p15 \\frac{$p16}{8}}``.
+- For \$100 par value, the quoted price of ``\\mathbf{$p14 - $p15 \\frac{$p16}{8}}`` refers to a dollar price of $p14 dollars plus ``($p15 + \\frac{$p16}{8})`` ``32^{\\textrm{nd}}`` of a dollar.
 - In short, the price is calculated as 
 	
 \$$p14 + \\frac{$p15+\\frac{$p16}{8}}{32} = $(p14+(p15+1/8*p16)/32.0)\$	
@@ -449,7 +461,50 @@ md"""
 - The convention in the Treasury market is that _in addition to_ the **quoted price**, the bond buyer must _pay_ the bond seller the **accrued interest**.
 - Thus, the amount that the buyer pays the seller is the **quoted price** plus **accrued interest**.
   - This is the actual purchase price and it is called the **dirty price.**
-  - The **quoted price** of a bond (_without accrued interest_) is called the **clean price.** 
+  - The **quoted price** of a bond (_without accrued interest_) is called the **clean price.**
+- The **clean price** is also called the **flat** price and the **dirty price** is also called the **full** price.
+"""
+
+# ╔═╡ 6ce18679-b433-4110-8ef4-0fd9135737f4
+md"""
+> - How to get there on the Bloomberg terminal?
+>   - On the keyboard type `T Govt`
+>   - Click on `United States Treasury Note/Bond (Multiple Matches) Govt`
+>   - On the next page, click on one of the Treasury notes/bonds.
+>   - Next, type `DES` on the keyboard and press enter.
+>   - The page you now see is the `Description` page for the Treasury you selected.
+>   - Next, type `HP` and press enter.
+>   - This will display a page with past prices for the Treasury note/bond you selected.
+>   - Next, at the top, in the row labeled `Market` type in __Mid Line__ in the first field and __Dirty Mid Price__ in the second field. Press enter.
+>   - The price table will now show the *clean* mid price and the *dirty* mid price.
+>     - Recall that the *mid* price is the midpoint between the bid and the ask price.  
+"""
+
+# ╔═╡ 1c3d5c02-4be2-4aff-bac8-bfde4aca679a
+md"""
+## Full Prices of Treasury Notes/Bonds over Time
+"""
+
+# ╔═╡ c90f441d-09ca-4562-8f3f-d766e166d2a4
+md"""
+On the coupon payment data, the Treasury trades `ex-coupon` and its *full price* (also referred to as the *dirty price*) drops by the amount of the coupon interest cash flow.
+"""
+
+# ╔═╡ ee211d3e-08c0-4a4c-8c79-8d5e709981ef
+LocalResource("./BloombergTreasuryDirtyPricePath.png", :width=>1200)
+
+# ╔═╡ 90501d6d-5c09-4bae-9415-dedd93dca242
+LocalResource("./BloombergTreasuryDirtyPricePath_02.png", :width=>1200)
+
+# ╔═╡ d440a3c8-6c8b-4eb9-ab4d-266917d50ee0
+md"""
+- Let' check this.
+- The screenshot shows that the price change on the ex-coupon date is `0-28`.
+- This is a dollar price (per \$100 notional) of $\frac{28}{32}=$ \$0.875.
+- The Treasury note has a coupon rate of `1-3/4` percent (see the top left).
+- In decimals, this is a couponr ate of 1.75%.
+- Thus, the semi-annual coupon cash flow per \$100 face value is $\frac{1.75}{2}\ \times 100$ = \$0.875.
+- Thus, the price decline matches the dollar coupon interest paid on this data.
 """
 
 # ╔═╡ 18026407-34e8-4a96-aaaf-410d495f9568
@@ -696,6 +751,18 @@ md"""
 
 # ╔═╡ 25500a55-9c69-42d8-87bf-fb897b6de939
 LocalResource("./TreasuryBillPriceQuoteBloomberg.png",:width => 1200) 
+
+# ╔═╡ 71684c1d-0204-477b-a838-175f38e8c367
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - On the keyboard type `B Govt`
+>  - Click on `United States Treasury Bill (Multiple Matches)`
+>  - On the next page, click on one of the Treasury bills.
+>  - Next, type `DES` on the keyboard and press enter.
+>  - The page you now see is the `Description` page for the Treasury bill you selected.
+>  - Next, type `ALLQ` and press enter.
+>  - This will display a page with quoted prices for the Treasury bill you selected.
+"""
 
 # ╔═╡ 9d874ab6-e3ec-4a87-8842-a8a8074b745c
 md"""
@@ -1330,7 +1397,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1392,10 +1459,6 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+1"
-
-[[OpenBLAS_jll]]
-deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
-uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1493,7 +1556,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["SHA", "Serialization"]
+deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1812,10 +1875,6 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
-[[libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
-uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1874,6 +1933,7 @@ version = "0.9.1+5"
 # ╟─aac27a3c-e90a-437f-a563-f81d41c8d3f7
 # ╟─39af52c6-ddb1-41ec-be5c-c0e31a2693bb
 # ╟─6561b7a0-368c-43c6-ada9-36b83dc4a749
+# ╟─15cb9e60-6e54-4f0e-abb2-9249bdc49677
 # ╟─30ce6f74-1d7e-465d-abf1-245881fec53b
 # ╟─5bfbddd7-c014-45c1-871d-ae41d5c02c82
 # ╟─395335f3-3f6c-4fbc-bf0b-9a238c8b6864
@@ -1912,6 +1972,12 @@ version = "0.9.1+5"
 # ╟─a7c9120b-ee24-48c2-904a-e40ef95fcffa
 # ╟─148712ae-b638-45de-9ab1-96492f083439
 # ╟─8f9498b5-a1cf-4be7-b0dd-41aad76c959b
+# ╟─6ce18679-b433-4110-8ef4-0fd9135737f4
+# ╟─1c3d5c02-4be2-4aff-bac8-bfde4aca679a
+# ╟─c90f441d-09ca-4562-8f3f-d766e166d2a4
+# ╟─ee211d3e-08c0-4a4c-8c79-8d5e709981ef
+# ╟─90501d6d-5c09-4bae-9415-dedd93dca242
+# ╟─d440a3c8-6c8b-4eb9-ab4d-266917d50ee0
 # ╟─18026407-34e8-4a96-aaaf-410d495f9568
 # ╟─6acadc8a-dbb7-4193-9df7-09504755476b
 # ╟─362273d3-e019-4953-a1dd-21699f7a7def
@@ -1942,6 +2008,7 @@ version = "0.9.1+5"
 # ╟─a93b91d5-7239-4260-b57f-7afb02ee31c5
 # ╟─dcb12edc-553b-4fe7-9525-a86d9fd5a78a
 # ╟─25500a55-9c69-42d8-87bf-fb897b6de939
+# ╟─71684c1d-0204-477b-a838-175f38e8c367
 # ╟─9d874ab6-e3ec-4a87-8842-a8a8074b745c
 # ╟─a92a604a-429b-4508-9820-c99839f3b431
 # ╟─4f6af650-763a-4c56-a564-d3c1447be1fd
