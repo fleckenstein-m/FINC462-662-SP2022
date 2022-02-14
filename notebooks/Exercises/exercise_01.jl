@@ -136,6 +136,7 @@ begin
 	<p style="padding-bottom:1cm"> </p>
 	<div align=center style="font-size:25px; font-family:family:Georgia"> FINC-462/662: Fixed Income Securities </div>
 	<p style="padding-bottom:1cm"> </p>
+	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> Exercise 01</b> <p>
 	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> Price-Quoting Conventions in the U.S. Treasury Market</b> <p>
 	<p style="padding-bottom:1cm"> </p>
 	<p align=center style="font-size:25px; font-family:family:Georgia"> Spring 2022 <p>
@@ -151,226 +152,27 @@ end
 # ╔═╡ 3e995602-7a5e-45ce-a31d-449951af1aea
 TableOfContents(aside=true, depth=1)
 
-# ╔═╡ 6498b10d-bece-42bf-a32b-631224857753
-md"""
-# Overview
-"""
-
-# ╔═╡ 95db374b-b10d-4877-a38d-1d0ac45877c4
-begin
-	html"""
-	<fieldset>      
-        <legend>Our goals for today</legend>      
-		<br>
-        <input type="checkbox" value="">Understand how prices for Treasury securities are quoted in secondary markets.<br><br>
-	    <input type="checkbox" value="">Know how to calculate accrued interest.<br><br>
-	</fieldset>      
-	"""
-end
-
-# ╔═╡ 93db6880-429c-4b9c-a807-eba600e03df1
-md"""
-# Price Quotes of for Treasury Notes/Bonds
-"""
-
-# ╔═╡ 1fa89db5-8185-4c32-81ad-4cc7e4ec44c4
-md"""
-## Example: 5-year Treasury Note in Bloomberg
-- On the Bloomberg Terminal type `91282CCZ2` and click on the security in the search result. 
-- Next, type `DES` and `Enter`.
-"""
-
-# ╔═╡ aac27a3c-e90a-437f-a563-f81d41c8d3f7
-LocalResource("./TreasuryNoteDescrExampleBloomberg.png",:width => 1200) 
-
-# ╔═╡ 39af52c6-ddb1-41ec-be5c-c0e31a2693bb
-md"""
-## Price Quotes for 5-year Treasury Note
-- On the Bloomberg Terminal click on `ALLQ` under _Quick Links_
-"""
-
-# ╔═╡ 6561b7a0-368c-43c6-ada9-36b83dc4a749
-LocalResource("./TreasuryNotePriceQuoteBloomberg.png",:width => 1200) 
-
-# ╔═╡ 15cb9e60-6e54-4f0e-abb2-9249bdc49677
-md"""
->- How to get there on the Bloomberg terminal?
->  - On the keyboard type `T Govt`
->  - Click on `United States Treasury Note/Bond (Multiple Matches) Govt`
->  - On the next page, click on one of the Treasury notes/bonds.
->  - Next, type `DES` on the keyboard and press enter.
->  - The page you now see is the `Description` page for the Treasury you selected.
->  - Next, type `ALLQ` and press enter.
->  - This will display a page with quoted prices for the Treasury note/bond you selected.
-"""
-
-# ╔═╡ 30ce6f74-1d7e-465d-abf1-245881fec53b
-md"""
-## Price Quotes for Treasury Coupon Securities
-- Expressed as a percent of face value (often called “points”) and numbers after the hyphens denote 32nds (often called “ticks”).
-"""
-
-# ╔═╡ 5bfbddd7-c014-45c1-871d-ae41d5c02c82
-md"""
-##
-"""
-
-# ╔═╡ 4ad79093-2e8b-4fd7-bc1d-87388947ffde
-md"""
-- Points: $(@bind p1 Slider(90:1:120, default=98, show_value=true))
-- 32nd: $(@bind p2 Slider(10:1:31, default=26, show_value=true))
-"""
-
-# ╔═╡ 395335f3-3f6c-4fbc-bf0b-9a238c8b6864
-Markdown.parse("
-**Example**:
-- Suppose the price of a Treasury note is quoted as **$(p1)**-**$(p2)**.
-- For \$100 par value, the quoted price of **$(p1)**-**$(p2)** refers to a dollar price of $p1 dollars plus $p2 ``32^{\\textrm{nd}}`` of a dollar.
-- In short, the price is calculated as 
-	
-\$$p1 + \\frac{$p2}{32} = $(p1+p2/32.0)\$	
- 
-- This means that the price per \$ 100 par value is \$$(p1+p2/32.0).
-")
-
-# ╔═╡ 46566086-d518-49d9-b173-f66f2ea0e131
-md"""
-The 32nd are themselves often split by the addition of a **plus** sign or a **third** digit. 
-- ``+`` sign means 1/64$^{\textrm{th}}$
-- A _third_ digit means that this third digit is multiplied by 1/256.
-"""
-
-# ╔═╡ 4d4f241f-83c4-4a78-87e9-6ecfde56b860
-md"""
-##
-"""
-
-# ╔═╡ f01f940c-233c-4b90-882b-bd9d33c6b841
-md"""
-- Points: $(@bind p3 Slider(90:1:120, default=98, show_value=true))
-- 32$^{\textrm{nd}}$: $(@bind p4 Slider(10:1:31, default=25, show_value=true))
-"""
-
-# ╔═╡ 2d37c722-c5bb-4462-a48d-f9374bed4449
-Markdown.parse("
-**Example**:
-- Suppose the price of a Treasury note is quoted as **$(p3)**-**$(p4)+**.
-- For \$100 par value, the quoted price of **$(p3)**-**$(p4)+** refers to a dollar price of $p1 dollars plus $p3 ``32^{\\textrm{nd}}`` plus 1 ``64^{\\textrm{th}}``of a dollar.
-- In short, the price is calculated as 
-	
-\$$p3 + \\frac{$p4}{32} + \\frac{1}{64}= $(p3+p4/32.0+1/64.0)\$	
- 
-- This means that the price per \$ 100 par value is \$$(p3+p4/32.0+1/64.0)\$.
-")
-
-# ╔═╡ b541d16f-59da-48dd-b7f6-a0cebd451256
-md"""
-##
-"""
-
-# ╔═╡ b294a20b-8710-49bb-a069-75dbc3f19ba6
-md"""
-- Points: $(@bind p5 Slider(90:1:120, default=98, show_value=true))
-- 32$^{\textrm{nd}}$: $(@bind p6 Slider(10:1:31, default=25, show_value=true))
-- 256$^{\textrm{th}}$: $(@bind p7 Slider(1:1:9, default=2, show_value=true))
-"""
-
-# ╔═╡ 64adcfde-8ade-4778-bb01-9d46ee836a55
-Markdown.parse("
-**Example**:
-- Suppose the price of a Treasury note is quoted as **$(p5)**-**$(p6)$(p7)**.
-- For \$100 par value, the quoted price of **$(p5)**-**$(p6)$(p7)** refers to a dollar price of $p5 dollars plus $p6 ``32^{\\textrm{nd}}`` plus $(p7) ``256^{\\textrm{th}}``of a dollar.
-- In short, the price is calculated as 
-	
-\$$p5 + \\frac{$p6}{32} + \\frac{$p7}{256}= $(p5+p6/32.0+p7/256.0)\$	
- 
-- This means that the price per \$ 100 par value is \$$(p5+p6/32.0+p7/256.0)\$.
-")
-
-# ╔═╡ c3f25830-c6d2-4d77-bbd6-91024ee3363b
-md"""
-##
-"""
-
-# ╔═╡ f72ab26d-f986-4ab3-9f15-11cb33b65c69
-md"""
-- Points: $(@bind p11 Slider(90:1:120, default=98, show_value=true))
-- 32$^{\textrm{nd}}$: $(@bind p12 Slider(10:1:31, default=25, show_value=true))
-- Quarters of a 32$^{\textrm{nd}}$: $(@bind p13 Slider(1:1:3, default=1, show_value=true))
-"""
-
-# ╔═╡ e68723a6-a1d8-4a3f-8ba0-9acab5d764db
-Markdown.parse("
-**Example**:
-- Often, trading system such as Bloomberg display _fractions_ after the ``32^{\\textrm{nd}}``.
-- Suppose the price of a Treasury note is quoted as ``\\mathbf{$p11 - $p12 \\frac{$p13}{4}}``.
-- For \$100 par value, the quoted price of ``\\mathbf{$p11 - $p12 \\frac{$p13}{4}}`` refers to a dollar price of $p11 dollars plus ``($p12 + \\frac{$p13}{4})`` ``32^{\\textrm{nd}}`` of a dollar.
-- In short, the price is calculated as 
-	
-\$$p11 + \\frac{$p12+\\frac{$p13}{4}}{32} = $(p11+(p12+0.25*p13)/32.0)\$	
- 
-- This means that the price per \$ 100 par value is \$$(p11+(p12+0.25*p13)/32.0)\$.
-")
-
-# ╔═╡ bbf515d0-e8a2-4391-8e86-41e814e3240a
-md"""
-##
-"""
-
-# ╔═╡ b5ed2793-df92-4f41-97e9-7533b35db4c0
-md"""
-- Points: $(@bind p14 Slider(90:1:120, default=98, show_value=true))
-- 32$^{\textrm{nd}}$: $(@bind p15 Slider(10:1:31, default=25, show_value=true))
-- Eights of a 32$^{\textrm{nd}}$: $(@bind p16 Slider(1:1:7, default=1, show_value=true))
-"""
-
-# ╔═╡ b65c747b-f08a-408d-8e01-e921dcbd9056
-Markdown.parse("
-**Example**:
-- One last example. Suppose the price of a Treasury note is quoted as ``\\mathbf{$p14 - $p15 \\frac{$p16}{8}}``.
-- For \$100 par value, the quoted price of ``\\mathbf{$p14 - $p15 \\frac{$p16}{8}}`` refers to a dollar price of $p14 dollars plus ``($p15 + \\frac{$p16}{8})`` ``32^{\\textrm{nd}}`` of a dollar.
-- In short, the price is calculated as 
-	
-\$$p14 + \\frac{$p15+\\frac{$p16}{8}}{32} = $(p14+(p15+1/8*p16)/32.0)\$	
- 
-- This means that the price per \$ 100 par value is \$$(p14+(p15+1/8*p16)/32.0)\$.
-")
-
-# ╔═╡ 2200d50b-f23f-4764-85e1-d908b5aeeb1e
-md"""
-##
-"""
-
-# ╔═╡ 16a751d5-9a6b-40c4-969f-46c2d184c8c6
-Markdown.parse("
-!!! important
-- In some trading system, hyphens in quotes such as in **$(p1)-$(p2)** are replaced with a decimal points. 
-- That is the quote is displayed as **$(p1).$(p2)**
-- The interpretation is the same. Thus, the price per \$100 par value is \$$(p1+p2/32.0).
-\$$p1 + \\frac{$p2}{32} = $(p1+p2/32.0)\$	
-")
-
 # ╔═╡ 4576f508-91bd-4fdc-a62d-833d8428f78f
 md"""
-## Practice Exercise
+# Practice Exercise Treasury Price Quotes
 For each quoted price shown below, enter the price per \$100 par value in decimals.
 """
 
 # ╔═╡ 6c57bd92-7d1d-41d3-88d5-0b2c191b7693
 begin
-	p161=100
-	p162=27
+	p161=95
+	p162=24
 	
-	p171=108
-	p172=31
+	p171=115
+	p172=10
 		
-	p181=102
-	p182=12
-	p183=3
+	p181=87
+	p182=16
+	p183=1
 	
-	p191=102
-	p192=18
-	p193=1
+	p191=99
+	p192=15
+	p193=3
 	display("")
 end
 
@@ -435,518 +237,89 @@ Markdown.parse("""
 
 # ╔═╡ be1e2ae2-8b05-42c7-bc54-18c9ff111854
 md"""
-# Accrued Interest
+# Practice Exercise Accrued Interest
 """
 
-# ╔═╡ 8464e17a-2f95-4bde-8c37-502359bb2dd8
-LocalResource("./TreasuryNoteDescrExampleBloomberg_2.png",:width => 1200) 
-
-# ╔═╡ 59023ef2-e4fb-4e41-9652-67f6a107e1b1
+# ╔═╡ ee75feb6-b90f-47a2-96c5-59a979d3102e
 md"""
-##
+Compute the accrued interest on a Treasury note given the following information.
+- Coupon rate [% p.a.]: $(@bind cpnAI_3 Slider(0:0.25:10, default=6, show_value=true))
+- Par value [\$]: $(@bind par_3 Slider(100:100000, default=1000, show_value=true))
+- Previous coupon cash flow date: $(@bind prev_3 DateField(default=Date(2015,6,15)))
+- Next coupon cash flow date: $(@bind next_3 DateField(default=Date(2015,12,15)))
+- Settlement date: $(@bind settle_3 DateField(default=Date(2015,10,10)))
 """
-
-# ╔═╡ a7c9120b-ee24-48c2-904a-e40ef95fcffa
-LocalResource("./TreasuryNoteDescrExampleBloombergDirtyPrice_2.png",:width => 1200) 
-
-# ╔═╡ 148712ae-b638-45de-9ab1-96492f083439
-md"""
-##
-"""
-
-# ╔═╡ 8f9498b5-a1cf-4be7-b0dd-41aad76c959b
-md"""
-- U.S. Treasury securities pay coupon interest every six months.
-- At any date between two coupon payments, we must take the **accrued interest** into account.
-- The convention in the Treasury market is that _in addition to_ the **quoted price**, the bond buyer must _pay_ the bond seller the **accrued interest**.
-- Thus, the amount that the buyer pays the seller is the **quoted price** plus **accrued interest**.
-  - This is the actual purchase price and it is called the **dirty price.**
-  - The **quoted price** of a bond (_without accrued interest_) is called the **clean price.**
-- The **clean price** is also called the **flat** price and the **dirty price** is also called the **full** price.
-"""
-
-# ╔═╡ 6ce18679-b433-4110-8ef4-0fd9135737f4
-md"""
-> - How to get there on the Bloomberg terminal?
->   - On the keyboard type `T Govt`
->   - Click on `United States Treasury Note/Bond (Multiple Matches) Govt`
->   - On the next page, click on one of the Treasury notes/bonds.
->   - Next, type `DES` on the keyboard and press enter.
->   - The page you now see is the `Description` page for the Treasury you selected.
->   - Next, type `HP` and press enter.
->   - This will display a page with past prices for the Treasury note/bond you selected.
->   - Next, at the top, in the row labeled `Market` type in __Mid Line__ in the first field and __Dirty Mid Price__ in the second field. Press enter.
->   - The price table will now show the *clean* mid price and the *dirty* mid price.
->     - Recall that the *mid* price is the midpoint between the bid and the ask price.  
-"""
-
-# ╔═╡ 1c3d5c02-4be2-4aff-bac8-bfde4aca679a
-md"""
-## Full Prices of Treasury Notes/Bonds over Time
-"""
-
-# ╔═╡ c90f441d-09ca-4562-8f3f-d766e166d2a4
-md"""
-On the coupon payment data, the Treasury trades `ex-coupon` and its *full price* (also referred to as the *dirty price*) drops by the amount of the coupon interest cash flow.
-"""
-
-# ╔═╡ ee211d3e-08c0-4a4c-8c79-8d5e709981ef
-LocalResource("./BloombergTreasuryDirtyPricePath.png", :width=>1200)
-
-# ╔═╡ 90501d6d-5c09-4bae-9415-dedd93dca242
-LocalResource("./BloombergTreasuryDirtyPricePath_02.png", :width=>1200)
-
-# ╔═╡ d440a3c8-6c8b-4eb9-ab4d-266917d50ee0
-md"""
-- Let' check this.
-- The screenshot shows that the price change on the ex-coupon date is `0-28`.
-- This is a dollar price (per \$100 notional) of $\frac{28}{32}=$ \$0.875.
-- The Treasury note has a coupon rate of `1-3/4` percent (see the top left).
-- In decimals, this is a couponr ate of 1.75%.
-- Thus, the semi-annual coupon cash flow per \$100 face value is $\frac{1.75}{2}\ \times 100$ = \$0.875.
-- Thus, the price decline matches the dollar coupon interest paid on this data.
-"""
-
-# ╔═╡ 18026407-34e8-4a96-aaaf-410d495f9568
-md"""
-## Example
-"""
-
-# ╔═╡ 6acadc8a-dbb7-4193-9df7-09504755476b
-md"""
-- Days between coupon payments: 180
-- Coupon rate [% p.a.]: $(@bind cpnAI_1 Slider(0:1:10, default=2, show_value=true))
-
-- Days after previous coupon: $(@bind daysAI_1 Slider(1:1:180, default=60, show_value=true))
-- Days to next coupon: $(180-daysAI_1)
-"""
-
-# ╔═╡ 362273d3-e019-4953-a1dd-21699f7a7def
-Markdown.parse("""
-- To illustrate, suppose a Treasury note has a coupon rate of $(cpnAI_1) % (paid semi-annually) and that there are 180 days between coupon payments.
-- Suppose you own \$ 100 par value of this Treasury note and that $(daysAI_1) days have passed since the previous coupon cash flow.
-- The next coupon cash flow in $(180-daysAI_1) days is 
-\$\\frac{$cpnAI_1\\%}{2} \\times 100 = $((cpnAI_1/100)/2*100)\$	
-
-""")
-
-# ╔═╡ 64f2d537-0735-440a-a040-008bc75d4e46
-md"""
-##
-"""
-
-# ╔═╡ 20fc5dfa-55a2-4b90-b57d-9e57e2430ae1
-Markdown.parse("""
-- Now, suppose you decide to sell the Treasury note.
-- When you sell the Treasury note, you no longer receive the coupon cash flow in $(180-daysAI_1). 
-- The buyer receives the full coupon interest of \$ $((cpnAI_1/100)/2*100).
-- However, you owned the bond for $(daysAI_1) out of the 180 days between coupon interest cash flows.
-- Thus, you should be entitled to receive a fraction equal to \$\\frac{$daysAI_1}{180} = $(roundmult(daysAI_1/180,1e-2))\$ of the total  $((cpnAI_1/100)/2*100) coupon interest.
-- This amount of \$ $(roundmult(daysAI_1/180 * (cpnAI_1/100)/2*100,1e-2)) is referred to as **accrued interest** and it is added to the *quoted* price.
-- The total price paid by the buyer is called the **full price** or the **dirty price**.
-- The quoted price (without accrued interest) is called the **flat price** or the **clean price**.
-- Thus,
-\$\\textrm{Full Price}=\\textrm{Flat Price} + \\textrm{Accrued Interest}\$
-\$\\textrm{or}\$
-\$\\textrm{Dirty Price}=\\textrm{Clean Price} + \\textrm{Accrued Interest}\$
-""")
-
-# ╔═╡ 2cf47487-36c3-4a28-976e-06a58675b306
-md"""
-##
-"""
-
-# ╔═╡ 577c5da8-de61-4f41-96f3-957c4fa93cd2
-begin
-	
-	daysAI_2 = repeat(collect(0:179),3)
-	cpnAI_2 = ((cpnAI_1/100)/2*100).*daysAI_2/180
-	plot(cpnAI_2,xticks = ( [0:30:length(daysAI_2);], string.(daysAI_2[1:30:end])),
-		ylabel="Accrued Interest",xlabel="Days since last coupon", label=""
-	)
-	
-	 
-end
-
-# ╔═╡ cedc6044-5eb2-4e95-98c7-e5831597a258
-md"""
-## Calculating Accrued Interest for Treasury notes and bonds
-"""
-
-# ╔═╡ d43ce5da-dee3-4d44-a202-4f5f4770772b
-md"""
-- To calculate accrued interest, the following are needed: 
-  - the number of days in the accrued interest period (represents the number of days over which the investor has earned interest)
-  - the number of days in the coupon period (representes the number of days between the last and the next coupon payment)
-  - the dollar amount of the coupon payment
-"""
-
-# ╔═╡ a4a0a069-80d6-4a13-a19d-56b200ca8545
-md"""
-- Accrued Interest is the calculated as
-$$\textrm{Accrued Interest} = \textrm{Coupon Interest Cash Flow} \times \left( \frac{ \textrm{Days in Accrued Interest Period}}{\textrm{Days in Coupon Period}} \right)$$
-"""
-
-# ╔═╡ b71c4b72-7004-4600-82d4-651179178a03
-md"""
-## Calculate the **Days in Accrued Interest Period**
-
-- We need three key dates: 
-- **Trade date**
-  - The trade date (also referred to as the transaction date) is the date on which the transaction is executed (referred to as “T”).
-- **Settlement date** 
-  - The settlement date is the date a transaction is deemed to be completed and the seller must transfer the ownership of the bond to the buyer in exchange for the payment
-  - Treasury securities settle on the next business day after the trade date. This is referred to as *T+1 Settlement*
-- **Date of previous coupon cash flow**
-- Days in Accrued Interest Period are then calculated as
-
-$$\textrm{Days in Accrued Interest Period=}$$ 
-$$\textrm{Days from and \textbf{including} the previous coupon date up to \textbf{excluding} the settlement date}$$.
-
-
-
-"""
-
-# ╔═╡ fd4aead4-bf25-4125-b094-6edce0e77b1e
-md"""
-## Calculate the **Days in Coupon Period**
-- Simply the number of days between the previous coupon date and the next coupon date.
-"""
-
-# ╔═╡ fcaff09a-c014-4fe9-81f8-f0fb72d99829
-md"""
-## Example
-"""
-
-# ╔═╡ 8323c2cc-cc29-416b-aca4-798f7cc844ed
-md"""
-- Consider a Treasury note whose previous coupon payment was May 15. Assume that the coupon rate is 8% p.a. (paid semi-annually) and par value of \$100.
-  - Thus, the coupon interest cash flows are $\frac{8\%}{2}\times 100 =$ \$4
-- Suppose you buy Treasury security with a settlement date of September 10.
-- Since Treasury notes pay semi-annual coupon interest, the next coupon payment is on November 15. 
-"""
-
-# ╔═╡ 9119860b-2ada-411a-95e7-e1e56ae573c0
-md"""
-##
-- **Step 1**: *Days in Accrued Interest Period*
-  - We count the actual number of days between May 15 (the previous coupon date) and September 10 (the settlement date). 
-    - May: **17** days (we count the day of the previous coupon cash flow)
-    - June: 30 days
-    - July: 31 days
-    - August: 31 days
-    - September: **9** days (we do not count the settlement date)
-   - Thus, *Days in Accrued Interest Period* = 118
-"""
-
-# ╔═╡ 8dc2cccb-a682-4c42-99fe-ccc91d3823d1
-md"""
-##
-- **Step 2**: *Days in Coupon Period*
-  - We count the actual number of days between May 15 (the previous coupon date) and Nov 15 (the next coupon date)
-    - May: **16 days**
-    - June: 30 days
-    - July: 31 days
-    - September: 30 days
-    - October: 31 days
-    - November: **15 days**
-  - Thus, *Days in Coupon Period*=184
-"""
-
-# ╔═╡ c6df152f-9f62-4eb4-997e-afd9a0868c9e
-md"""
-##
-- **Step 3**: *Accrued Interest*
-$$\textrm{Accrued Interest} = \textrm{Coupon Interest Cash Flow} \times \left( \frac{ \textrm{Days in Accrued Interest Period}}{\textrm{Days in Coupon Period}} \right)$$
-$$\textrm{Accrued Interest} = \textrm{\$4} \times \left( \frac{ \textrm{118}}{\textrm{184}} \right) = \textrm{\$4} \times 0.641304 = \textrm{\$2.565217}$$
-"""
-
-# ╔═╡ 41b91a85-ac56-4b36-87e1-b121c756417e
-md"""
-## Accrued Interest Example 2
-"""
-
-# ╔═╡ 4d039efd-c682-4abe-a2a4-8536ed97a3c7
-md"""
-- Coupon rate [% p.a.]: $(@bind cpnAI_3 Slider(0:0.25:10, default=8, show_value=true))
-- Par value [\$]: $(@bind par_3 Slider(100:100000, default=100, show_value=true))
-- Previous coupon cash flow date: $(@bind prev_3 DateField(default=Date(2015,5,15)))
-- Next coupon cash flow date: $(@bind next_3 DateField(default=Date(2015,11,15)))
-- Settlement date: $(@bind settle_3 DateField(default=Date(2015,09,10)))
-"""
-
-# ╔═╡ c78eb09a-0907-47dc-b9c9-65f40432ff47
-@bind go Button("Calculate Accrued Interest")
 
 # ╔═╡ 5752193f-de1f-4832-ab93-a0fc8c4d9c4d
 begin 
-	go
 	daysAIPeriod = Date(settle_3) - Date(prev_3)
 	daysCpnPeriod = Date(next_3) - Date(prev_3)
 	accrInt_3 = Dates.value(daysAIPeriod)/Dates.value(daysCpnPeriod)*cpnAI_3/(200)*
 par_3
-	md"""
-	- Coupon interest cash flow:  $(roundmult(par_3 * (cpnAI_3/200),1e-6))
-	- Number of Days in Accrued Interest Period: $(daysAIPeriod)
-	- Number of Days in Coupon Period: $(daysCpnPeriod)
-	"""
+	display("")
 end
 
 # ╔═╡ 7b376a7e-215e-40af-82af-6be2762aa7eb
 Markdown.parse("""
-``\\begin{align}
-\\textrm{Accrued Interest} &= \\textrm{Coupon Interest Cash Flow} \\times \\left( \\frac{ \\textrm{Days in Accrued Interest Period}}{\\textrm{Days in Coupon Period}} \\right)\\\\ 
-&= \\\$ $(roundmult(cpnAI_3/(200)*par_3,1e-6)) \\times \\frac{$(Dates.value(daysAIPeriod)) \\textrm{ days}}{$(Dates.value(daysCpnPeriod)) \\textrm{ days}} =\\\$ $(roundmult(accrInt_3,1e-6))
-\\end{align}``
+!!! hint
+	- Coupon interest cash flow:  $(roundmult(par_3 * (cpnAI_3/200),1e-6))
+	- Number of Days in Accrued Interest Period: $(daysAIPeriod)
+	- Number of Days in Coupon Period: $(daysCpnPeriod)
+    ``\\begin{align}
+	\\textrm{Accrued Interest} &= \\textrm{Coupon Interest Cash Flow} \\times \\left( 			\\frac{ \\textrm{Days in Accrued Interest Period}}{\\textrm{Days in Coupon Period}} \\right)\\\\ 
+	&= \\\$ $(roundmult(cpnAI_3/(200)*par_3,1e-6)) \\times 	\\frac{$(Dates.value(daysAIPeriod)) \\textrm{ days}}{$(Dates.value(daysCpnPeriod)) 	\\textrm{ days}} =\\\$ $(roundmult(accrInt_3,1e-6))
+	\\end{align}``
 """)
-
-# ╔═╡ 70661dd7-0acf-4b6c-b7dd-f4ad71c1cee9
-md"""
-# Daycount Conventions
-- In calculating the number of days between two dates, the actual number of days is **not** always the same as the number of days that should be used in the accrued interest formula.
-- The number of days used depends on the **day count convention** for the particular security.
-- For Treasury notes/bonds, the day count convention is to use the **actual** number of days between two dates.
-  - This is referred to as the **actual/actual** day count convention.
-"""
-
-# ╔═╡ 6e1be79b-bfc7-444e-b660-e0d24a2cf5dd
-md"""
-##
-- For coupon-bearing agency, municipal, and corporate bonds, a different day count convention is used.
-- It is assumed that every month has **30 days**, that any 6-month period has **180 days**, and that there are **360 days** in a year.
-- This day count convention is referred to as **30/360.**
-- The calculations are analogous to the examples we covered, except that 30 days are used for each month.
-"""
-
-# ╔═╡ e4c4606f-bb51-43c6-98b7-73e1b133b251
-md"""
-##
-- To illustrate the “30/360” convention, suppose the **settlement date** is *July 17* and the *next coupon cash flow* is on *September 1*.
-- The number of days between July 17 and September 1 (the date of the next coupon payment) is 44 days, 
-  - July is assumed to have 30 days. Thus we count 13 days in July.
-  - The month of August is assumed to have 30 days, so we add 30 days.
-  - September 1 is one day, so the total number of days is 13 days + 30 days + 1 day = 44 days.
-"""
 
 # ╔═╡ a81f9bd5-374d-4238-af83-e39ab1f5982e
 md"""
-# Price Quotes of Treasury Bills
-"""
-
-# ╔═╡ bb8b0b23-4313-4764-96bd-c1e34aa09795
-md"""
-## Example: 52-week Treasury Bill in Bloomberg
-- On the Bloomberg Terminal type `912796M89` and click on the security in the search result. 
-- Next, type `DES` and `Enter`.
-"""
-
-# ╔═╡ a93b91d5-7239-4260-b57f-7afb02ee31c5
-LocalResource("./TreasuryBillDescrExampleBloomberg.png",:width => 1200) 
-
-# ╔═╡ dcb12edc-553b-4fe7-9525-a86d9fd5a78a
-md"""
-## Price Quotes for 52-week Treasury Bill
-- On the Bloomberg Terminal click on `ALLQ` under _Quick Links_
-"""
-
-# ╔═╡ 25500a55-9c69-42d8-87bf-fb897b6de939
-LocalResource("./TreasuryBillPriceQuoteBloomberg.png",:width => 1200) 
-
-# ╔═╡ 71684c1d-0204-477b-a838-175f38e8c367
-md"""
->- How to get there on the Bloomberg terminal?
->  - On the keyboard type `B Govt`
->  - Click on `United States Treasury Bill (Multiple Matches)`
->  - On the next page, click on one of the Treasury bills.
->  - Next, type `DES` on the keyboard and press enter.
->  - The page you now see is the `Description` page for the Treasury bill you selected.
->  - Next, type `ALLQ` and press enter.
->  - This will display a page with quoted prices for the Treasury bill you selected.
-"""
-
-# ╔═╡ 9d874ab6-e3ec-4a87-8842-a8a8074b745c
-md"""
-## Treasury Bill Price Quoting Convention
-"""
-
-# ╔═╡ a92a604a-429b-4508-9820-c99839f3b431
-md"""
-- The convention for quoting prices for Treasury bills is **not** the same as for Treasury bonds.
-- Treasury bill prices are quoted as yields on **bank discount basis**.
-- The yield on a bank discount basis $y_d$ for $100 par value is computed as follows: 
-$$y_d = \frac{100-\textrm{Price}}{100} \times \left( \frac{360}{\textrm{Days to Maturity}} \right)$$
-- where $\textrm{Price}$ is the purchase price of the Treasury bill and $\textrm{Days to Maturity}$ is the number of days until the maturity date of the Treasury bill.
-- In calculating the $\textrm{Days to Maturity}$ Treasury bills use the **actual/360** convention.
-  - Thus, the number of days between two dates is the **actual** number of days.
-  - Each year is assumed to have **360** days.
+# Practice Exercise Discount Yield of Treasury Bills
 """
 
 # ╔═╡ 4f6af650-763a-4c56-a564-d3c1447be1fd
 Markdown.parse("
-## Example
-- Consider a Treasury bill with 85 days to maturity, a face value of 100, and a purchase price of 99.10.
-- This Treasury bill would be quoted with a discount yield \$y_d\$ of
-\$y_d = \\frac{100-99.10}{100} \\times \\frac{360}{85}= $(roundmult((100-99.10)/100*360/85,1e-6))=$(roundmult((100-99.10)*(360/85),1e-6))\\%\$ 
+- Consider a Treasury bill with 15 days to maturity, a face value of 100, and a purchase price of 99.50.
+- Compute the discount yield of the Treasury bill.
+
 ")
 
-# ╔═╡ 28112b4a-fbeb-4409-b3f7-88578191a704
+# ╔═╡ cbfc1293-dd75-4d6e-9c31-ead9cc90375b
+Markdown.parse("""
+!!! hint
+	- This Treasury bill would be quoted with a discount yield \$y_d\$ of
+	\$y_d = \\frac{100-99.50}{100} \\times \\frac{360}{15}= $(roundmult((100- 
+    99.50)/100*360/15,1e-6))=$(roundmult((100-99.50)*(360/15),1e-6))\\%\$ 
+""")
+
+# ╔═╡ 19ef36cb-0681-42c3-9bd2-10259a325265
 md"""
-## Example
+# Practice Exercise Price Quotes of Treasury Bills
 """
-
-# ╔═╡ e2e15eb3-c339-49ea-85b6-5436835cddea
-md"""
-Example from Bloomberg of the Treasury Bill with maturity on 4/30/2020
-- Quote (as discount yield) on 2/07/2020.
-- Settlement date is 2/10/2020.
-- There are 80 days from settlement date to maturity. 
-"""
-
-# ╔═╡ 448e7b7e-b4b7-4eec-a331-f72f6aac7ff2
-LocalResource("./TbillExampleBloomberg_1.svg",:width => 1200) 
-
-# ╔═╡ 4044d433-857f-47f6-8947-597935a981a1
-md"""
-##
-"""
-
-# ╔═╡ 61228793-317c-40a2-b9f8-cb661704f799
-md"""
-Quoted discount yield on 02/07/2020.
-"""
-
-# ╔═╡ e88cafc2-ad9a-4c46-bbc6-2f442ce0615a
-LocalResource("./TreasuryBillPriceQuoteBloomberg_3.svg",:width => 300) 
-
-# ╔═╡ 2ecb026c-c7ea-41a4-ac2b-b518b7fd5f05
-md"""
-##
-"""
-
-# ╔═╡ 7b091f73-2454-4690-b1f9-3f0008561da9
-md"""
-What is the purchase price?
-- Simply solve the equation for the discount yield $y_d$ for the price.
-
-$$P = 100 \times \left( 1- y_d \times \frac{\textrm{Days to Maturity}}{360}\right)$$
-"""
-
-# ╔═╡ d5c4c319-a544-4546-847f-f5f384ee4494
-md"""
-##
-"""
-
-# ╔═╡ 574ee503-37f4-4d27-8bc2-7688b60fe839
-md"""
-- Using the quoted discount yield
-
-$$P=100 \times \left( 1- y_d \times \frac{\textrm{Days to Maturity}}{360}\right)= 
-\$100 \times \left( 1- 1.5225\% \times \frac{80}{360}\right)=\$99.6617$$
-"""
-
-# ╔═╡ 2e81e8dc-cdef-4965-84a4-bdd1513d09f9
-md"""
-##
-"""
-
-# ╔═╡ 80e6068f-5876-47c0-a5e8-17125b54de63
-md"""
-- Let's verify
-"""
-
-# ╔═╡ d11d60be-9909-47c6-8ce9-438e2cf28d6f
-LocalResource("./TreasuryBillPriceQuoteBloomberg_2.svg",:width => 300) 
 
 # ╔═╡ 5a00909a-8279-46ef-8570-bbbb7adffcf4
 md"""
-## Example
-- Quoted discount yield [% p.a.]: $(@bind yd_4 Slider(0:0.01:3, default=1.85, show_value=true))
-- Par value [\$]: $(@bind par_4 Slider(100:1000, default=100, show_value=true))
-- Settlement date: $(@bind settle_4 DateField(default=Date(2022,03,1)))
-- Maturity date: $(@bind mat_4 DateField(default=Date(2022,3,31)))
+Compute the price of a Treasury bill given the following information.
+- Quoted discount yield [% p.a.]: $(@bind yd_4 Slider(0:0.01:3, default=1.15, show_value=true))
+- Par value [\$]: $(@bind par_4 Slider(100:1000, default=1000, show_value=true))
+- Settlement date: $(@bind settle_4 DateField(default=Date(2022,05,1)))
+- Maturity date: $(@bind mat_4 DateField(default=Date(2022,5,31)))
 """
 
 # ╔═╡ 2e4b644c-9b50-42fe-9775-2619baff2518
 begin 
 	daysMat = Date(mat_4) - Date(settle_4)
 	px_4 = (1-yd_4/100*Dates.value(daysMat)/360)*par_4
-	md"""
-	- Number of days to maturity: $(daysMat)
-	- Dollar Price: \$ $(roundmult(px_4,1e-6)) per \$$(par_4) notional amount.
-	"""
+	display("")
 end
 
 # ╔═╡ 628ba57e-39ee-4072-8935-c44fae56b0bd
 Markdown.parse("
-- This Treasury bill has a dollar purchase price of 
-``P=\\left(1 - y_d \\times \\frac{\\textrm{Days to Maturity}}{360}\\right)=\\left(1 - $yd_4\\% \\times \\frac{$(Dates.value(daysMat))}{360} \\right) = \\\$ $(roundmult(px_4,1e-6))`` per \$ $(par_4) notional.
+!!! hint
+	- Number of days to maturity: $(daysMat)
+	- Dollar Price: \$ $(roundmult(px_4,1e-6)) per \$$(par_4) notional amount.
+	- This Treasury bill has a dollar purchase price of 
+	``P=\\left(1 - y_d \\times \\frac{\\textrm{Days to Maturity}}{360}\\right)=\\left(1 - $yd_4\\% \\times \\frac{$(Dates.value(daysMat))}{360} \\right) = \\\$ $(roundmult(px_4,1e-6))`` per \$ $(par_4) notional.
 ")
-
-# ╔═╡ 371a326e-f13b-44ce-91e8-50d43b7ae59a
-md"""
-## Treasury STRIPS
-"""
-
-# ╔═╡ b7bdc144-7648-403f-bce7-2b6df6a8dd2f
-md"""
-- The Treasury does not issue **zero**-coupon notes or bonds. 
-- However, by “stripping” coupon payments from Treasury bonds, zero coupon bonds are created synthetically. 
-- The process of separating the interest on a bond from the underlying principal is called coupon stripping.
-
-"""
-
-# ╔═╡ 31c17b01-eb86-4fd4-82cc-3c31cf3020d8
-md"""
-##
-"""
-
-# ╔═╡ fe72e3e8-a2b4-43b2-811d-5f4fe2c8dd7a
-LocalResource("./TreasurySTRIPS_1.png",:width => 1200) 
-
-# ╔═╡ 3222f82c-b513-403b-b4c5-22d89144f894
-md"""
-##
-"""
-
-# ╔═╡ 02748d79-5707-4130-9aae-0c6141e4f760
-LocalResource("./TreasurySTRIPS_2.png",:width => 600) 
-
-# ╔═╡ d01a85dd-1fd5-4b4e-9ff6-6de1f94d1752
-md"""
-##
-"""
-
-# ╔═╡ 1217e6ec-8479-4a85-b0e7-088eee30bc63
-md"""
-- Zero-coupon Treasury securities were first created in August 1982 by large dealer firms on Wall Street. 
-- Today, all Treasury notes and bonds (fixed-principal and inflation-indexed) are eligible for stripping. 
-- The zero-coupon Treasury securities created under the STRIPS program are direct obligations of the U.S. government.
-- Strips created from the Treasury coupons are called **coupon STRIPS** and those from the principal are called **principal STRIPS**. 
-"""
-
-# ╔═╡ 53c77ef1-899d-47c8-8a30-ea38380d1614
-md"""
-## Wrap-Up
-"""
-
-# ╔═╡ 670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
-begin
-	html"""
-	<fieldset>      
-        <legend>Our goals for today</legend>      
-		<br>
-        <input type="checkbox" value="" checked>Understand how prices for Treasury securities are quoted in secondary markets.<br><br>
-	    <input type="checkbox" value="" checked>Know how to calculate accrued interest.<br><br>
-	</fieldset>      
-	"""
-end
-
-# ╔═╡ 2ee2c328-5ebe-488e-94a9-2fce2200484c
-md"""
-## Reading
-Fabozzi, Fabozzi, 2021, Bond Markets, Analysis, and Strategies, 10th Edition\
-Chapter 7 and Chapter 2
-"""
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1926,33 +1299,6 @@ version = "0.9.1+5"
 # ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
 # ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
 # ╟─3e995602-7a5e-45ce-a31d-449951af1aea
-# ╟─6498b10d-bece-42bf-a32b-631224857753
-# ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
-# ╟─93db6880-429c-4b9c-a807-eba600e03df1
-# ╟─1fa89db5-8185-4c32-81ad-4cc7e4ec44c4
-# ╟─aac27a3c-e90a-437f-a563-f81d41c8d3f7
-# ╟─39af52c6-ddb1-41ec-be5c-c0e31a2693bb
-# ╟─6561b7a0-368c-43c6-ada9-36b83dc4a749
-# ╟─15cb9e60-6e54-4f0e-abb2-9249bdc49677
-# ╟─30ce6f74-1d7e-465d-abf1-245881fec53b
-# ╟─5bfbddd7-c014-45c1-871d-ae41d5c02c82
-# ╟─395335f3-3f6c-4fbc-bf0b-9a238c8b6864
-# ╟─4ad79093-2e8b-4fd7-bc1d-87388947ffde
-# ╟─46566086-d518-49d9-b173-f66f2ea0e131
-# ╟─4d4f241f-83c4-4a78-87e9-6ecfde56b860
-# ╟─2d37c722-c5bb-4462-a48d-f9374bed4449
-# ╟─f01f940c-233c-4b90-882b-bd9d33c6b841
-# ╟─b541d16f-59da-48dd-b7f6-a0cebd451256
-# ╟─64adcfde-8ade-4778-bb01-9d46ee836a55
-# ╟─b294a20b-8710-49bb-a069-75dbc3f19ba6
-# ╟─c3f25830-c6d2-4d77-bbd6-91024ee3363b
-# ╟─e68723a6-a1d8-4a3f-8ba0-9acab5d764db
-# ╟─f72ab26d-f986-4ab3-9f15-11cb33b65c69
-# ╟─bbf515d0-e8a2-4391-8e86-41e814e3240a
-# ╟─b65c747b-f08a-408d-8e01-e921dcbd9056
-# ╟─b5ed2793-df92-4f41-97e9-7533b35db4c0
-# ╟─2200d50b-f23f-4764-85e1-d908b5aeeb1e
-# ╟─16a751d5-9a6b-40c4-969f-46c2d184c8c6
 # ╟─4576f508-91bd-4fdc-a62d-833d8428f78f
 # ╟─6c57bd92-7d1d-41d3-88d5-0b2c191b7693
 # ╟─9a1aa162-d274-4af7-8f13-5a9d6bab98b0
@@ -1965,79 +1311,17 @@ version = "0.9.1+5"
 # ╟─3a2a5dea-4a07-4368-89c9-cde995b9964b
 # ╟─d79b4d61-8211-4fca-a83c-46db3959d51e
 # ╟─a4670db5-20e5-41cd-a2af-8dd15ce119f6
-# ╟─16d95a82-743e-478c-a50d-36e800910883
+# ╠═16d95a82-743e-478c-a50d-36e800910883
 # ╟─be1e2ae2-8b05-42c7-bc54-18c9ff111854
-# ╟─8464e17a-2f95-4bde-8c37-502359bb2dd8
-# ╟─59023ef2-e4fb-4e41-9652-67f6a107e1b1
-# ╟─a7c9120b-ee24-48c2-904a-e40ef95fcffa
-# ╟─148712ae-b638-45de-9ab1-96492f083439
-# ╟─8f9498b5-a1cf-4be7-b0dd-41aad76c959b
-# ╟─6ce18679-b433-4110-8ef4-0fd9135737f4
-# ╟─1c3d5c02-4be2-4aff-bac8-bfde4aca679a
-# ╟─c90f441d-09ca-4562-8f3f-d766e166d2a4
-# ╟─ee211d3e-08c0-4a4c-8c79-8d5e709981ef
-# ╟─90501d6d-5c09-4bae-9415-dedd93dca242
-# ╟─d440a3c8-6c8b-4eb9-ab4d-266917d50ee0
-# ╟─18026407-34e8-4a96-aaaf-410d495f9568
-# ╟─6acadc8a-dbb7-4193-9df7-09504755476b
-# ╟─362273d3-e019-4953-a1dd-21699f7a7def
-# ╟─64f2d537-0735-440a-a040-008bc75d4e46
-# ╟─20fc5dfa-55a2-4b90-b57d-9e57e2430ae1
-# ╟─2cf47487-36c3-4a28-976e-06a58675b306
-# ╟─577c5da8-de61-4f41-96f3-957c4fa93cd2
-# ╟─cedc6044-5eb2-4e95-98c7-e5831597a258
-# ╟─d43ce5da-dee3-4d44-a202-4f5f4770772b
-# ╟─a4a0a069-80d6-4a13-a19d-56b200ca8545
-# ╟─b71c4b72-7004-4600-82d4-651179178a03
-# ╟─fd4aead4-bf25-4125-b094-6edce0e77b1e
-# ╟─fcaff09a-c014-4fe9-81f8-f0fb72d99829
-# ╟─8323c2cc-cc29-416b-aca4-798f7cc844ed
-# ╟─9119860b-2ada-411a-95e7-e1e56ae573c0
-# ╟─8dc2cccb-a682-4c42-99fe-ccc91d3823d1
-# ╟─c6df152f-9f62-4eb4-997e-afd9a0868c9e
-# ╟─41b91a85-ac56-4b36-87e1-b121c756417e
-# ╟─4d039efd-c682-4abe-a2a4-8536ed97a3c7
+# ╟─ee75feb6-b90f-47a2-96c5-59a979d3102e
 # ╟─5752193f-de1f-4832-ab93-a0fc8c4d9c4d
-# ╟─c78eb09a-0907-47dc-b9c9-65f40432ff47
 # ╟─7b376a7e-215e-40af-82af-6be2762aa7eb
-# ╟─70661dd7-0acf-4b6c-b7dd-f4ad71c1cee9
-# ╟─6e1be79b-bfc7-444e-b660-e0d24a2cf5dd
-# ╟─e4c4606f-bb51-43c6-98b7-73e1b133b251
 # ╟─a81f9bd5-374d-4238-af83-e39ab1f5982e
-# ╟─bb8b0b23-4313-4764-96bd-c1e34aa09795
-# ╟─a93b91d5-7239-4260-b57f-7afb02ee31c5
-# ╟─dcb12edc-553b-4fe7-9525-a86d9fd5a78a
-# ╟─25500a55-9c69-42d8-87bf-fb897b6de939
-# ╟─71684c1d-0204-477b-a838-175f38e8c367
-# ╟─9d874ab6-e3ec-4a87-8842-a8a8074b745c
-# ╟─a92a604a-429b-4508-9820-c99839f3b431
-# ╠═4f6af650-763a-4c56-a564-d3c1447be1fd
-# ╟─28112b4a-fbeb-4409-b3f7-88578191a704
-# ╟─e2e15eb3-c339-49ea-85b6-5436835cddea
-# ╟─448e7b7e-b4b7-4eec-a331-f72f6aac7ff2
-# ╟─4044d433-857f-47f6-8947-597935a981a1
-# ╟─61228793-317c-40a2-b9f8-cb661704f799
-# ╟─e88cafc2-ad9a-4c46-bbc6-2f442ce0615a
-# ╟─2ecb026c-c7ea-41a4-ac2b-b518b7fd5f05
-# ╟─7b091f73-2454-4690-b1f9-3f0008561da9
-# ╟─d5c4c319-a544-4546-847f-f5f384ee4494
-# ╟─574ee503-37f4-4d27-8bc2-7688b60fe839
-# ╟─2e81e8dc-cdef-4965-84a4-bdd1513d09f9
-# ╟─80e6068f-5876-47c0-a5e8-17125b54de63
-# ╟─d11d60be-9909-47c6-8ce9-438e2cf28d6f
+# ╟─4f6af650-763a-4c56-a564-d3c1447be1fd
+# ╟─cbfc1293-dd75-4d6e-9c31-ead9cc90375b
+# ╟─19ef36cb-0681-42c3-9bd2-10259a325265
 # ╟─5a00909a-8279-46ef-8570-bbbb7adffcf4
 # ╟─2e4b644c-9b50-42fe-9775-2619baff2518
 # ╟─628ba57e-39ee-4072-8935-c44fae56b0bd
-# ╟─371a326e-f13b-44ce-91e8-50d43b7ae59a
-# ╟─b7bdc144-7648-403f-bce7-2b6df6a8dd2f
-# ╟─31c17b01-eb86-4fd4-82cc-3c31cf3020d8
-# ╟─fe72e3e8-a2b4-43b2-811d-5f4fe2c8dd7a
-# ╟─3222f82c-b513-403b-b4c5-22d89144f894
-# ╟─02748d79-5707-4130-9aae-0c6141e4f760
-# ╟─d01a85dd-1fd5-4b4e-9ff6-6de1f94d1752
-# ╟─1217e6ec-8479-4a85-b0e7-088eee30bc63
-# ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
-# ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
-# ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
