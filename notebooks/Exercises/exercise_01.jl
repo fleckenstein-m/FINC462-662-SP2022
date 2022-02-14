@@ -241,27 +241,30 @@ md"""
 """
 
 # ╔═╡ ee75feb6-b90f-47a2-96c5-59a979d3102e
+begin
 md"""
 Compute the accrued interest on a Treasury note given the following information.
 - Coupon rate [% p.a.]: $(@bind cpnAI_3 Slider(0:0.25:10, default=6, show_value=true))
 - Par value [\$]: $(@bind par_3 Slider(100:100000, default=1000, show_value=true))
-- Previous coupon cash flow date: $(@bind prev_3 DateField(default=Date(2015,6,15)))
 - Next coupon cash flow date: $(@bind next_3 DateField(default=Date(2015,12,15)))
 - Settlement date: $(@bind settle_3 DateField(default=Date(2015,10,10)))
 """
+end
 
 # ╔═╡ 5752193f-de1f-4832-ab93-a0fc8c4d9c4d
 begin 
+	prev_3 = next_3- Dates.Month(6)
 	daysAIPeriod = Date(settle_3) - Date(prev_3)
 	daysCpnPeriod = Date(next_3) - Date(prev_3)
 	accrInt_3 = Dates.value(daysAIPeriod)/Dates.value(daysCpnPeriod)*cpnAI_3/(200)*
 par_3
-	display("")
+	display(prev_3)
 end
 
 # ╔═╡ 7b376a7e-215e-40af-82af-6be2762aa7eb
 Markdown.parse("""
 !!! hint
+	- Previous Coupon interest cash flow: $(Date(prev_3))
 	- Coupon interest cash flow:  $(roundmult(par_3 * (cpnAI_3/200),1e-6))
 	- Number of Days in Accrued Interest Period: $(daysAIPeriod)
 	- Number of Days in Coupon Period: $(daysCpnPeriod)
@@ -1311,7 +1314,7 @@ version = "0.9.1+5"
 # ╟─3a2a5dea-4a07-4368-89c9-cde995b9964b
 # ╟─d79b4d61-8211-4fca-a83c-46db3959d51e
 # ╟─a4670db5-20e5-41cd-a2af-8dd15ce119f6
-# ╠═16d95a82-743e-478c-a50d-36e800910883
+# ╟─16d95a82-743e-478c-a50d-36e800910883
 # ╟─be1e2ae2-8b05-42c7-bc54-18c9ff111854
 # ╟─ee75feb6-b90f-47a2-96c5-59a979d3102e
 # ╟─5752193f-de1f-4832-ab93-a0fc8c4d9c4d
