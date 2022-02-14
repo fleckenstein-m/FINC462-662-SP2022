@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.7
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -172,16 +172,25 @@ md"""
 # Coupon Bond Cash Flows
 """
 
+# ╔═╡ aac27a3c-e90a-437f-a563-f81d41c8d3f7
+LocalResource("TreasuryNoteDescrExampleBloomberg.png",:width => 1200) 
+
 # ╔═╡ 13102a49-65b2-4b14-824c-412894cf2a95
 LocalResource("TreasuryNoteCashflowExampleBloomberg.png",:width => 1200) 
+
+# ╔═╡ c7ffa30e-a4d9-4c3c-8495-f770dd70016d
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - Open a terminal and on the keyboard type `91282CCZ2`.
+>  - In the popup window,  select the Treasury note.
+>  - Next, type `DES` to get to the bond description page.
+>  - Then, type `CSHF` and press enter.
+"""
 
 # ╔═╡ 65c5b8fb-cb87-4404-9a28-df32c85966c6
 md"""
 ##
 """
-
-# ╔═╡ aac27a3c-e90a-437f-a563-f81d41c8d3f7
-LocalResource("TreasuryNoteDescrExampleBloomberg.png",:width => 1200) 
 
 # ╔═╡ f3b7e23d-00dc-441c-97a2-575737b316df
 md"""
@@ -244,7 +253,7 @@ md"""
 md"""
 # Time Value of Money and Interest Rates
 - Suppose you won the lottery and you can choose to receive your prize of \$1000 today or one year from today.
-- Clearly, you prefer to get the \$1,000 today instead of waiting for another year.
+- Clearly, you prefer to get the \$1,000 today instead (because you need to wait another year).
 - However, suppose you were offered \$1,100 one year from today for waiting another year.
 - Let's say this sounds like a fair deal to you, i.e. you are indifferent between having \$1,000 today or \$1,100 one year from today.
 - How is your choice related to interest rates?
@@ -264,11 +273,11 @@ md"""
 
 # ╔═╡ 78aa5d8d-c960-4898-b47c-caf5abf84ecd
 md"""
-- The interest rate `r` in the example reflects you individual choice.
-- When we observe an interest rate `r` in financial markets, we can think of this interest rate as an aggregate of all the individual choice investors make.
+- The interest rate `r` in the example reflects your individual choice.
+- When we observe an interest rate `r` in financial markets, we can think of this interest rate as an aggregate of all the individual choices investors make.
 - How can we use the interest rate `r` that we observe in financial markets to tell us how "the market" decides in the lottery example.
 - Suppose, we observe r=5%.
-- This tells us that a value today of $1,000 is worth
+- This tells us that a value today of $1,000 is worth tomorrow an amount of
 $$\$1,000\times(1+r)=\$1,000\times(1+5\%)=\$1,000\times(1+0.05)=\$1,050$$
 """
 
@@ -334,11 +343,6 @@ $$\textrm{FV}_t=\textrm{PV}\times (1+r)^t$$
 # ╔═╡ 36e6512e-a077-48ad-8fe8-70a1bd1bed93
 md"""
 ## Present Value Example
-"""
-
-# ╔═╡ 0eba88ce-6d30-47b3-89e4-7125cbba0359
-md"""
-- Instead of 
 """
 
 # ╔═╡ d82e3e70-a1bb-4860-8e1f-64a1cdda1aa5
@@ -408,7 +412,7 @@ md"""
 begin
 bttn_3
 	md"""
-	- Future Values (FV): $(@bind CF_3 Slider(0:0.25:200, default=100, show_value=true))
+	- Future Value (FV): $(@bind CF_3 Slider(0:0.25:200, default=100, show_value=true))
 	- Interest rate $r$ [% p.a.]: $(@bind r_3 Slider(0:0.25:10, default=2, show_value=true))
 	- Time $t$ [years]: $(@bind T_3 NumberField(0:1:10,default=5))
 	"""
@@ -470,7 +474,7 @@ md"""
 begin
 bttn_4
 	md"""
-	- Future Values (FV): $(@bind CF_4 Slider(0:0.25:200, default=100, show_value=true))
+	- Future Value (FV): $(@bind CF_4 Slider(0:0.25:200, default=100, show_value=true))
 	- Interest rate $r$ [% p.a.]: $(@bind r_4 Slider(0:0.25:10, default=2, show_value=true))
 	- Time $t$ [years]: $(@bind T_4 Slider(0:1:1000,default=5,show_value=true))
 	"""
@@ -540,8 +544,8 @@ md"""
 
 # ╔═╡ 73059c24-0be1-400d-ae1b-2c9464c0454e
 md"""
-- In the case of a perpetuity the cash flows are always the same
-- In a "growing perpetuity" the cash flow grow at a constant percentage rate $g$ **after** the first cash flow.
+- In the case of a perpetuity the cash flows are always the same.
+- In a "growing perpetuity" the cash flows grow at a constant percentage rate $g$ **after** the first cash flow.
 """
 
 # ╔═╡ d4da6743-18eb-4fda-a01b-7bd1623be748
@@ -551,7 +555,7 @@ md"""
 begin
 bttn_5
 	md"""
-	- Future Values (FV): $(@bind CF_5 Slider(0:0.25:200, default=100, show_value=true))
+	- Future Value (FV): $(@bind CF_5 Slider(0:0.25:200, default=100, show_value=true))
 	- Interest rate $r$ [% p.a.]: $(@bind r_5 Slider(0:0.25:10, default=2, show_value=true))
 	- Growth rate $g$ [% p.a.]: $(@bind g_5 Slider(0:0.25:10, default=1, show_value=true))
 	- Time $t$ [years]: $(@bind T_5 Slider(0:1:1000,default=5,show_value=true))
@@ -617,6 +621,15 @@ md"""
 md"""
 - An annuity pays a constant cash flow of $FV$ at the end of each period for a specific number of periods.
 - It is similar to a perpetuity, except that the cash flows stop after a certain number of periods.
+"""
+
+# ╔═╡ 8606c055-f522-4680-9da7-e314ac13664d
+md"""
+- [BlackRock Is Adding Annuities to 401(k)s](https://www.wsj.com/articles/blackrock-is-adding-annuities-to-401-k-s-11633512600?mod=hp_lead_pos7)
+"""
+
+# ╔═╡ 89dc6ad3-f92e-473b-b2f4-7cb27dc9ce28
+md"""
 - Assume that the interest rate is $r=5\%$ and we want to calculate the present value of a 30-year annuity with annual cash flows of \$1.
   - A thiry-year annuity paying \$1, has the first cash flow at the end of the first year $t=1$, the next at the end of the second year $t=2$, ..., and on final cash flow at the end of year 30 ($t$=30).
 - An annuity is the differentce between two perpetuities. Why?
@@ -794,7 +807,7 @@ md"""
 - Let $PV$ be the the value today and $FV_T$ be the future value after $T$ years.
 - Let $m$ be the compounding frequency
   - m=1 : Annual compounding
-  - m=2 : Semi-Annual compounding
+  - m=2 : Semi-annual compounding
   - m=4 : Quarterly compounding
   - m=12: Monthly compounding
 """
@@ -1521,7 +1534,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1583,10 +1596,6 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+1"
-
-[[OpenBLAS_jll]]
-deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
-uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1684,7 +1693,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["SHA", "Serialization"]
+deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -2014,10 +2023,6 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
-[[libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
-uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -2072,9 +2077,10 @@ version = "0.9.1+5"
 # ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
 # ╟─f78c6a17-bee4-4fc1-bfee-a4788ebd6924
 # ╟─c4832c71-4ce1-45d8-8bfe-c145efe5928d
-# ╟─13102a49-65b2-4b14-824c-412894cf2a95
-# ╟─65c5b8fb-cb87-4404-9a28-df32c85966c6
 # ╟─aac27a3c-e90a-437f-a563-f81d41c8d3f7
+# ╟─13102a49-65b2-4b14-824c-412894cf2a95
+# ╟─c7ffa30e-a4d9-4c3c-8495-f770dd70016d
+# ╟─65c5b8fb-cb87-4404-9a28-df32c85966c6
 # ╟─f3b7e23d-00dc-441c-97a2-575737b316df
 # ╟─2293d075-6ea9-4757-9921-3251f9bab67b
 # ╟─de693798-22a3-4e42-936a-372b3b67b77e
@@ -2097,7 +2103,6 @@ version = "0.9.1+5"
 # ╟─a1ed3653-4a46-485e-bfc3-a78797d657f9
 # ╟─d5ad6113-e839-40e0-a7d9-620167bdcd2f
 # ╟─36e6512e-a077-48ad-8fe8-70a1bd1bed93
-# ╟─0eba88ce-6d30-47b3-89e4-7125cbba0359
 # ╟─ce1e6bc3-3e22-4163-9c1f-f91976954376
 # ╟─d82e3e70-a1bb-4860-8e1f-64a1cdda1aa5
 # ╟─ef610fc4-d8e9-4fa2-a922-3af51d1b9a8f
@@ -2135,6 +2140,8 @@ version = "0.9.1+5"
 # ╟─92685ca8-ec81-4631-a7ca-c9bf58f023c3
 # ╟─7f164f1c-4f2e-4aef-8544-c5ec6e10f43b
 # ╟─7a797bc5-0ae1-4015-8708-57145183fd9b
+# ╟─8606c055-f522-4680-9da7-e314ac13664d
+# ╟─89dc6ad3-f92e-473b-b2f4-7cb27dc9ce28
 # ╟─f0d15768-4bb9-4826-ba3f-11907e41dc44
 # ╟─7a469a3d-de9d-4f8a-8612-2faece9125fd
 # ╟─552d2dc5-1abc-4bef-b718-6b9ca615d814

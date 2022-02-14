@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -243,7 +243,7 @@ md"""
 # ╔═╡ ee75feb6-b90f-47a2-96c5-59a979d3102e
 begin
 md"""
-Compute the accrued interest on a Treasury note given the following information.
+Calculate the accrued interest on a Treasury note given the following information.
 - Coupon rate [% p.a.]: $(@bind cpnAI_3 Slider(0:0.25:10, default=6, show_value=true))
 - Par value [\$]: $(@bind par_3 Slider(100:100000, default=1000, show_value=true))
 - Next coupon cash flow date: $(@bind next_3 DateField(default=Date(2015,12,15)))
