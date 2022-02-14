@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -255,7 +255,7 @@ md"""
 Markdown.parse("
 **Example**:
 - Suppose the price of a Treasury note is quoted as **$(p3)**-**$(p4)+**.
-- For \$100 par value, the quoted price of **$(p3)**-**$(p4)+** refers to a dollar price of $p1 dollars plus $p3 ``32^{\\textrm{nd}}`` plus 1 ``64^{\\textrm{th}}``of a dollar.
+- For \$100 par value, the quoted price of **$(p3)**-**$(p4)+** refers to a dollar price of $p3 dollars plus $p4 ``32^{\\textrm{nd}}`` plus 1 ``64^{\\textrm{th}}``of a dollar.
 - In short, the price is calculated as 
 	
 \$$p3 + \\frac{$p4}{32} + \\frac{1}{64}= $(p3+p4/32.0+1/64.0)\$	
@@ -538,7 +538,7 @@ md"""
 # ╔═╡ 20fc5dfa-55a2-4b90-b57d-9e57e2430ae1
 Markdown.parse("""
 - Now, suppose you decide to sell the Treasury note.
-- When you sell the Treasury note, you no longer receive the coupon cash flow in $(180-daysAI_1). 
+- When you sell the Treasury note, you no longer receive the coupon cash flow in $(180-daysAI_1) days. 
 - The buyer receives the full coupon interest of \$ $((cpnAI_1/100)/2*100).
 - However, you owned the bond for $(daysAI_1) out of the 180 days between coupon interest cash flows.
 - Thus, you should be entitled to receive a fraction equal to \$\\frac{$daysAI_1}{180} = $(roundmult(daysAI_1/180,1e-2))\$ of the total  $((cpnAI_1/100)/2*100) coupon interest.
@@ -589,27 +589,24 @@ $$\textrm{Accrued Interest} = \textrm{Coupon Interest Cash Flow} \times \left( \
 
 # ╔═╡ b71c4b72-7004-4600-82d4-651179178a03
 md"""
-## Calculate the **Days in Accrued Interest Period**
+## 1. Calculate the **Days in Accrued Interest Period**
 
 - We need three key dates: 
 - **Trade date**
   - The trade date (also referred to as the transaction date) is the date on which the transaction is executed (referred to as “T”).
 - **Settlement date** 
-  - The settlement date is the date a transaction is deemed to be completed and the seller must transfer the ownership of the bond to the buyer in exchange for the payment
-  - Treasury securities settle on the next business day after the trade date. This is referred to as *T+1 Settlement*
+  - The settlement date is the date a transaction is deemed to be completed and the seller must transfer the ownership of the bond to the buyer in exchange for the payment.
+  - Treasury securities settle on the next business day after the trade date. This is referred to as *T+1 Settlement*.
 - **Date of previous coupon cash flow**
 - Days in Accrued Interest Period are then calculated as
 
 $$\textrm{Days in Accrued Interest Period=}$$ 
-$$\textrm{Days from and \textbf{including} the previous coupon date up to \textbf{excluding} the settlement date}$$.
-
-
-
+$$\textrm{Days from and \textbf{including} the previous coupon date up to \textbf{excluding} the settlement date}$$
 """
 
 # ╔═╡ fd4aead4-bf25-4125-b094-6edce0e77b1e
 md"""
-## Calculate the **Days in Coupon Period**
+## 2. Calculate the **Days in Coupon Period**
 - Simply the number of days between the previous coupon date and the next coupon date.
 """
 
@@ -675,12 +672,8 @@ md"""
 - Settlement date: $(@bind settle_3 DateField(default=Date(2015,09,10)))
 """
 
-# ╔═╡ c78eb09a-0907-47dc-b9c9-65f40432ff47
-@bind go Button("Calculate Accrued Interest")
-
 # ╔═╡ 5752193f-de1f-4832-ab93-a0fc8c4d9c4d
 begin 
-	go
 	daysAIPeriod = Date(settle_3) - Date(prev_3)
 	daysCpnPeriod = Date(next_3) - Date(prev_3)
 	accrInt_3 = Dates.value(daysAIPeriod)/Dates.value(daysCpnPeriod)*cpnAI_3/(200)*
@@ -721,11 +714,12 @@ md"""
 # ╔═╡ e4c4606f-bb51-43c6-98b7-73e1b133b251
 md"""
 ##
-- To illustrate the “30/360” convention, suppose the **settlement date** is *July 17* and the *next coupon cash flow* is on *September 1*.
-- The number of days between July 17 and September 1 (the date of the next coupon payment) is 44 days, 
-  - July is assumed to have 30 days. Thus we count 13 days in July.
-  - The month of August is assumed to have 30 days, so we add 30 days.
-  - September 1 is one day, so the total number of days is 13 days + 30 days + 1 day = 44 days.
+- To illustrate the “30/360” convention, suppose the **settlement date** is *July 17* and the *previous coupon cash flow* was on *May 15*.
+- The number of days between May 15 and July 17 is 62 days, 
+  - May is assumed to have 30 days. Thus we count 16 days in May (remember to include the date of the previous coupon cash flow).
+  - The month of June is assumed to have 30 days, so we add 30 days.
+  - In July, we count 16 days (remember to exclude the settlement date)
+  - So the total number of days is 16 days + 30 days + 16 day = 62 days.
 """
 
 # ╔═╡ a81f9bd5-374d-4238-af83-e39ab1f5982e
@@ -779,11 +773,12 @@ $$y_d = \frac{100-\textrm{Price}}{100} \times \left( \frac{360}{\textrm{Days to 
 - In calculating the $\textrm{Days to Maturity}$ Treasury bills use the **actual/360** convention.
   - Thus, the number of days between two dates is the **actual** number of days.
   - Each year is assumed to have **360** days.
+- Note that the term in the numerator is essentially the dollar **discount** (the difference between par value and the purchase price).
 """
 
 # ╔═╡ 4f6af650-763a-4c56-a564-d3c1447be1fd
 Markdown.parse("
-## Example
+## Example Calculating the Discount Yield given the Price
 - Consider a Treasury bill with 85 days to maturity, a face value of 100, and a purchase price of 99.10.
 - This Treasury bill would be quoted with a discount yield \$y_d\$ of
 \$y_d = \\frac{100-99.10}{100} \\times \\frac{360}{85}= $(roundmult((100-99.10)/100*360/85,1e-6))=$(roundmult((100-99.10)*(360/85),1e-6))\\%\$ 
@@ -791,7 +786,12 @@ Markdown.parse("
 
 # ╔═╡ 28112b4a-fbeb-4409-b3f7-88578191a704
 md"""
-## Example
+## Example Calculating Price given the Discount Yield
+"""
+
+# ╔═╡ 443d90d3-a408-4f0a-b1c0-8e2cdfc1970a
+md"""
+- Let us now consider the possibly more typical case where we want to know the dollar price given a discount yield quote from the Bloomberg system.
 """
 
 # ╔═╡ e2e15eb3-c339-49ea-85b6-5436835cddea
@@ -799,7 +799,9 @@ md"""
 Example from Bloomberg of the Treasury Bill with maturity on 4/30/2020
 - Quote (as discount yield) on 2/07/2020.
 - Settlement date is 2/10/2020.
-- There are 80 days from settlement date to maturity. 
+- There are 80 days from settlement date to maturity.
+  - Note that there are 29 days in February of 2020.
+  - Thus, 19 days in February + 31 days in March + 30 days in April = 80 days.
 """
 
 # ╔═╡ 448e7b7e-b4b7-4eec-a331-f72f6aac7ff2
@@ -884,7 +886,7 @@ Markdown.parse("
 
 # ╔═╡ 371a326e-f13b-44ce-91e8-50d43b7ae59a
 md"""
-## Treasury STRIPS
+# Treasury STRIPS
 """
 
 # ╔═╡ b7bdc144-7648-403f-bce7-2b6df6a8dd2f
@@ -1998,7 +2000,6 @@ version = "0.9.1+5"
 # ╟─41b91a85-ac56-4b36-87e1-b121c756417e
 # ╟─4d039efd-c682-4abe-a2a4-8536ed97a3c7
 # ╟─5752193f-de1f-4832-ab93-a0fc8c4d9c4d
-# ╟─c78eb09a-0907-47dc-b9c9-65f40432ff47
 # ╟─7b376a7e-215e-40af-82af-6be2762aa7eb
 # ╟─70661dd7-0acf-4b6c-b7dd-f4ad71c1cee9
 # ╟─6e1be79b-bfc7-444e-b660-e0d24a2cf5dd
@@ -2013,6 +2014,7 @@ version = "0.9.1+5"
 # ╟─a92a604a-429b-4508-9820-c99839f3b431
 # ╟─4f6af650-763a-4c56-a564-d3c1447be1fd
 # ╟─28112b4a-fbeb-4409-b3f7-88578191a704
+# ╟─443d90d3-a408-4f0a-b1c0-8e2cdfc1970a
 # ╟─e2e15eb3-c339-49ea-85b6-5436835cddea
 # ╟─448e7b7e-b4b7-4eec-a331-f72f6aac7ff2
 # ╟─4044d433-857f-47f6-8947-597935a981a1
