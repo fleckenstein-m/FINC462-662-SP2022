@@ -684,7 +684,7 @@ md"""
 
 # ╔═╡ 8f65e51f-01d6-4d02-bee2-f7d16f62a6c2
 md"""
-- Let's look at price quotes for this Treasury TIPS.
+- Let's look at price quotes for this Treasury STRIPS.
 """
 
 # ╔═╡ e16d631b-befe-4657-ad03-e65b5999e49a
@@ -719,9 +719,9 @@ md"""
 # ╔═╡ bb28a8c2-aaa8-4400-8601-514e156a9fe6
 md"""
 > Where to get information about the Treasury auction process?
-> - Go to [TreasuryDirec.gov](https://www.treasurydirect.gov/)
+> - Go to [TreasuryDirect.gov](https://www.treasurydirect.gov/)
 > - In the middle panel, you see multiple links to resources about Treasury auctions.
-> - For example, the learn about the auction process, click on `How Treasury auctions work`
+> - For example, to learn about the auction process, click on `How Treasury auctions work`
 """
 
 # ╔═╡ c3a14721-d694-4302-b8b2-adf887e6fb7d
@@ -827,8 +827,8 @@ md"""
 
 # ╔═╡ 22e9ecfc-72c3-43e1-9214-b907c5cd7d07
 md"""
-- Treasury Department announces \$11 billion offering
-- There are \$1 billion in noncompetitive bids received, 
+- Treasury Department announces a \$11 billion offering.
+- There are \$1 billion in noncompetitive bids received. 
 - Thus, there is \$11 - $1 = \$10 billion left to be allocated to competitive bidders.
 - Suppose 6 competitive bidders submit the following sealed bids.
 """
