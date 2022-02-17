@@ -14,111 +14,6 @@ macro bind(def, element)
     end
 end
 
-# ╔═╡ 25448e4a-345b-4bd6-9cdb-a6a280cfd22c
-#Set-up packages
-begin
-	
-	using DataFrames, HTTP, CSV, Dates, Plots, PlutoUI, Printf, LaTeXStrings, HypertextLiteral, XLSX
-	
-	gr();
-	Plots.GRBackend()
-
-
-	#Define html elements
-	nbsp = html"&nbsp" #non-breaking space
-	vspace = html"""<div style="margin-bottom:0.05cm;"></div>"""
-	br = html"<br>"
-
-	#Sets the width of cells, caps the cell width by 90% of screen width
-	#(setting overwritten by cell below)
-	# @bind screenWidth @htl("""
-	# 	<div>
-	# 	<script>
-	# 		var div = currentScript.parentElement
-	# 		div.value = screen.width
-	# 	</script>
-	# 	</div>
-	# """)
-
-	
-	# cellWidth= min(1000, screenWidth*0.9)
-	# @htl("""
-	# 	<style>
-	# 		pluto-notebook {
-	# 			margin: auto;
-	# 			width: $(cellWidth)px;
-	# 		}
-	# 	</style>
-	# """)
-	
-
-	#Sets the width of the cells
-	#begin
-	#	html"""<style>
-	#	main {
-	#		max-width: 900px;
-	#	}
-	#	"""
-	#end
-
-
-	#Sets the height of displayed tables
-	html"""<style>
-		pluto-output.scroll_y {
-			max-height: 550px; /* changed this from 400 to 550 */
-		}
-		"""
-	
-
-	#Two-column cell
-	struct TwoColumn{A, B}
-		left::A
-		right::B
-	end
-	
-	function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
-		write(io,
-			"""
-			<div style="display: flex;">
-				<div style="flex: 50%;">
-			""")
-		show(io, mime, tc.left)
-		write(io,
-			"""
-				</div>
-				<div style="flex: 50%;">
-			""")
-		show(io, mime, tc.right)
-		write(io,
-			"""
-				</div>
-			</div>
-		""")
-	end
-
-	#Creates a foldable cell
-	struct Foldable{C}
-		title::String
-		content::C
-	end
-	
-	function Base.show(io, mime::MIME"text/html", fld::Foldable)
-		write(io,"<details><summary>$(fld.title)</summary><p>")
-		show(io, mime, fld.content)
-		write(io,"</p></details>")
-	end
-	
-	
-	#helper functions
-	#round to digits, e.g. 6 digits then prec=1e-6
-	roundmult(val, prec) = (inv_prec = 1 / prec; round(val * inv_prec) / inv_prec); 
-
-	using Logging
-	global_logger(NullLogger())
-		
-	display("")
-end
-
 # ╔═╡ a2f22b9d-13f8-4e39-b7dd-14b905d987ab
 #add button to trigger presentation mode
 html"<button onclick='present()'>present</button>"
@@ -936,6 +831,117 @@ md"""
 Fabozzi, Fabozzi, 2021, Bond Markets, Analysis, and Strategies, 10th Edition\
 Chapter 7
 """
+
+# ╔═╡ 25448e4a-345b-4bd6-9cdb-a6a280cfd22c
+#Set-up packages
+begin
+	
+	using DataFrames, HTTP, CSV, Dates, Plots, PlutoUI, Printf, LaTeXStrings, HypertextLiteral, XLSX
+	
+	gr();
+	Plots.GRBackend()
+
+
+	#Define html elements
+	nbsp = html"&nbsp" #non-breaking space
+	vspace = html"""<div style="margin-bottom:0.05cm;"></div>"""
+	br = html"<br>"
+
+	#Sets the width of cells, caps the cell width by 90% of screen width
+	#(setting overwritten by cell below)
+	# @bind screenWidth @htl("""
+	# 	<div>
+	# 	<script>
+	# 		var div = currentScript.parentElement
+	# 		div.value = screen.width
+	# 	</script>
+	# 	</div>
+	# """)
+
+	
+	# cellWidth= min(1000, screenWidth*0.9)
+	# @htl("""
+	# 	<style>
+	# 		pluto-notebook {
+	# 			margin: auto;
+	# 			width: $(cellWidth)px;
+	# 		}
+	# 	</style>
+	# """)
+	
+
+	#Sets the width of the cells
+	#begin
+	#	html"""<style>
+	#	main {
+	#		max-width: 900px;
+	#	}
+	#	"""
+	#end
+
+
+	#Sets the height of displayed tables
+	html"""<style>
+		pluto-output.scroll_y {
+			max-height: 550px; /* changed this from 400 to 550 */
+		}
+		"""
+	
+
+	#Two-column cell
+	struct TwoColumn{A, B}
+		left::A
+		right::B
+	end
+	
+	function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
+		write(io,
+			"""
+			<div style="display: flex;">
+				<div style="flex: 50%;">
+			""")
+		show(io, mime, tc.left)
+		write(io,
+			"""
+				</div>
+				<div style="flex: 50%;">
+			""")
+		show(io, mime, tc.right)
+		write(io,
+			"""
+				</div>
+			</div>
+		""")
+	end
+
+	#Creates a foldable cell
+	struct Foldable{C}
+		title::String
+		content::C
+	end
+	
+	function Base.show(io, mime::MIME"text/html", fld::Foldable)
+		write(io,"<details><summary>$(fld.title)</summary><p>")
+		show(io, mime, fld.content)
+		write(io,"</p></details>")
+	end
+	
+	
+	#helper functions
+	#round to digits, e.g. 6 digits then prec=1e-6
+	roundmult(val, prec) = (inv_prec = 1 / prec; round(val * inv_prec) / inv_prec); 
+
+	using Logging
+	global_logger(NullLogger())
+		
+	display("")
+end
+
+# ╔═╡ d1eeef07-bb88-4402-9b09-d27061ec065a
+png_joinpathsplit__FILE__1assetsdownloadpng = let
+    import PlutoUI
+    PlutoUI.LocalResource(joinpath(split(@__FILE__, '#')[1] * ".assets", "download.png"))
+end
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -2038,6 +2044,7 @@ version = "0.9.1+5"
 # ╟─c1c539c2-afe1-41f4-9c26-29b5a0acfba1
 # ╟─35f529cd-9642-4bd9-a2f7-90018d1936be
 # ╟─094387ed-e45a-4d07-a4e6-0d3f08fda046
+# ╠═d1eeef07-bb88-4402-9b09-d27061ec065a
 # ╟─43e798f2-a8de-4920-9e44-9c56ba965670
 # ╟─d8e7db96-9471-424d-a616-2c1327d23c77
 # ╟─96a2e1f6-b15d-446f-8828-c4c099fca07d

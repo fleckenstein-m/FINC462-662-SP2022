@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.17.1
 
 using Markdown
 using InteractiveUtils
@@ -665,11 +665,11 @@ md"""
 
 # ╔═╡ 4d039efd-c682-4abe-a2a4-8536ed97a3c7
 md"""
-- Coupon rate [% p.a.]: $(@bind cpnAI_3 Slider(0:0.25:10, default=8, show_value=true))
+- Coupon rate [% p.a.]: $(@bind cpnAI_3 Slider(0:0.25:10, default=2.5, show_value=true))
 - Par value [\$]: $(@bind par_3 Slider(100:100000, default=100, show_value=true))
-- Previous coupon cash flow date: $(@bind prev_3 DateField(default=Date(2015,5,15)))
-- Next coupon cash flow date: $(@bind next_3 DateField(default=Date(2015,11,15)))
-- Settlement date: $(@bind settle_3 DateField(default=Date(2015,09,10)))
+- Previous coupon cash flow date: $(@bind prev_3 DateField(default=Date(2015,7,15)))
+- Next coupon cash flow date: $(@bind next_3 DateField(default=Date(2016,01,15)))
+- Settlement date: $(@bind settle_3 DateField(default=Date(2015,10,10)))
 """
 
 # ╔═╡ 5752193f-de1f-4832-ab93-a0fc8c4d9c4d
@@ -881,7 +881,7 @@ end
 # ╔═╡ 628ba57e-39ee-4072-8935-c44fae56b0bd
 Markdown.parse("
 - This Treasury bill has a dollar purchase price of 
-``P=\\left(1 - y_d \\times \\frac{\\textrm{Days to Maturity}}{360}\\right)=\\left(1 - $yd_4\\% \\times \\frac{$(Dates.value(daysMat))}{360} \\right) = \\\$ $(roundmult(px_4,1e-6))`` per \$ $(par_4) notional.
+``P=\\\$100\\times\\left(1 - y_d \\times \\frac{\\textrm{Days to Maturity}}{360}\\right)=\\\$100\\times \\left(1 - $yd_4\\% \\times \\frac{$(Dates.value(daysMat))}{360} \\right) = \\\$ $(roundmult(px_4,1e-6))`` per \$ $(par_4) notional.
 ")
 
 # ╔═╡ 371a326e-f13b-44ce-91e8-50d43b7ae59a

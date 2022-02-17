@@ -321,7 +321,7 @@ Markdown.parse("
 	- Number of days to maturity: $(daysMat)
 	- Dollar Price: \$ $(roundmult(px_4,1e-6)) per \$$(par_4) notional amount.
 	- This Treasury bill has a dollar purchase price of 
-	``P=\\left(1 - y_d \\times \\frac{\\textrm{Days to Maturity}}{360}\\right)=\\left(1 - $yd_4\\% \\times \\frac{$(Dates.value(daysMat))}{360} \\right) = \\\$ $(roundmult(px_4,1e-6))`` per \$ $(par_4) notional.
+	``P=$(roundmult(par_4,1e-6)) \\times\\left(1 - y_d \\times \\frac{\\textrm{Days to Maturity}}{360}\\right)=$(roundmult(par_4,1e-6)) \\times\\left(1 - $yd_4\\% \\times \\frac{$(Dates.value(daysMat))}{360} \\right) = \\\$ $(roundmult(px_4,1e-6))`` per \$ $(par_4) notional.
 ")
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
