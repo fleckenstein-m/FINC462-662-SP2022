@@ -157,9 +157,7 @@ begin
         <legend>Goals for today</legend>      
 		<br>
         <input type="checkbox" value="">Calculate the present values of future cash flows, including bonds, annuities, perpetuities, and other arbitrary cash flows..<br><br>
-	    <input type="checkbox" value="">Price securities using the observed prices of other securities and the Law of One Price.<br><br>
-	    <input type="checkbox" value="">Construct an arbitrage trade if the Law of One Price is violated.<br><br>
-<input type="checkbox" value="">Calculate the price of a coupon bond.<br><br>
+	    <input type="checkbox" value="">Understand different compounding frequencies and be able to convert between different compounding frequencies.<br><br>
 	</fieldset>      
 	"""
 end
@@ -630,9 +628,9 @@ md"""
 
 # ╔═╡ 89dc6ad3-f92e-473b-b2f4-7cb27dc9ce28
 md"""
-- Assume that the interest rate is $r=5\%$ and we want to calculate the present value of a 30-year annuity with annual cash flows of \$1.
-  - A thiry-year annuity paying \$1, has the first cash flow at the end of the first year $t=1$, the next at the end of the second year $t=2$, ..., and on final cash flow at the end of year 30 ($t$=30).
-- An annuity is the differentce between two perpetuities. Why?
+- Assume that the interest rate is $r=5\%$ and we want to calculate the present value of a 10-year annuity with annual cash flows of \$50.
+  - A 10-year annuity paying \$50, has the first cash flow at the end of the first year $t=1$, the next at the end of the second year $t=2$, ..., and on final cash flow at the end of year 30 ($t$=30).
+- An annuity is the difference between two perpetuities. Why?
 """
 
 # ╔═╡ f0d15768-4bb9-4826-ba3f-11907e41dc44
@@ -877,7 +875,7 @@ Markdown.parse("
 
 # ╔═╡ db973c76-2338-4c7d-be42-1c72b1d9e246
 md"""
-## Annuity formula with difference compounding frequencies
+## Annuity formula with different compounding frequencies
 - The annuity formula with different compounding frequencies becomes
 **Present Value of Annuity**
 
@@ -1051,12 +1049,10 @@ md"""
 begin
 	html"""
 	<fieldset>      
-        <legend>Our goals for today</legend>      
+        <legend>Goals for today</legend>      
 		<br>
-        <input type="checkbox" value="" checked>Calculate the present values of future cash flows, including bonds, annuities, perpetuities, and other arbitrary cash flows..<br><br>
-	    <input type="checkbox" value="" checked>Price securities using the observed prices of other securities and the Law of One Price.<br><br>
-	    <input type="checkbox" value="" checked>Construct an arbitrage trade if the Law of One Price is violated.<br><br>
-<input type="checkbox" value="" checked>Calculate the price of a coupon bond.<br><br>
+        <input type="checkbox" value="" checked=true>Calculate the present values of future cash flows, including bonds, annuities, perpetuities, and other arbitrary cash flows..<br><br>
+	    <input type="checkbox" value="" checked=true>Understand different compounding frequencies and be able to convert between different compounding frequencies.<br><br>
 	</fieldset>      
 	"""
 end
