@@ -227,6 +227,12 @@ md"""
 Time to Maturity: $(T) years
 """
 
+# ╔═╡ ac0dc7f7-57df-4bc3-abf9-1deca96420f4
+Markdown.parse("
+Using a par value of \\\$100, the semi-annual coupon cash flow is:
+``C=\\frac{$C \\%}{2} \\times \\\$$(roundmult( 100.0,1e-6))= \\\$$(roundmult( C/200*100,1e-6))``
+")
+
 # ╔═╡ 0924235f-1e63-40ea-9b8f-b0625f68f8cf
 begin
 	CF = 0.5*C.*ones(convert(Int64,T*2))
@@ -2009,6 +2015,7 @@ version = "0.9.1+5"
 # ╟─76e22a68-2f69-4715-adbd-c89c51d08415
 # ╟─5ea2d792-1ddd-477c-b5e2-ac1a73d90499
 # ╟─6de1c5cd-aa93-4124-b746-880b89d40a96
+# ╟─ac0dc7f7-57df-4bc3-abf9-1deca96420f4
 # ╟─0924235f-1e63-40ea-9b8f-b0625f68f8cf
 # ╟─6fa0988b-6c1a-4721-a008-3f0d4ea0ec2f
 # ╟─baf04d40-9d5e-424b-8dd2-e11744aa4e8c
