@@ -600,7 +600,7 @@ md"""
 
 The present value today (time $t=0$) of a perpetuity paying a dollar cash flow of $C$ forever that grows at a constant percentage rate $g$ each period **after** the first cash flow is
 
-$$\textrm{PV}=\frac{\textrm{FV}}{r-g}$$ 
+$$\textrm{PV}=\frac{\textrm{C}}{r-g}$$ 
 
 Time $\,t$    | 0   | 1  | 2 | 3 | 4 | ... |
 :------------ | :-- |:-- |:--|:--|:--|:--|
@@ -617,7 +617,7 @@ md"""
 
 # ╔═╡ 7a797bc5-0ae1-4015-8708-57145183fd9b
 md"""
-- An annuity pays a constant cash flow of $FV$ at the end of each period for a specific number of periods.
+- An annuity pays a constant cash flow of $C$ at the end of each period for a specific number of periods.
 - It is similar to a perpetuity, except that the cash flows stop after a certain number of periods.
 """
 
@@ -659,7 +659,7 @@ let
 	T=20
 	dt = collect(1:1:T)
 	CF = 50*ones(convert(Int64,T))
-	tmpStr = L"\textrm{Present Value} = \frac{FV}{r} = \frac{50}{0.05}"
+	tmpStr = L"\textrm{Present Value} = \frac{C}{r} = \frac{50}{0.05}"
 	bar(dt,CF,label="", ylim=(0,100), xlim=(0,T-5), xticks=collect(0
 	:1:(T-5)), xlabel="Year", ylabel="Cash Flow", title="Perpetuity")
 	annotate!(4, 75, text(tmpStr, :blue, :left, 16))
@@ -676,8 +676,8 @@ let
 	dt = collect(1:1:T)
 	CF = -50*ones(convert(Int64,T))
 	CF[1:10].=0
-	tmpStr = L"\textrm{PV\ at\ year\ 10} = \frac{FV}{r} = \frac{-50}{0.05}"
-	tmpStr2 = L"\textrm{PV} = \frac{1}{(1+r)^{10}}\times\frac{FV}{r} = \frac{1}{(1+0.05)^{10}} \times \frac{-50}{0.05}"
+	tmpStr = L"\textrm{PV\ at\ year\ 10} = \frac{C}{r} = \frac{-50}{0.05}"
+	tmpStr2 = L"\textrm{PV} = \frac{1}{(1+r)^{10}}\times\frac{C}{r} = \frac{1}{(1+0.05)^{10}} \times \frac{-50}{0.05}"
 	bar(dt,CF,label="", ylim=(-100,0), xlim=(0,T-5), xticks=collect(0
 	:1:(T-5)), xlabel="Year", ylabel="Cash Flow", title="Perpetuity starting in year 10")
 	annotate!(3.5, -20, text(tmpStr, :blue, :left, 11))
@@ -845,7 +845,7 @@ end
 # ╔═╡ 19139d1d-e8a9-4a7a-8409-3c46d90ec799
 Markdown.parse("
 ``\$\\textrm{FV}_{$T_6} = \\textrm{PV} \\times \\left(1+\\frac{r}{m} \\right)^{m \\times T} =
-\\\$ \\textrm{$PV_6} \\times \\left(1+\\frac{$r_6\\%}{$m_6} \\right)^{$m_6 \\times $T_6}=\\\$$(roundmult(PV_6*(1+r_1/(parse(Int64,m_6)*100))^(parse(Int64,m_6)*T_6),1e-6))\$
+\\\$ \\textrm{$PV_6} \\times \\left(1+\\frac{$r_6\\%}{$m_6} \\right)^{$m_6 \\times $T_6}=\\\$$(roundmult(PV_6*(1+r_6/(parse(Int64,m_6)*100))^(parse(Int64,m_6)*T_6),1e-6))\$
 ``")
 
 # ╔═╡ 1628f265-12ef-41fc-b4c4-0218ea1c9001
@@ -870,7 +870,7 @@ end
 # ╔═╡ 576daa36-5271-480a-aabc-59b2f8ad7f9d
 Markdown.parse("
 ``\$\\textrm{PV} = \\frac{ \\textrm{FV}_{$T_7}}{\\left(1+\\frac{r}{m} \\right)^{m \\times T}} =
-\\frac{ \\\$ \\textrm{$FV_7}}{\\left(1+\\frac{$r_6\\%}{$m_6} \\right)^{$m_6 \\times $T_6}}=\\\$$(roundmult(FV_7/((1+r_1/(parse(Int64,m_6)*100))^(parse(Int64,m_6)*T_6)),1e-6))\$
+\\frac{ \\\$ \\textrm{$FV_7}}{\\left(1+\\frac{$r_7\\%}{$m_7} \\right)^{$m_7 \\times $T_7}}=\\\$$(roundmult(FV_7/((1+r_7/(parse(Int64,m_7)*100))^(parse(Int64,m_7)*T_7)),1e-6))\$
 ``")
 
 # ╔═╡ db973c76-2338-4c7d-be42-1c72b1d9e246
@@ -907,7 +907,7 @@ end
 # ╔═╡ c884a4b1-64fd-4bd4-8ebd-94c30d7f5d8f
 Markdown.parse("
 ``\$\\textrm{PV} = \\left( \\frac{C}{r/m} \\right) \\left(1 - \\frac{1}{\\left(1+\\frac{r}{m}\\right)^{m \\times T}} \\right)
-= \\left( \\frac{\\\$$C_8}{$(r_6/100)/$m_8} \\right) \\left(1 - \\frac{1}{\\left(1+\\frac{$(r_8/100)}{$m_8}\\right)^{$m_8 \\times $T_8}} \\right)
+= \\left( \\frac{\\\$$C_8}{$(r_8/100)/$m_8} \\right) \\left(1 - \\frac{1}{\\left(1+\\frac{$(r_8/100)}{$m_8}\\right)^{$m_8 \\times $T_8}} \\right)
 = $(roundmult(C_8/(r_8/(parse(Int64,m_8)*100))*(1-1/(1+r_8/(100*parse(Int64,m_8)))^(parse(Int64,m_8)*T_8)),1e-6))\$``")
 
 # ╔═╡ 693388a9-981e-4345-b04f-f28c10818cb6
@@ -2183,7 +2183,7 @@ version = "0.9.1+5"
 # ╟─bed8a48a-25a4-4896-b4f5-bd8b832f61ac
 # ╟─be174887-523f-4a7a-9d69-e655dfaeb004
 # ╟─412de1a3-8361-4b5b-a88a-165776106f49
-# ╟─4d8c3380-b7b6-4404-8032-6a792e6262e5
+# ╠═4d8c3380-b7b6-4404-8032-6a792e6262e5
 # ╟─1edaa850-3c80-4bc6-9622-d400b11cf5f5
 # ╟─787d53ec-f09e-4e7c-b9ae-3d60bcce46bc
 # ╟─8d2b39a5-8da6-4c42-b71b-321f629121f8

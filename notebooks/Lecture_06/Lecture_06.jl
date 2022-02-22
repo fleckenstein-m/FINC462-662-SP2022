@@ -207,7 +207,7 @@ md"""
 md"""
 First, we are going to focus on the time dimension (and consider credit risk later). 
   - The idea is that because the coupon cash flows happen at different times in the future, it is not appropriate to use the same interest rate to discount all cash flows.
-  - Each cash flow should be discounted at a unique rate appropriate for the time period in which the cash flow will be received
+  - Each cash flow should be discounted at a unique rate appropriate for the time period in which the cash flow will be received.
 - This means that for each time-$t$ cash flow in the future, there is a corresponding interest rate $r$.
 - We will write the interest rate for time $t$ as $r(t)$ or simply as $r_t$.
 - When we plot the relation between time on the horizontal axis and the corresponding interest rate on the vertical axis, this is referred to as the **Term Structure of Interest Rates**.
@@ -1036,7 +1036,7 @@ md"""
 - To **boostrap** the zero-coupon yield curve form the par yield curve above, we proceed in steps.
   - First, we calculate the discount factor $D(0.5)$ for the 6-month (t=0.5) maturity. 
   - Next, we calculate the discount factor $D(1.0)$ for the 1-year (t=1) maturity. 
-  - Then, we calculate the discount factor $D(1.0)$ for the 1.5-year (t=1) maturity. 
+  - Then, we calculate the discount factor $D(1.5)$ for the 1.5-year (t=1) maturity. 
   - We continue this procedure until and including the 5-year maturity (in this example.)
 - In the last step, we convert all discount factors $D(t)$ to zero-coupon yields
   - We know
@@ -1057,7 +1057,7 @@ md"""
 Markdown.parse("
 - **Step 1**: ``t=0.5``
   - The par yield is ``$(r5[1]) \\%``. This means a Treasury coupon bond with a coupon rate of ``c=$(r5[1])\\%``  has a price ``P=\\\$ 100``.
-  - Since coupon cash flows are semi-annual, the six-month bond has one remaining cash flow in ``t=0.5`` years of principal ``F=100`` plus coupon ``C=\\frac{$(r5[1])\\%}{2}\\times $F5=$(C5[1])`` (). 
+  - Since coupon cash flows are semi-annual, the six-month bond has one remaining cash flow in ``t=0.5`` years of principal ``F=100`` plus coupon ``C=\\frac{$(r5[1])\\%}{2}\\times $F5=$(C5[1])``. 
    - We are looking for the discount factor ``D(0.5)`` that sets the present value of the Treasury note's final cash flow of ``$(roundmult(r5[1]+F5,1e-4))`` equal to its price of ``100``.
 
 ``\$100\\stackrel{!}{=} D(0.5) \\times $(roundmult(r5[1]+F5,1e-4)) \\rightarrow D(0.5)= $(roundmult(D5[1],1e-6))\$`` 
@@ -1239,8 +1239,7 @@ md"""
 
 # ╔═╡ 629390e6-b383-4b5d-84db-513c1be494f9
 md"""
-- Replicate a 1-year bond, with a face value of $100 and a coupon rate of
-5% using the following set of bonds.
+- Replicate a 1-year bond, with a face value of $100 and a coupon rate of 5% using the following set of bonds.
 
 T   | Maturity date   | Coupon rate  | Price  | Yield
 :---|:----------------|:-------------|:-------|:--------
@@ -1299,7 +1298,7 @@ md"""
 
 # ╔═╡ 588aa3cc-5c7b-4212-a34f-caf49babbee3
 md"""
-Let's try 1 until of the 1-year bond in the replicating portfolio
+Let's try 1 unit of the 1-year bond in the replicating portfolio
 
 Position                   | Units   | t=0        | t=0.5     | t=1
 :--------------------------|:--------|:-----------|:----------|:-----------
@@ -1907,9 +1906,9 @@ uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
 
 [[Ogg_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
+git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
-version = "1.3.5+0"
+version = "1.3.5+1"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2346,9 +2345,9 @@ version = "1.6.38+0"
 
 [[libvorbis_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Ogg_jll", "Pkg"]
-git-tree-sha1 = "c45f4e40e7aafe9d086379e5578947ec8b95a8fb"
+git-tree-sha1 = "b910cb81ef3fe6e78bf6acee440bda86fd6ae00c"
 uuid = "f27f6e37-5d2b-51aa-960f-b287f2bc3b7a"
-version = "1.3.7+0"
+version = "1.3.7+1"
 
 [[nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
