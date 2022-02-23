@@ -490,6 +490,11 @@ md"""
 ##
 """
 
+# ╔═╡ 66ba0b24-1892-4a88-b201-21c4aa702033
+md"""
+## Yield to Maturity of a Zero-Coupon bond
+"""
+
 # ╔═╡ c2f5a9cf-18a4-42cb-a085-1e297ca39047
 md"""
 ##
@@ -530,6 +535,11 @@ md"""
 ##
 """
 
+# ╔═╡ a2078829-1c7e-430a-96e8-3177726dda88
+md"""
+## Yield to Maturity of a Treasury Note/Bond
+"""
+
 # ╔═╡ 94ce62c7-34d2-4a88-a42d-3155e673d688
 md"""
 - Next, let's consider a Treasury note/bond paying semi-annual coupon interest.
@@ -551,6 +561,23 @@ Markdown.parse("
 # ╔═╡ 9e1381e3-12ad-440e-8895-1d3a4dbae2f1
 md"""
 ##
+"""
+
+# ╔═╡ 7a24abdb-a706-4254-bf39-7c4440a7bb19
+LocalResource("./TreasYieldToMaturity_01.png",:width => 1200) 
+
+# ╔═╡ 2699840b-172a-43ab-9191-1404ff09965a
+LocalResource("./TreasYieldToMaturity_03.png",:width => 1200) 
+
+# ╔═╡ 052fb980-f438-49aa-ad09-fd45eb63cc42
+LocalResource("./TreasYieldToMaturity_02.png",:width => 1200) 
+
+# ╔═╡ 42481e5e-ad91-4079-8dd3-f295a8e8b390
+md"""
+>- How to get there on the Bloomberg terminal?
+>  - Open a terminal and look up a Treasury Note/Bond as we have discussed before.
+>  - Next, from the `DES` page (first screenshot above) type `YAS` on the keyboard and press enter.
+>  - This will open a screen as shown in the middle screenshot.
 """
 
 # ╔═╡ f7dc15ac-1763-4815-b8b1-1183eb018ba1
@@ -863,12 +890,6 @@ md"""
 - The difference $(71-PA-PB) is a riskfree arbitrage profit.
 """
 
-# ╔═╡ 99e4fe09-6bf3-4199-9509-b00c90866a28
-
-
-# ╔═╡ d8aafd45-e823-4d1f-9aef-7dc172f53f99
-
-
 # ╔═╡ 6599406d-679c-40b6-beac-02e16186b48f
 md"""
 ## Practice Problem
@@ -892,15 +913,15 @@ TwoColumn(
 	
 Security      | Price          |  Payoff $t$=1  | Payoff $t$=2  
 :------------ | :--------------| :--------------|:-----------
-C             | 71             | $Ct1           | $Ct2
+C             | 45             | 25             | 25
 	""",
 	md"""
 **Portfolio 2**
 	
 Security      | Price          |  Payoff $t$=1  | Payoff $t$=2  
 :------------ | :--------------| :--------------|:-----------
-A             | $PA            | $At1           | $At2
-B             | $PB            | $Bt1           | $Bt2
+A             | 48             | 50             | 0
+B             | 45             | 0              | 50
 	"""
 )
 
@@ -2051,16 +2072,22 @@ version = "0.9.1+5"
 # ╟─a93d3a56-7269-4e19-a69b-cd4e4c5956c3
 # ╟─4f296087-be3f-484f-bc90-ed4c6366a728
 # ╟─128c46ec-8290-4fdc-b722-dbaafb653dda
+# ╟─66ba0b24-1892-4a88-b201-21c4aa702033
 # ╟─c82619ca-a8a3-42c4-92d6-6cfa53640e8f
 # ╟─c2f5a9cf-18a4-42cb-a085-1e297ca39047
 # ╟─e40b4455-9b6f-446e-ae4b-7b974bcf4f10
 # ╟─0e34c082-2899-46e0-b755-644ce1393fe1
 # ╟─09242936-990c-4448-a698-7113c347a830
 # ╟─5d5db47f-28b4-47a6-828e-8c7ca51e4420
+# ╟─a2078829-1c7e-430a-96e8-3177726dda88
 # ╟─94ce62c7-34d2-4a88-a42d-3155e673d688
 # ╟─8184bbc5-1641-40d0-86e7-8550aed8e4bf
 # ╟─a2a93974-0f4d-43ca-9284-eb97ca998516
 # ╟─9e1381e3-12ad-440e-8895-1d3a4dbae2f1
+# ╟─7a24abdb-a706-4254-bf39-7c4440a7bb19
+# ╟─2699840b-172a-43ab-9191-1404ff09965a
+# ╟─052fb980-f438-49aa-ad09-fd45eb63cc42
+# ╟─42481e5e-ad91-4079-8dd3-f295a8e8b390
 # ╟─f7dc15ac-1763-4815-b8b1-1183eb018ba1
 # ╟─3e779514-c5e2-48a4-970c-0bf3ac9d75bb
 # ╟─af1d20f0-1b7d-4137-bfa7-ec010c18e648
@@ -2100,8 +2127,6 @@ version = "0.9.1+5"
 # ╟─ba8b569b-cdf3-455d-b756-febd2065e4b3
 # ╟─09d8bd33-957c-49a2-85e1-07075ec6e160
 # ╟─b0150c24-7947-4766-be8b-5d51b7d79d89
-# ╟─99e4fe09-6bf3-4199-9509-b00c90866a28
-# ╟─d8aafd45-e823-4d1f-9aef-7dc172f53f99
 # ╟─6599406d-679c-40b6-beac-02e16186b48f
 # ╟─15b0e762-2b20-4687-aedc-d07ea6ab7638
 # ╟─2e4391fc-8d94-4b02-915b-a2499b7196b4
