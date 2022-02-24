@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.17.1
 
 using Markdown
 using InteractiveUtils
@@ -192,7 +192,7 @@ Markdown.parse("""
 
 # ╔═╡ 979817c7-62d7-46c0-bfd3-e725cf010522
 Markdown.parse("""
-2. Calculate the value of a coupon bond which matures in ``$(q1_T1)`` years and pays annual coupons at an (annual) rate of ``$(q1_c*100)``%.
+2. Calculate the value of a coupon bond which matures in ``$(q1_T2)`` years and pays annual coupons at an (annual) rate of ``$(q1_c*100)``%.
 """)
 
 # ╔═╡ 347a76fb-b72f-49e7-b51c-eb7131cc0a76
