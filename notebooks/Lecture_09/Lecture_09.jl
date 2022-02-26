@@ -113,6 +113,9 @@ begin
 	#round to digits, e.g. 6 digits then prec=1e-6
 	roundmult(val, prec) = (inv_prec = 1 / prec; round(val * inv_prec) / inv_prec); 
 
+	using Logging
+	global_logger(NullLogger())
+	
 	display("")
 end
 
