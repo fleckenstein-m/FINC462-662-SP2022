@@ -317,11 +317,11 @@ end
 
 # ╔═╡ 628ba57e-39ee-4072-8935-c44fae56b0bd
 Markdown.parse("
-!!! hint
-	- Number of days to maturity: $(daysMat)
-	- Dollar Price: \$ $(roundmult(px_4,1e-6)) per \$$(par_4) notional amount.
-	- This Treasury bill has a dollar purchase price of 
-	``P=$(roundmult(par_4,1e-6)) \\times\\left(1 - y_d \\times \\frac{\\textrm{Days to Maturity}}{360}\\right)=$(roundmult(par_4,1e-6)) \\times\\left(1 - $yd_4\\% \\times \\frac{$(Dates.value(daysMat))}{360} \\right) = \\\$ $(roundmult(px_4,1e-6))`` per \$ $(par_4) notional.
+
+- Number of days to maturity: $(daysMat)
+- Dollar Price: \$ $(roundmult(px_4,1e-6)) per \$$(par_4) notional amount.
+- This Treasury bill has a dollar purchase price of 
+``P=$(roundmult(par_4,1e-6)) \\times\\left(1 - y_d \\times \\frac{\\textrm{Days to Maturity}}{360}\\right)=$(roundmult(par_4,1e-6)) \\times\\left(1 - $yd_4\\% \\times \\frac{$(Dates.value(daysMat))}{360} \\right) = \\\$ $(roundmult(px_4,1e-6))`` per \$ $(par_4) notional.
 ")
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
@@ -773,7 +773,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -835,6 +835,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+1"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -932,7 +936,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1250,6 +1254,10 @@ deps = ["Artifacts", "Bzip2_jll", "FreeType2_jll", "FriBidi_jll", "HarfBuzz_jll"
 git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
+
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
 
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
