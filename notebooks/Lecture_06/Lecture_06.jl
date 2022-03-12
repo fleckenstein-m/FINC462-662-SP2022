@@ -274,7 +274,7 @@ $$r_1 = y_1$$
 $$r_t = y_t$$
 
 - This means that in order find values for $r(t)$, we need to use market data on zero-coupon yields.
-- When we collect market data of Treasury zero-coupon yields $y_t$ and make a graph with time $t$ on the horizontal axis and the corresponding yield on the vertical axis, we call this the a "Term Structure of Interest Rates" or "Zero-Coupon Yield Curve."
+- When we collect market data of Treasury zero-coupon yields $y_t$ and make a graph with time $t$ on the horizontal axis and the corresponding yield on the vertical axis, we call this the "Term Structure of Interest Rates" or "Zero-Coupon Yield Curve."
 """
 
 # ╔═╡ d6c5298a-cccf-4755-a03d-966ac514fd28
@@ -392,7 +392,7 @@ md"""
 Markdown.parse("
 - Plugging in the values for ``r_t``
 
-``\$ P = \\frac{$(C_Oct2021[1])}{\\left(1+\\frac{$(r_Oct2021[1])\\%}{2}\\right)^{2\\times 0.5}} + \\frac{$(C_Oct2021[2])}{\\left(1+\\frac{$(r_Oct2021[2])\\%}{2}\\right)^{2\\times 1.0}} + \\frac{$(C_Oct2021[3])}{\\left(1+\\frac{$(r_Oct2021[3])\\%}{2}\\right)^{2\\times 1.5}} + \\frac{$(C_Oct2021[4])}{\\left(1+\\frac{$(r_Oct2021[4])\\%}{2}\\right)^{2\\times 2.0}} + \\frac{$(F_Oct2021)+$(C_Oct2021[5])}{\\left(1+\\frac{$(r_Oct2021[5])\\%}{2}\\right)^{2\\times 2.5}} \$``
+``\$ P = \\frac{$(C_Oct2021[1])}{\\left(1+\\frac{$(r_Oct2021[1])\\%}{2}\\right)^{2\\times 0.5}} + \\frac{$(C_Oct2021[2])}{\\left(1+\\frac{$(r_Oct2021[2])\\%}{2}\\right)^{2\\times 1.0}} + \\frac{$(C_Oct2021[3])}{\\left(1+\\frac{$(r_Oct2021[3])\\%}{2}\\right)^{2\\times 1.5}} + \\frac{$(C_Oct2021[4])}{\\left(1+\\frac{$(r_Oct2021[4])\\%}{2}\\right)^{2\\times 2.0}} + \\frac{$(C_Oct2021[5])}{\\left(1+\\frac{$(r_Oct2021[5])\\%}{2}\\right)^{2\\times 2.5}} \$``
 
 - The result is
 
@@ -427,7 +427,7 @@ md"""
 # ╔═╡ 7388c008-c7e0-4743-94ab-bf3c53fdfb25
 md"""
 >**Practice Problem**
-> Calculate the price of a coupon bond with the following terms: $1000 in face value, 5% coupon rate (paid semi-annually), 3 years to maturity.
+> Calculate the price of a coupon bond with the following terms: \$1000 face value, 5% coupon rate (paid semi-annually), 3 years to maturity.
 >
 > Time $t$ | Yield [%]
 > :--------|:------------
@@ -613,7 +613,7 @@ md"""
 - Instead, we can observe the **yields-to-maturity** of coupon bonds.
 - In general, these are **not** zero-coupon yields that we can use to discount cash flows.
 - Thus, we need a technique to get **zero-coupon yields** from yields of coupon bonds.
-- This technique is referred to as **Boot Strapping**.
+- This technique is referred to as **Boot-Strapping**.
 - Before we discuss boot strapping, we need to talk about **par yields**, because the yield curves we observe in the market are often **par yield curves.**
 """
 
@@ -876,7 +876,7 @@ md"""
 md"""
 - By varying the yield to maturity $y$ and the coupon rate $c$, we notice the following:
 - When the yield is **equal** to the coupon rate, the price of the bond is *equal* to  its par value.
-  - This is called a **par bond**, the the yield is called the **par yield**.
+  - This is called a **par bond**, and the yield is called the **par yield**.
 - If the yield is **greater** than the coupon rate, the price is *less* than par value.
   - This is called a **discount bond**, and the bond is *trading at a discount*.
 - If the yield is **less** than the coupon rate, the price is *greater* than par, and 
@@ -1062,9 +1062,9 @@ Markdown.parse("
 - **Step 1**: ``t=0.5``
   - The par yield is ``$(r5[1]) \\%``. This means a Treasury coupon bond with a coupon rate of ``c=$(r5[1])\\%``  has a price ``P=\\\$ 100``.
   - Since coupon cash flows are semi-annual, the six-month bond has one remaining cash flow in ``t=0.5`` years of principal ``F=100`` plus coupon ``C=\\frac{$(r5[1])\\%}{2}\\times $F5=$(C5[1])``. 
-   - We are looking for the discount factor ``D(0.5)`` that sets the present value of the Treasury note's final cash flow of ``$(roundmult(r5[1]+F5,1e-4))`` equal to its price of ``100``.
+   - We are looking for the discount factor ``D(0.5)`` that sets the present value of the Treasury note's final cash flow of ``$(roundmult(C5[1]+F5,1e-4))`` equal to its price of ``100``.
 
-``\$100\\stackrel{!}{=} D(0.5) \\times $(roundmult(r5[1]+F5,1e-4)) \\rightarrow D(0.5)= $(roundmult(D5[1],1e-6))\$`` 
+``\$100\\stackrel{!}{=} D(0.5) \\times $(roundmult(C5[1]+F5,1e-4)) \\rightarrow D(0.5)= $(roundmult(D5[1],1e-6))\$`` 
 ")
 
 # ╔═╡ 714641c3-8e0a-4bc5-8f13-2ff57b1ad6d6
@@ -1076,13 +1076,13 @@ md"""
 Markdown.parse("
 - **Step 2**: ``t=1.0``
   - The par yield is ``$(r5[2]) \\%``. This means a Treasury coupon bond with a coupon rate of ``c=$(r5[2])\\%``  has a price ``P=\\\$ 100``.
-  - Since coupon cash flows are semi-annual, the one-year bond has two remaining cash flows in ``t=0.5`` years of ``C=$(C5[2])`` and one in ``t=1.0`` year of principal plus coupon ``F+C=$(roundmult(r5[2]+F5,1e-4))``. 
+  - Since coupon cash flows are semi-annual, the one-year bond has two remaining cash flows in ``t=0.5`` years of ``C=$(C5[2])`` and one in ``t=1.0`` year of principal plus coupon ``F+C=$(roundmult(C5[2]+F5,1e-4))``. 
 
-``\$100\\stackrel{!}{=} D(0.5) \\times $(C5[2]) + D(1.0) \\times $(roundmult(r5[2]+F5,1e-4)) \$`` 
+``\$100\\stackrel{!}{=} D(0.5) \\times $(C5[2]) + D(1.0) \\times $(roundmult(C5[2]+F5,1e-4)) \$`` 
 
   - We use ``D(0.5)=$(roundmult(D5[1],1e-6))`` from the first step.
 
-``\$100\\stackrel{!}{=} $(roundmult(D5[1],1e-6)) \\times $(C5[2]) + D(1.0) \\times $(roundmult(r5[2]+F5,1e-4)) \$`` 
+``\$100\\stackrel{!}{=} $(roundmult(D5[1],1e-6)) \\times $(C5[2]) + D(1.0) \\times $(roundmult(C5[2]+F5,1e-4)) \$`` 
 
 ``\$\\rightarrow D(1.0)= $(roundmult(D5[2],1e-6))\$``
 ")
@@ -1096,14 +1096,14 @@ md"""
 Markdown.parse("
 - **Step 3**: ``t=1.5``
   - The par yield is ``$(r5[3]) \\%``. This means a Treasury coupon bond with a coupon rate of ``c=$(r5[3])\\%``  has a price ``P=\\\$ 100``.
-  - Since coupon cash flows are semi-annual, the 1.5-year bond has three remaining cash flows. Two cash flows of ``C=$(C5[3])`` in ``t=0.5`` and ``t=1.0`` years and one in ``t=1.5`` year of principal plus coupon ``F+C=$(roundmult(r5[3]+F5,1e-4))``. 
+  - Since coupon cash flows are semi-annual, the 1.5-year bond has three remaining cash flows. Two cash flows of ``C=$(C5[3])`` in ``t=0.5`` and ``t=1.0`` years and one in ``t=1.5`` year of principal plus coupon ``F+C=$(roundmult(C5[3]+F5,1e-4))``. 
 
-``\$100\\stackrel{!}{=} D(0.5) \\times $(C5[3]) + D(1.0) \\times $(C5[3]) + D(1.5) \\times $(roundmult(r5[3]+F5,1e-4)) \$`` 
+``\$100\\stackrel{!}{=} D(0.5) \\times $(C5[3]) + D(1.0) \\times $(C5[3]) + D(1.5) \\times $(roundmult(C5[3]+F5,1e-4)) \$`` 
 
   - We use ``D(0.5)=$(roundmult(D5[1],1e-6))`` from the first step.
   - And we use ``D(1.0)=$(roundmult(D5[2],1e-6))`` from the second step.
 
-``\$100\\stackrel{!}{=} $(roundmult(D5[1],1e-6)) \\times $(C5[3]) + $(roundmult(D5[2],1e-6)) \\times $(C5[3]) + D(1.5) \\times $(roundmult(r5[3]+F5,1e-4)) \$`` 
+``\$100\\stackrel{!}{=} $(roundmult(D5[1],1e-6)) \\times $(C5[3]) + $(roundmult(D5[2],1e-6)) \\times $(C5[3]) + D(1.5) \\times $(roundmult(C5[3]+F5,1e-4)) \$`` 
 
 ``\$\\rightarrow D(1.5)= $(roundmult(D5[3],1e-6))\$``
 ")
@@ -1211,8 +1211,8 @@ md"
   - We actually know that the yield is 2.4087%. 
   - But let's do the calculation anyway.
   - Price = \$98.81
-  - Coupon = \$1.25
-$$98.81 = \frac{100}{(1+\frac{r_{0.5}}{2})^{2\times 0.5}} \rightarrow r_{0.5} == .024086631$$
+  - Coupon = \$0
+$$98.81 = \frac{100}{(1+\frac{r_{0.5}}{2})^{2\times 0.5}} \rightarrow r_{0.5} = .024086631$$
 
 - Next, use the 1-year bond:
   - Coupon rate = 2.5%, Price = \$100.53
@@ -1258,7 +1258,7 @@ T   | Maturity date   | Coupon rate  | Price  | Yield
 4.5 | 1/31/2024       | 0.025        | 103.03 | 0.017961
 5   | 6/30/2024       | 0.02         | 100.84 | 0.018235
 
-- *Assume that we can by fractions of one bond (e.g. we can buy a principal amount of \$50 of the six-month bond above for a price of 0.5 $\times$ \$98.81=\$49.405*.
+- *Assume that we can buy fractions of one bond (e.g. we can buy a principal amount of \$50 of the six-month bond above for a price of 0.5 $\times$ \$98.81=\$49.405*.
 """
 
 # ╔═╡ 685488f4-7218-4929-b41c-9d2cdf00fb00
@@ -1767,6 +1767,12 @@ git-tree-sha1 = "f6250b16881adf048549549fba48b1161acdac8c"
 uuid = "c1c5ebd0-6772-5130-a774-d5fcae4a789d"
 version = "3.100.1+0"
 
+[[LERC_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "bf36f528eec6634efc60d7ec062008f171071434"
+uuid = "88015f11-f218-50d7-93a8-a6af411a945d"
+version = "3.0.0+1"
+
 [[LZO_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "e5b909bcf985c5e2605737d2ce278ed791b89be6"
@@ -1840,10 +1846,10 @@ uuid = "4b2f31a3-9ecc-558c-b454-b3730dcb73e9"
 version = "2.35.0+0"
 
 [[Libtiff_jll]]
-deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
-git-tree-sha1 = "340e257aada13f95f98ee352d316c3bed37c8ab9"
+deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "LERC_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
+git-tree-sha1 = "c9551dd26e31ab17b86cbd00c2ede019c08758eb"
 uuid = "89763e89-9b03-5906-acba-b20f662cd828"
-version = "4.3.0+0"
+version = "4.3.0+1"
 
 [[Libuuid_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1852,7 +1858,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1914,10 +1920,6 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+1"
-
-[[OpenBLAS_jll]]
-deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
-uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2015,7 +2017,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["SHA", "Serialization"]
+deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -2339,10 +2341,6 @@ deps = ["Artifacts", "Bzip2_jll", "FreeType2_jll", "FriBidi_jll", "HarfBuzz_jll"
 git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
-
-[[libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
-uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
 
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]

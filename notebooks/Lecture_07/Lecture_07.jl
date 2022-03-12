@@ -230,7 +230,7 @@ md"""
 - Last time, we looked at the bond **Price-Yield** relation. 
 - Recall, the we arrived at the price-yield relation by selecting values for $y$ and calculating the bond price $P(y)$ while keeping the coupon rate $c$ and time-to-maturity $T$ the same.
   - The notation $P(y)$ means to bond price if the yield-to-maturity is $y$ (keeping coupon rate $c$ and time-to-maturity $T$ fixed).
-- Then, we plotted the different values of $y$ we selected on the horizontal axis and the corresponding bond price $P(y)$ on the vertical axis.
+- Then, we plotted the different values of $y$ on the horizontal axis and the corresponding bond prices $P(y)$ on the vertical axis.
 - In short, we plotted pairs 
 $$\left(y, P(y)\right)$$ 
 - where $y$ is the yield and $P(y)$ is the bond price when we use the yield $y$ to discount the bond's cash flows.
@@ -679,8 +679,8 @@ md"""
 - We now use this insight about $m$ to get a formula for the modified duration $MD(y)$.
 $$MD(y) \approx - \frac{P(y+\Delta y)-P(y-\Delta y)}{2\times \Delta y} \times \frac{1}{P(y)}$$
 - This means that in order to calculate the modified duration given today's bond price $P(y)$ and yield $y$ we do two calculations
-  1. Increase the yield-to-maturity from $y$ to $y + \Delta y$ and calculate the bond price $P(y+\Delta y)$ (pick a small value for $\Delta y$ e.g. $\Delta y=0.001$)
-  2. Decreaese the yield-to-maturity from $y$ to $y - \Delta y$ and calculate the bond price $P(y-\Delta y)$ (pick a small value for $\Delta y$ e.g. $\Delta y=0.001$)
+  1. Increase the yield-to-maturity from $y$ to $y + \Delta y$ and calculate the bond price $P(y+\Delta y)$ (pick a small value for $\Delta y$, e.g. $\Delta y=0.001$).
+  2. Decrease the yield-to-maturity from $y$ to $y - \Delta y$ and calculate the bond price $P(y-\Delta y)$ (pick a small value for $\Delta y$, e.g. $\Delta y=0.001$).
   3. Plug the values for $P(y+\Delta y)$ and $P(y-\Delta y)$ into the modified duration formula and calculate $MD(y)$.
 """
 
@@ -785,7 +785,7 @@ md"""
 
 # ╔═╡ 7b608577-71fd-4518-ae94-ca8587f0a82b
 md"""
-- However, this equation is an approximation, and it gives a result that is different from the *actual* price change as the yield changes become larger
+- However, this equation is an approximation, and it gives a result that is different from the *actual* price change as the yield changes become larger.
   - We see this in the price-yield relation. The tangent line approximates the price-yield relation close to the tangent point at the current yield y, but gets more and more inaccurate as we move away from the tangent point. The reason why the approximation gets worse is because the price-yield relation is convex.
 """
 
@@ -868,8 +868,8 @@ md"""
 - The take-away is that using Modified Duration to calculate price changes of a bond works well when yield changes are small.
 - The approximation error becomes severe when yield changes become large.
 - As shown below, this is because the actual price-yield relation is convex (not linear as on the straight line).
-- We can improve the approximation by taking the curvature of the price-yield relation in to account. 
-- To achieve this, we will add a **convexity** term to the price change formula
+- We can improve the approximation by taking the curvature of the price-yield relation into account. 
+- To achieve this, we will add a **convexity** term to the price change formula.
 - Specifically,
 $$\frac{\Delta P}{P} = -MD(y) \times \Delta y$$
 - becomes
@@ -908,16 +908,12 @@ md"""
 # ╔═╡ c59d7b00-8d49-42c5-bd75-dedaf9d43a3e
 md"""
 !!! hint
-    - We know that since the coupon rate is higher than the yield, the bond is trading 
-    at a premium and should have a price greater than $100. 
+    - We know that since the coupon rate is higher than the yield, the bond is trading at a premium and should have a price greater than $100.0. 
     - Thus, (A) cannot be the answer.
-    - Next, we know that if the yield was 5.5% instead of 5%, the price of the 
-    bond would be $100 as it would be trading at par.
-    - We also know that the modified duration of the bond is < 3. 
-    - This means that a decline of yield from 5.5% to 5% has at most an effect on the 
-    price of 3% $\times$ 0.5 = 1.5%
-    - Since $(1 + 0.015) \times 100 = 101.5$, the price of (C) is too high and it 
-    cannot be the answer.
+    - Next, we know that if the yield was 5.5% instead of 5%, the price of the     bond would be $100 as it would be trading at par.
+    - We also know that the modified duration of the bond is < 3.0. 
+    - This means that a decline of yield from 5.5% to 5% has at most an effect on the    price of 3% $\times$ 0.5 = 1.5%.
+    - Since $(1 + 0.015) \times 100 = 101.5$, the price of (C) is too high and it     cannot be the answer.
     - This leaves (B) as the correct answer.
 """
 
@@ -954,7 +950,7 @@ md"""
 
 # ╔═╡ c499aa0c-e37a-4012-bd21-d4a25e192be6
 md"""
-- Thus far, we have assumed that the interest rate that changes is the yield of the bond $y$. Implicit in this assumption is that we assumed that the term structure of interest rates is flat and all interest rates change by the same small amount $\Delta y$
+- Thus far, we have assumed that the interest rate that changes is the yield of the bond $y$. Implicit in this assumption is that we assumed that the term structure of interest rates is flat and all interest rates change by the same small amount $\Delta y$.
 - Next, we consider how we compute modified duration, when we are given a term structure of interest rates.
 """
 
@@ -984,8 +980,8 @@ md"""
 # ╔═╡ 4a51f1ac-06f0-42af-ba8f-ac7d1d732966
 Markdown.parse("
 - In the formula for ``MD``, 
-  - the term ``P^{+}`` is the price of the bond when the entire term structure is shifted upward by the same amound ``\\Delta r`` (e.g. ``\\Delta r = 0.001``)
-  - the term ``P^{-}`` is the price of the bond when the entire term structure is shifted down by the same amound ``\\Delta r``
+  - the term ``P^{+}`` is the price of the bond when the entire term structure is shifted upward by the same amound ``\\Delta r`` (e.g. ``\\Delta r = 0.001``).
+  - the term ``P^{-}`` is the price of the bond when the entire term structure is shifted down by the same amound ``\\Delta r``.
   - As before, ``P`` is the current bond price.
 ")
 
@@ -997,7 +993,7 @@ md"""
 # ╔═╡ c67d4817-b345-440c-93b4-584ddf0eec0e
 md"""
 - To illustrate this, suppose we want to calculate the modified duration $MD$ of a bond when the term structure of interest rates is upward sloping. 
-- Specifically, suppose we are given a 5-year bond with face value $F=100$, coupon rate $c=4$%, annual coupon cash flows $C=4%$
+- Specifically, suppose we are given a 5-year bond with face value $F=100$, coupon rate $c=4$%, and annual coupon cash flows $C=4%$.
 """
 
 # ╔═╡ 21a1456f-8ef1-4e0e-8680-41f923f364d5
@@ -1066,25 +1062,25 @@ Markdown.parse("
 
 ``\$P = \\frac{C}{(1+r_1)^1} + \\frac{C}{(1+r_2)^2} + \\frac{C}{(1+r_3)^3} + \\frac{C}{(1+r_4)^4} + \\frac{F+C}{(1+r_5)^5}\$``
 
-``\$P = \\frac{$(C7vec[1])}{(1+$(r7vec[1]))^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vec[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vec[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vec[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vec[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7,1e-6))\$``
+``\$P = \\frac{$(C7vec[1])}{(1+$(r7vec[1])\\%)^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vec[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vec[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vec[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vec[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7,1e-6))\$``
 
 ")
 
 
 # ╔═╡ 4c8c68ab-195c-488f-8b9f-aa97f7378dc1
 Markdown.parse("
-- Next, we shift the term structure of interest rates up and down by ``\\Delta r=0.1``.
+- Next, we shift the term structure of interest rates up and down by ``\\Delta r=0.1 \\%``.
 - Shifting the term structure up by ``+\\Delta r`` gives us
  t     |    1 year   |    2 year    |    3 year    |    4 year    |   5 year   
 :-----|:--------|:--------|:--------|:--------|:------
 ``r_t``     | ``r_1=$(r7vecplus[1])`` | ``r_2=$(r7vecplus[2])`` | ``r_3=$(r7vecplus[3])`` |``r_4=$(r7vecplus[4])``% |``r_5=$(r7vecplus[5])``
 
-``\$P^+ = \\frac{$(C7vec[1])}{(1+$(r7vec[1]))^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vec[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vec[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vec[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vec[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7plus,1e-6))\$``
+``\$P^+ = \\frac{$(C7vec[1])}{(1+$(r7vecplus[1]))^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vecplus[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vecplus[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vecplus[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vecplus[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7plus,1e-6))\$``
 ")
 
 # ╔═╡ d2825fe6-901a-48ba-a7d0-96cf91928bff
 Markdown.parse("
-- Shifting the term structure down by ``-\\Delta r`` gives us
+- Shifting the term structure down by ``-\\Delta r=-0.1\\%`` gives us
 t     |    1 year   |    2 year    |    3 year    |    4 year    |   5 year   
 :-----|:--------|:--------|:--------|:--------|:------
 ``r_t``     | ``r_1=$(r7vecminus[1])`` | ``r_2=$(r7vecminus[2])`` | ``r_3=$(r7vecminus[3])`` |``r_4=$(r7vecminus[4])``% |``r_5=$(r7vecminus[5])``
@@ -1107,7 +1103,7 @@ Markdown.parse("
 # ╔═╡ 4b1f1c1a-8943-4edb-9f56-ed95086e4861
 Markdown.parse("
 - We can now compute bond price changes when the term structure of interest rates shifts in parallel, i.e. all zero-coupon yields ``r_t`` increase or decrease by the same amount ``\\Delta r``.
-- To illustrate this, suppose the term structure of interest rates shift up by 0.2%.
+- To illustrate this, suppose the term structure of interest rates shifts up by 0.2%.
 - Then, the approximate dollar price change of the bond is 
 
 ``\$ \\Delta P = -MD \\times \\Delta r\$ \\times P\$ = - $(roundmult(MD7,1e-6)) \\times 0.2\\% \\times $(roundmult(p7,1e-4)) = $(roundmult(-MD7*0.2/100*p7,1e-6))\$``
@@ -1348,6 +1344,7 @@ Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 PrettyTables = "08abe8d2-0d0c-5749-adfa-8a2ac140af0d"
@@ -1731,6 +1728,12 @@ git-tree-sha1 = "f6250b16881adf048549549fba48b1161acdac8c"
 uuid = "c1c5ebd0-6772-5130-a774-d5fcae4a789d"
 version = "3.100.1+0"
 
+[[deps.LERC_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "bf36f528eec6634efc60d7ec062008f171071434"
+uuid = "88015f11-f218-50d7-93a8-a6af411a945d"
+version = "3.0.0+1"
+
 [[deps.LZO_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "e5b909bcf985c5e2605737d2ce278ed791b89be6"
@@ -1804,10 +1807,10 @@ uuid = "4b2f31a3-9ecc-558c-b454-b3730dcb73e9"
 version = "2.35.0+0"
 
 [[deps.Libtiff_jll]]
-deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
-git-tree-sha1 = "340e257aada13f95f98ee352d316c3bed37c8ab9"
+deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "LERC_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
+git-tree-sha1 = "c9551dd26e31ab17b86cbd00c2ede019c08758eb"
 uuid = "89763e89-9b03-5906-acba-b20f662cd828"
-version = "4.3.0+0"
+version = "4.3.0+1"
 
 [[deps.Libuuid_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1875,9 +1878,9 @@ uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
 
 [[deps.Ogg_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
+git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
-version = "1.3.5+0"
+version = "1.3.5+1"
 
 [[deps.OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2319,9 +2322,9 @@ version = "1.6.38+0"
 
 [[deps.libvorbis_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Ogg_jll", "Pkg"]
-git-tree-sha1 = "c45f4e40e7aafe9d086379e5578947ec8b95a8fb"
+git-tree-sha1 = "b910cb81ef3fe6e78bf6acee440bda86fd6ae00c"
 uuid = "f27f6e37-5d2b-51aa-960f-b287f2bc3b7a"
-version = "1.3.7+0"
+version = "1.3.7+1"
 
 [[deps.nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
