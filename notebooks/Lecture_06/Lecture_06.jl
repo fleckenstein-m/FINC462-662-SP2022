@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.18.1
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -1196,6 +1196,7 @@ begin
 	end
 	y6 = 2 .* ( (1 ./ D6).^(1 ./ (2 .* dt6)) .-1 )
 	df6 = DataFrame(Time=dt6, C=C6, DT=D6, r_t=y6.*100)
+	display("")
 end
 
 # ╔═╡ 1e6014b5-09d2-474c-9d21-154079c8aec2
@@ -1203,36 +1204,55 @@ md"""
 ## Solution
 """
 
-# ╔═╡ 95c5cb60-39c1-439f-9451-cf1096715773
+# ╔═╡ 73621ead-7d6f-4b2d-b2f1-173c7f4e75ec
 Foldable("[Click to open solution]", 
 md"
 
 - Start with the 0.5-year bond:
-  - We actually know that the yield is 2.4087%. 
-  - But let's do the calculation anyway.
   - Price = \$98.81
   - Coupon = \$0
-$$98.81 = \frac{100}{(1+\frac{r_{0.5}}{2})^{2\times 0.5}} \rightarrow r_{0.5} = .024086631$$
+$$98.81 = D(0.5) \times 100 \rightarrow D_{0.5} = 0.9881$$
 
 - Next, use the 1-year bond:
   - Coupon rate = 2.5%, Price = \$100.53
   - Coupon = \$1.25 , 
-$$100.53 = \frac{1.25}{(1+\frac{.024086631}{2})^{2\times 0.5}} + \frac{101.25}{(1+\frac{r_{1.0}}{2})^{2\times 1}} \rightarrow r_{1.0} = 0.019594107$$
+$$100.53 = 1.25 \times D(0.5) + 101.25 \times D(1.0) = 1.25 \times 0.9881 + 101.25 \times D(1.0)\rightarrow D_{1.0} = 0.98069$$
 
 - Next, use the 1.5-year bond:
   - Coupon rate= 2.125\%, Price=\$100.41
   - Coupon = \$1.0625 
-$$100.41 = \frac{1.0625}{(1+\frac{0.024086631}{2})^{2\times 0.5}} + \frac{1.0625}{(1+\frac{0.019594107}{2})^{2\times 1.0}} + \frac{101.0625}{(1+\frac{r_{1.5}}{2})^{2\times 1.5}} \rightarrow r_{1.5} = 0.01843806$$
+$$100.41 = 1.0625 \times D(0.5) + 1.0625 \times D(1.0)  + 101.0625 \times D(1.5) = 1.0625 \times 0.9881 + 1.0625 \times 0.98069 + 101.0625 \times D(1.5) \rightarrow  D(1.5) = 0.972845$$
 
 - Continuing until t=5 years
 
-Maturity | Zero-coupon yield | Maturity | Zero-coupon yield
+Maturity T | D(T)              | Maturity T | D(T)
+:--------|:------------------|:---------|:------------------
+0.5      |  0.98810          | 3        | 0.94884
+1        |  0.98069          | 3.5      | 0.94011
+1.5      |  0.97285          | 4        | 0.93135
+2        |  0.96493          | 4.5      | 0.92272
+2.5      |  0.95691          | 5        | 0.91320
+
+
+- Next, we convert the discount factor to spot rates using
+
+$r_T=2\times \left( \left(\frac{1}{D(T)}\right)^{\frac{1}{2\times T}}-1\right)$
+
+- For the 0.5-year discount factor, we get 
+
+$r_{0.5} = 2\times \left( \left(\frac{1}{0.9881}\right)^{\frac{1}{2\times 0.5}}-1\right) = 0.024087$
+
+- Continuing in the same way for $T=1, 1.5, \ldots, 5$ gives us
+
+Maturity T | Zero-coupon yield $r_T$ | Maturity T | Zero-coupon yield $r_T$
 :--------|:------------------|:---------|:------------------
 0.5      | 0.024087          | 3        | 0.017581045
 1        | 0.019594108       | 3.5      | 0.017721797
 1.5      | 0.01843806        | 4        | 0.017859173
 2        | 0.017932055       | 4.5      | 0.017953593
 2.5      | 0.01769831        | 5        | 0.018242097
+
+
 
 ")
 
@@ -2509,12 +2529,12 @@ version = "0.9.1+5"
 # ╟─e1c1a6e9-0050-40be-9dfe-fe77f2444e17
 # ╟─e555dbab-4f2a-4ca8-a29f-fe87541466ea
 # ╟─f3ac1b29-5549-4505-a33c-4a9fe3067b6b
+# ╟─e3cd1f54-d3e5-4722-bdd8-9cb445ee5634
 # ╟─4a6e7a75-eed3-4796-b42d-dbec4e184aed
 # ╟─89fcb4d1-a469-47ad-9325-5a33fa53e4aa
-# ╟─e3cd1f54-d3e5-4722-bdd8-9cb445ee5634
 # ╟─3a556731-cbf6-4dbf-a7bf-02e1de8f0096
 # ╟─1e6014b5-09d2-474c-9d21-154079c8aec2
-# ╟─95c5cb60-39c1-439f-9451-cf1096715773
+# ╟─73621ead-7d6f-4b2d-b2f1-173c7f4e75ec
 # ╟─d10007b6-1144-46bc-99f6-26dc458b69c6
 # ╟─629390e6-b383-4b5d-84db-513c1be494f9
 # ╟─685488f4-7218-4929-b41c-9d2cdf00fb00
