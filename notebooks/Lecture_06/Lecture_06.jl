@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.18.1
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -1368,7 +1368,7 @@ Replicating Portfolio        | Units    | t=0        | t=0.5     | t=1
 0.5-yr bond, 0% coupon rate  | 0.012346 | -1.22      |  1.2346   | 0 
 Total of Replicating Portfolio|         | -102.99    |  2.5      | 102.50
 
-- Thus, the price of the 1-year coupon with coupon rate of 2.5% must be equal to 102.99.
+- Thus, the price of the 1-year coupon with coupon rate of 5% must be equal to 102.99.
 """
 
 # ╔═╡ 53c77ef1-899d-47c8-8a30-ea38380d1614
