@@ -182,7 +182,7 @@ begin
         <legend>Our goals for today</legend>      
 		<br>
 <input type="checkbox" value="">Understand why we use Convexity and how to calculate it.<br><br>
-<input type="checkbox" value="">Calculate the Convexity Convexity of a portfolio.<br><br>
+<input type="checkbox" value="">Calculate the Convexity of a portfolio.<br><br>
 <input type="checkbox" value="">Use Modified Duration to hedge interest rate risk.<br><br>
 <input type="checkbox" value="">Use Modified Duration and Convexity to hedge interest rate risk.<br><br>
 </fieldset>      
@@ -276,7 +276,7 @@ md"""
 
 # ╔═╡ df657c50-9546-4e88-b135-a03dd896dfe4
 md"""
-- Let's first define the **convexity** $\textrm{CX}$ of a standard semi-annual coupon bond with price $P$ time-to-maturity $T$, coupon rate $c$ (paid-semiannually), semi-annual coupon cash flows of $C$, face value $F$ and yield-to-maturity of $y$ (semi-annually compounded).
+- Let's first define the **convexity** $\textrm{CX}$ of a standard semi-annual coupon bond with price $P$, time-to-maturity $T$, coupon rate $c$ (paid-semiannually), semi-annual coupon cash flows of $C$, face value $F$ and yield-to-maturity of $y$ (semi-annually compounded).
 
 """
 
@@ -296,7 +296,7 @@ md"""
 
 $$\textrm{CX} = \frac{1}{P \times (1+Y)^2} \times \sum_{n=1}^{N} \left[ \frac{C}{(1+Y)^n} \left( n^2+n \right) \right]$$
 
-- To get the **annual** convexity we divide $CX$ by the square of the number of periods in each year.
+- To get the **annual** convexity we divide $CX$ by the square of the number of periods in a year.
   - For instance, for semi-annual coupon bonds, there are two periods per year. 
   - Thus, we divide $CX$ by $4$ (since $2^2=4$).
 """
@@ -554,7 +554,7 @@ md"""
 md"""
 - Specifically, suppose the bond portfolio consists of $B$ bonds. We denote the individual bonds by $b=1,...,B$.
 - The portfolio is assumed to consist of $N_b$ units of each bond $b$.
-- Each bond is assumed to have a price of $P_b$ per $100 par value. 
+- Each bond is assumed to have a price of $P_b$ per \$100 par value. 
 - We write the fraction of the position in bond $b$ to the total portfolio value $P_{\textrm{Portfolio}}$ as
 $$w_b = \frac{n_b\times P_b}{P_{\textrm{Portfolio}}}$$
 - Note that the total value of the bond portfolio is
@@ -883,7 +883,7 @@ md"""
 
 # ╔═╡ c34cab0c-7a1d-4fc6-8ac6-9c873b22c6c5
 md"""
-- The idea is that we owe more on the liability, when interest rates decrease and the value of the $(T4_2)-year bond 
+- The idea is that we owe more on the liability, when interest rates decrease, and the value of the $(T4_2)-year bond increases.
 - Our bond portfolio will then consist of the 10-year liability and the $(T4_2)-year bond.
 - Since we consider modified duration only, the percentage price change in the value of our portfolio is
 
@@ -951,12 +951,12 @@ md"""
 """
 
 # ╔═╡ 837bc716-4e33-430d-89b7-31ae7ba51c4a
-md"""
+Markdown.parse("
 Assets            |  Liabilities
 :-----------------|:--------------------
  $(T4_2)-year bond: `x` | $(T4_1)-year Bond: `$(roundmult(P4_1,1e-4))`
- ``MD_{$(T4_2}``: `$(roundmult(MD4_2,1e-4))`| ``MD_{$(T4_1)}``: `$(roundmult(MD4_1,1e-4))`
-"""
+ ``MD_{$(T4_2)}``: `$(roundmult(MD4_2,1e-4))`| ``MD_{$(T4_1)}``: `$(roundmult(MD4_1,1e-4))`
+")
 
 # ╔═╡ c233d6c4-794f-491a-a49a-8fd5ffdbcd30
 md"""
