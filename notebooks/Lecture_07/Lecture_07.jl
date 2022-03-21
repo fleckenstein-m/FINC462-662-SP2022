@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.18.1
 
 using Markdown
 using InteractiveUtils
@@ -228,8 +228,8 @@ md"""
 # ╔═╡ 2287fda6-a596-47fb-9e61-6f66d20ee9b7
 md"""
 - Last time, we looked at the bond **Price-Yield** relation. 
-- Recall, the we arrived at the price-yield relation by selecting values for $y$ and calculating the bond price $P(y)$ while keeping the coupon rate $c$ and time-to-maturity $T$ the same.
-  - The notation $P(y)$ means to bond price if the yield-to-maturity is $y$ (keeping coupon rate $c$ and time-to-maturity $T$ fixed).
+- Recall that we arrived at the price-yield relation by selecting values for $y$ and calculating the bond price $P(y)$ while keeping the coupon rate $c$ and time-to-maturity $T$ the same.
+  - The notation $P(y)$ means the bond price if the yield-to-maturity is $y$ (keeping coupon rate $c$ and time-to-maturity $T$ fixed).
 - Then, we plotted the different values of $y$ on the horizontal axis and the corresponding bond prices $P(y)$ on the vertical axis.
 - In short, we plotted pairs 
 $$\left(y, P(y)\right)$$ 
@@ -441,7 +441,7 @@ md"""
 md"""
 - **Duration** is a measure used to quantify how sensitive bond prices are to changes in interest rates.
 - We will define duration as the **percent change of the bond price $\frac{\Delta P}{P}$ to a change in interest rates $\Delta y$**.
-  - This **duration** is referred to as the **Modified Duration (MD)**
+  - This **duration** is referred to as the **Modified Duration (MD)**.
   - More specifically (note the minus sign)
 
 $$\textrm{Modified Duration} = -\frac{\Delta P / P}{\Delta y}$$
@@ -453,7 +453,7 @@ $$\textrm{Modified Duration} = -\frac{\Delta P / P}{\Delta y}$$
 # ╔═╡ b837d7ba-cf3d-43bf-99b1-2808966055bb
 md"""
 # Macaulay Duration
-- The Macaulay Duration $D$ if a bond with price $P$ can be interpreted as the weighted-average time-to-payment.
+- The Macaulay Duration $D$ of a bond with price $P$ can be interpreted as the weighted-average time-to-payment.
 - The reason becomes clear when we look at how it is calculated.
 - For a semi-annual coupon bond with coupon rate $c$% (paid semi-annually), semi-annual coupon cash flows $C$, time to maturity $T$ and yield-to-maturity $y$, the Macaulay Duration ($D$) is
 $$D = 0.5 \times w_{0.5} + 1.0 \times w_{1.0} + 1.5 \times w_{1.5} + \ldots + T \times w_{T} = \sum_{t=0.5}^{T} t \times w_t$$
@@ -567,7 +567,7 @@ Markdown.parse("
 ``$str32 ``
 - Finally, the Macaulay Duration ``D`` is
 ``$str33``
-- Note that the unit of the Macaulay Duration is years. Thus, the Macaulay Duration is oftentimes interpreted is a weighted-average time-to-payment.
+- Note that the unit of the Macaulay Duration is __years__. Thus, the Macaulay Duration is oftentimes interpreted is a weighted-average time-to-payment.
 ")
 
 # ╔═╡ 3c827a14-8ea6-402b-8735-d843b8121996
@@ -661,11 +661,11 @@ md"""
 
 # ╔═╡ c4579334-c101-49af-843b-1ef06609234a
 md"""
-- Since we know from basic calculus what the slop of the tangency line is, we have a short-cut to calculating the modified duration.
+- Since we know from basic calculus what the slope of the tangency line is, we have a short-cut to calculating the modified duration.
 - Specifically, recall that the slope of the tangency at the point $y$ is
 
 $$m= \frac{P(y+\Delta y)-P(y-\Delta y)}{2\times \Delta y}$$
-- This is a first-order linear approximation of the yield-price relation at today's yield $y$.
+- This is a first-order linear approximation of the price-yield relation at today's yield $y$.
   - It means that if the yield goes up by one percentage point, the price changes by approximately this slope (times 0.01).
 """
 
@@ -678,7 +678,7 @@ md"""
 md"""
 - We now use this insight about $m$ to get a formula for the modified duration $MD(y)$.
 $$MD(y) \approx - \frac{P(y+\Delta y)-P(y-\Delta y)}{2\times \Delta y} \times \frac{1}{P(y)}$$
-- This means that in order to calculate the modified duration given today's bond price $P(y)$ and yield $y$ we do two calculations
+- This means that in order to calculate the modified duration given today's bond price $P(y)$ and yield $y$ we do two calculations:
   1. Increase the yield-to-maturity from $y$ to $y + \Delta y$ and calculate the bond price $P(y+\Delta y)$ (pick a small value for $\Delta y$, e.g. $\Delta y=0.001$).
   2. Decrease the yield-to-maturity from $y$ to $y - \Delta y$ and calculate the bond price $P(y-\Delta y)$ (pick a small value for $\Delta y$, e.g. $\Delta y=0.001$).
   3. Plug the values for $P(y+\Delta y)$ and $P(y-\Delta y)$ into the modified duration formula and calculate $MD(y)$.
@@ -741,7 +741,7 @@ Markdown.parse("
 
 ``\$MD($y5) = - \\frac{$(roundmult(p5plus,1e-4))-$(roundmult(p5minus,1e-4))}{2\\times $(deltaY5/100)} \\times \\frac{1}{$(roundmult(p5,1e-4))}=$(roundmult(md5,1e-6))\$``
 
-- This means that when interest rates increase by 1 percentage point, the price of the bond declines by $(roundmult(md5*100,1e-2)) percent.
+- This means that when interest rates increase by 1 percentage point, the price of the bond declines by $(roundmult(md5,1e-2)) percent.
 ")
 
 # ╔═╡ a1e06127-098d-470a-a5d2-b3d54165d820
@@ -751,7 +751,7 @@ md"""
 
 # ╔═╡ f13f89cf-c3ed-47b1-8e99-f14d0432f68d
 md"""
-- For a semi-annual coupon bond with yield $y$ (semi-annually compounded), the Macaulay Duration $D$ and Modified Duration $MD$ are related as follows
+- For a semi-annual coupon bond with yield $y$ (semi-annually compounded), the Macaulay Duration $D$ and Modified Duration $MD$ are related as follows:
 
 $$MD(y) = \frac{D}{1+\frac{y}{2}}$$
 
@@ -785,7 +785,7 @@ md"""
 
 # ╔═╡ 7b608577-71fd-4518-ae94-ca8587f0a82b
 md"""
-- However, this equation is an approximation, and it gives a result that is different from the *actual* price change as the yield changes become larger.
+- However, this equation is an approximation, and it gives a result that is different from the *actual* price change as yield changes become larger.
   - We see this in the price-yield relation. The tangent line approximates the price-yield relation close to the tangent point at the current yield y, but gets more and more inaccurate as we move away from the tangent point. The reason why the approximation gets worse is because the price-yield relation is convex.
 """
 
@@ -797,8 +797,8 @@ md"""
 # ╔═╡ 49656330-8647-40de-b43c-26fed8edbae9
 Markdown.parse("
 - To illustrate this, let's consider a Treasury note with time-to-maturity ``T=$T5`` years, coupon rate ``c=$c5`` %, coupon cash flows of ``C=$C5``, face value ``F=$F5``, and yield to maturity ``y=$y5``%.
-- The bonds modified duration is ``MD($y5\\%)=$(roundmult(md5,1e-6))``
-- Suppose interest rates increase and the bonds  yield changes by 0.5% (``\\Delta y =0.0050``).
+- The bond's modified duration is ``MD($y5\\%)=$(roundmult(md5,1e-6))``
+- Suppose interest rates increase and the bond's  yield changes by 0.5% (``\\Delta y =0.0050``).
 - We calculate the percentage change in the bond price as
 
 ``\$\\frac{\\Delta P}{P} = -MD(y) \\times \\Delta y = - $(roundmult(md5,1e-6)) \\times 0.005 = $(roundmult(-md5*0.005,1e-6)) = $(roundmult(-md5*0.005*100,1e-2)) \\%\$``
@@ -1241,7 +1241,7 @@ md"""
 # ╔═╡ 34d28786-b3ed-41ef-b50b-6554ba01cecd
 md"""
 - Next, we calculate the total value of the bond portfolio.
-- The value of the bond portfolio $Pb$ is the sum of the values of the positions in the individual bonds. The position in bond $b$ is worth the number of units times the bond price, i.e. $n_b \times P_b$.
+- The value of the bond portfolio $P_b$ is the sum of the values of the positions in the individual bonds. The position in bond $b$ is worth the number of units times the bond price, i.e. $n_b \times P_b$.
 """
 
 # ╔═╡ 0cc86cd8-b6eb-4165-830a-2c47560dcb81
@@ -2431,7 +2431,7 @@ version = "0.9.1+5"
 # ╟─554ed557-ac54-4599-be94-ff42706adec3
 # ╟─7b608577-71fd-4518-ae94-ca8587f0a82b
 # ╟─03da8abc-4973-4781-8b1f-372f75bb0d03
-# ╟─49656330-8647-40de-b43c-26fed8edbae9
+# ╠═49656330-8647-40de-b43c-26fed8edbae9
 # ╟─1e0baca0-d910-4dcf-97f4-4a1107a330b4
 # ╟─2e9c9bb6-719a-4703-9a40-d0a5a6f46066
 # ╟─aff83ff4-6f97-4865-a77c-522fd78d87c0
