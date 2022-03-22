@@ -517,7 +517,7 @@ begin
  str31 = L"D=%$(dt3[1]) \times \frac{\frac{C}{(1+\frac{y}{2})^{2\times %$(dt3[1])}}}{P} + "
  for idx=2:length(dt3)
 	 if idx==length(dt3)
-		tmpStr = L"%$(dt3[idx]) \times \frac{\frac{C}{(1+\frac{y}{2})^{2\times %$(dt3[idx])}}}{P}"
+		tmpStr = L"%$(dt3[idx]) \times \frac{\frac{100+C}{(1+\frac{y}{2})^{2\times %$(dt3[idx])}}}{P}"
 		global str31 = str31[1:end-1] * tmpStr[2:end]	 
 	 else
 	 tmpStr = L"%$(dt3[idx]) \times \frac{\frac{C}{(1+\frac{y}{2})^{2\times %$(dt3[idx])}}}{P} + "
@@ -528,7 +528,7 @@ begin
  str32 = L"D=%$(dt3[1]) \times \frac{\frac{%$(C3)}{(1+\frac{%$(y3)\%}{2})^{2\times %$(dt3[1])}}}{%$(roundmult(PV3,1e-4))} + "
  for idx=2:length(dt3)
 	 if idx==length(dt3)
-		tmpStr = L"%$(dt3[idx]) \times \frac{\frac{%$(C3)}{(1+\frac{%$(y3)\%}{2})^{2\times %$(dt3[idx])}}}{%$(roundmult(PV3,1e-4))}"
+		tmpStr = L"%$(dt3[idx]) \times \frac{\frac{%$(C3+F3)}{(1+\frac{%$(y3)\%}{2})^{2\times %$(dt3[idx])}}}{%$(roundmult(PV3,1e-4))}"
 		global str32 = str32[1:end-1] * tmpStr[2:end]	 
 	 else
 	 tmpStr = L"%$(dt3[idx]) \times \frac{\frac{%$(C3)}{(1+\frac{%$(y3)\%}{2})^{2\times %$(dt3[idx])}}}{%$(roundmult(PV3,1e-4))} + "
