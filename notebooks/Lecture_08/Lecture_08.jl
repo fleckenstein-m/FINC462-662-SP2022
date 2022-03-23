@@ -451,7 +451,7 @@ Markdown.parse("
 # ╔═╡ ed793c92-73ec-4986-923c-76bf79cec892
 Markdown.parse("
 - Thus,
-``\$\\textrm{CX} = \\frac{$(roundmult(P2plus,1e-4))+$(roundmult(P2minus,1e-4))-2\\times $(roundmult(P2,1e-4))}{($(roundmult(deltaY2,1e-4)))^2} \\times \\frac{1}{$(roundmult(P2,1e-4))}=$(roundmult(CX2,1e-6))
+``\$\\textrm{CX} = \\frac{$(roundmult(P2plus,1e-4))+$(roundmult(P2minus,1e-4))-2\\times $(roundmult(P2,1e-4))}{($(roundmult(deltaY2,1e-4))\\%)^2} \\times \\frac{1}{$(roundmult(P2,1e-4))}=$(roundmult(CX2,1e-6))
 \$``
 
 ")
