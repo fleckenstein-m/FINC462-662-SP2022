@@ -517,7 +517,7 @@ begin
  str31 = L"D=%$(dt3[1]) \times \frac{\frac{C}{(1+\frac{y}{2})^{2\times %$(dt3[1])}}}{P} + "
  for idx=2:length(dt3)
 	 if idx==length(dt3)
-		tmpStr = L"%$(dt3[idx]) \times \frac{\frac{100+C}{(1+\frac{y}{2})^{2\times %$(dt3[idx])}}}{P}"
+		tmpStr = L"%$(dt3[idx]) \times \frac{\frac{C}{(1+\frac{y}{2})^{2\times %$(dt3[idx])}}}{P}"
 		global str31 = str31[1:end-1] * tmpStr[2:end]	 
 	 else
 	 tmpStr = L"%$(dt3[idx]) \times \frac{\frac{C}{(1+\frac{y}{2})^{2\times %$(dt3[idx])}}}{P} + "
@@ -528,7 +528,7 @@ begin
  str32 = L"D=%$(dt3[1]) \times \frac{\frac{%$(C3)}{(1+\frac{%$(y3)\%}{2})^{2\times %$(dt3[1])}}}{%$(roundmult(PV3,1e-4))} + "
  for idx=2:length(dt3)
 	 if idx==length(dt3)
-		tmpStr = L"%$(dt3[idx]) \times \frac{\frac{%$(C3+F3)}{(1+\frac{%$(y3)\%}{2})^{2\times %$(dt3[idx])}}}{%$(roundmult(PV3,1e-4))}"
+		tmpStr = L"%$(dt3[idx]) \times \frac{\frac{%$(C3)}{(1+\frac{%$(y3)\%}{2})^{2\times %$(dt3[idx])}}}{%$(roundmult(PV3,1e-4))}"
 		global str32 = str32[1:end-1] * tmpStr[2:end]	 
 	 else
 	 tmpStr = L"%$(dt3[idx]) \times \frac{\frac{%$(C3)}{(1+\frac{%$(y3)\%}{2})^{2\times %$(dt3[idx])}}}{%$(roundmult(PV3,1e-4))} + "
@@ -739,7 +739,7 @@ Markdown.parse("
 3. We calculate the modified duration ``MD(y)``
 ``\$MD(y) = - \\frac{P(y+\\Delta y)-P(y-\\Delta y)}{2\\times \\Delta y} \\times \\frac{1}{P(y)}\$``
 
-``\$MD($y5) = - \\frac{$(roundmult(p5plus,1e-4))-$(roundmult(p5minus,1e-4))}{2\\times $(deltaY5/100)} \\times \\frac{1}{$(roundmult(p5,1e-4))}=$(roundmult(md5,1e-6))\$``
+``\$MD($y5\\%) = - \\frac{$(roundmult(p5plus,1e-4))-$(roundmult(p5minus,1e-4))}{2\\times $(deltaY5/100)} \\times \\frac{1}{$(roundmult(p5,1e-4))}=$(roundmult(md5,1e-6))\$``
 
 - This means that when interest rates increase by 1 percentage point, the price of the bond declines by $(roundmult(md5,1e-2)) percent.
 ")
@@ -1075,7 +1075,7 @@ Markdown.parse("
 :-----|:--------|:--------|:--------|:--------|:------
 ``r_t``     | ``r_1=$(r7vecplus[1])`` | ``r_2=$(r7vecplus[2])`` | ``r_3=$(r7vecplus[3])`` |``r_4=$(r7vecplus[4])``% |``r_5=$(r7vecplus[5])``
 
-``\$P^+ = \\frac{$(C7vec[1])}{(1+$(r7vecplus[1]))^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vecplus[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vecplus[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vecplus[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vecplus[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7plus,1e-6))\$``
+``\$P^+ = \\frac{$(C7vec[1])}{(1+$(r7vecplus[1])\\%)^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vecplus[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vecplus[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vecplus[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vecplus[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7plus,1e-6))\$``
 ")
 
 # ╔═╡ d2825fe6-901a-48ba-a7d0-96cf91928bff
@@ -1086,7 +1086,7 @@ t     |    1 year   |    2 year    |    3 year    |    4 year    |   5 year
 ``r_t``     | ``r_1=$(r7vecminus[1])`` | ``r_2=$(r7vecminus[2])`` | ``r_3=$(r7vecminus[3])`` |``r_4=$(r7vecminus[4])``% |``r_5=$(r7vecminus[5])``
 
 
-``\$P^- = \\frac{$(C7vec[1])}{(1+$(r7vecminus[1]))^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vecminus[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vecminus[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vecminus[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vecminus[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7minus,1e-6))\$``
+``\$P^- = \\frac{$(C7vec[1])}{(1+$(r7vecminus[1])\\%)^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vecminus[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vecminus[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vecminus[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vecminus[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7minus,1e-6))\$``
 
 ")
 
@@ -1106,7 +1106,7 @@ Markdown.parse("
 - To illustrate this, suppose the term structure of interest rates shifts up by 0.2%.
 - Then, the approximate dollar price change of the bond is 
 
-``\$ \\Delta P = -MD \\times \\Delta r\$ \\times P\$ = - $(roundmult(MD7,1e-6)) \\times 0.2\\% \\times $(roundmult(p7,1e-4)) = $(roundmult(-MD7*0.2/100*p7,1e-6))\$``
+``\$ \\Delta P = -MD \\times \\Delta r \\times P = - $(roundmult(MD7,1e-6)) \\times 0.2\\% \\times $(roundmult(p7,1e-4)) = $(roundmult(-MD7*0.2/100*p7,1e-6))\$``
 
   - For comparison, the actual price change is $(roundmult(p7plusplus-p7,1e-6)).
 ")
