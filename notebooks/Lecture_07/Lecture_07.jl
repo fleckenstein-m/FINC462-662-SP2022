@@ -1368,7 +1368,7 @@ XLSX = "~0.7.8"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.6.3"
+julia_version = "1.6.5"
 manifest_format = "2.0"
 
 [[deps.AbstractPlutoDingetjes]]
