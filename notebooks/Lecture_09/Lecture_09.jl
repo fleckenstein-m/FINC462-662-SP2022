@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.18.1
 
 using Markdown
 using InteractiveUtils
@@ -123,9 +123,6 @@ end
 #add button to trigger presentation mode
 html"<button onclick='present()'>present</button>"
 
-# ╔═╡ 61887938-ec20-45c9-8ab8-b812fefcda3c
-TableOfContents(aside=true, depth=1)
-
 # ╔═╡ 731c88b4-7daf-480d-b163-7003a5fbd41f
 begin 
 	html"""
@@ -151,6 +148,9 @@ begin
 	<p style="padding-bottom:0cm"> </p>
 	"""
 end
+
+# ╔═╡ 61887938-ec20-45c9-8ab8-b812fefcda3c
+TableOfContents(aside=true, depth=1)
 
 # ╔═╡ 6498b10d-bece-42bf-a32b-631224857753
 md"""
@@ -385,7 +385,7 @@ md"""
 
 # ╔═╡ 25aa5bec-668c-45fd-a820-18862d0052a8
 md"""
-- **What must fhe forward rate $f_{0.5,1}$ be?$**
+- **What must fhe forward rate $f_{0.5,1}$ be?**
 - It turns out that forward rates are related to spot rates (zero-coupon yields) through the Law of One Price.
 - This means that we can synthetically create a forward rate agreement using two zero-coupon bonds. Let's see how this can be done.
 """
@@ -510,8 +510,8 @@ Markdown.parse("
 - By taking the short position in Bond X, we create a cash inflow today in the amount of the market price of Bond X.
 - However, in the forward rate agreement, we have no cash flow today at t=0.
 - Thus, we buy ``z`` units of Bond Z such that we pay as much for the position in Bond Z as we receive from the short position in Bond X. In doing this, we have a zero cash flow today.
-- Since we short ``x=1`` units of Bond X, we receive the market price of Bond X in the amount of ``P= \$ $(P6m_1)`` today. 
-- Since the price of 1 unit of Bond Z is ``P= \$ $(P1y_1)``, we need to buy more than one unit. Specifically, we buy
+- Since we short ``x=1`` units of Bond X, we receive the market price of Bond X in the amount of P= \\\$$(P6m_1) today. 
+- Since the price of 1 unit of Bond Z is P= \\\$$(P1y_1), we need to buy more than one unit. Specifically, we buy
 ``\$z=\\frac{ $(P6m_1)}{$(P1y_1)}=$(roundmult(P6m_1/P1y_1,1e-4)) \\textrm{ units}\$ `` 
 ")
 
@@ -537,7 +537,7 @@ md"""
 
 # ╔═╡ b62e3e14-e3fa-4ae0-acdd-aced322a5432
 Markdown.parse("
-- This means that we can lock in a six-month interest rate of ``$(roundmult((P6m_1/P1y_1-1)*100,1e-4))`` percent to invest 100 staring in six months from now (at t=0.5) for another six months until time t=1.
+- This means that we can lock in a six-month interest rate of ``$(roundmult((P6m_1/P1y_1-1)*100,1e-4))`` percent to invest 100 starting in six months from now (at t=0.5) for another six months until time t=1.
 - The corresponding annualized rate is ``$(roundmult((P6m_1/P1y_1-1)*100*2,1e-4))`` percent.
 - Thus, by no arbitrage, the forward rate ``f_{$(T6m_1),$(T1y_1)}`` must be equal to $(roundmult((P6m_1/P1y_1-1)*100*2,1e-4)) percent.
 ``\$f_{$(T6m_1),$(T1y_1)} \\stackrel{!}{=} $(roundmult((P6m_1/P1y_1-1)*2,1e-6))\$``
@@ -1566,7 +1566,7 @@ md"""
 # ╔═╡ 60d27fdc-4aed-4377-93ae-46abf5bf06b2
 md"""
 - Thus far, we have calculated the forward price as of today (at time $t=0$).
-- Recall that at inception ($t=0$), the value of aforward contract is "fair", i.e. it has a value of zero.
+- Recall that at inception ($t=0$), the value of a forward contract is "fair", i.e. it has a value of zero.
   - Today's cash flow is zero.
 - What is the forward price at some time $t>0$ after we entered into the contract?
 - As time passes, the value of a forward may become non-zero.
@@ -1598,7 +1598,7 @@ Maturity T     |   Maturity Date   |  Spot Rate
 2.5            | June 30, 2024     | 4%
 3              | Dec 31, 2024      | 4.5%
 
-- Suppose, we enter into a forward rate agreement ``f(June 2023, Dec 2023)`` where we agree to invest \$100 at the forward rate for six months starting on June 30, 2023.
+- Suppose, we enter into a forward rate agreement ``f``(June 2023, Dec 2023) where we agree to invest \$100 at the forward rate for six months starting on June 30, 2023.
 - Recall that the forward rate is
 ``\$f(\\textrm{June 2023}, \\textrm{Dec 2023}) = 2\\times \\left( \\frac{\\left(1+\\frac{r_{2.0}}{2}\\right)^{2\\times 2.0}}{\\left(1+\\frac{r_{1.5}}{2} \\right)^{2\\times 1.5}} -1 \\right) = $(roundmult(fVec_6[3],1e-6))= $(roundmult(fVec_6[3]*100,1e-4))\\%\$``
 ")
@@ -1617,6 +1617,17 @@ Date      |  Dec 2021 |  June 2022   |   Dec 2022  |  June 2023 |  Dec 2023
           |           |              |             |            |           
 Forward   |    0      |      0       |     0       |     -100   |  ``100\\times (1+f_{1.5,2}/2)=$(roundmult(100*(1+fVec_6[3]/2),1e-4))``
 ")
+
+# ╔═╡ aabf0b08-2ccb-42b1-99f4-6c58d635d9c1
+begin
+	roundmult(-100/(1+0.035/2)^3+100.7537/(1+0.03/2)^4,1e-4)
+	md"""
+	- The present value of the forward rate agreement is
+	
+	$$\frac{-100}{(1+\frac{3.5\%}{2})^{2\times 1.5}}+\frac{100.7537}{(1+\frac{3.0\%}{2})^{2\times 2.0}} = 0$$
+	- Thus, the initial value today of the forward rate agreement is indeed zero.
+	"""
+end
 
 # ╔═╡ ebf95c96-c27d-4c5c-b5e7-73d2ba030d96
 md"""
@@ -1644,7 +1655,7 @@ Maturity T     |   Maturity Date   |  Spot Rate
 2.0            | June 30, 2024     | 4.0%
 2.5            | Dec 31, 2024      | 5.0%
 
-- What is the forward rate for investing for six months starting in June 2023 now, i.e. what is?
+- What is the forward rate for investing for six months starting in June 2023 now? Let's calculate \$f(\\textrm{June 2023}, \\textrm{Dec 2023})\$.
 ``\$f(\\textrm{June 2023}, \\textrm{Dec 2023}) = 2\\times \\left( \\frac{\\left(1+\\frac{r_{1.5}}{2}\\right)^{2\\times 1.5}}{\\left(1+\\frac{r_{1.0}}{2} \\right)^{2\\times 1.0}} -1 \\right) = $(roundmult(fVec_6[3],1e-6))= $(roundmult(fVec_62[2]*100,1e-4))\\%\$``
 ")
 
@@ -1810,6 +1821,7 @@ Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
 Luxor = "ae8d54c2-7ccd-5906-9d76-62fc9837b5bc"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
@@ -2208,6 +2220,12 @@ git-tree-sha1 = "f6250b16881adf048549549fba48b1161acdac8c"
 uuid = "c1c5ebd0-6772-5130-a774-d5fcae4a789d"
 version = "3.100.1+0"
 
+[[LERC_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "bf36f528eec6634efc60d7ec062008f171071434"
+uuid = "88015f11-f218-50d7-93a8-a6af411a945d"
+version = "3.0.0+1"
+
 [[LZO_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "e5b909bcf985c5e2605737d2ce278ed791b89be6"
@@ -2287,10 +2305,10 @@ uuid = "925c91fb-5dd6-59dd-8e8c-345e74382d89"
 version = "2.52.4+0"
 
 [[Libtiff_jll]]
-deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
-git-tree-sha1 = "340e257aada13f95f98ee352d316c3bed37c8ab9"
+deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "LERC_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
+git-tree-sha1 = "c9551dd26e31ab17b86cbd00c2ede019c08758eb"
 uuid = "89763e89-9b03-5906-acba-b20f662cd828"
-version = "4.3.0+0"
+version = "4.3.0+1"
 
 [[Libuuid_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2370,9 +2388,9 @@ uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
 
 [[Ogg_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
+git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
-version = "1.3.5+0"
+version = "1.3.5+1"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2836,9 +2854,9 @@ version = "1.6.38+0"
 
 [[libvorbis_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Ogg_jll", "Pkg"]
-git-tree-sha1 = "c45f4e40e7aafe9d086379e5578947ec8b95a8fb"
+git-tree-sha1 = "b910cb81ef3fe6e78bf6acee440bda86fd6ae00c"
 uuid = "f27f6e37-5d2b-51aa-960f-b287f2bc3b7a"
-version = "1.3.7+0"
+version = "1.3.7+1"
 
 [[nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
@@ -2957,7 +2975,7 @@ version = "0.9.1+5"
 # ╟─dc2ccb67-79f1-4143-9d7b-f3b391c9f723
 # ╟─af1bbcd8-280d-409e-bf27-43809ebbff2f
 # ╟─db6ae21f-9f39-4555-ae90-eeec9e8ab318
-# ╟─f3ac8072-17ca-4def-8a3f-8c72a26dfe07
+# ╠═f3ac8072-17ca-4def-8a3f-8c72a26dfe07
 # ╟─c6f4c700-1c97-4927-bd86-b95013e5ebbf
 # ╟─15d63080-7bae-405e-96da-4a45a7601d6e
 # ╟─3d629b93-178b-48d9-83c4-e39529dd0255
@@ -3021,6 +3039,7 @@ version = "0.9.1+5"
 # ╟─c646af5e-40bc-4098-be50-566cc983048c
 # ╟─fb46eff9-a04e-4629-8e1d-fb0e209b7c54
 # ╟─de4bb176-c45e-4ed9-bfd0-eaee95b814ba
+# ╟─aabf0b08-2ccb-42b1-99f4-6c58d635d9c1
 # ╟─ebf95c96-c27d-4c5c-b5e7-73d2ba030d96
 # ╟─adb7801c-2631-4e55-bc29-dc87b7f47b18
 # ╟─9f32bc15-7ee6-4460-ae7d-8675479605aa

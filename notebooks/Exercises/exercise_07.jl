@@ -211,10 +211,10 @@ __Part 1__
 
 - This means that when interest rates decrease by 100 basis points, the value of Firm A's liability (in the form of the bond it has issued) increases by around ``$(roundmult(T4_1/(1+r4/100),1e-2))`` percent.
 
-``\$\\frac{\\Delta P_{10}}{P_{$(T4_1)}}= - MD_{$(T4_1)} \\times \\Delta y = - $(roundmult(T4_1/(1+r4/100),1e-2)) \\times (-1)=$(roundmult(T4_1/(1+r4/100),1e-2))\\%\$``.
+``\$\\frac{\\Delta P_{10}}{P_{$(T4_1)}}= - MD_{$(T4_1)} \\times \\Delta y = - $(roundmult(T4_1/(1+r4/100),1e-2)) \\times 0.01=$(roundmult(T4_1/(1+r4/100),1e-2))\\%\$``.
 
 - Thus the loss in dollar terms is 
-``\$\\Delta P_{10}= $(roundmult(T4_1/(1+r4/100),1e-2))\\% \\times P_{$(T4_1)}=$(roundmult(T4_1/(1+r4/100),1e-2))\\% \\times $(roundmult(F4_1/(1+(r4/100))^T4_1,1e-4)) = \\\$$(roundmult(T4_1/(1+r4/100)/100 * F4_1/(1+(r4/100))^T4_1,1e-4))\$``.
+``\$\\Delta P_{10}= $(-roundmult(T4_1/(1+r4/100),1e-2))\\% \\times P_{$(T4_1)}=$(-roundmult(T4_1/(1+r4/100),1e-2))\\% \\times $(roundmult(F4_1/(1+(r4/100))^T4_1,1e-4)) = -\\\$$(roundmult(T4_1/(1+r4/100)/100 * F4_1/(1+(r4/100))^T4_1,1e-4))\$``.
 
 ")
 
