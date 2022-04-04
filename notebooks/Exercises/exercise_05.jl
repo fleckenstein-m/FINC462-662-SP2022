@@ -451,7 +451,7 @@ t     |    1 year   |    2 year    |    3 year    |    4 year    |   5 year
 
 __Part 2__
 
-``\$ \\Delta P = -MD \\times \\Delta r\$ \\times P\$ = - $(roundmult(MD7,1e-6)) \\times 0.2\\% \\times $(roundmult(p7,1e-4)) = $(roundmult(-MD7*0.2/100*p7,1e-6))\$``
+``\$ \\Delta P = -MD \\times \\Delta r \\times P = - $(roundmult(MD7,1e-6)) \\times 0.2\\% \\times $(roundmult(p7,1e-4)) = $(roundmult(-MD7*0.2/100*p7,1e-6))\$``
 
 ")
 
