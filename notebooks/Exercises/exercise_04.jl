@@ -271,7 +271,7 @@ Markdown.parse("
 	
 	``\$\\downarrow\$``
 	
-	``\$P = $(2*C_Oct2022[1])\\times $(roundmult(DT_Oct2022[1],1e-4)) + $(C_Oct2022[2])\\times $(roundmult(DT_Oct2022[2],1e-4)) + $(C_Oct2022[3])\\times $(roundmult(DT_Oct2022[3],1e-4)) + $(C_Oct2022[4])\\times $(roundmult(DT_Oct2022[4],1e-4)) + $(C_Oct2022[5])\\times $(roundmult(DT_Oct2022[5],1e-4))\$``
+	``\$P = $(C_Oct2022[1])\\times $(roundmult(DT_Oct2022[1],1e-4)) + $(C_Oct2022[2])\\times $(roundmult(DT_Oct2022[2],1e-4)) + $(C_Oct2022[3])\\times $(roundmult(DT_Oct2022[3],1e-4)) + $(C_Oct2022[4])\\times $(roundmult(DT_Oct2022[4],1e-4)) + $(C_Oct2022[5])\\times $(roundmult(DT_Oct2022[5],1e-4))\$``
 	
 	``\$\\downarrow\$``
 	
@@ -1549,17 +1549,17 @@ version = "0.9.1+5"
 # ╟─7388c008-c7e0-4743-94ab-bf3c53fdfb25
 # ╟─9e6bf80d-0c7e-4c98-9f20-4990c51208fa
 # ╟─de1c4d1a-4236-4a33-bf54-27e9e4f5fbcb
-# ╠═29575c4c-b854-4ce1-9ac0-052b70c89b6b
-# ╠═cd00e881-9e27-44ac-8334-d64255bbc3be
-# ╠═c428cca3-52c1-4e98-86b0-053518a81c46
+# ╟─29575c4c-b854-4ce1-9ac0-052b70c89b6b
+# ╟─cd00e881-9e27-44ac-8334-d64255bbc3be
+# ╟─c428cca3-52c1-4e98-86b0-053518a81c46
 # ╟─a17dae49-72c7-4a15-b88b-8d684f0f7f87
 # ╟─f394b663-d91f-4de4-9fbe-826bf6b2a0ad
-# ╠═9c28bdfc-76ea-4125-9ca8-cc81007077e5
-# ╠═9023c41b-6481-44b9-93d4-431460dfc5b5
-# ╠═c0233306-7dfd-4a50-b870-411cd76998cb
+# ╟─9c28bdfc-76ea-4125-9ca8-cc81007077e5
+# ╟─9023c41b-6481-44b9-93d4-431460dfc5b5
+# ╟─c0233306-7dfd-4a50-b870-411cd76998cb
 # ╟─28cc06d5-f49c-4c9b-823b-c4e46aefc43d
-# ╠═82273fee-46a1-4049-9982-0d38d673b180
-# ╠═68b3b8eb-0d25-4107-a458-c056a9f9b469
+# ╟─82273fee-46a1-4049-9982-0d38d673b180
+# ╟─68b3b8eb-0d25-4107-a458-c056a9f9b469
 # ╟─9ce98cdc-0aa2-4797-8c5b-0a7435f5bf3d
 # ╟─3a556731-cbf6-4dbf-a7bf-02e1de8f0096
 # ╟─89fcb4d1-a469-47ad-9325-5a33fa53e4aa

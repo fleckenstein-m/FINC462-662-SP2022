@@ -299,7 +299,7 @@ Markdown.parse("
 1. First, calculate ``P(y+\\Delta y)``
  ``\$P(y+\\Delta y)= \\frac{C}{(y+\\Delta y)/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{(y+\\Delta y)}{2}\\right)^{2\\times T}} \\right) + \\frac{100}{\\left(1+\\frac{(y+\\Delta y)}{2}\\right)^{2\\times T}}\$``
 
-``\$P(y+\\Delta y)= \\frac{$C5}{$(y3+deltaY5)\\%/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{$(y5+deltaY5)\\%}{2}\\right)^{2\\times $T5}} \\right) + \\frac{100}{\\left(1+\\frac{$(y5+deltaY5)\\%}{2}\\right)^{2\\times $T5}}=$(roundmult(p5plus,1e-6))\$``
+``\$P(y+\\Delta y)= \\frac{$C5}{$(y5+deltaY5)\\%/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{$(y5+deltaY5)\\%}{2}\\right)^{2\\times $T5}} \\right) + \\frac{100}{\\left(1+\\frac{$(y5+deltaY5)\\%}{2}\\right)^{2\\times $T5}}=$(roundmult(p5plus,1e-6))\$``
 
 2. Second, calculate ``P(y-\\Delta y)``
  ``\$P(y-\\Delta y)= \\frac{C}{(y-\\Delta y)/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{(y-\\Delta y)}{2}\\right)^{2\\times T}} \\right) + \\frac{100}{\\left(1+\\frac{(y-\\Delta y)}{2}\\right)^{2\\times T}}\$``
@@ -398,7 +398,7 @@ end
 Markdown.parse("
 > Suppose you are given a $(T7)-year bond with face value F=\\\$$(F7) and coupon rate c=$(c7) percent. Assume that coupons are paid annually and that the term structure of interest rates (annually compounded rates) is as given below. 
 > - Part 1) Calculate the modified duration `MD` of this bond.
-> - Part 2) Suppose the term structure of interest rates shifts up by 0.2 percent. Calculate the approximate dollar price change of the bond.")
+> - Part 2) Suppose the term structure of interest rates shifts up by 0.1 percent. Calculate the approximate dollar price change of the bond.")
 
 # ╔═╡ 6c502b38-5061-485a-a219-2fe7488d0f71
 md"""
@@ -430,17 +430,17 @@ __Part 1__
 - Shifting the term structure up by ``+\\Delta r`` gives us
  t     |    1 year   |    2 year    |    3 year    |    4 year    |   5 year   
 :-----|:--------|:--------|:--------|:--------|:------
-``r_t``     | ``r_1=$(r7vecplus[1])`` | ``r_2=$(r7vecplus[2])`` | ``r_3=$(r7vecplus[3])`` |``r_4=$(r7vecplus[4])``% |``r_5=$(r7vecplus[5])``
+``r_t``     | ``r_1=$(r7vecplus[1])\\%`` | ``r_2=$(r7vecplus[2])\\%`` | ``r_3=$(r7vecplus[3])\\%`` |``r_4=$(r7vecplus[4])\\%``% |``r_5=$(r7vecplus[5])\\%``
 
-``\$P^+ = \\frac{$(C7vec[1])}{(1+$(r7vecplus[1]))^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vecplus[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vecplus[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vecplus[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vecplus[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7plus,1e-6))\$``
+``\$P^+ = \\frac{$(C7vec[1])}{(1+$(r7vecplus[1])\\%)^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vecplus[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vecplus[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vecplus[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vecplus[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7plus,1e-6))\$``
 
 - Shifting the term structure down by ``-\\Delta r=-0.1\\%`` gives us
 t     |    1 year   |    2 year    |    3 year    |    4 year    |   5 year   
 :-----|:--------|:--------|:--------|:--------|:------
-``r_t``     | ``r_1=$(r7vecminus[1])`` | ``r_2=$(r7vecminus[2])`` | ``r_3=$(r7vecminus[3])`` |``r_4=$(r7vecminus[4])``% |``r_5=$(r7vecminus[5])``
+``r_t``     | ``r_1=$(r7vecminus[1])\\%`` | ``r_2=$(r7vecminus[2])\\%`` | ``r_3=$(r7vecminus[3])\\%`` |``r_4=$(r7vecminus[4])\\%``% |``r_5=$(r7vecminus[5])\\%``
 
 
-``\$P^- = \\frac{$(C7vec[1])}{(1+$(r7vecminus[1]))^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vecminus[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vecminus[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vecminus[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vecminus[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7minus,1e-6))\$``
+``\$P^- = \\frac{$(C7vec[1])}{(1+$(r7vecminus[1])\\%)^{$(dt7vec[1])}} + \\frac{$(C7vec[2])}{(1+$(r7vecminus[2])\\%)^{$(dt7vec[2])}} + \\frac{$(C7vec[3])}{(1+$(r7vecminus[3])\\%)^{$(dt7vec[3])}}+ \\frac{$(C7vec[4])}{(1+$(r7vecminus[4])\\%)^{$(dt7vec[4])}}+ \\frac{$(C7vec[5])}{(1+$(r7vecminus[5])\\%)^{$(dt7vec[5])}} = $(roundmult(p7minus,1e-6))\$``
 
 - Thus, the modified duration ``MD`` is
 
