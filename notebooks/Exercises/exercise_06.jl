@@ -354,7 +354,7 @@ __Part 1__
 =\\frac{$C2}{$y2minus\\%/2} \\times \\left(1-\\frac{1}{\\left(1+\\frac{$y2minus\\%}{2}\\right)^{2\\times $T2}} \\right) + \\frac{$F2}{\\left(1+\\frac{$y2minus\\%}{2}\\right)^{2\\times $T2}} = $(roundmult(P2minus,1e-4))\$``
 
 - Thus,
-``\$\\textrm{CX} = \\frac{$(roundmult(P2plus,1e-4))+$(roundmult(P2minus,1e-4))-2\\times $(roundmult(P2,1e-4))}{($(roundmult(deltaY2,1e-4)))^2} \\times \\frac{1}{$(roundmult(P2,1e-4))}=$(roundmult(CX2,1e-6))
+``\$\\textrm{CX} = \\frac{$(roundmult(P2plus,1e-4))+$(roundmult(P2minus,1e-4))-2\\times $(roundmult(P2,1e-4))}{($(roundmult(deltaY2,1e-4))\\%)^2} \\times \\frac{1}{$(roundmult(P2,1e-4))}=$(roundmult(CX2,1e-6))
 \$``
 
 __Part 2__
@@ -566,7 +566,7 @@ __Part 1__
 =\\frac{$C3}{$y3minus\\%/2} \\times \\left(1-\\frac{1}{\\left(1+\\frac{$y3minus\\%}{2}\\right)^{2\\times $T3}} \\right) + \\frac{$F3}{\\left(1+\\frac{$y3minus\\%}{2}\\right)^{2\\times $T3}} = $(roundmult(P3minus,1e-4))\$``
 
 - Thus,
-``\$\\textrm{CX} = \\frac{$(roundmult(P3plus,1e-4))+$(roundmult(P3minus,1e-4))-2\\times $(roundmult(P3,1e-4))}{($(roundmult(deltaY3,1e-4)))^2} \\times \\frac{1}{$(roundmult(P3,1e-4))}=$(roundmult(CX3,1e-6))
+``\$\\textrm{CX} = \\frac{$(roundmult(P3plus,1e-4))+$(roundmult(P3minus,1e-4))-2\\times $(roundmult(P3,1e-4))}{($(roundmult(deltaY3,1e-4))\\%)^2} \\times \\frac{1}{$(roundmult(P3,1e-4))}=$(roundmult(CX3,1e-6))
 \$``
 
 __Part 2__
