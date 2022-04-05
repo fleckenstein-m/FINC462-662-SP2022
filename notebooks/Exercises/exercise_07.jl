@@ -50,13 +50,13 @@ begin
 	
 
 	#Sets the width of the cells
-	#begin
-	#	html"""<style>
-	#	main {
-	#		max-width: 900px;
-	#	}
-	#	"""
-	#end
+	begin
+		html"""<style>
+		main {
+			max-width: 1000px;
+		}
+		"""
+	end
 
 
 	#Sets the height of displayed tables
@@ -658,7 +658,7 @@ $$\begin{aligned}
         100(-26.4923) = x(-3.9024) + z(-19.4175)
 \end{aligned}$$
 
-- Convexity Equation ($(\Delta y)^2$ part) 
+- Convexity Equation $(\Delta y)^2$ part) 
 $$\begin{aligned}
 100\left(\frac{1}{2}\right)(1397.3517) = x\left(\frac{1}{2}\right)(19.0363) + z\left(\frac{1}{2}\right)(395.8903)
 \end{aligned}$$
