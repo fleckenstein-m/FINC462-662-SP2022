@@ -1300,15 +1300,15 @@ md"""
 {2.7737}&{429.9186}
 \\end{array}} \\right)\$
 \$b = \\left( {\\begin{array}{*{20}{c}}
-{9495.8093}\\\\
+{6495.8093}\\\\
 {34352.8377}
 \\end{array}} \\right)\$
   - Step 1: Open a new Excel spreadsheet and type in the equations as shown below in columns A, B, C, and D (in rows 1 and 2, respectively).
- A       | B        |  C         | D
- :-------|:---------|:-----------|:----------
- -1.9231 | -28.8462 | -6495.8093 | 6495.8093
- 2.7737	 | 429.9186	| 34352.8377 | 34352.8377
-  - Step 2: go into a blank cell and enter `=MMULT(MINVERSE(A2:B3),C2:C3)` and press Enter.
+ A       | B        |  C         |
+ :-------|:---------|:-----------|
+ 1.9231  |  28.8462 | 6495.8093  |
+ 2.7737	 | 429.9186	| 34352.8377 |
+  - Step 2: go into a blank cell and enter `=MMULT(MINVERSE(A1:B2),C1:C2)` and press Enter.
 - Excel will show the result
 \$\\left( {\\begin{array}{*{20}{c}}
 {2412.698228}\\\\
