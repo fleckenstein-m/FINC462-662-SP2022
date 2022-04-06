@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.18.1
+# v0.18.2
 
 using Markdown
 using InteractiveUtils
@@ -286,7 +286,7 @@ end
 
 # ╔═╡ fdf200f3-a0d6-4399-8959-fc46a240d8bd
 Markdown.parse("
-> - Compute the modified duration of a Treasury note with time-to-maturity in ``T=$T5`` years, coupon rate ``c=$c5`` %, and yield to maturity ``y=$y5`` %. Suppose the face value of the note is \\\$``$F5``. Use the (approximate) modified duration formula and pick ``\\Delta y=$deltaY5``% (20 basis points).")
+> - Compute the modified duration of a Treasury note with time-to-maturity in ``T=$T5`` years, coupon rate ``c=$c5`` %, and yield to maturity ``y=$y5`` %. Suppose the face value of the note is \\\$``$F5``. The current market price of the note is 981.7846. Use the (approximate) modified duration formula and pick ``\\Delta y=$deltaY5``% (20 basis points).")
 
 # ╔═╡ 36f273da-d230-4197-a5bb-e3b68d754df2
 md"""
@@ -397,8 +397,8 @@ end
 # ╔═╡ c67d4817-b345-440c-93b4-584ddf0eec0e
 Markdown.parse("
 > Suppose you are given a $(T7)-year bond with face value F=\\\$$(F7) and coupon rate c=$(c7) percent. Assume that coupons are paid annually and that the term structure of interest rates (annually compounded rates) is as given below. 
-> - Part 1) Calculate the modified duration `MD` of this bond.
-> - Part 2) Suppose the term structure of interest rates shifts up by 0.1 percent. Calculate the approximate dollar price change of the bond.")
+> - Part 1) Calculate the modified duration `MD` of this bond. In calculating the modified duration, use a parallel shift of the yield curve of 0.1%.
+> - Part 2) Suppose the term structure of interest rates shifts up by 0.2 percent. Calculate the approximate dollar price change of the bond.")
 
 # ╔═╡ 6c502b38-5061-485a-a219-2fe7488d0f71
 md"""
