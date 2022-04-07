@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.18.2
+# v0.18.1
 
 using Markdown
 using InteractiveUtils
@@ -1378,7 +1378,7 @@ md"""
 
 # ╔═╡ f1c19865-cd68-4e9d-a9ca-5952ce2479b7
 begin
-	deltaY43vec = [-3,-2,0,-1,1,2,3]
+	deltaY43vec = [-3,-2,-1,0,1,2,3]
 	portVal43 = zeros(length(deltaY43vec))
 	for idx=1:length(portVal43)
 		portVal43[idx] = (sol4[1]*(1+r4/100)^T4_2)/(1+(r4+deltaY4vec[idx])/100)^T4_2 + (sol4[2]*(1+r4/100)^T4_3)/(1+(r4+deltaY4vec[idx])/100)^T4_3 - F4_1/(1+(r4+deltaY4vec[idx])/100)^T4_1
