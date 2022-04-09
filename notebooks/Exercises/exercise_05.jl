@@ -297,14 +297,14 @@ md"""
 Markdown.parse("
 
 1. First, calculate ``P(y+\\Delta y)``
- ``\$P(y+\\Delta y)= \\frac{C}{(y+\\Delta y)/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{(y+\\Delta y)}{2}\\right)^{2\\times T}} \\right) + \\frac{100}{\\left(1+\\frac{(y+\\Delta y)}{2}\\right)^{2\\times T}}\$``
+ ``\$P(y+\\Delta y)= \\frac{C}{(y+\\Delta y)/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{(y+\\Delta y)}{2}\\right)^{2\\times T}} \\right) + \\frac{$(F5)}{\\left(1+\\frac{(y+\\Delta y)}{2}\\right)^{2\\times T}}\$``
 
-``\$P(y+\\Delta y)= \\frac{$C5}{$(y5+deltaY5)\\%/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{$(y5+deltaY5)\\%}{2}\\right)^{2\\times $T5}} \\right) + \\frac{100}{\\left(1+\\frac{$(y5+deltaY5)\\%}{2}\\right)^{2\\times $T5}}=$(roundmult(p5plus,1e-6))\$``
+``\$P(y+\\Delta y)= \\frac{$C5}{$(y5+deltaY5)\\%/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{$(y5+deltaY5)\\%}{2}\\right)^{2\\times $T5}} \\right) + \\frac{$(F5)}{\\left(1+\\frac{$(y5+deltaY5)\\%}{2}\\right)^{2\\times $T5}}=$(roundmult(p5plus,1e-6))\$``
 
 2. Second, calculate ``P(y-\\Delta y)``
- ``\$P(y-\\Delta y)= \\frac{C}{(y-\\Delta y)/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{(y-\\Delta y)}{2}\\right)^{2\\times T}} \\right) + \\frac{100}{\\left(1+\\frac{(y-\\Delta y)}{2}\\right)^{2\\times T}}\$``
+ ``\$P(y-\\Delta y)= \\frac{C}{(y-\\Delta y)/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{(y-\\Delta y)}{2}\\right)^{2\\times T}} \\right) + \\frac{$(F5)}{\\left(1+\\frac{(y-\\Delta y)}{2}\\right)^{2\\times T}}\$``
 
-``\$P(y+\\Delta y)= \\frac{$C5}{$(y5-deltaY5)\\%/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{$(y5-deltaY5)\\%}{2}\\right)^{2\\times $T5}} \\right) + \\frac{100}{\\left(1+\\frac{$(y5-deltaY5)\\%}{2}\\right)^{2\\times $T5}} =$(roundmult(p5minus,1e-6))\$``
+``\$P(y+\\Delta y)= \\frac{$C5}{$(y5-deltaY5)\\%/2} \\times \\left( 1-\\frac{1}{\\left(1+\\frac{$(y5-deltaY5)\\%}{2}\\right)^{2\\times $T5}} \\right) + \\frac{$(F5)}{\\left(1+\\frac{$(y5-deltaY5)\\%}{2}\\right)^{2\\times $T5}} =$(roundmult(p5minus,1e-6))\$``
 
 3. Third, plug in the values into the (approximate) modified duration formula.
 ``\$MD(y) = - \\frac{P(y+\\Delta y)-P(y-\\Delta y)}{2\\times \\Delta y} \\times \\frac{1}{P(y)}\$``
@@ -539,7 +539,7 @@ XLSX = "~0.7.8"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.6.5"
+julia_version = "1.6.3"
 manifest_format = "2.0"
 
 [[deps.AbstractPlutoDingetjes]]
