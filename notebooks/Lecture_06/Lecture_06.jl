@@ -1364,7 +1364,7 @@ Position                   | Units   | t=0        | t=0.5     | t=1
 
 Replicating Portfolio        | Units    | t=0        | t=0.5     | t=1
 :----------------------------|:---------|:-----------|:----------|:-----------
-1-yr bond, 2.5% coupon rate  | 1.01235  | -100.53    |  1.2654   | 102.50
+1-yr bond, 2.5% coupon rate  | 1.01235  | -101.77    |  1.2654   | 102.50
 0.5-yr bond, 0% coupon rate  | 0.012346 | -1.22      |  1.2346   | 0 
 Total of Replicating Portfolio|         | -102.99    |  2.5      | 102.50
 

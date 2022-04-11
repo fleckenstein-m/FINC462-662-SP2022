@@ -500,7 +500,7 @@ md"""
 	
 	Replicating Portfolio        | Units   | t=0        | t=0.5     | t=1
 	:----------------------------|:--------|:-----------|:----------|:-----------
-	1-yr bond, 2.5% coupon rate  | 1       | -100.53    |  1.25     | 101.25
+	1-yr bond, 2.5% coupon rate  | 1       | -104.2533  |  1.25     | 101.25
 	0.5-yr bond, 0% coupon rate  |         |            |           | 
 	Total of Replicating Portfolio| | |
 	
@@ -512,7 +512,7 @@ md"""
 	- We need to make up the difference of $5.0-1.29629625=3.70370375$.
 	- Thus, we buy a 6-month zero coupon bond with face value of $3.70370375$. 
 	- This costs, $3.70370375 \times \frac{98.81}{100}=3.659629675$
-	- Thus, the price of the 1-year coupon with coupon rate of 5.0% must be equal to $100.53 + 3.659629675 = 104.1896297$.
+	- Thus, the price of the 1-year coupon with coupon rate of 5.0% must be equal to $104.2533 + 3.6596 = 107.913$.
 
 """
 
