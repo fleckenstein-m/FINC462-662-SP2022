@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.19.0
 
 using Markdown
 using InteractiveUtils
@@ -138,7 +138,7 @@ begin
 	<p style="padding-bottom:1cm"> </p>
 	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> The TIPS-Treasury Bond Puzzle</b> <p>
 	<p style="padding-bottom:1cm"> </p>
-	<p align=center style="font-size:25px; font-family:family:Georgia"> Winter 2022 <p>
+	<p align=center style="font-size:25px; font-family:family:Georgia"> Spring 2022 <p>
 	<p style="padding-bottom:1cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> Prof. Matt Fleckenstein </div>
 	<p style="padding-bottom:0.5cm"> </p>
@@ -683,13 +683,21 @@ md"""
 $$102 \times (1+f)^{0.5} = 102 \times (1+0.9828\%)^{0.5} = 102.50$$
 - This is a deterministic cash flow that does not depend on future inflation.
 - Suppose the market price of the TIPS is 100, and that the market price of a Treasury note with six months to maturity and coupon rate of 5% is 102.
+"""
+
+# ╔═╡ 3e23d630-4e11-4a52-8748-d66b02d1bfd4
+md"""
 - Next, we take a short position in the Treasury note and buy the TIPS. 
 - We pay $100 for the TIPS and get $102 in cash from shorting the Treasury notes.
 - Our net cash flow is 102 - 100 = 2.
+"""
+
+# ╔═╡ 7275809f-4e12-44aa-b7e1-ec9a2b33f870
+md"""
 - What is our obligation to pay in six months?
-- First, we need to close out the short in the Treasury note and pay $102.50. Thus, we have a cash outflow of -102.50.
-- Second, we have a cash flow from the long TIPS position and the inflation swap of $102.5. This is a cash inflow of 102.50.
-- Our net cash flow is -102.5 + 102.5 = 0. Thus, we have zero cash flow in six months.
+  - First, we need to close out the short in the Treasury note and pay $102.50. Thus, we have a cash outflow of -102.50.
+  - Second, we have a cash flow from the long TIPS position and the inflation swap of $102.5. This is a cash inflow of 102.50.
+  - Our net cash flow is -102.5 + 102.5 = 0. Thus, we have zero cash flow in six months.
 - However, we pocketed $2 upfront. 
 - This is an arbitrage since we collect $2 now and have no future obligation in six months.
 - This is the TIPS-Treasury arbitrage trading strategy in simplified form.
@@ -1395,6 +1403,7 @@ Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
@@ -1732,6 +1741,12 @@ git-tree-sha1 = "f6250b16881adf048549549fba48b1161acdac8c"
 uuid = "c1c5ebd0-6772-5130-a774-d5fcae4a789d"
 version = "3.100.1+0"
 
+[[LERC_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "bf36f528eec6634efc60d7ec062008f171071434"
+uuid = "88015f11-f218-50d7-93a8-a6af411a945d"
+version = "3.0.0+1"
+
 [[LZO_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "e5b909bcf985c5e2605737d2ce278ed791b89be6"
@@ -1805,10 +1820,10 @@ uuid = "4b2f31a3-9ecc-558c-b454-b3730dcb73e9"
 version = "2.35.0+0"
 
 [[Libtiff_jll]]
-deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
-git-tree-sha1 = "340e257aada13f95f98ee352d316c3bed37c8ab9"
+deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "LERC_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
+git-tree-sha1 = "c9551dd26e31ab17b86cbd00c2ede019c08758eb"
 uuid = "89763e89-9b03-5906-acba-b20f662cd828"
-version = "4.3.0+0"
+version = "4.3.0+1"
 
 [[Libuuid_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1876,9 +1891,9 @@ uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
 
 [[Ogg_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
+git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
-version = "1.3.5+0"
+version = "1.3.5+1"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2309,9 +2324,9 @@ version = "1.6.38+0"
 
 [[libvorbis_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Ogg_jll", "Pkg"]
-git-tree-sha1 = "c45f4e40e7aafe9d086379e5578947ec8b95a8fb"
+git-tree-sha1 = "b910cb81ef3fe6e78bf6acee440bda86fd6ae00c"
 uuid = "f27f6e37-5d2b-51aa-960f-b287f2bc3b7a"
-version = "1.3.7+0"
+version = "1.3.7+1"
 
 [[nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
@@ -2420,7 +2435,9 @@ version = "0.9.1+5"
 # ╟─d3fb968d-3aa3-44e0-ba8b-13ba61cc6a5b
 # ╟─917d6d5e-bc3d-4f24-b51b-e86533e682ab
 # ╟─921402f8-a70c-4b45-b134-7fd70f0c699a
-# ╟─faaaae87-46e9-4fbd-82e0-6ac979f332ee
+# ╠═faaaae87-46e9-4fbd-82e0-6ac979f332ee
+# ╠═3e23d630-4e11-4a52-8748-d66b02d1bfd4
+# ╟─7275809f-4e12-44aa-b7e1-ec9a2b33f870
 # ╟─c24ef65a-7dde-4f06-bfd0-c15e2f769822
 # ╟─361360cb-bdf4-4f99-8ccc-3fee22847dd2
 # ╟─5fea7742-70a3-4a8e-892d-c70a953b0fcf
