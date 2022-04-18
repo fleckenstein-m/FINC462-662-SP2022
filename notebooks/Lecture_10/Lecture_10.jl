@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.19.0
 
 using Markdown
 using InteractiveUtils
@@ -389,7 +389,7 @@ md"""
 # ╔═╡ da277a3f-6778-4f14-89c4-a3b9c93a9fe1
 Markdown.parse("
 - The first cash flow on the floating leg is calculated using today's 3-month Treasury rate ``r(0.25)=$(rVec_1[1])\\%``.
-``\$L(12/31/2017) = \\frac{$(rVec_1[1])\\%}{4} \\times N = \\frac{$(rVec_1[1])\\%}{4} \\times $(FSwap_1) = \$ $(roundmult(FSwap_1*rVec_1[1]/400,1e-4))\$`` 
+``\$L(3/31/2018) = \\frac{$(rVec_1[1])\\%}{4} \\times N = \\frac{$(rVec_1[1])\\%}{4} \\times $(FSwap_1) = \$ $(roundmult(FSwap_1*rVec_1[1]/400,1e-4))\$`` 
 ")
 
 # ╔═╡ bc055004-1bd9-43b6-bb4f-82c9e71fca29
@@ -404,7 +404,7 @@ Markdown.parse("
 - We receive a cash flow calculated using the 3-month Treasury rate which was set at the beginning of the quarter, i.e. this cash flow is based on the 3-month Treasury rate from three-months before the cash flow date.
   - Suppose that the three-month Treasury rate was 1.73%.
   - This means that the floating payment on 6/30/2018 will be 
-``\$L(3/31/2018) = \\frac{1.73\\%}{4} \\times N = \\frac{1.73\\%}{4} \\times $(FSwap_1) = \$ $(roundmult(FSwap_1*1.73/400,1e-4))\$`` 
+``\$L(6/30/2018) = \\frac{1.73\\%}{4} \\times N = \\frac{1.73\\%}{4} \\times $(FSwap_1) = \$ $(roundmult(FSwap_1*1.73/400,1e-4))\$`` 
 
 ")
 
@@ -416,8 +416,8 @@ md"""
 # ╔═╡ 13bf94c0-b4d8-4fa4-82ad-6b8f4f5b2e69
 Markdown.parse("
 - Let's suppose the 3-month Treasury rates on 6/30/2018, and on 9/30/2018 are 1.93% and 2.19% respectively. Thus, the floating rate cash flows are
-``\$L(6/30/2018) = \\frac{1.93\\%}{4} \\times N = \\frac{1.93\\%}{4} \\times $(FSwap_1) = \$ $(roundmult(FSwap_1*1.93/400,1e-4))\$`` 
-``\$L(9/30/2018) = \\frac{2.19\\%}{4} \\times N = \\frac{2.19\\%}{4} \\times $(FSwap_1) = \$ $(roundmult(FSwap_1*2.19/400,1e-4))\$`` 
+``\$L(9/30/2018) = \\frac{1.93\\%}{4} \\times N = \\frac{1.93\\%}{4} \\times $(FSwap_1) = \$ $(roundmult(FSwap_1*1.93/400,1e-4))\$`` 
+``\$L(12/31/2018) = \\frac{2.19\\%}{4} \\times N = \\frac{2.19\\%}{4} \\times $(FSwap_1) = \$ $(roundmult(FSwap_1*2.19/400,1e-4))\$`` 
 ")
 
 # ╔═╡ fb1342f6-85d0-4968-a60b-48a91479dc4c
@@ -1913,6 +1913,7 @@ Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
 Luxor = "ae8d54c2-7ccd-5906-9d76-62fc9837b5bc"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
@@ -2313,6 +2314,12 @@ git-tree-sha1 = "f6250b16881adf048549549fba48b1161acdac8c"
 uuid = "c1c5ebd0-6772-5130-a774-d5fcae4a789d"
 version = "3.100.1+0"
 
+[[LERC_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "bf36f528eec6634efc60d7ec062008f171071434"
+uuid = "88015f11-f218-50d7-93a8-a6af411a945d"
+version = "3.0.0+1"
+
 [[LZO_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "e5b909bcf985c5e2605737d2ce278ed791b89be6"
@@ -2392,10 +2399,10 @@ uuid = "925c91fb-5dd6-59dd-8e8c-345e74382d89"
 version = "2.52.4+0"
 
 [[Libtiff_jll]]
-deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
-git-tree-sha1 = "340e257aada13f95f98ee352d316c3bed37c8ab9"
+deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "LERC_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
+git-tree-sha1 = "c9551dd26e31ab17b86cbd00c2ede019c08758eb"
 uuid = "89763e89-9b03-5906-acba-b20f662cd828"
-version = "4.3.0+0"
+version = "4.3.0+1"
 
 [[Libuuid_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2475,9 +2482,9 @@ uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
 
 [[Ogg_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
+git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
-version = "1.3.5+0"
+version = "1.3.5+1"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2936,9 +2943,9 @@ version = "1.6.38+0"
 
 [[libvorbis_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Ogg_jll", "Pkg"]
-git-tree-sha1 = "c45f4e40e7aafe9d086379e5578947ec8b95a8fb"
+git-tree-sha1 = "b910cb81ef3fe6e78bf6acee440bda86fd6ae00c"
 uuid = "f27f6e37-5d2b-51aa-960f-b287f2bc3b7a"
-version = "1.3.7+0"
+version = "1.3.7+1"
 
 [[nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
