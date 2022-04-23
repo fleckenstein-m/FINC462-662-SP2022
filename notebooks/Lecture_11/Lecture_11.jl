@@ -444,7 +444,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 8c4b9294-568c-49bf-a760-c54da18de10d
 md"""
-## Reference CPI Caluclation Example for January 25, 1997
+## Reference CPI Calculation Example for January 25, 1997
 - To find the **Reference CPI** for any date in Janurary 1997, we first find the **Reference CPI** index levels for January 1, 1997 and for February 1, 1997.
   - The **Reference CPI** level is the US CPI-U index from three months prior.
   - For January this is the CPI-U from October 1996 (published by the BLS in November) and for February this is the CPI-U from November 1996 (published by the BLS in December).
@@ -668,7 +668,11 @@ md"""
     - For simplicity, we ignore the deflation option for now.
   - Inflation-adjusted coupon cash flow: $(c/2) \times I_{0.5} \times 100 = 0.02 \times I_{0.5} \times 100$
 - The total cash flow from the TIPS is:
-$$102 \times I_{0.5} = 102$$
+$$\left[100 \times I_{0.5}\right] + \left[2 \times I_{0.5}\right] = 102 \times I_{0.5}$$
+"""
+
+# ╔═╡ b9c01bbc-1563-4a58-b2ff-1d70f5f10c43
+md"""
 - Next, suppose we enter into an inflation swap with notional amount of $102 as inflation seller. Let the fixed rate on the inflation swap be 0.9828%, i.e. $$f=0.009828$$.
 - The net cash flow on the inflation swap is
 $$102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1]$$
@@ -682,13 +686,18 @@ md"""
 - Simplifying
 $$102 \times (1+f)^{0.5} = 102 \times (1+0.9828\%)^{0.5} = 102.50$$
 - This is a deterministic cash flow that does not depend on future inflation.
+
+"""
+
+# ╔═╡ 01a5c636-23fb-4e6f-aca5-9bdab11fa66a
+md"""
 - Suppose the market price of the TIPS is 100, and that the market price of a Treasury note with six months to maturity and coupon rate of 5% is 102.
 """
 
 # ╔═╡ 3e23d630-4e11-4a52-8748-d66b02d1bfd4
 md"""
 - Next, we take a short position in the Treasury note and buy the TIPS. 
-- We pay $100 for the TIPS and get $102 in cash from shorting the Treasury notes.
+- We pay $100 for the TIPS and get $102 in cash from shorting the Treasury note.
 - Our net cash flow is 102 - 100 = 2.
 """
 
@@ -712,15 +721,14 @@ md"""
   - Inflation-adjusted principal: $$100\times I_{0.5}$$  
     - For simplicity, we ignore the deflation option for now.
   - Inflation-adjusted coupon cash flow: $(c/2) \times I_{0.5} \times 100 = 0.02 \times I_{0.5} \times 100$
-- The total cash flow from the TIPS is:
-$$102 \times I_{0.5} = 102$$
+$$\left[100 \times I_{0.5}\right] + \left[2 \times I_{0.5}\right] = 102 \times I_{0.5}$$
 """
 
 # ╔═╡ 361360cb-bdf4-4f99-8ccc-3fee22847dd2
 md"""
 - Next, suppose we enter into an inflation swap with notional amount of $102 as inflation seller. Let the fixed rate on the inflation swap be 0.9828%, i.e. $$f=0.009828$$.
 - The net cash flow on the inflation swap is
-$$102 \times [(1+f)^{0.5}-1] - 102 [\times I_{0.5}-1]$$
+$$102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1]$$
 - The total cash flow of the TIPS and the inflation swap is:
 $$102 \times I_{0.5} + \left(102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1] \right)$$
 """
@@ -735,11 +743,18 @@ md"""
 - Simplifying
 $$102 \times (1+f)^{0.5} = 102 \times (1+0.9828\%)^{0.5} = 102.50$$
 - This is a deterministic cash flow that does not depend on future inflation.
-- Suppose the market price of the TIPS is 100, and that the market price of a Treasury note with six months to maturity and coupon rate of 6% is 102.
-- Next, we take a short position in the Treasury note and buy the TIPS. 
-- We pay $100 for the TIPS and get $102 in cash from shorting the Treasury notes.
-- Our net cash flow is 102 - 100 = 2.
+"""
 
+# ╔═╡ 56d6b975-f6d4-447b-a67b-02954f75286e
+md"""
+- Suppose the market price of the TIPS is 100, and that the market price of a Treasury note with six months to maturity and coupon rate of __6%__ is 102.
+"""
+
+# ╔═╡ 9ee52d27-ec6b-4e0d-9696-48e9dd88c7ce
+md"""
+- Next, we take a short position in the Treasury note and buy the TIPS. 
+- We pay $100 for the TIPS and get $102 in cash from shorting the Treasury note.
+- Our net cash flow is 102 - 100 = 2.
 """
 
 # ╔═╡ 1771917d-3f40-495d-ad52-50bf674ff0b6
@@ -753,6 +768,10 @@ md"""
 - First, we need to close out the short in the Treasury note and pay $103. Thus, we have a cash outflow of -103.00.
 - Second, we have a cash flow from the long TIPS position and the inflation swap of $102.5. This is a cash inflow of 102.50.
 - Our net cash flow is -103 + 102.5 = -0.50. 
+"""
+
+# ╔═╡ c27b5057-3d36-4a80-94f3-d8421874d3b8
+md"""
 - Thus, we have non-zero cash outflow of fifty cents in six months.
 - We want to have zero cash flows in six months. How can we achive this?
 - Recall that there are STRIPS which are zero coupon bonds with just one cash flow at maturity.
@@ -769,6 +788,10 @@ md"""
 - Suppose the price of a 6-month Treasury STRIPS is 99.50 (per 100 par value). The STRIPS will give us a cash inflow of 100 in 6 months.
 - Since we need \$0.50, we buy \$0.50 par value of this STRIPS.
 - This costs us 0.50/100 * 99.50 = $0.4975.
+"""
+
+# ╔═╡ a0bf1aaa-edfb-409f-a2ec-eccc00e9b95f
+md"""
 - Thus, our cash flow today is now the cash inflow of 2 (from the long TIPS and short Treasury note) and the cash outflow of 0.4975 from the STRIPS.
 - This is a net cash flow today of 2 - 0.4975 = 1.5025.
 - We now have zero cash flow in six months and a positive cash flow of 1.5025 today.
@@ -782,7 +805,7 @@ md"""
 
 # ╔═╡ 27038fd7-4dc4-4dd5-87dd-0032478d0622
 md"""
-- This table uses real market data on 12/30/2008 and shows the cash flows associated with 
+- The next table uses real market data on 12/30/2008 and shows the cash flows associated with 
   - the 7.625% Treasury bond with maturity date January 15, 2025, and 
   - the cash flows from the replicating strategy using the 2.375% TIPS issue with the same maturity date that replicates the cash flows of the Treasury bond. 
 - Note: 
@@ -841,9 +864,21 @@ md"""
 md"""
 - The table shows the actual cash flows that would result from applying the arbitrage strategy on December 30, 2008, to replicate the 7.625% coupon Treasury bond maturing on February 15, 2025. 
 - As shown, the price of the Treasury bond is **$169.479.** 
+"""
+
+# ╔═╡ ac297a30-ce58-4c07-b72f-df4a149dc565
+md"""
 - To replicate the Treasury bond’s cash flows, the arbitrageur buys a 2.375% coupon TIPS issue with the same maturity date for a price of $101.225. 
+"""
+
+# ╔═╡ 8eaece30-202e-4e8b-a16b-adb3375f008c
+md"""
 - Since there are 33 semiannual coupon payment dates, 33 inflation swaps are executed with the indicated notional amounts.
 - Finally, positions in Treasury STRIPS of varying small notional amounts are also taken by the arbitrageur. 
+"""
+
+# ╔═╡ b729c130-5813-4eab-92a1-673a8d29a897
+md"""
 - The net cash flows from the replicating strategy exactly match those from the Treasury bond, but at a cost of only **$146.379.**
 - Thus, the cash flows from the Treasury bond can be replicated at a cost that is **\$23.10** less than that of the Treasury bond.
 """
@@ -1982,9 +2017,9 @@ uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 
 [[Qt5Base_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Fontconfig_jll", "Glib_jll", "JLLWrappers", "Libdl", "Libglvnd_jll", "OpenSSL_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libxcb_jll", "Xorg_xcb_util_image_jll", "Xorg_xcb_util_keysyms_jll", "Xorg_xcb_util_renderutil_jll", "Xorg_xcb_util_wm_jll", "Zlib_jll", "xkbcommon_jll"]
-git-tree-sha1 = "ad368663a5e20dbb8d6dc2fddeefe4dae0781ae8"
+git-tree-sha1 = "c6c0f690d0cc7caddb74cef7aa847b824a16b256"
 uuid = "ea2cea3b-5b76-57ae-a6ef-0a8af62496e1"
-version = "5.15.3+0"
+version = "5.15.3+1"
 
 [[REPL]]
 deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
@@ -2435,22 +2470,31 @@ version = "0.9.1+5"
 # ╟─d3fb968d-3aa3-44e0-ba8b-13ba61cc6a5b
 # ╟─917d6d5e-bc3d-4f24-b51b-e86533e682ab
 # ╟─921402f8-a70c-4b45-b134-7fd70f0c699a
-# ╠═faaaae87-46e9-4fbd-82e0-6ac979f332ee
-# ╠═3e23d630-4e11-4a52-8748-d66b02d1bfd4
+# ╟─b9c01bbc-1563-4a58-b2ff-1d70f5f10c43
+# ╟─faaaae87-46e9-4fbd-82e0-6ac979f332ee
+# ╟─01a5c636-23fb-4e6f-aca5-9bdab11fa66a
+# ╟─3e23d630-4e11-4a52-8748-d66b02d1bfd4
 # ╟─7275809f-4e12-44aa-b7e1-ec9a2b33f870
 # ╟─c24ef65a-7dde-4f06-bfd0-c15e2f769822
 # ╟─361360cb-bdf4-4f99-8ccc-3fee22847dd2
 # ╟─5fea7742-70a3-4a8e-892d-c70a953b0fcf
 # ╟─23e7092b-6006-4ddd-97ff-454128a88e31
+# ╟─56d6b975-f6d4-447b-a67b-02954f75286e
+# ╟─9ee52d27-ec6b-4e0d-9696-48e9dd88c7ce
 # ╟─1771917d-3f40-495d-ad52-50bf674ff0b6
 # ╟─76d70fe8-358f-4f2f-9a00-69a147935282
+# ╟─c27b5057-3d36-4a80-94f3-d8421874d3b8
 # ╟─06b01ce1-94dd-4ddd-ad17-2bdf3aa950ed
 # ╟─2423e58f-2ff0-4c80-9666-ccb45243ae19
+# ╟─a0bf1aaa-edfb-409f-a2ec-eccc00e9b95f
 # ╟─201a91a8-4154-414e-86b1-ca578fa105c2
 # ╟─27038fd7-4dc4-4dd5-87dd-0032478d0622
 # ╟─14e6f7ed-2a81-4101-a1b5-af627df7c805
 # ╟─7c923c8c-9067-42af-b103-391c05bbeb98
 # ╟─004efec5-23d3-4940-abff-9024820daf65
+# ╟─ac297a30-ce58-4c07-b72f-df4a149dc565
+# ╟─8eaece30-202e-4e8b-a16b-adb3375f008c
+# ╟─b729c130-5813-4eab-92a1-673a8d29a897
 # ╟─cded3cca-c9ac-4d7d-b9dd-4c5497aa955e
 # ╟─d4dab771-87f1-4fa2-b6a2-900a51af4586
 # ╟─8f3a465e-af54-4b0e-9210-87c140629f2f
