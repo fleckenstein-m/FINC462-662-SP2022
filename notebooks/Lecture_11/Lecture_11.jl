@@ -123,13 +123,6 @@ end
 #add button to trigger presentation mode
 html"<button onclick='present()'>present</button>"
 
-# ╔═╡ 731c88b4-7daf-480d-b163-7003a5fbd41f
-begin 
-	html"""
-	<p align=left style="font-size:36px; font-family:family:Georgia"> <b> FINC 462/662 -- Fixed Income Securities</b> <p>
-	"""
-end
-
 # ╔═╡ a5de5746-3df0-45b4-a62c-3daf36f015a5
 begin 
 	html"""
@@ -167,9 +160,6 @@ begin
 	"""
 end
 
-# ╔═╡ d2908a7c-51af-431c-ac09-4a7d89dbf02f
-TableOfContents(aside=true, depth=1)
-
 # ╔═╡ 886da2d4-c1ec-4bb4-8733-e3b46c95dd36
 md"""
 # The TIPS-Treasury Bond Puzzle
@@ -187,7 +177,7 @@ Sources: [The largest arbitrage ever documented](https://www.ft.com/content/3ec2
 
 # ╔═╡ 98f202ba-7720-40fd-b618-87bd30de840c
 md"""
-##
+#
 """
 
 # ╔═╡ 410b6e69-0ebc-4e2f-9b07-48b7f112ab83
@@ -201,7 +191,7 @@ Source: [Hedge funds reap rewards from Treasuries](https://www.ft.com/content/a5
 
 # ╔═╡ 8f8c2c95-25ef-4da0-afe1-b0a204911aeb
 md"""
-##
+#
 """
 
 # ╔═╡ 70e71241-e939-4b06-bcbe-ff7cf611df7a
@@ -226,7 +216,7 @@ Source: [Kaminska (2010), FT.com](https://www.ft.com/content/3ec205b7-4351-3c0b-
 
 # ╔═╡ fce5cf58-d66c-4fde-b6bb-854f745d1935
 md"""
-##
+#
 """
 
 # ╔═╡ 8fa726b4-7064-4bd3-a2fa-54d875593009
@@ -244,7 +234,7 @@ Source: [ECB liquidity fuels high stakes hedging](https://www.ft.com/content/cb7
 
 # ╔═╡ 298dada3-f3a7-4ac1-bdaa-55be8b359e95
 md"""
-## Treasury Inflation Protected Securities (TIPS)
+# Treasury Inflation Protected Securities (TIPS)
 - First issued in 1997 by the U.S. Treasury.
 - Maturities of 5, 10, and 30 years.
 - TIPS pay interest every six months up to and including the maturity date. At maturity, Treasury notes pay back their par value.
@@ -256,7 +246,7 @@ md"""
 
 # ╔═╡ dc307a3f-c258-49cd-bb46-499da5209f41
 md"""
-##
+# The TIPS Market
 """
 
 # ╔═╡ d6729dc9-0706-4405-9786-0da8ef96fe0a
@@ -291,14 +281,9 @@ begin
 	end
 end
 
-# ╔═╡ 6bd410dd-f851-48d9-a4f8-9ffff975c7a3
-md"""
-# Inflation-Linked Securities
-"""
-
 # ╔═╡ 3e5097fe-5a26-4326-bbcd-1ae95a163c02
 md"""
-## Historical Background
+# Historical Background
 """
 
 # ╔═╡ 9e730ef8-2791-4fd7-bd07-8844cd3c2f69
@@ -308,11 +293,6 @@ md"""
 
 # ╔═╡ fd4f618a-71f2-4976-8515-031e79df3e5b
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/SoldiersDepreciationNote.png",:width => 900)
-
-# ╔═╡ 400ee234-919e-4309-8a9a-208df0926d44
-md"""
-##
-"""
 
 # ╔═╡ 448aef9e-7b85-4b8f-ba40-7490513dfd1a
 md"""
@@ -324,7 +304,7 @@ _Source: “Inflation-indexed Securities: Bonds, Swaps and Other Derivatives”,
 
 # ╔═╡ 8b9ac326-884f-4d49-bb09-b01cfa0ae9d3
 md"""
-##
+#
 """
 
 # ╔═╡ 7e316df9-3c1d-47ca-96e7-e79984fc92cf
@@ -337,7 +317,7 @@ Emerging market countries started to issue inflation-linked bonds in the 1950s.
 
 # ╔═╡ cb6d785c-235d-4c8a-935e-17628c13e850
 md"""
-## Index-Linked Bonds
+# Indexing Bonds to Inflation
 """
 
 # ╔═╡ 62c1c14e-7094-430a-bcff-74e298d6597e
@@ -351,11 +331,16 @@ md"""
 
 # ╔═╡ abe6fa93-0105-43e5-9e03-92664b563b38
 md"""
-## U.S. Consumer Price Index
+# U.S. Consumer Price Index
 - In the U.S. this price index is the Consumer Price Index for All Urban Consumers (_CPI-U_).
 - The CPI-U measures the level of prices paid by consumers for goods and services. 
 - This index is published by the Bureau of Labor Statistics (BLS) every month.
 - [Bureau of Labor Statistics](https://www.bls.gov/schedule/news_release/cpi.htm); [Bureau of Labor Statistics Release](https://www.bls.gov/news.release/pdf/cpi.pdf)
+"""
+
+# ╔═╡ da83e6fb-96b5-4741-a843-a1a58b1315ae
+md"""
+#
 """
 
 # ╔═╡ 348219b8-8d4c-425b-8773-b42313554eef
@@ -368,26 +353,30 @@ Source: [BLS.gov](https://www.bls.gov/charts/consumer-price-index/consumer-price
 
 # ╔═╡ c3d5177e-5dc3-43da-a419-37b6e58ac49a
 md"""
-##
+#
 """
 
 # ╔═╡ 34d8c7f7-0266-49c8-aac5-ac882d3beb48
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/USCPI_ReleaseSchedule.svg",:width => 600)
 
-# ╔═╡ 1b701e22-1766-4113-98e7-f6fc5f3f51f6
-md"""
-##
-"""
-
 # ╔═╡ 562de281-2571-4b1f-8363-fcbd02cb3204
 md"""
-### Inflation Adjustment
+# Inflation Adjustment Intuition
 
 - A simple example is useful at this stage to clarify the concepts. 
 - Suppose that an investor is faced with the choice between two instruments with the same maturity: 
   - Conventional bond yielding a _nominal_ yield of 5% 
   - Index-linked bond offering a _real_ yield of 3%. 
 - The market’s valuations of these two bonds would imply that inflation is expected to be of the order of 2% per annum over their lifetime (5% - 3%=2%). 
+"""
+
+# ╔═╡ 444ab8c9-35b4-4bc5-bb0b-dc2410f4ccac
+md"""
+#
+"""
+
+# ╔═╡ 96519f0e-df82-4c03-9c34-bee6f7fd961c
+md"""
 - If the rate of inflation actually turns out to be higher at, say, 4% on average, then at maturity the indexed bond will have generated a 3% real return (precisely as expected). 
 - The conventional bond’s 5% nominal return will have been eroded such that its ex post real yield is only 1%. 
 - Of course, the reverse could occur instead. 
@@ -396,7 +385,7 @@ md"""
 
 # ╔═╡ 7a447118-1335-41a5-8f88-9f47a6637061
 md"""
-## TIPS Inflation-Adjustment Basics
+# TIPS Inflation-Adjustment
 """
 
 # ╔═╡ f0b795bd-a6fe-4f80-8b65-f345a5aeb953
@@ -404,7 +393,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ dca49c6a-a897-442e-8924-7b171e806fc5
 md"""
-## TIPS Inflation Adjustment
+# Reference CPI
 """
 
 # ╔═╡ b969b168-ec64-4a68-99bd-23b7067b0048
@@ -412,7 +401,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 9ed05f91-a314-4e6c-b05c-8d372d0f2d0f
 md"""
-##
+#
 """
 
 # ╔═╡ 977ba39b-5e9d-4591-a5f0-3b6fc0b5fec4
@@ -420,23 +409,41 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ a0af3215-6ecc-4083-afaa-31c476ebae4a
 md"""
-## TIPS Inflation Adjustment Details
+# TIPS Inflation Adjustment Details
 
 - The principal amount of a TIPS (assume $100 at issuance) is adjusted daily based on the CPI-U. 
 - The inflation adjustment $I_t$ is computed as the ratio of the **Reference CPI** at the time $t$ divided by the reference CPI when the TIPS was first issued ($t=0$). 
 $$I_t = \frac{\textrm{Reference CPI at time } t}{\textrm{Reference CPI at TIPS issue date}}$$
 
+"""
+
+# ╔═╡ 9b7aeb59-1592-4568-9152-d3e333317f95
+md"""
+#
+"""
+
+# ╔═╡ 015d265b-55a0-48a0-9878-b3e71b591931
+md"""
+
 - The **Reference CPI** for a particular date $t$ during a month is linearly interpolated from the **Reference CPI** for the beginning of that month and the **Reference CPI** for the beginning of the subsequent month.
   - The **Reference CPI** for the first day of _any_ calendar month is the CPI-U index for the third preceding calendar month. 
-  - _Example 1_: the **Reference CPI** for _April 1_ is the CPI-U index for the month of _January_ (which is reported by the BLS during February).
-  - _Example 2_: the **Reference CPI** for _April 15_ is roughly the average of the CPI-U index for the month of _January_ and the CPI-U index for the month of February.
-- However, the dollar value of the TIPS principal value is bounded below at $100, its value at issuance. Hence, TIPS offer some deflation protection.
 
+"""
+
+# ╔═╡ cede4ea6-679c-416a-a9e6-dd12f0870c6a
+md"""
+#
+"""
+
+# ╔═╡ 5f7de294-7292-4bc5-9ef6-a18b177498dc
+md"""
+- _Example 1_: the **Reference CPI** for _April 1_ is the CPI-U index for the month of _January_ (which is reported by the BLS during February).
+- _Example 2_: the **Reference CPI** for _April 15_ is roughly the average of the CPI-U index for the month of _January_ and the CPI-U index for the month of February.
 """
 
 # ╔═╡ 2b18e585-71de-4820-8a4a-d46af365789f
 md"""
-##
+# Reference CPI Calculation
 """
 
 # ╔═╡ 437de46e-78cd-4b83-9372-6a454c95d135
@@ -444,10 +451,19 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 8c4b9294-568c-49bf-a760-c54da18de10d
 md"""
-## Reference CPI Calculation Example for January 25, 1997
+# Example: Reference CPI for January 25, 1997
 - To find the **Reference CPI** for any date in Janurary 1997, we first find the **Reference CPI** index levels for January 1, 1997 and for February 1, 1997.
   - The **Reference CPI** level is the US CPI-U index from three months prior.
   - For January this is the CPI-U from October 1996 (published by the BLS in November) and for February this is the CPI-U from November 1996 (published by the BLS in December).
+"""
+
+# ╔═╡ c95f15b3-db7f-4113-a6fb-c0a202b0d601
+md"""
+#
+"""
+
+# ╔═╡ 1980728f-8868-4911-a390-50134b7222bd
+md"""
 - Then, take the difference between the two index CPI-U index levels and divide by it by the actual number of days in the month.  
 - Next, multiply the result by the number of the day for which the **Reference CPI** is to be calculated and subtract 1.
   - For example, January 7 would be 6. January 25 is 24.
@@ -456,7 +472,7 @@ md"""
 
 # ╔═╡ ae72b826-72a7-4c14-8ed6-c5c27f925dd5
 md"""
-##
+#
 """
 
 # ╔═╡ 2e76221f-cec2-443b-b1b4-cf44d93838b3
@@ -464,7 +480,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 60b59241-c081-4da7-9a87-986d9e5931d1
 md"""
-##
+#
 """
 
 # ╔═╡ 3f620c75-69c9-461a-b8ec-396079c36088
@@ -484,11 +500,16 @@ md"""
 
 # ╔═╡ beb4b354-3cd6-4a03-b161-0cb1c1845f0b
 md"""
-## Inflation Adjustment 
+# Inflation-Adjusted Coupon Interest
 """
 
 # ╔═╡ b6c222b6-012b-42ea-967f-fe44a88123b9
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/of698cpi_crop.svg",:width => 500)
+
+# ╔═╡ 882a3f32-25c5-487d-b190-7d36adbf4a2f
+md"""
+#
+"""
 
 # ╔═╡ ff2e0417-8557-4fd7-b03e-0c5aae7882f3
 md"""
@@ -501,7 +522,7 @@ md"""
 
 # ╔═╡ 0c8d7c37-6dcd-4a8b-b333-073a4a8e99ef
 md"""
-## Deflation Protection
+# Deflation Protection
 - TIPS have an embedded option that protects against deflation.
 - The Treasury guarantees that the _final redemption value is no less than \$100 per \$100 nominal_ amount, irrespective of the movements in the CPI over the life of the bond.
 - Let $F$ be the TIPS principal amount and $T$ the time to maturity of the TIPS.
@@ -512,7 +533,7 @@ $$F \times \max\left[\, I_T, 1 \,\right]$$
 
 # ╔═╡ 66a72bb1-64f1-4fd9-a6df-7d922758e4c4
 md"""
-## Example
+# Inflation-Adjusted Coupon Interest Example
 """
 
 # ╔═╡ 9635fd8d-8ae6-424a-a1c1-803bf7c2dc78
@@ -531,6 +552,11 @@ md"""
 - Reference CPI at issue date: $(@bind I₀ Slider(100:1:300, default=100, show_value=true))
 """
 
+# ╔═╡ 1c30e93c-f122-4d4a-a6a6-81e639a3f4e7
+md"""
+#
+"""
+
 # ╔═╡ cfa2509b-38ef-470e-8c49-481e3fdb3909
 Markdown.parse("
 - Suppose, \$c= $c \\%\$ and \$F=$F\$.
@@ -542,6 +568,11 @@ Markdown.parse("
 - The actual cash flows (in nominal terms) of the TIPS are:
 ")
 
+
+# ╔═╡ a7fc3f61-28a4-46c8-a7e8-4d51bc3505d9
+md"""
+#
+"""
 
 # ╔═╡ ac751d3e-0dcf-4859-a7b8-6185eeff4b6b
 begin
@@ -564,12 +595,13 @@ end
 # ╔═╡ 6a4974ec-ec57-4e73-a61f-ad83958d2874
 md"""
 # Inflation Derivatives
-In addition to the cash inflation market, there is an active derivatives market that consists mainly of inflation swap contracts and inflation options. The inflation swap market in the United States is growing rapidly.
+
+- In addition to the cash inflation market, there is an active derivatives market that consists mainly of inflation swap contracts and inflation options. 
 """
 
 # ╔═╡ aef13d6b-d776-44cd-8b91-5a3577af2338
 md"""
-## Inflation Swap
+# Inflation Swap Basics
 """
 
 # ╔═╡ 2077ceec-2fcb-4c7e-969f-4e2ff9911e9c
@@ -577,7 +609,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 30e2787d-d1f3-4952-a9ce-534dd51e0f8a
 md"""
-##
+#
 """
 
 # ╔═╡ e2c6fd53-4fe8-4f1f-81a1-e4008c056b3d
@@ -585,7 +617,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 67bfd8f9-5874-4205-aa6e-9851d967d939
 md"""
-##
+#
 """
 
 # ╔═╡ 14996238-3aac-4601-a529-e85e182ab028
@@ -593,7 +625,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 928af98c-90a3-4bce-826d-ff7e96d9c3a8
 md"""
-##
+#
 """
 
 # ╔═╡ e5a9bd4f-cbe9-44ad-bc29-55d767867fe1
@@ -601,18 +633,35 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 2e7bd373-6edc-44a6-8a8f-b46f88277e03
 md"""
-## Inflation Swap Cash Flows
+# Inflation Swap Cash Flows
 """
 
 # ╔═╡ 727e1c36-6ce2-4114-9831-e7b3981e4ce1
 md"""
 - The swap is executed between two counterparties at time $t=0$ and has only one cash flow that occurs at maturity in $T$ years.
-  - For example, imagine that at time $t=0$, the five-year zero-coupon inflation swap rate is 200 basis points and that the inflation swap has a notional of \$1. 
-  - There are no cash flows at time $t=0$ when the swap is executed. 
-  - At the maturity of the swap in $T=5$ years, suppose that realized inflation is $I_T$, then the counterparties to the inflation swap exchange a cash flow of 
+"""
+
+# ╔═╡ bc96cd4f-c600-44fb-bfae-51b3fc974b90
+md"""
+#
+"""
+
+# ╔═╡ efd939d0-4644-4469-a7cf-d2bfd71921e9
+md"""
+- For example, imagine that at time $t=0$, the five-year zero-coupon inflation swap rate is 200 basis points and that the inflation swap has a notional of \$1. 
+- There are no cash flows at time $t=0$ when the swap is executed. 
+- At the maturity of the swap in $T=5$ years, suppose that realized inflation is $I_T$, then the counterparties to the inflation swap exchange a cash flow of 
 
 $$\left[ (1 + 0.0200)^5 -1 \right] − \left[I_T -1 \right],$$
+"""
 
+# ╔═╡ 71fd08a2-9236-49c0-a24e-2bb63719be44
+md"""
+#
+"""
+
+# ╔═╡ 5885afab-7b6a-4c11-8536-ef0372d8d9be
+md"""
 - Thus, if the realized inflation rate was 1.50% per year over the five-year horizon of the swap, 
 
 $$I_T = 1.015^5 = 1.077284$$ 
@@ -625,7 +674,7 @@ $$\left[ (1 + 0.0200)^5 -1\right] − \left[1.077284 -1 \right]= 0.026797$$
 
 # ╔═╡ 6c9e2711-8153-4ebe-b130-c819ff266ff6
 md"""
-##
+# Inflation-Swap Term Sheet
 """
 
 # ╔═╡ e33907ec-bcc1-48c0-a09f-cd746b46d3ea
@@ -633,7 +682,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ c0563fe7-6d8d-4a2d-9e47-fe16dcfaed61
 md"""
-## Example
+# Inflation Swap Example
 """
 
 # ╔═╡ d3fb968d-3aa3-44e0-ba8b-13ba61cc6a5b
@@ -644,17 +693,22 @@ md"""
 - Annual Inflation Rate $I$ [%]: $(@bind Iswap Slider(0:0.25:10, default=2, show_value=true))
 """
 
+# ╔═╡ 12a9256b-0e40-4614-b626-76633ab091b8
+md"""
+#
+"""
+
 # ╔═╡ 917d6d5e-bc3d-4f24-b51b-e86533e682ab
 Markdown.parse("
 - Cash flow on the fixed leg of the inflation swap:
 
-\$N \\times \\left[ (1+f)^T - 1 \\right] = $(Nswap) \\times \\left[ (1+ $(fswap/100))^{$(Tswap)} -1 \\right]= $(Nswap*( (1+fswap/100)^Tswap -1))\$
+\$N \\times \\left[ (1+f)^T - 1 \\right] = $(Nswap) \\times \\left[ (1+ $(fswap/100))^{$(Tswap)} -1 \\right]= $(roundmult(Nswap*( (1+fswap/100)^Tswap -1),1e-4))\$
 	
 - Cash flow on the floating leg of the swap:
 	
-\$N \\times \\left[ (1+I)^T - 1 \\right]]= $(Nswap) \\times \\left[ (1+$(Iswap/100))^{$(Tswap)} - 1 \\right]=$(Nswap*((1+Iswap/100)^Tswap-1))\$
+\$N \\times \\left[ (1+I)^T - 1 \\right]]= $(Nswap) \\times \\left[ (1+$(Iswap/100))^{$(Tswap)} - 1 \\right]=$(roundmult(Nswap*((1+Iswap/100)^Tswap-1),1e-4))\$
 	
-- Net cash flow of inflation buyer: $(Nswap*(1+Iswap/100)^Tswap - Nswap*(1+fswap/100)^Tswap)
+- Net cash flow of inflation buyer: $(roundmult(Nswap*(1+Iswap/100)^Tswap - Nswap*(1+fswap/100)^Tswap,1e-4))
 ")
 
 
@@ -663,50 +717,92 @@ md"""
 # Combining TIPS and Inflation Swap
 
 - Suppose we invest in a TIPS with 6 months to maturity, coupon rate of 4%, and  (inflation-adjusted) principal of $100 .
+- Suppose the market price of the TIPS is 100, and that the market price of a Treasury note with six months to maturity and coupon rate of 5% is 102.
+"""
+
+# ╔═╡ 034818e7-caae-495c-b159-e28549acd23a
+md"""
+#
+"""
+
+# ╔═╡ 780b61fc-903e-4483-80d6-3cd927676589
+md"""
 - Thus, we receive one final cash flow consisting of
   - Inflation-adjusted principal: $$100\times I_{0.5}$$  
     - For simplicity, we ignore the deflation option for now.
   - Inflation-adjusted coupon cash flow: $(c/2) \times I_{0.5} \times 100 = 0.02 \times I_{0.5} \times 100$
 - The total cash flow from the TIPS is:
-$$\left[100 \times I_{0.5}\right] + \left[2 \times I_{0.5}\right] = 102 \times I_{0.5}$$
+$$102 \times I_{0.5}$$
 """
 
-# ╔═╡ b9c01bbc-1563-4a58-b2ff-1d70f5f10c43
+# ╔═╡ 41d9d4e4-a4f0-425f-bb39-80a3c18d0289
+md"""
+#
+"""
+
+# ╔═╡ 824dc5be-d6ab-4d43-8795-745dc4e10c8e
 md"""
 - Next, suppose we enter into an inflation swap with notional amount of $102 as inflation seller. Let the fixed rate on the inflation swap be 0.9828%, i.e. $$f=0.009828$$.
 - The net cash flow on the inflation swap is
 $$102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1]$$
-- The total cash flow of the TIPS and the inflation swap is:
-$$102 \times I_{0.5} + \left(102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1] \right)$$
+"""
+
+# ╔═╡ b6f4724c-ed17-4edc-a565-6768fccde65f
+md"""
+#
 """
 
 # ╔═╡ faaaae87-46e9-4fbd-82e0-6ac979f332ee
 md"""
-##
+- The total cash flow of the TIPS and the inflation swap is:
+$$102 \times I_{0.5} + \left(102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1] \right)$$
+
 - Simplifying
 $$102 \times (1+f)^{0.5} = 102 \times (1+0.9828\%)^{0.5} = 102.50$$
 - This is a deterministic cash flow that does not depend on future inflation.
-
 """
 
-# ╔═╡ 01a5c636-23fb-4e6f-aca5-9bdab11fa66a
+# ╔═╡ 69b9a76e-622c-4b69-bcdc-a0aae02a93eb
 md"""
-- Suppose the market price of the TIPS is 100, and that the market price of a Treasury note with six months to maturity and coupon rate of 5% is 102.
+#
 """
 
 # ╔═╡ 3e23d630-4e11-4a52-8748-d66b02d1bfd4
 md"""
 - Next, we take a short position in the Treasury note and buy the TIPS. 
-- We pay $100 for the TIPS and get $102 in cash from shorting the Treasury note.
+- We pay $100 for the TIPS and get $102 in cash from shorting the Treasury notes.
 - Our net cash flow is 102 - 100 = 2.
+"""
+
+# ╔═╡ 262590e2-745d-49ee-8c25-9e6f71a7b5bb
+md"""
+#
 """
 
 # ╔═╡ 7275809f-4e12-44aa-b7e1-ec9a2b33f870
 md"""
 - What is our obligation to pay in six months?
-  - First, we need to close out the short in the Treasury note and pay $102.50. Thus, we have a cash outflow of -102.50.
-  - Second, we have a cash flow from the long TIPS position and the inflation swap of $102.5. This is a cash inflow of 102.50.
-  - Our net cash flow is -102.5 + 102.5 = 0. Thus, we have zero cash flow in six months.
+"""
+
+# ╔═╡ bb406003-2eb8-4e25-897e-7651fc1e719a
+md"""
+#
+"""
+
+# ╔═╡ caa6aae8-c3ab-40e2-a74b-a7241fabfc82
+md"""
+- First, we need to close out the short in the Treasury note and pay $102.50. Thus, we have a cash outflow of -102.50.
+- Second, we have a cash flow from the long TIPS position and the inflation swap of $102.5. This is a cash inflow of 102.50.
+- Our net cash flow is -102.5 + 102.5 = 0. Thus, we have zero cash flow in six months.
+"""
+
+# ╔═╡ 36b43def-2c99-47a5-99c6-5d9b75884340
+md"""
+#
+"""
+
+# ╔═╡ d6441d19-d3d4-4d5e-9808-d93a258204f8
+md"""
 - However, we pocketed $2 upfront. 
 - This is an arbitrage since we collect $2 now and have no future obligation in six months.
 - This is the TIPS-Treasury arbitrage trading strategy in simplified form.
@@ -717,70 +813,120 @@ md"""
 # Combining TIPS, STRIPS and Inflation Swap
 
 - Suppose we invest in a TIPS with 6 months to maturity, coupon rate of 4%, and  (inflation-adjusted) principal of $100 .
-- Thus, we receive one final cash flow consisting of
+- Suppose the market price of the TIPS is 100, and that the market price of a Treasury note with six months to maturity and coupon rate of 6% is 102.
+
+"""
+
+# ╔═╡ e014cbe2-51e1-4437-b6b1-4adc041e9e1a
+md"""
+#
+"""
+
+# ╔═╡ cc9f23dc-eaa0-4d19-b673-d147fbb57057
+md"""
+- From the TIPS we receive one final cash flow consisting of
   - Inflation-adjusted principal: $$100\times I_{0.5}$$  
     - For simplicity, we ignore the deflation option for now.
   - Inflation-adjusted coupon cash flow: $(c/2) \times I_{0.5} \times 100 = 0.02 \times I_{0.5} \times 100$
-$$\left[100 \times I_{0.5}\right] + \left[2 \times I_{0.5}\right] = 102 \times I_{0.5}$$
+- The total cash flow from the TIPS is:
+$$102 \times I_{0.5}$$
+"""
+
+# ╔═╡ 2a7ce1ef-35e8-4553-85c3-15c98821bde6
+md"""
+#
 """
 
 # ╔═╡ 361360cb-bdf4-4f99-8ccc-3fee22847dd2
 md"""
 - Next, suppose we enter into an inflation swap with notional amount of $102 as inflation seller. Let the fixed rate on the inflation swap be 0.9828%, i.e. $$f=0.009828$$.
 - The net cash flow on the inflation swap is
-$$102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1]$$
+$$102 \times [(1+f)^{0.5}-1] - 102 \times  [I_{0.5}-1]$$
+"""
+
+# ╔═╡ 3f716232-20c4-42fa-847d-e2bad3440e84
+md"""
+#
+"""
+
+# ╔═╡ 3f4cdf58-95df-407d-a5f1-d4077d4b9188
+md"""
 - The total cash flow of the TIPS and the inflation swap is:
 $$102 \times I_{0.5} + \left(102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1] \right)$$
 """
 
 # ╔═╡ 5fea7742-70a3-4a8e-892d-c70a953b0fcf
 md"""
-##
+#
 """
 
-# ╔═╡ 23e7092b-6006-4ddd-97ff-454128a88e31
+# ╔═╡ 66a6a32b-9639-4591-aca1-56742edca665
 md"""
 - Simplifying
 $$102 \times (1+f)^{0.5} = 102 \times (1+0.9828\%)^{0.5} = 102.50$$
 - This is a deterministic cash flow that does not depend on future inflation.
 """
 
-# ╔═╡ 56d6b975-f6d4-447b-a67b-02954f75286e
+# ╔═╡ 7aa49db4-82df-4d28-81ae-7cf65fd3acc2
 md"""
-- Suppose the market price of the TIPS is 100, and that the market price of a Treasury note with six months to maturity and coupon rate of __6%__ is 102.
+#
 """
 
-# ╔═╡ 9ee52d27-ec6b-4e0d-9696-48e9dd88c7ce
+# ╔═╡ 23e7092b-6006-4ddd-97ff-454128a88e31
 md"""
 - Next, we take a short position in the Treasury note and buy the TIPS. 
-- We pay $100 for the TIPS and get $102 in cash from shorting the Treasury note.
+- We pay $100 for the TIPS and get $102 in cash from shorting the Treasury notes.
 - Our net cash flow is 102 - 100 = 2.
+
 """
 
 # ╔═╡ 1771917d-3f40-495d-ad52-50bf674ff0b6
 md"""
-##
+#
 """
 
 # ╔═╡ 76d70fe8-358f-4f2f-9a00-69a147935282
 md"""
 - What is our obligation to pay in six months?
+"""
+
+# ╔═╡ ff21805e-7466-4780-939b-72eeeee17e57
+md"""
+#
+"""
+
+# ╔═╡ e9cef70a-fbf9-47a7-b5c0-aa6bb2ec5f6c
+md"""
 - First, we need to close out the short in the Treasury note and pay $103. Thus, we have a cash outflow of -103.00.
 - Second, we have a cash flow from the long TIPS position and the inflation swap of $102.5. This is a cash inflow of 102.50.
 - Our net cash flow is -103 + 102.5 = -0.50. 
 """
 
-# ╔═╡ c27b5057-3d36-4a80-94f3-d8421874d3b8
+# ╔═╡ 55c40cff-0639-46b5-a8dc-9f8cb3738a6f
+md"""
+#
+"""
+
+# ╔═╡ 8953ae0b-ab82-4173-bda8-9980ae1ef550
 md"""
 - Thus, we have non-zero cash outflow of fifty cents in six months.
 - We want to have zero cash flows in six months. How can we achive this?
+"""
+
+# ╔═╡ 88bf0e46-17c9-4a61-9e82-9c113c1dbadd
+md"""
+#
+"""
+
+# ╔═╡ 4e89c4d7-d4e8-4f68-ac5c-7b20d0c446e7
+md"""
 - Recall that there are STRIPS which are zero coupon bonds with just one cash flow at maturity.
 - All we need is an inflow of fifty cents from a 6-month STRIPS.
 """
 
 # ╔═╡ 06b01ce1-94dd-4ddd-ad17-2bdf3aa950ed
 md"""
-##
+#
 """
 
 # ╔═╡ 2423e58f-2ff0-4c80-9666-ccb45243ae19
@@ -790,7 +936,12 @@ md"""
 - This costs us 0.50/100 * 99.50 = $0.4975.
 """
 
-# ╔═╡ a0bf1aaa-edfb-409f-a2ec-eccc00e9b95f
+# ╔═╡ e72cde3c-ad81-4242-8222-5d6bf86f22f4
+md"""
+#
+"""
+
+# ╔═╡ 81e531a9-3afb-4c05-a138-133467882086
 md"""
 - Thus, our cash flow today is now the cash inflow of 2 (from the long TIPS and short Treasury note) and the cash outflow of 0.4975 from the STRIPS.
 - This is a net cash flow today of 2 - 0.4975 = 1.5025.
@@ -805,9 +956,18 @@ md"""
 
 # ╔═╡ 27038fd7-4dc4-4dd5-87dd-0032478d0622
 md"""
-- The next table uses real market data on 12/30/2008 and shows the cash flows associated with 
+- This table uses real market data on 12/30/2008 and shows the cash flows associated with 
   - the 7.625% Treasury bond with maturity date January 15, 2025, and 
   - the cash flows from the replicating strategy using the 2.375% TIPS issue with the same maturity date that replicates the cash flows of the Treasury bond. 
+"""
+
+# ╔═╡ 62ec696b-021f-4756-aff8-f62a122345ae
+md"""
+#
+"""
+
+# ╔═╡ 1480c3c4-7ef1-413b-9cd2-5bbb9f61a2e2
+md"""
 - Note: 
   - Cash flows are in dollars per $100 notional. 
   - The $I_t$ denotes the realized percentage change in the CPI index from the inception of the strategy to the cash flow date. 
@@ -816,7 +976,12 @@ md"""
 
 # ╔═╡ 14e6f7ed-2a81-4101-a1b5-af627df7c805
 md"""
-## Cash Flow Table
+# Cash Flow Table
+"""
+
+# ╔═╡ c6df6e6e-1c72-4fbb-b73c-7c084bc96b69
+md"""
+- The table shows the actual cash flows that would result from applying the arbitrage strategy on December 30, 2008, to replicate the 7.625% coupon Treasury bond maturing on February 15, 2025. 
 """
 
 # ╔═╡ 7c923c8c-9067-42af-b103-391c05bbeb98
@@ -860,24 +1025,26 @@ md"""
 | 33   | 103.8125  | 101.1875 I$_{33}$ | 135.9861 −101.1875 I$_{33}$ | -32.1736 | 103.8125 |
 """)
 
+# ╔═╡ ed31f60a-8b09-4222-8b81-333eccb33c02
+md"""
+#
+"""
+
 # ╔═╡ 004efec5-23d3-4940-abff-9024820daf65
 md"""
-- The table shows the actual cash flows that would result from applying the arbitrage strategy on December 30, 2008, to replicate the 7.625% coupon Treasury bond maturing on February 15, 2025. 
+
 - As shown, the price of the Treasury bond is **$169.479.** 
-"""
-
-# ╔═╡ ac297a30-ce58-4c07-b72f-df4a149dc565
-md"""
 - To replicate the Treasury bond’s cash flows, the arbitrageur buys a 2.375% coupon TIPS issue with the same maturity date for a price of $101.225. 
-"""
-
-# ╔═╡ 8eaece30-202e-4e8b-a16b-adb3375f008c
-md"""
 - Since there are 33 semiannual coupon payment dates, 33 inflation swaps are executed with the indicated notional amounts.
 - Finally, positions in Treasury STRIPS of varying small notional amounts are also taken by the arbitrageur. 
 """
 
-# ╔═╡ b729c130-5813-4eab-92a1-673a8d29a897
+# ╔═╡ fb7ad01e-1a12-4f06-a1a3-d1003cfea04a
+md"""
+#
+"""
+
+# ╔═╡ 06b6deff-fb0a-4ed2-80ee-aee2cee7e0bf
 md"""
 - The net cash flows from the replicating strategy exactly match those from the Treasury bond, but at a cost of only **$146.379.**
 - Thus, the cash flows from the Treasury bond can be replicated at a cost that is **\$23.10** less than that of the Treasury bond.
@@ -893,7 +1060,7 @@ md"""
 
 # ╔═╡ d4dab771-87f1-4fa2-b6a2-900a51af4586
 md"""
-## TIPS: 912828EA
+# TIPS: 912828EA
 """
 
 # ╔═╡ 8f3a465e-af54-4b0e-9210-87c140629f2f
@@ -901,7 +1068,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ d61da00e-9d8c-43e8-89c5-e70220dc761a
 md"""
-##
+#
 """
 
 # ╔═╡ 049debc7-b1d5-4908-9b27-70344995a4c4
@@ -909,7 +1076,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ abda6c84-f124-4d61-bb40-0517e28fbcf6
 md"""
-##
+#
 """
 
 # ╔═╡ 72721c2c-f227-469a-91d9-dbec158c2fa7
@@ -917,7 +1084,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 312e0229-445e-42d4-8a0d-709c590c1add
 md"""
-## Treasury Note: 912828EA
+# Treasury Note: 912828EA
 """
 
 # ╔═╡ 97d9ba4b-880f-464e-bd94-7b72a86094b7
@@ -925,7 +1092,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ bf6e7d0a-7e33-47b1-9240-a0af661057f5
 md"""
-##
+#
 """
 
 # ╔═╡ d16e82d8-faa9-444f-8db7-6f442c5e5fd4
@@ -933,7 +1100,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ dc265679-85cd-4ff1-a728-6353f36e3a9c
 md"""
-##
+#
 """
 
 # ╔═╡ e36dc8d3-3b4e-46c4-9259-007f75068591
@@ -941,7 +1108,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 4ac1725a-d9e5-4587-9b03-ae8b7379ed56
 md"""
-## Inflation Swap Rates
+# Inflation Swap Rates
 - Date:	10/5/2006	
 
 | Tenor	  | SwapRate| Bloomberg| Ticker      | 
@@ -965,7 +1132,7 @@ md"""
 
 # ╔═╡ 00c3ea64-bbe5-4d7a-a1b2-1197b1455bec
 md"""
-## STRIPS Prices
+# STRIPS Prices
 """
 
 # ╔═╡ 432dae1b-89b1-4e8a-b59a-98e00391b368
@@ -1057,7 +1224,7 @@ md"""
 
 # ╔═╡ d1eb23f3-7142-493d-b2e6-d4f844e2bfc6
 md"""
-## Calculations
+# Calculations
 """
 
 # ╔═╡ 398086e4-4a4c-45f6-a32d-cb5d8847233c
@@ -1076,7 +1243,7 @@ md"""
 
 # ╔═╡ 7c15360a-9f7f-45d0-8059-0420dc46b231
 md"""
-## Step 1.1: Calculate Full Prices of the Treasury
+# Step 1.1: Calculate Full Prices of the Treasury
 """
 
 # ╔═╡ cf85e64a-d5c4-4d04-b6ba-04ac003f7289
@@ -1084,24 +1251,69 @@ Markdown.parse("
 - **Treasury 912727EE**
   - Quoted Price: 97-15+ per \$100 notional.
 > \$97 + \\frac{15}{32} + \\frac{1}{64} = $(97+15/32+1/64)\$
-  - Accrued Interest: 
+")
+
+# ╔═╡ a5a0c420-f28f-4ec4-a9e2-092a02cec9a8
+md"""
+#
+"""
+
+# ╔═╡ 448fa11f-4bcb-4b62-9d1b-703d9a12786b
+Markdown.parse("
+- Accrued Interest: 
   - Current Date: 10/05/2006
   - Last Coupon Date: 8/15/2006
   - Next Coupon Date: 2/15/2007
+")
+
+# ╔═╡ d5ebca67-32b9-461d-9d4f-3285517c3cd2
+md"""
+#
+"""
+
+# ╔═╡ d5df1ae7-9cc5-453b-b889-cd57dcc671c4
+Markdown.parse("
 - Days since last coupon = 17 days in August *(daycount includes the date of the previous coupon, i.e. 16+1=17)* + 30 days in September + 4 days October *(daycount excludes the settlement date, thus 4 days)*
 > \$17 + 30 + 4 = $(17+30+4)\$
+")
+
+# ╔═╡ d9aa27ee-eba3-4dee-abeb-7fce49536793
+md"""
+#
+"""
+
+# ╔═╡ 3d5a3bc4-f290-4d68-a5d4-ecdafc967537
+Markdown.parse("
 - Days in the coupon period = (31-15) days in August + 30 days September + 31 days in October + 30 days in November + 31 days in December + 31 days in January + 15 days in February
 > \$(31-15) + 30 + 31 + 30 + 31 + 31 + 15 = $(31-15+30+31+30+31+31+15)\$
+")
+
+# ╔═╡ afc4f565-7171-4b47-93e0-ffa66386dedf
+md"""
+#
+"""
+
+# ╔═╡ 7e50530e-a0ad-4709-9e89-bc7cc8575328
+Markdown.parse("
 - Calculate accrued interest on October 5, 2006.
-> Accrued Interest = \$\\frac{0.0425}{2} \\times 100 \\times \\frac{51}{184} = $((31-15+30+5)/(31-15+30+31+30+31+31+15)*0.0425/2*100)\$
+> Accrued Interest = \$\\frac{0.0425}{2} \\times 100 \\times \\frac{51}{184} = $(roundmult((31-15+30+5)/(31-15+30+31+30+31+31+15)*0.0425/2*100,1e-6))\$
+")
+
+# ╔═╡ 5d53718b-a542-47ea-a4bf-7d94320d1fde
+md"""
+#
+"""
+
+# ╔═╡ 6245fadd-8dda-4e59-b619-3b0cfe8fbafe
+Markdown.parse("
 - Calculate the full price of the Treasury note per \$100 notional. 
   - The full price is the quoted price plus accrued interest.
-> Full Price = \$$((31-15+30+5)/(31-15+30+31+30+31+31+15)*0.0425/2*100+(97+15/32+1/64))\$
+> Full Price = \$$(roundmult((31-15+30+5)/(31-15+30+31+30+31+31+15)*0.0425/2*100+(97+15/32+1/64),1e-6))\$
 ")
 
 # ╔═╡ 31ef4b01-b5ed-47cc-9ff1-6d92ff7bd2b4
 md"""
-## Step 1.2: Calculate Full Prices of the TIPS
+# Step 1.2: Calculate Full Prices of the TIPS
 """
 
 # ╔═╡ d670b261-f427-4498-a8df-fcdacdb14d3e
@@ -1109,39 +1321,94 @@ Markdown.parse("
 - **TIPS 912828EA**
   - Quoted Price: 96-20 per \$100 notional.
 > \$96 + \\frac{20}{32}=$(96+20/32)\$
-  - Accrued Interest:
-- Current Date: 10/05/2006
+")
+
+# ╔═╡ cba8fcb7-970e-47ef-9b0f-d4396e89aa66
+md"""
+#
+"""
+
+# ╔═╡ c6ae22ec-78cd-4a00-b36d-806439f9d550
+Markdown.parse("
+- Accrued Interest:
+  - Current Date: 10/05/2006
   - Last Coupon Date: 7/15/2006
   - Next Coupon Date: 1/15/2007
+")
+
+# ╔═╡ fde6eaee-dd08-483a-87c6-6778300c311d
+md"""
+#
+"""
+
+# ╔═╡ 3936d198-5f63-4192-b33b-b1ef9941964d
+Markdown.parse("
 - Days since last coupon = 17 days in July *(daycount includes the date of the previous coupon, i.e. 16+1=17)* + 31 days in August + 30 days in September + 4 days October *(daycount excludes the settlement date, thus 4 days)*
 > \$17 + 31 + 30 + 4 = $(17+31+30+4)\$
+")
+
+# ╔═╡ b415d609-0528-4e5f-9d43-bf8cd0e25688
+md"""
+#
+"""
+
+# ╔═╡ 2bbcaee7-34a7-4596-ad38-5c6239dd08e6
+Markdown.parse("
 - Days in the coupon period = (31-15) days in July + 31 days in August + 30 days September + 31 days in October + 30 days in November + 31 days in December + 15 days in January 
 > \$(31-15) + 31 + 30 + 31 + 30 + 31 + 15 = $(31-15+31+30+31+30+31+15)\$
+")
+
+# ╔═╡ 89516578-5de4-47b3-8629-89b590b15b19
+md"""
+#
+"""
+
+# ╔═╡ fbb7288e-806e-4fec-a9f6-cd79b66d33fd
+Markdown.parse("
 - Calculate accrued interest on October 5, 2006.
-> Accrued Interest = \$\\frac{0.01875}{2} \\times 100 \\times \\frac{82}{184} = $(0.01875/2*100*(82/184))\$
+> Accrued Interest = \$\\frac{0.01875}{2} \\times 100 \\times \\frac{82}{184} = $(roundmult(0.01875/2*100*(82/184),1e-6))\$
+")
+
+# ╔═╡ 9cd0acc2-6e2b-42ac-9f92-1692d8b55d80
+md"""
+#
+"""
+
+# ╔═╡ 60913481-91ed-4959-9b01-9fe363916045
+Markdown.parse("
 - Calculate the full price of the Treasury TIPS per \$100 notional. 
   - The full price is the quoted price plus accrued interest.
-> Full Price = \$$((0.01875/2*100*(82/184))+(96+20/32))\$
+> Full Price = \$$(roundmult((0.01875/2*100*(82/184))+(96+20/32),1e-6))\$
 ")
 
 # ╔═╡ 083a0cb1-a597-46ca-84c0-e5b7ce23b53a
 md"""
-## Step 2: Set-up Cash Flows of the TIPS, Inflation Swaps and STRIPS
-- *Note, initially we assume that the TIPS and Treasury note have identical maturity and coupon cash flow dates. The *Time* column lists the coupon payment dates of the TIPS.
+# Step 2: Set-up Cash Flows of the TIPS, Inflation Swaps and STRIPS
+- *Note, initially we assume that the TIPS and Treasury note have identical maturity and coupon cash flow dates. The Time column lists the coupon payment dates of the TIPS.*
 - The (real) coupon cash flows of the TIPS are $\frac{0.01875}{2}\times 100=0.9375$
 - The coupon cash flows of the Treasury note are are $\frac{0.0425}{2}\times 100=2.125$
+ 
+"""
+
+# ╔═╡ ad56ba09-a69c-40db-8caf-53efdd93719a
+md"""
+#
+"""
+
+# ╔═╡ e871ef6e-f4da-4cef-aecf-4103335ebead
+md"""
 - *Notation*:
   - Let $P_{STR}(t,T)$ be the time-$t$ price of Treasury STRIPS with maturity in $T$ years. In the table below, we omit the $T$ to designate the coupon cash flow dates of the TIPS. 
   - Let $x_T$ denote the notional amount of the Treasury STRIPS.
   - Let $I_t/I_0$ denote the inflation adjustment on the TIPS at time $t$.
   - Let $P_{\textrm{Swap}}(t)$ denote the cash flow on the fixed leg of the inflation swap with notional of \$1, i.e. $$P_{\textrm{Swap}}(t)=(1+f_t)^t-1$$ 
   - The floating leg of the inflation swap has a time-$t$ cash flow of $\frac{I_t}{I_0} - 1$
-  
+
 """
 
 # ╔═╡ 80176747-6460-4840-992f-394e1c1112b2
 md"""
-## 2.1. Start with TIPS
+# 2.1. Start with TIPS
 """
 
 # ╔═╡ b0b36b4c-9d44-42cf-a1c2-a97fad25b84e
@@ -1156,7 +1423,7 @@ md"""
 
 # ╔═╡ 903a6516-2919-4078-89cc-264a726e07ca
 md"""
-## 2.2. Add Inflation Swaps
+# 2.2. Add Inflation Swaps
 - The notional amount of the inflation swap is equal to the real coupon cash flow of the TIPS 
   - In this example, $N=0.9375$.
 """
@@ -1173,7 +1440,7 @@ md"""
 
 # ╔═╡ 932c04a6-64e3-4d73-a083-c836fbafdbb3
 md"""
-## 2.3. Net TIPS and Inflation Swaps Cash Flows
+# 2.3. Net TIPS and Inflation Swaps Cash Flows
 """
 
 # ╔═╡ fb2d12f6-ebd2-4be5-9506-cdaa52cfaa1e
@@ -1186,66 +1453,93 @@ md"""
 | 7/15/2015 | $(0.9375+100) + (0.9375+100) \times P_{\textrm{Swap}}(T)$ |
 """
 
+# ╔═╡ d7e38a5e-2c88-4728-b1cc-d98a5e1a6ec1
+md"""
+# 2.4. Add Treasury Note
+"""
+
+# ╔═╡ 4950323f-1c91-4d63-b333-410c69650352
+md"""
+| Time		| TIPS + Inflation Swaps | Treasury Note 	|
+|-----------|------------------------|------------------|
+| 10-05-06	| $-97.0428$	         | $-98.07337$      | 
+| 1/15/2007 | $0.9375 \times (1+ P_{\textrm{Swap}}(t))$  | $2.125$ |
+| $\vdots$	| $\vdots$             | $\vdots$	| 
+| 7/15/2015 | $100.9375 \times (1+P_{\textrm{Swap}}(T))$ | $102.125$ |
+"""
+
 # ╔═╡ 8d63c259-14d0-45db-bd85-93b71e963dbb
 md"""
-## 2.4. Add Treasury STRIPS
+# 2.5. Add Treasury STRIPS
 """
 
 # ╔═╡ 92383772-0e20-4302-89ca-ccb914a05a33
 md"""
-| Time		| TIPS + Inflation Swaps | STRIPS 		   |
-|-----------|------------------------|-----------------|
-| 10-05-06	| $-97.0428$	             |$-\sum_{T_i} P_{\textrm{STR}}(0,T_i)$	|
-| 1/15/2007 | $0.9375 + 0.9375 \times P_{\textrm{Swap}}(t)$  | $x_t \times 100$ | 
+| Time		| TIPS + Inflation Swaps | Treasury Note 	| STRIPS 		   |
+|-----------|------------------------|-----------------|-------------------|
+| 10-05-06	| $-97.0428$	          | $-98.07337$          |   $-\sum_{T_i} P_{\textrm{STR}}(0,T_i)$	|
+| 1/15/2007 | $0.9375 + 0.9375 \times P_{\textrm{Swap}}(t)$  | $2.125$ | $x_t \times 100$ | 
 | $\vdots$  | $\vdots$               | $\vdots$        | 
-| 7/15/2015 | $(0.9375+100) + (0.9375+100) \times P_{\textrm{Swap}}(T)$ | $x_T \times 100$ |
-"""
-
-# ╔═╡ d7e38a5e-2c88-4728-b1cc-d98a5e1a6ec1
-md"""
-## 2.5. Add Treasury Note
-"""
-
-# ╔═╡ 50e13665-bf79-4931-b545-0050a933e2fa
-md"""
-| Time		| TIPS + Inflation Swaps | STRIPS 		| Treasury Note 	|
-|-----------|------------------------|------------- |-------------------|
-| 10-05-06	| $-97.0428$	             | $-\sum_{T_i} P_{\textrm{STR}}(0,T_i)$	| $-98.07337$          | 
-| 1/15/2007 | $0.9375 \times (1+ P_{\textrm{Swap}}(t))$  | $x_t \times 100$ | $2.125$ |
-| $\vdots$	| $\vdots$             | $\vdots$	| $\vdots$        | 
-| 7/15/2015 | $100.9375 \times (1+P_{\textrm{Swap}}(T))$ | $x_T \times 100$ | $102.125$ |
+| 7/15/2015 | $(0.9375+100) + (0.9375+100) \times P_{\textrm{Swap}}(T)$ | $102.125$ | $x_T \times 100$ |
 """
 
 # ╔═╡ 03f0f3c5-cd48-4dec-b379-0d4245235f25
 md"""
-## 2.6. Calculate the STRIPS Positions
+# 2.6. Calculate the STRIPS Positions
 """
 
 # ╔═╡ 0e8e476f-9933-4fd0-9ad6-b01f7918a67b
 md"""
 - Next, we calculate the positions in Treasury STRIPS to match the cash flows from the Treasury note exactly.
+"""
+
+# ╔═╡ 7848436a-46e6-4456-8402-f34e3d16126b
+md"""
+#
+"""
+
+# ╔═╡ 5cc070bc-e0f6-4158-a3e2-800acac61361
+md"""
 - For each coupon date $t$
   - Set the notional of the Treasury STRIPS to enter into such that the total cash flow from the TIPS, inflation swap, and STRIPS matches exactly the fixed coupon cash flow of the Treasury note.
+"""
+
+# ╔═╡ 9d03e1f6-4ad5-4b99-9ab8-cc92bff5f224
+md"""
+#
+"""
+
+# ╔═╡ a59495a8-a940-47b1-b240-685afbd62d23
+md"""
   - To keep the notation general, let the fixed real TIPS cash flow be denoted by $c_{\textrm{TIPS}}= 0.9375$ and let the Treasury note cash flow be $c_{\textrm{Tnote}}=2.125$.
 ${c_{\textrm{TIPS}}} \times (1 + {P_{\textrm{Swap}}(t)}) + x_t \cdot 100 = {c_{\textrm{Tnote}}}$
 $\to {x_t} = \frac{{{c_{\textrm{Tnote}}} - {c_{\textrm{TIPS}}} ( 1+ \cdot {P_{\textrm{Swap}}(t)}})}{{100}}$
 $\to {x_t} = \frac{{{2.125} - ({c_{\textrm{TIPS}}} + {c_{\textrm{TIPS}}} \cdot {P_{\textrm{Swap}}(t)}})}{{100}}$
+"""
 
+# ╔═╡ db457538-d9a1-4acd-be2a-d89e71c43864
+md"""
+#
+"""
 
+# ╔═╡ d72909ff-0908-4759-91be-ad420d7c47e3
+md"""
 - For the maturity date $T$
-  - Set the notional of the Treasury STRIPS to enter into such that the total cash flow from the TIPS, inflation swap, and STRIPS matches exactly the fixed coupon and principal cash flow of the Treasury note.
+- Set the notional of the Treasury STRIPS to enter into such that the total cash flow from the TIPS, inflation swap, and STRIPS matches exactly the fixed coupon and principal cash flow of the Treasury note.
 $\left( {100 + {c_{\textrm{TIPS}}}} \right) \times (1+ {P_{\textrm{Swap}}(T)}) + x \cdot 100 = 100 + {c_{\textrm{Tnote}}}$
 $\to {x_T} = \frac{({100+{c_{Tnote}}) - (100+{c_{\textrm{TIPS}}}) \times (1 +{P_{\textrm{Swap}}(T)})}}{{100}}$
 """
 
 # ╔═╡ 5ec83302-d399-49a5-86fe-514f30d76c7b
 md"""
-## Using Market Data
+# Using Market Data
+
+- Use actual market data in Steps 2.3 to 2.6 above.
 """
 
 # ╔═╡ 9860adbf-82c4-4961-a0e4-dd5c51037430
 md"""
-## 2.3. Net TIPS and Inflation Swaps Cash Flows
+# 2.3. Net TIPS and Inflation Swaps Cash Flows
 """
 
 # ╔═╡ 68cdb801-d6ca-4fe1-8510-5d66ac78e95e
@@ -1256,25 +1550,47 @@ cfTenors=[0.279500,0.775300,1.279500,1.778100,2.282200,2.778100,3.282200,3.77810
 df2 = DataFrame(Date=cfDates2, InflationSwapRates=cfSwaps,SwapTenors=cfTenors)
 end
 
+# ╔═╡ f4dc2755-9f58-4598-8216-e682f59f0632
+md"""
+#
+"""
+
 # ╔═╡ 9b1b0269-d975-446a-a168-3db32d0fdb95
 md"""
 - The column *Inflation Swap Rates* shows the inflation swap rates from the Bloomberg system on 10/5/2006.
-  - _Note: To get inflation swap rates with tenors exactly matching the cash flow dates of the TIPS, we make two adjustments. First, we need to account for seasonalities in inflation swap rates (e.g. inflation rates for certain months during the year are higher/lower than in other months). Second, swap rates for short tenors (e.g. 1 month) are known because the reference CPI index values for near-term months are already known in the current month due to the 3-month indexaction lag). For details, see Fleckenstein, Longstaff, and Lustig (2014)._
 - The column SwapTenors shows the swap tenors as a fraction of a year.
-  - The cash flow dates of the inflation swaps are on the coupon cash flow dates of the TIPS.
-  - For example, the first tenor as a fraction of a year is 0.2795.
+- The cash flow dates of the inflation swaps are on the coupon cash flow dates of the TIPS.
+- For example, the first tenor as a fraction of a year is 0.2795.
     - (31-5) days in October + 30 days in November + 31 days in December + 15 days in January = 102. Thus, 102/365=0.2795. Similarly for the other cash flow dates.
+"""
+
+# ╔═╡ 43e04f32-6175-4a07-b128-427566259646
+md"""
+#
+"""
+
+# ╔═╡ 294dde1d-2ce0-40d6-b309-b50f93b15c70
+md"""
+- Note: To get inflation swap rates with tenors exactly matching the cash flow dates of the TIPS, we make two adjustments. 
+- First, we need to account for seasonalities in inflation swap rates (e.g. inflation rates for certain months during the year are higher/lower than in other months). 
+- Second, swap rates for short tenors (e.g. 1 month) are known because the reference CPI index values for near-term months are already known in the current month due to the 3-month indexaction lag). 
+- For details, see Fleckenstein, Longstaff, and Lustig (2014).
 """
 
 # ╔═╡ 59bdffc6-b6fd-45f7-98dc-aec5aab8b9a7
 Markdown.parse("
-## Calculate Cash Flows on the Fixed-Leg of the Inflation Swap
+# Calculate Cash Flows on the Fixed-Leg of the Inflation Swap
 - We calculate the cash flows on the fixed leg of the inflation swap from the inflation swap rates.
 - Recall that the fixed leg of the inflation swap has cash flows \$(1+f)^T\$ where \$f\$ is the inflation swap rate and \$T\$ is the swap tenor.
 - Swap Fixed Leg = \$\\left( 1 + f(T)\\right)^{T} -1\$
   - For example, for the swap expiring on 2008-01-15, we have 
-\$(1+0.019628)^{1.2795}-1 = $((1+0.019628)^1.2795-1)\$
+\$(1+0.019628)^{1.2795}-1 = $(roundmult((1+0.019628)^1.2795-1,1e-6))\$
 ")
+
+# ╔═╡ 342d06f0-bc3f-4da4-bfdc-7314fa927e9f
+md"""
+#
+"""
 
 # ╔═╡ 4ca9e7a6-fa37-4df5-8941-4aa65af2822f
 begin
@@ -1282,6 +1598,11 @@ begin
 	df3.SwapFixedLeg = ((1 .+ df2.InflationSwapRates).^(df2.SwapTenors) .-1)
 	df3
 end
+
+# ╔═╡ 0ae821cb-0914-42ac-95a2-b8f4d99e154a
+md"""
+# Combine TIPS and Inflation Swap
+"""
 
 # ╔═╡ 9b5dafa0-1ea6-482f-98a8-f2b8bfb7e9f0
 begin
@@ -1291,36 +1612,37 @@ begin
 	df4
 end
 
-# ╔═╡ a89a9f56-8c94-47e0-9588-48ce9dcd97a4
-md"""
-## 2.4. Add Treasury STRIPS
-"""
-
-# ╔═╡ 81506749-c1b6-4dac-beeb-d551698afb34
-begin
-	df5 = copy(df4)
-	select!(df5,:Date,:TIPSAndInflationSwap)
-	df5.STRIPS = NaN.*ones(length(df5.Date))
-	#df5.STRIPS = [98.6650,96.3040,94.1340,92.0890,90.1020,88.1370,86.2470,84.4300,82.6180,80.9500,78.6780,76.8630,75.0760,73.3200,71.5890,69.9060,68.1530,66.5100]
-	df5
-end
-
 # ╔═╡ 77b7030e-0cad-4d86-a70e-7896e0e45da7
 md"""
-## 2.5. Add Treasury Note
+# 2.4. Add Treasury Note
 """
 
 # ╔═╡ b00301af-7ee3-4266-9878-44616cba7ecd
 begin
+	df5 = copy(df4)
+	select!(df5,:Date,:TIPSAndInflationSwap)
+	df5.TNote = 2.125*ones(length(df5.Date))
+	df5.TNote[end] = df5.TNote[end]+100
+	df5
+end
+
+# ╔═╡ a89a9f56-8c94-47e0-9588-48ce9dcd97a4
+md"""
+# 2.5. Add Treasury STRIPS
+"""
+
+# ╔═╡ 81506749-c1b6-4dac-beeb-d551698afb34
+begin
 	df6 = copy(df5)
-	df6.TNote = 2.125*ones(length(df6.Date))
-	df6.TNote[end] = df6.TNote[end]+100
+	df6.STRIPS = NaN.*ones(length(df6.Date))
+	select!(df6, :Date, :TIPSAndInflationSwap, :STRIPS, :TNote)
+	#df5.STRIPS = [98.6650,96.3040,94.1340,92.0890,90.1020,88.1370,86.2470,84.4300,82.6180,80.9500,78.6780,76.8630,75.0760,73.3200,71.5890,69.9060,68.1530,66.5100]
 	df6
 end
 
 # ╔═╡ 9c8fe1c2-b148-4ded-b5ae-d9c512479a50
 md"""
-## 2.6. Calculate the STRIPS Positions
+# 2.6. Calculate the STRIPS Positions
 """
 
 # ╔═╡ 932d7811-ebb5-4807-8270-afc8905e7b58
@@ -1329,25 +1651,10 @@ begin
 	df6
 end
 
-# ╔═╡ 95c3bcc9-e52f-475e-895b-c8db7f297b8c
-begin
-	df7 = copy(df6)
-	df7.TIPSInflationSwapSTRIPS = df7.TIPSAndInflationSwap .+ df7.STRIPS
-	select!(df7,:Date,:TIPSInflationSwapSTRIPS,:TNote)
-end
-
 # ╔═╡ 3115e3a5-886e-4315-9c05-36cf9fe7692e
 md"""
-## 2.7. Calculate the Market Price fo the STRIPS Positions
+# 2.7. Calculate the Market Price fo the STRIPS Positions
 """
-
-# ╔═╡ 89d87124-23a2-4241-ad68-73b5be83106b
-begin
-	df8 = copy(df7)
-	select!(df8,:Date,)
-	df8.STRIPS = [98.6650,96.3040,94.1340,92.0890,90.1020,88.1370,86.2470,84.4300,82.6180,80.9500,78.6780,76.8630,75.0760,73.3200,71.5890,69.9060,68.1530,66.5100]
-	df8
-end
 
 # ╔═╡ 73acdb08-b4d2-4e29-8004-1a936e72982f
 md"""
@@ -1355,52 +1662,88 @@ md"""
   - _Note: To match exactly the dates of the TIPS coupon cash flows, we interpolate market prices of the Treasury STRIPS. For details, see Fleckenstein, Longstaff, and Lustig (2014)._
 """
 
-# ╔═╡ 2c8ba6e2-83a9-4c4d-98a5-a1325fba7736
+# ╔═╡ 89d87124-23a2-4241-ad68-73b5be83106b
 begin
-	df9 = copy(df7)
-	df9.STRIPSPrices = df6.STRIPS .* df8.STRIPS./100
-	df9
+	df7 = copy(df6)
+	select!(df7,:Date,)
+	df7.STRIPS = [98.6650,96.3040,94.1340,92.0890,90.1020,88.1370,86.2470,84.4300,82.6180,80.9500,78.6780,76.8630,75.0760,73.3200,71.5890,69.9060,68.1530,66.5100]
+	df7
 end
 
-# ╔═╡ 5aa2939e-d286-49f8-9601-3ec5fad21a4c
+# ╔═╡ 803017a7-afa2-439a-96c5-ff42b49e25a3
+md"""
+#
+"""
+
+# ╔═╡ 2c8ba6e2-83a9-4c4d-98a5-a1325fba7736
 begin
-	PxSTRIPS = sum(df9.STRIPSPrices)
-	display("")
+	df8 = copy(df6)
+	df8.STRIPSPrices = df8.STRIPS .* df7.STRIPS./100
+	select!(df8,:Date, :STRIPS, :STRIPSPrices)
+	PxSTRIPS = sum(df8.STRIPSPrices)
+	df8
 end
 
 # ╔═╡ 138a92e6-98bc-49d9-8ac1-2d75f41daaeb
+Markdown.parse("
+- The total price of entering the STRIPS positions is $(roundmult(PxSTRIPS,1e-6)).
+")
+
+# ╔═╡ 29568bae-ed4f-4486-9c1f-6dbb234b5842
 md"""
-- Thus, the total price of entering the STRIPS positionss is $PxSTRIPS
+#
 """
 
 # ╔═╡ 26534a5e-a19b-4ef3-b4b3-1ab10700c601
 md"""
-## Summary
-- To summarize
-  - The TIPS has a market price of $97.0428. 
-  - A long position in the TIPS, inflation swaps and STRIPS costs \$97.0428 - \$1.1887 = \$95.8541.
-  - The Treasury note has a market price of 98.0734.
-  - This is a puzzle because the price of two securities with exactly the same cash flows are different. The Treasury note is \$2.22 more expensive than its equivalent TIPS.
-  - Thus, by buying the TIPS and entering into the inflation swaps and STRIPS and by taking a short we have an arbitrage.
+- Is there an arbitrage?
+- The TIPS has a market price of $97.0428. 
+- A long position in the TIPS, inflation swaps and STRIPS costs \$97.0428 - \$1.1887 
+$P_{\text{TIPS+Swap}} = $95.8541$
+
+"""
+
+# ╔═╡ d95020e1-680f-44e5-9049-05202d247399
+md"""
+#
+"""
+
+# ╔═╡ c998015a-5254-48f3-b6f7-630c2e098656
+md"""
+- The Treasury note has a market price of 
+$P_{\text{Treasury}}= $98.0734$
+
+- This is a puzzle because the price of two securities with exactly the same cash flows are different. 
+- The Treasury note is __\$2.22__ more expensive than its equivalent TIPS.
+- Thus, by buying the TIPS and entering into the inflation swaps and STRIPS and by taking a short we have an arbitrage.
 """
 
 # ╔═╡ 569d7b82-ee46-42e2-b24e-e22272769452
 md"""
-## Details
+# Details
 - Note that the TIPS and the Treasury have slightly different maturity dates.
   - The TIPS has maturity date on July 15, 2015.
   - The Treasury note has maturity date on August 15, 2015.
 - To adjust for this small difference, we take the following approach.
   - Step 1: We calculate the yield to maturity of the TIPS.
   - Step 2: We calculate the price of the Treasury note by discounting the Treasury note cash flows by the yield computed in the previous step.
+"""
+
+# ╔═╡ b92d4665-551a-4824-8314-a59edc73fbad
+md"""
+#
+"""
+
+# ╔═╡ c87e3c57-f976-44b0-af02-c2f188a35db9
+md"""
 - The price calculated in step 2 is the price of the TIPS that can be compared to the price of the Treasury note because it accounts for the difference in th timing of cash flows.
 - The yield of the TIPS turns out to be 4.97% and the market price of the Treasury note if its yield is 4.97% turns out to be 95.4583.
-- Thus the Treasury note is \$98.07337 - \$95.4583 = \$2.61507 more expensive than the equivalent TIPS and the arbitrage mispricing is 2.61507.
+- Thus the Treasury note is \$98.07337 - \$95.4583 = \$2.61507 more expensive than the equivalent TIPS. The arbitrage mispricing is \$2.61507.
 """
 
 # ╔═╡ 53c77ef1-899d-47c8-8a30-ea38380d1614
 md"""
-## Wrap-Up
+# Wrap-Up
 """
 
 # ╔═╡ 670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
@@ -1417,14 +1760,9 @@ begin
 	"""
 end
 
-# ╔═╡ 011994b7-8b69-49ee-a370-d09600310323
-md"""
-##
-"""
-
 # ╔═╡ 2ee2c328-5ebe-488e-94a9-2fce2200484c
 md"""
-## Reading: 
+# Reading: 
 Fleckenstein, Matthias, Francis A. Longstaff, and Hanno Lustig, 2014, The TIPS–Treasury Bond Puzzle, Journal of Finance, Volume 69, Issue 5, 2014, 2151–2197.
 
 """
@@ -1867,7 +2205,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[Logging]]
@@ -1929,6 +2267,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+1"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2026,7 +2368,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -2345,6 +2687,10 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -2393,11 +2739,9 @@ version = "0.9.1+5"
 # ╔═╡ Cell order:
 # ╟─41d7b190-2a14-11ec-2469-7977eac40f12
 # ╟─f0545c67-5cfd-438f-a9ef-92c35ebaefa4
-# ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
 # ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
 # ╟─6498b10d-bece-42bf-a32b-631224857753
 # ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
-# ╟─d2908a7c-51af-431c-ac09-4a7d89dbf02f
 # ╟─886da2d4-c1ec-4bb4-8733-e3b46c95dd36
 # ╟─6334202e-2047-4e7c-beca-020768340f08
 # ╟─98f202ba-7720-40fd-b618-87bd30de840c
@@ -2413,23 +2757,23 @@ version = "0.9.1+5"
 # ╟─298dada3-f3a7-4ac1-bdaa-55be8b359e95
 # ╟─dc307a3f-c258-49cd-bb46-499da5209f41
 # ╟─d6729dc9-0706-4405-9786-0da8ef96fe0a
-# ╟─6bd410dd-f851-48d9-a4f8-9ffff975c7a3
 # ╟─3e5097fe-5a26-4326-bbcd-1ae95a163c02
 # ╟─9e730ef8-2791-4fd7-bd07-8844cd3c2f69
 # ╟─fd4f618a-71f2-4976-8515-031e79df3e5b
-# ╟─400ee234-919e-4309-8a9a-208df0926d44
 # ╟─448aef9e-7b85-4b8f-ba40-7490513dfd1a
 # ╟─8b9ac326-884f-4d49-bb09-b01cfa0ae9d3
 # ╟─7e316df9-3c1d-47ca-96e7-e79984fc92cf
 # ╟─cb6d785c-235d-4c8a-935e-17628c13e850
 # ╟─62c1c14e-7094-430a-bcff-74e298d6597e
 # ╟─abe6fa93-0105-43e5-9e03-92664b563b38
+# ╟─da83e6fb-96b5-4741-a843-a1a58b1315ae
 # ╟─348219b8-8d4c-425b-8773-b42313554eef
 # ╟─2ed83178-02a6-4e60-bd33-9df1a74b2f04
 # ╟─c3d5177e-5dc3-43da-a419-37b6e58ac49a
 # ╟─34d8c7f7-0266-49c8-aac5-ac882d3beb48
-# ╟─1b701e22-1766-4113-98e7-f6fc5f3f51f6
 # ╟─562de281-2571-4b1f-8363-fcbd02cb3204
+# ╟─444ab8c9-35b4-4bc5-bb0b-dc2410f4ccac
+# ╟─96519f0e-df82-4c03-9c34-bee6f7fd961c
 # ╟─7a447118-1335-41a5-8f88-9f47a6637061
 # ╟─f0b795bd-a6fe-4f80-8b65-f345a5aeb953
 # ╟─dca49c6a-a897-442e-8924-7b171e806fc5
@@ -2437,21 +2781,30 @@ version = "0.9.1+5"
 # ╟─9ed05f91-a314-4e6c-b05c-8d372d0f2d0f
 # ╟─977ba39b-5e9d-4591-a5f0-3b6fc0b5fec4
 # ╟─a0af3215-6ecc-4083-afaa-31c476ebae4a
+# ╟─9b7aeb59-1592-4568-9152-d3e333317f95
+# ╟─015d265b-55a0-48a0-9878-b3e71b591931
+# ╟─cede4ea6-679c-416a-a9e6-dd12f0870c6a
+# ╟─5f7de294-7292-4bc5-9ef6-a18b177498dc
 # ╟─2b18e585-71de-4820-8a4a-d46af365789f
 # ╟─437de46e-78cd-4b83-9372-6a454c95d135
 # ╟─8c4b9294-568c-49bf-a760-c54da18de10d
+# ╟─c95f15b3-db7f-4113-a6fb-c0a202b0d601
+# ╟─1980728f-8868-4911-a390-50134b7222bd
 # ╟─ae72b826-72a7-4c14-8ed6-c5c27f925dd5
 # ╟─2e76221f-cec2-443b-b1b4-cf44d93838b3
 # ╟─60b59241-c081-4da7-9a87-986d9e5931d1
 # ╟─3f620c75-69c9-461a-b8ec-396079c36088
 # ╟─beb4b354-3cd6-4a03-b161-0cb1c1845f0b
 # ╟─b6c222b6-012b-42ea-967f-fe44a88123b9
+# ╟─882a3f32-25c5-487d-b190-7d36adbf4a2f
 # ╟─ff2e0417-8557-4fd7-b03e-0c5aae7882f3
 # ╟─0c8d7c37-6dcd-4a8b-b333-073a4a8e99ef
 # ╟─66a72bb1-64f1-4fd9-a6df-7d922758e4c4
 # ╟─9635fd8d-8ae6-424a-a1c1-803bf7c2dc78
 # ╟─6d047903-fa9e-47d4-9147-6518869cc074
+# ╟─1c30e93c-f122-4d4a-a6a6-81e639a3f4e7
 # ╟─cfa2509b-38ef-470e-8c49-481e3fdb3909
+# ╟─a7fc3f61-28a4-46c8-a7e8-4d51bc3505d9
 # ╟─ac751d3e-0dcf-4859-a7b8-6185eeff4b6b
 # ╟─6a4974ec-ec57-4e73-a61f-ad83958d2874
 # ╟─aef13d6b-d776-44cd-8b91-5a3577af2338
@@ -2464,37 +2817,65 @@ version = "0.9.1+5"
 # ╟─e5a9bd4f-cbe9-44ad-bc29-55d767867fe1
 # ╟─2e7bd373-6edc-44a6-8a8f-b46f88277e03
 # ╟─727e1c36-6ce2-4114-9831-e7b3981e4ce1
+# ╟─bc96cd4f-c600-44fb-bfae-51b3fc974b90
+# ╟─efd939d0-4644-4469-a7cf-d2bfd71921e9
+# ╟─71fd08a2-9236-49c0-a24e-2bb63719be44
+# ╟─5885afab-7b6a-4c11-8536-ef0372d8d9be
 # ╟─6c9e2711-8153-4ebe-b130-c819ff266ff6
 # ╟─e33907ec-bcc1-48c0-a09f-cd746b46d3ea
 # ╟─c0563fe7-6d8d-4a2d-9e47-fe16dcfaed61
 # ╟─d3fb968d-3aa3-44e0-ba8b-13ba61cc6a5b
+# ╟─12a9256b-0e40-4614-b626-76633ab091b8
 # ╟─917d6d5e-bc3d-4f24-b51b-e86533e682ab
 # ╟─921402f8-a70c-4b45-b134-7fd70f0c699a
-# ╟─b9c01bbc-1563-4a58-b2ff-1d70f5f10c43
+# ╟─034818e7-caae-495c-b159-e28549acd23a
+# ╟─780b61fc-903e-4483-80d6-3cd927676589
+# ╟─41d9d4e4-a4f0-425f-bb39-80a3c18d0289
+# ╟─824dc5be-d6ab-4d43-8795-745dc4e10c8e
+# ╟─b6f4724c-ed17-4edc-a565-6768fccde65f
 # ╟─faaaae87-46e9-4fbd-82e0-6ac979f332ee
-# ╟─01a5c636-23fb-4e6f-aca5-9bdab11fa66a
+# ╟─69b9a76e-622c-4b69-bcdc-a0aae02a93eb
 # ╟─3e23d630-4e11-4a52-8748-d66b02d1bfd4
+# ╟─262590e2-745d-49ee-8c25-9e6f71a7b5bb
 # ╟─7275809f-4e12-44aa-b7e1-ec9a2b33f870
+# ╟─bb406003-2eb8-4e25-897e-7651fc1e719a
+# ╟─caa6aae8-c3ab-40e2-a74b-a7241fabfc82
+# ╟─36b43def-2c99-47a5-99c6-5d9b75884340
+# ╟─d6441d19-d3d4-4d5e-9808-d93a258204f8
 # ╟─c24ef65a-7dde-4f06-bfd0-c15e2f769822
+# ╟─e014cbe2-51e1-4437-b6b1-4adc041e9e1a
+# ╟─cc9f23dc-eaa0-4d19-b673-d147fbb57057
+# ╟─2a7ce1ef-35e8-4553-85c3-15c98821bde6
 # ╟─361360cb-bdf4-4f99-8ccc-3fee22847dd2
+# ╟─3f716232-20c4-42fa-847d-e2bad3440e84
+# ╟─3f4cdf58-95df-407d-a5f1-d4077d4b9188
 # ╟─5fea7742-70a3-4a8e-892d-c70a953b0fcf
+# ╟─66a6a32b-9639-4591-aca1-56742edca665
+# ╟─7aa49db4-82df-4d28-81ae-7cf65fd3acc2
 # ╟─23e7092b-6006-4ddd-97ff-454128a88e31
-# ╟─56d6b975-f6d4-447b-a67b-02954f75286e
-# ╟─9ee52d27-ec6b-4e0d-9696-48e9dd88c7ce
 # ╟─1771917d-3f40-495d-ad52-50bf674ff0b6
 # ╟─76d70fe8-358f-4f2f-9a00-69a147935282
-# ╟─c27b5057-3d36-4a80-94f3-d8421874d3b8
+# ╟─ff21805e-7466-4780-939b-72eeeee17e57
+# ╟─e9cef70a-fbf9-47a7-b5c0-aa6bb2ec5f6c
+# ╟─55c40cff-0639-46b5-a8dc-9f8cb3738a6f
+# ╟─8953ae0b-ab82-4173-bda8-9980ae1ef550
+# ╟─88bf0e46-17c9-4a61-9e82-9c113c1dbadd
+# ╟─4e89c4d7-d4e8-4f68-ac5c-7b20d0c446e7
 # ╟─06b01ce1-94dd-4ddd-ad17-2bdf3aa950ed
 # ╟─2423e58f-2ff0-4c80-9666-ccb45243ae19
-# ╟─a0bf1aaa-edfb-409f-a2ec-eccc00e9b95f
+# ╟─e72cde3c-ad81-4242-8222-5d6bf86f22f4
+# ╟─81e531a9-3afb-4c05-a138-133467882086
 # ╟─201a91a8-4154-414e-86b1-ca578fa105c2
 # ╟─27038fd7-4dc4-4dd5-87dd-0032478d0622
+# ╟─62ec696b-021f-4756-aff8-f62a122345ae
+# ╟─1480c3c4-7ef1-413b-9cd2-5bbb9f61a2e2
 # ╟─14e6f7ed-2a81-4101-a1b5-af627df7c805
+# ╟─c6df6e6e-1c72-4fbb-b73c-7c084bc96b69
 # ╟─7c923c8c-9067-42af-b103-391c05bbeb98
+# ╟─ed31f60a-8b09-4222-8b81-333eccb33c02
 # ╟─004efec5-23d3-4940-abff-9024820daf65
-# ╟─ac297a30-ce58-4c07-b72f-df4a149dc565
-# ╟─8eaece30-202e-4e8b-a16b-adb3375f008c
-# ╟─b729c130-5813-4eab-92a1-673a8d29a897
+# ╟─fb7ad01e-1a12-4f06-a1a3-d1003cfea04a
+# ╟─06b6deff-fb0a-4ed2-80ee-aee2cee7e0bf
 # ╟─cded3cca-c9ac-4d7d-b9dd-4c5497aa955e
 # ╟─d4dab771-87f1-4fa2-b6a2-900a51af4586
 # ╟─8f3a465e-af54-4b0e-9210-87c140629f2f
@@ -2515,46 +2896,82 @@ version = "0.9.1+5"
 # ╟─398086e4-4a4c-45f6-a32d-cb5d8847233c
 # ╟─7c15360a-9f7f-45d0-8059-0420dc46b231
 # ╟─cf85e64a-d5c4-4d04-b6ba-04ac003f7289
+# ╟─a5a0c420-f28f-4ec4-a9e2-092a02cec9a8
+# ╟─448fa11f-4bcb-4b62-9d1b-703d9a12786b
+# ╟─d5ebca67-32b9-461d-9d4f-3285517c3cd2
+# ╟─d5df1ae7-9cc5-453b-b889-cd57dcc671c4
+# ╟─d9aa27ee-eba3-4dee-abeb-7fce49536793
+# ╟─3d5a3bc4-f290-4d68-a5d4-ecdafc967537
+# ╟─afc4f565-7171-4b47-93e0-ffa66386dedf
+# ╟─7e50530e-a0ad-4709-9e89-bc7cc8575328
+# ╟─5d53718b-a542-47ea-a4bf-7d94320d1fde
+# ╟─6245fadd-8dda-4e59-b619-3b0cfe8fbafe
 # ╟─31ef4b01-b5ed-47cc-9ff1-6d92ff7bd2b4
 # ╟─d670b261-f427-4498-a8df-fcdacdb14d3e
+# ╟─cba8fcb7-970e-47ef-9b0f-d4396e89aa66
+# ╟─c6ae22ec-78cd-4a00-b36d-806439f9d550
+# ╟─fde6eaee-dd08-483a-87c6-6778300c311d
+# ╟─3936d198-5f63-4192-b33b-b1ef9941964d
+# ╟─b415d609-0528-4e5f-9d43-bf8cd0e25688
+# ╟─2bbcaee7-34a7-4596-ad38-5c6239dd08e6
+# ╟─89516578-5de4-47b3-8629-89b590b15b19
+# ╟─fbb7288e-806e-4fec-a9f6-cd79b66d33fd
+# ╟─9cd0acc2-6e2b-42ac-9f92-1692d8b55d80
+# ╟─60913481-91ed-4959-9b01-9fe363916045
 # ╟─083a0cb1-a597-46ca-84c0-e5b7ce23b53a
+# ╟─ad56ba09-a69c-40db-8caf-53efdd93719a
+# ╟─e871ef6e-f4da-4cef-aecf-4103335ebead
 # ╟─80176747-6460-4840-992f-394e1c1112b2
 # ╟─b0b36b4c-9d44-42cf-a1c2-a97fad25b84e
 # ╟─903a6516-2919-4078-89cc-264a726e07ca
 # ╟─14623ccd-d970-4046-8e1c-89d1652e3bcf
 # ╟─932c04a6-64e3-4d73-a083-c836fbafdbb3
 # ╟─fb2d12f6-ebd2-4be5-9506-cdaa52cfaa1e
+# ╟─d7e38a5e-2c88-4728-b1cc-d98a5e1a6ec1
+# ╟─4950323f-1c91-4d63-b333-410c69650352
 # ╟─8d63c259-14d0-45db-bd85-93b71e963dbb
 # ╟─92383772-0e20-4302-89ca-ccb914a05a33
-# ╟─d7e38a5e-2c88-4728-b1cc-d98a5e1a6ec1
-# ╟─50e13665-bf79-4931-b545-0050a933e2fa
 # ╟─03f0f3c5-cd48-4dec-b379-0d4245235f25
 # ╟─0e8e476f-9933-4fd0-9ad6-b01f7918a67b
+# ╟─7848436a-46e6-4456-8402-f34e3d16126b
+# ╟─5cc070bc-e0f6-4158-a3e2-800acac61361
+# ╟─9d03e1f6-4ad5-4b99-9ab8-cc92bff5f224
+# ╟─a59495a8-a940-47b1-b240-685afbd62d23
+# ╟─db457538-d9a1-4acd-be2a-d89e71c43864
+# ╟─d72909ff-0908-4759-91be-ad420d7c47e3
 # ╟─5ec83302-d399-49a5-86fe-514f30d76c7b
 # ╟─9860adbf-82c4-4961-a0e4-dd5c51037430
 # ╟─68cdb801-d6ca-4fe1-8510-5d66ac78e95e
+# ╟─f4dc2755-9f58-4598-8216-e682f59f0632
 # ╟─9b1b0269-d975-446a-a168-3db32d0fdb95
+# ╟─43e04f32-6175-4a07-b128-427566259646
+# ╟─294dde1d-2ce0-40d6-b309-b50f93b15c70
 # ╟─59bdffc6-b6fd-45f7-98dc-aec5aab8b9a7
+# ╟─342d06f0-bc3f-4da4-bfdc-7314fa927e9f
 # ╟─4ca9e7a6-fa37-4df5-8941-4aa65af2822f
+# ╟─0ae821cb-0914-42ac-95a2-b8f4d99e154a
 # ╟─9b5dafa0-1ea6-482f-98a8-f2b8bfb7e9f0
-# ╟─a89a9f56-8c94-47e0-9588-48ce9dcd97a4
-# ╟─81506749-c1b6-4dac-beeb-d551698afb34
 # ╟─77b7030e-0cad-4d86-a70e-7896e0e45da7
 # ╟─b00301af-7ee3-4266-9878-44616cba7ecd
+# ╟─a89a9f56-8c94-47e0-9588-48ce9dcd97a4
+# ╟─81506749-c1b6-4dac-beeb-d551698afb34
 # ╟─9c8fe1c2-b148-4ded-b5ae-d9c512479a50
 # ╟─932d7811-ebb5-4807-8270-afc8905e7b58
-# ╟─95c3bcc9-e52f-475e-895b-c8db7f297b8c
 # ╟─3115e3a5-886e-4315-9c05-36cf9fe7692e
-# ╟─89d87124-23a2-4241-ad68-73b5be83106b
 # ╟─73acdb08-b4d2-4e29-8004-1a936e72982f
-# ╟─2c8ba6e2-83a9-4c4d-98a5-a1325fba7736
-# ╟─5aa2939e-d286-49f8-9601-3ec5fad21a4c
+# ╟─89d87124-23a2-4241-ad68-73b5be83106b
+# ╟─803017a7-afa2-439a-96c5-ff42b49e25a3
 # ╟─138a92e6-98bc-49d9-8ac1-2d75f41daaeb
+# ╟─2c8ba6e2-83a9-4c4d-98a5-a1325fba7736
+# ╟─29568bae-ed4f-4486-9c1f-6dbb234b5842
 # ╟─26534a5e-a19b-4ef3-b4b3-1ab10700c601
+# ╟─d95020e1-680f-44e5-9049-05202d247399
+# ╟─c998015a-5254-48f3-b6f7-630c2e098656
 # ╟─569d7b82-ee46-42e2-b24e-e22272769452
+# ╟─b92d4665-551a-4824-8314-a59edc73fbad
+# ╟─c87e3c57-f976-44b0-af02-c2f188a35db9
 # ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
 # ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
-# ╟─011994b7-8b69-49ee-a370-d09600310323
 # ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
