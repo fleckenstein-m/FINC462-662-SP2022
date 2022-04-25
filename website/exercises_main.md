@@ -10,4 +10,5 @@ Exercise 05      | [html](../notebooks/Exercises/exercise_05_wSol.html)
 Exercise 06      | [html](../notebooks/Exercises/exercise_06_wSol.html)
 Exercise 07      | [html](../notebooks/Exercises/exercise_07_wSol.html)
 Exercise 08      | [html](../notebooks/Exercises/exercise_08_wSol.html)
+Exercise 09      | [html](../notebooks/Exercises/exercise_09_wSol.html)
 
