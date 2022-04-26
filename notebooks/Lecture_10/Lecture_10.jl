@@ -150,7 +150,7 @@ begin
 end
 
 # ╔═╡ 733bbadf-a3ae-46d7-b9fb-6bb6526d74ce
-#TableOfContents(aside=true, depth=1)
+TableOfContents(aside=true, depth=1)
 
 # ╔═╡ 6498b10d-bece-42bf-a32b-631224857753
 md"""
@@ -748,7 +748,7 @@ md"""
 md"""
 - Recall that the modified duration (MD) can be calculated as
 - Let's use $\Delta y=0.001$
-$$MD = - \frac{P(y+\Delta y)-P(y-\Delta y)}{2 \times \Delta y}$$
+$$MD = - \frac{P(y+\Delta y)-P(y-\Delta y)}{2 \times \Delta y} \times \frac{1}{P(y)}$$
 $$P(y) = \frac{100+2}{1+\frac{0.04}{2}}=100$$
 $$P(y+\Delta y) = \frac{100+2}{1+\frac{0.04+0.001}{2}}=99.95100441$$
 $$P(y-\Delta y) = \frac{100+2}{1+\frac{0.04-0.001}{2}}=100.0490436$$
@@ -2979,7 +2979,7 @@ version = "0.9.1+5"
 # ╟─b9895f07-d73d-4447-ba4a-e5753e4e9f9d
 # ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
 # ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
-# ╠═733bbadf-a3ae-46d7-b9fb-6bb6526d74ce
+# ╟─733bbadf-a3ae-46d7-b9fb-6bb6526d74ce
 # ╟─6498b10d-bece-42bf-a32b-631224857753
 # ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
 # ╟─d1b0ba85-b06b-4f01-af36-4c6f61e72607
@@ -3081,7 +3081,7 @@ version = "0.9.1+5"
 # ╟─91ccf353-fff5-4eb1-a0c3-99f45f024e35
 # ╟─795d443d-685f-48cc-b489-be45774b7c8a
 # ╟─1464e93f-4c7c-46ee-8902-eb7a2c3e9eb9
-# ╠═dfd3169d-2fd4-4c44-846b-72fbb66df4a0
+# ╟─dfd3169d-2fd4-4c44-846b-72fbb66df4a0
 # ╟─fc6dfca0-a94f-4545-abb4-ea04976d250b
 # ╟─ebd8cf3b-ff6f-45b1-b26a-11ec231473da
 # ╟─59d69a62-217e-4ac2-9052-40cc9031c796
@@ -3096,7 +3096,7 @@ version = "0.9.1+5"
 # ╟─533b873d-a828-42a5-8412-2bf79a1af169
 # ╟─46a01c46-54f7-4f86-b3ee-cfc9ef4515ac
 # ╟─f594b900-1d22-4c10-927e-bae7e82596c6
-# ╠═88aaa19a-b4e2-4b5a-9e6e-db5d5e272036
+# ╟─88aaa19a-b4e2-4b5a-9e6e-db5d5e272036
 # ╟─21c6be91-61e7-4550-9478-2a5c78587506
 # ╟─fdaa19eb-a225-4315-8a28-6ecd8cde8caa
 # ╟─82c8d26d-c641-472a-8543-36e2de2647d7
