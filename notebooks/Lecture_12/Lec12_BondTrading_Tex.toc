@@ -1,0 +1,10 @@
+\beamer@sectionintoc {1}{Trading on Beliefs}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Steepener Trade}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Fixed Income Arbitrage}{23}{0}{1}
+\beamer@sectionintoc {2}{Hedging}{35}{0}{2}
+\beamer@subsectionintoc {2}{1}{Pension Fund Example}{35}{0}{2}
+\beamer@subsectionintoc {2}{2}{Hedging a Perpetuity}{45}{0}{2}
+\beamer@subsectionintoc {2}{3}{Zero Initial Cash Outlay}{51}{0}{2}
+\beamer@sectionintoc {3}{Conclusion}{59}{0}{3}
+\beamer@sectionintoc {4}{Additional Examples}{61}{0}{4}
+\beamer@subsectionintoc {4}{1}{A Hump-Shaped Yield Curve}{61}{0}{4}

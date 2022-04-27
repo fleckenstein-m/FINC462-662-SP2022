@@ -424,10 +424,9 @@ md"""
 
 # ╔═╡ 015d265b-55a0-48a0-9878-b3e71b591931
 md"""
-
-- The **Reference CPI** for a particular date $t$ during a month is linearly interpolated from the **Reference CPI** for the beginning of that month and the **Reference CPI** for the beginning of the subsequent month.
-  - The **Reference CPI** for the first day of _any_ calendar month is the CPI-U index for the third preceding calendar month. 
-
+- The **Reference CPI** for the first day of _any_ calendar month is the CPI-U index for the third preceding calendar month. 
+- The **Reference CPI** for a particular day during a month is linearly interpolated from the **Reference CPI** for the beginning of that month and the **Reference CPI** for the beginning of the subsequent month.
+  
 """
 
 # ╔═╡ cede4ea6-679c-416a-a9e6-dd12f0870c6a
@@ -451,10 +450,10 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 8c4b9294-568c-49bf-a760-c54da18de10d
 md"""
-# Example: Reference CPI for January 25, 1997
+# Example: Reference CPI for January 7, 1997
 - To find the **Reference CPI** for any date in Janurary 1997, we first find the **Reference CPI** index levels for January 1, 1997 and for February 1, 1997.
-  - The **Reference CPI** level is the US CPI-U index from three months prior.
-  - For January this is the CPI-U from October 1996 (published by the BLS in November) and for February this is the CPI-U from November 1996 (published by the BLS in December).
+  - The **Reference CPI** for January 1st is the CPI-U from October 1996 (published by the BLS in November).
+  - The **Reference CPI** for for February 1st is the CPI-U from November 1996 (published by the BLS in December).
 """
 
 # ╔═╡ c95f15b3-db7f-4113-a6fb-c0a202b0d601
@@ -489,11 +488,11 @@ md"""
 
 > Feb 1 level = 158.6 
 
-> 158.6 - 158.3 = .30 
+> 158.6 - 158.3 = 0.30 
 
-> .30/31 days = .0096774 (there are 31 days in January)
+> 0.30/31 days = .0096774 _(31 days in January)_
 
-> .0096774 $\times$ 6 = .05806 
+> .0096774 $\times$ 6 = .05806 _(January 7 minus 1 = 6)_
 
 > CPI-U for Jan 7 = 158.3 + .05806 = 158.35806. 
 """
@@ -513,10 +512,11 @@ md"""
 
 # ╔═╡ ff2e0417-8557-4fd7-b03e-0c5aae7882f3
 md"""
-- The Reference CPI is then turned into a ratio to caclulate the inflation adjustment by taking the Reference CPI on the date and dividing by the Reference CPI at issue. 
-  - For example, CPI-U for Jan 15, the official issue date of the inaugural TIPS bond is 158.43548. 
-  - The CPI-U for Jan 25 is 158.53226.
-> The inflation adjustment factor for Jan 25 is 158.53226/158.43458 = 1.00061
+- The Reference CPI is then turned into a ratio to calculate the inflation adjustment for any day during the month by taking the Reference CPI on that date and dividing it by the Reference CPI at the issue date of the TIPS. 
+- For example, CPI-U for Jan 15, the official issue date of the inaugural TIPS bond is 158.43548. 
+- The CPI-U for Jan 25 is 158.53226.
+- Hence, the inflation adjustment factor for Jan 25 is 
+$I_{\text{t=1/27/1997}}=\frac{158.53226}{158.43458} = 1.00061$
 
 """
 
@@ -524,7 +524,7 @@ md"""
 md"""
 # Deflation Protection
 - TIPS have an embedded option that protects against deflation.
-- The Treasury guarantees that the _final redemption value is no less than \$100 per \$100 nominal_ amount, irrespective of the movements in the CPI over the life of the bond.
+- The Treasury guarantees that the _final redemption value is no less than \$100 per \$100 nominal notional_ amount, irrespective of the movements in the CPI over the life of the bond.
 - Let $F$ be the TIPS principal amount and $T$ the time to maturity of the TIPS.
 - The principal cash flow at maturity $T$ is
 $$F \times \max\left[\, I_T, 1 \,\right]$$
@@ -690,7 +690,7 @@ md"""
 - Notional $N$ [$]: $(@bind Nswap Slider(100:100:1000, default=100, show_value=true))
 - Inflation Swap Rate $f$ [%]: $(@bind fswap Slider(0:0.25:10, default=3, show_value=true))
 - Time to Maturity $T$ [years]: $(@bind Tswap Slider(1:1:30, default=5, show_value=true))
-- Annual Inflation Rate $I$ [%]: $(@bind Iswap Slider(0:0.25:10, default=2, show_value=true))
+- Annual Inflation Rate $i$ [%]: $(@bind Iswap Slider(0:0.25:10, default=2, show_value=true))
 """
 
 # ╔═╡ 12a9256b-0e40-4614-b626-76633ab091b8
@@ -706,7 +706,7 @@ Markdown.parse("
 	
 - Cash flow on the floating leg of the swap:
 	
-\$N \\times \\left[ (1+I)^T - 1 \\right]]= $(Nswap) \\times \\left[ (1+$(Iswap/100))^{$(Tswap)} - 1 \\right]=$(roundmult(Nswap*((1+Iswap/100)^Tswap-1),1e-4))\$
+\$N \\times \\left[ (1+i)^T - 1 \\right]]= $(Nswap) \\times \\left[ (1+$(Iswap/100))^{$(Tswap)} - 1 \\right]=$(roundmult(Nswap*((1+Iswap/100)^Tswap-1),1e-4))\$
 	
 - Net cash flow of inflation buyer: $(roundmult(Nswap*(1+Iswap/100)^Tswap - Nswap*(1+fswap/100)^Tswap,1e-4))
 ")
@@ -2205,7 +2205,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[Logging]]
@@ -2267,10 +2267,6 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+1"
-
-[[OpenBLAS_jll]]
-deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
-uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2368,7 +2364,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["SHA", "Serialization"]
+deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -2686,10 +2682,6 @@ deps = ["Artifacts", "Bzip2_jll", "FreeType2_jll", "FriBidi_jll", "HarfBuzz_jll"
 git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
-
-[[libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
-uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
 
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
