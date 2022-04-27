@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.0
+# v0.19.2
 
 using Markdown
 using InteractiveUtils
@@ -252,9 +252,9 @@ begin
 		box.(majticks,1,15,:fill)
 		sethue("red")
 		Luxor.arrow(majticks[2], majticks[2] + (0, -50))
-		label("L(0)", :N, majticks[2] + (0,-50)) 
+		label("L(0.25)", :N, majticks[2] + (0,-50)) 
 		Luxor.arrow(majticks[3], majticks[3] + (0, -50))
-		label("L(0.25)", :N, majticks[3] + (0,-50)) 
+		label("L(0.50)", :N, majticks[3] + (0,-50)) 
 		Luxor.arrow(majticks[4], majticks[4] + (0, -50))
 		label("L(0.75)", :N, majticks[4] + (0,-50)) 
 		Luxor.arrow(majticks[5], majticks[5] + (0, -50))
@@ -388,7 +388,7 @@ md"""
 
 # ╔═╡ da277a3f-6778-4f14-89c4-a3b9c93a9fe1
 Markdown.parse("
-- The first cash flow on the floating leg is calculated using today's 3-month Treasury rate ``r(0.25)=$(rVec_1[1])\\%``.
+- The first cash flow on the floating leg which occurs on __3/31/2018__ is calculated using today's 3-month Treasury rate ``r(0.25)=$(rVec_1[1])\\%``.
 ``\$L(3/31/2018) = \\frac{$(rVec_1[1])\\%}{4} \\times N = \\frac{$(rVec_1[1])\\%}{4} \\times $(FSwap_1) = \$ $(roundmult(FSwap_1*rVec_1[1]/400,1e-4))\$`` 
 ")
 
@@ -1137,7 +1137,7 @@ Markdown.parse("
 
 - Thus, the fair rate ``f`` on the fixed leg of the ``$(tVec_2[end])``-year interest rate swap is
 ``\$f = 4\\times \\frac{1-D($(tVec_2[end]))}{D(0.25)+D(0.50)+\\ldots +D($(tVec_2[end]))}\$``
-``\$f = 4\\times \\frac{1-$(roundmult(DTVec_2[end],1e-4))}{$(roundmult(DTVec_1[1],1e-4))+$(roundmult(DTVec_1[2],1e-4))+$(roundmult(DTVec_1[3],1e-4))+\\ldots + $(roundmult(DTVec_1[end],1e-4))}=$(roundmult(rswap_2*100,1e-4))\\%\$``
+``\$f = 4\\times \\frac{1-$(roundmult(DTVec_2[end],1e-4))}{$(roundmult(DTVec_2[1],1e-4))+$(roundmult(DTVec_2[2],1e-4))+$(roundmult(DTVec_2[3],1e-4))+\\ldots + $(roundmult(DTVec_2[end],1e-4))}=$(roundmult(rswap_2*100,1e-4))\\%\$``
 - The quarterly cash flows ``C`` on the fixed leg are
 ``\$C=N \\times \\frac{f}{4} = $(roundmult(F_2,1e-4)) \\times \\frac{$(roundmult(rswap_2*100,1e-4))\\%}{4} = $(roundmult(rswap_2/4*F_2,1e-4))\$``
 ")
@@ -1731,7 +1731,7 @@ Markdown.parse("
 
 ``\$ P_{\\textrm{Fixed}}(y + \\Delta y) = \\frac{C}{\\left(1+\\frac{r_{0.25}+0.1\\%}{4}\\right)^{4\\times 0.25}} + \\ldots + \\frac{C+N}{\\left(1+\\frac{r_{3.0}+0.1\\%}{4}\\right)^{4\\times 3.0}} = $(roundmult(PfixPlus,1e-4))\$``
 
-``\$ P_{\\textrm{Fixed}}(y - \\Delta y) = \\frac{C}{\\left(1+\\frac{r_{0.25}+0.1\\%}{4}\\right)^{4\\times 0.25}} + \\ldots + \\frac{C+N}{\\left(1+\\frac{r_{3.0}+0.1\\%}{4}\\right)^{4\\times 3.0}} = $(roundmult(PfixMinus,1e-4))\$``
+``\$ P_{\\textrm{Fixed}}(y - \\Delta y) = \\frac{C}{\\left(1+\\frac{r_{0.25}-0.1\\%}{4}\\right)^{4\\times 0.25}} + \\ldots + \\frac{C+N}{\\left(1+\\frac{r_{3.0}-0.1\\%}{4}\\right)^{4\\times 3.0}} = $(roundmult(PfixMinus,1e-4))\$``
 
 ``\$MD_{\\textrm{Fixed}} = -\\frac{ $(roundmult(PfixPlus,1e-4)) - $(roundmult(PfixMinus,1e-4)) }{2\\times 0.001} \\times \\frac{1}{$(F_5)} = $(roundmult( -(PfixPlus-PfixMinus)/(2*0.001) * 1/F_5,1e-4))\$``
 ")
@@ -1833,7 +1833,7 @@ Markdown.parse("
   - Note that we entered into \$ 112.73 in notional of the interest rate swap, *not* 100. 
   - To simplify the calculation, we will start with a \$ 100 notional. Then, we will make an adjustment. Basically, we use that a \$ 112.73 notional are 1.1273 units of \$ 100 notional.
 
-``\$ \\textrm{Price per 100 notional} = \\frac{100+100\\times\\frac{0.03}{4}}{1+\\frac{0.035}{4}}=99.8761\$``
+``\$ \\textrm{Price per 100 notional} = \\frac{100+100\\times\\frac{0.03}{4}}{\\left(1+\\frac{0.035}{4}\\right)^{4\\times 0.25}}=99.8761\$``
 
 ``\$ \\textrm{Price per 112.73 notional} = \\frac{112.73}{100}\\times \\textrm{Price per 100 notional} = 112.73\$``
 
@@ -1853,7 +1853,7 @@ Markdown.parse("
   - Note that we entered into \$ 112.73 in notional of the interest rate swap, *not* 100. 
   - To simplify the calculation, we will start with a \$ 100 notional. Then, we will make an adjustment. Basically, we use that a \$ 112.73 notional are 1.1273 units of \$ 100 notional.
 
-``\$ \\textrm{Price per 100 notional} = \\frac{1.06802}{1+\\frac{0.035}{4}} + \\ldots \\frac{1.06802+100}{\\left(1+\\frac{0.048}{4}\\right)^12} =99.61068\$``
+``\$ \\textrm{Price per 100 notional} = \\frac{1.06802}{\\left(1+\\frac{0.035}{4}\\right)^{4\\times 0.25}} + \\ldots \\frac{1.06802+100}{\\left(1+\\frac{0.048}{4}\\right)^{4 \\times 3}} =99.61068\$``
 
 ``\$ \\textrm{Price per 112.73 notional} = \\frac{112.73}{100}\\times \\textrm{Price per 100 notional} = 111.1638\$``
 
@@ -1870,7 +1870,7 @@ md"""
 # ╔═╡ 6b71002c-49fa-4d6a-900d-fd49ed5b7d1d
 Markdown.parse("
 - The total change in the swap and the bond is
-``\$ (-1.4275 - 0.1397) - (-1.566) = $(roundmult((-1.4275 - 0.1397) - (-1.566),1e-4))\$``
+``\$ -1.4275 + (- 0.1397) - (-1.566)) = $(roundmult((-1.4275 - 0.1397) - (-1.566),1e-4))\$``
 - We can compare this to the change in the bond price without the interest rate swap hedge.
 ``\$\\Delta P_{\\textrm{Bond}} = -1.4275\$``
 - Thus, by using an interest rate swap, we are able to reduce the change in the value of the bond when interest rates change.
@@ -3086,8 +3086,8 @@ version = "0.9.1+5"
 # ╟─ebd8cf3b-ff6f-45b1-b26a-11ec231473da
 # ╟─59d69a62-217e-4ac2-9052-40cc9031c796
 # ╟─8f1a6fa6-6fc4-4331-84b1-2b999e1fb111
-# ╟─d65b73eb-fffd-4184-b690-cf45dcd6e175
-# ╟─13705228-b1d5-4baa-99d1-810543950668
+# ╠═d65b73eb-fffd-4184-b690-cf45dcd6e175
+# ╠═13705228-b1d5-4baa-99d1-810543950668
 # ╟─37d85758-2a7c-461e-bf01-333cbdeca02e
 # ╟─3f82e165-635d-4b40-9d72-68051eb34e0f
 # ╟─1426fadd-f442-405c-8857-8f0619b4d7e7
