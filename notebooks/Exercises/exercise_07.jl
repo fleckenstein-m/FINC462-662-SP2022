@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.18.1
+# v0.19.3
 
 using Markdown
 using InteractiveUtils
@@ -123,7 +123,7 @@ begin
 end
 
 # ╔═╡ 19b58a85-e443-4f5b-a93a-8d5684f9a17a
-TableOfContents(title="Exercise 07", indent=true, depth=2, aside=true)
+#TableOfContents(title="Exercise 07", indent=true, depth=2, aside=true)
 
 # ╔═╡ a5de5746-3df0-45b4-a62c-3daf36f015a5
 begin 
@@ -260,7 +260,7 @@ Assets            |  Liabilities
 
 # ╔═╡ bccde543-ec7e-40fc-abce-ef2300ca4e99
 md"""
-# Question 3
+# Question 2
 """
 
 # ╔═╡ 0e2168f5-d66c-42f5-8593-60d54c589c14
@@ -311,14 +311,14 @@ __Part 1__
   - ``\\Delta P_{$(T5_1)} = P_{$(T5_1)} \\times (- MD_{$(T5_1)}) \\times \\Delta y + P_{$(T5_1)} \\times \\frac{1}{2} \\times CX_{$(T5_1)} \\times \\left( \\Delta y \\right)^2``
 
 
-- ``$(T5_2)``-year Zero-coupon bond (liability)
+- ``$(T5_2)``-year Zero-coupon bond
   - ``MD_{$(T5_2)}=\\frac{T}{1+y} = \\frac{$(T5_2)}{1+$(r5)\\%} = $(roundmult(T5_2/(1+r5/100),1e-4))``
   - ``\\textrm{CX}_{$(T5_2)}= \\frac{T^2+T}{(1+y)^2}=\\frac{$(T5_2^2+T5_2)}{(1+$(r5)\\%)^2} = $(roundmult((T5_2^2+T5_2)/(1+r5/100)^2,1e-4))``
   - ``\\frac{\\Delta P_{$(T5_2)}}{P_{$(T5_2)}}= - MD_{$(T5_2)} \\times \\Delta y + \\frac{1}{2} \\times CX_{$(T5_2)} \\times \\left( \\Delta y \\right)^2``
   - ``\\Delta P_{$(T5_2)} = P_{$(T5_2)} \\times (- MD_{$(T5_2)}) \\times \\Delta y + P_{$(T5_2)} \\times \\frac{1}{2} \\times CX_{$(T5_2)} \\times \\left( \\Delta y \\right)^2``
 
 
-- ``$(T5_3)``-year Zero-coupon bond (liability)
+- ``$(T5_3)``-year Zero-coupon bond
   - ``MD_{$(T5_3)}=\\frac{T}{1+y} = \\frac{$(T5_3)}{1+$(r5)\\%} = $(roundmult(T5_3/(1+r5/100),1e-4))``
   - ``\\textrm{CX}_{$(T5_3)}= \\frac{T^2+T}{(1+y)^2}=\\frac{$(T5_3^2+T5_3)}{(1+$(r5)\\%)^2} = $(roundmult((T5_3^2+T5_3)/(1+r5/100)^2,1e-4))``
   - ``\\frac{\\Delta P_{$(T5_3)}}{P_{$(T5_3)}}= - MD_{$(T5_3)} \\times \\Delta y + \\frac{1}{2} \\times CX_{$(T5_3)} \\times \\left( \\Delta y \\right)^2``
@@ -387,7 +387,7 @@ Face value ``F_{$(T5_3)}``: $(roundmult(sol5[2]*(1+r5/100)^T5_3,1e-2)) |
 
 # ╔═╡ de131c40-06a2-4a84-a379-f1fae0c0d33b
 md"""
-# Question 4
+# Question 3
 >Suppose that we have a bond with the following terms:
 > -   Face value = \$1000
 > -   Coupon rate = 8% (coupons paid semi-annually)
@@ -395,9 +395,7 @@ md"""
 > -   Time-to-maturity = 7 years
 >
 >1. Calculate the price of the bond.
->2. Calculate the modified duration of the bond based on annual yields. (i.e. Use the approximation formula with 10% as y, 10.1% as $y + \Delta y$, and 9.9% as $y - \Delta y$.)
->3. Calculate the modified duration of the bond based on semi-annual yields. (i.e. Use the approximation formula with 5% as y, 5.1% as $y + \Delta y$, and 4.9% as $y - \Delta y$.)
->4. Compare your answers in (b) and (c). Do their relative magnitudes make sense?
+>2. Calculate the modified duration of the bond (use the approximation formula with 10% as y, 10.1% as $y + \Delta y$, and 9.9% as $y - \Delta y$.)
 """
 
 # ╔═╡ a299af6e-5cb4-494e-8ea0-cb5c95c7ada2
@@ -421,26 +419,11 @@ $$\begin{aligned}
 $$\begin{aligned}
         MD\approx -\frac{896.3957366 - 905.6615702}{2\times 0.001}\times \frac{1}{901.0135906} = 5.1419\end{aligned}$$
 
-__Part 3__  
-
-$$\begin{aligned}
-        B(y + \Delta y) &= 40 \times \frac{1}{0.051}\left[1 - \frac{1}{1.051^{14}}\right] + \frac{1000}{1.051^{14}} = 891.80779\\
-        B(y - \Delta y) &= 40 \times \frac{1}{0.049}\left[1 - \frac{1}{1.049^{14}}\right] + \frac{1000}{1.049^{14}} = 910.339895\end{aligned}$$
-
-$$\begin{aligned}
-        MD \approx -\frac{891.80779 - 910.339895}{2\times 0.001}\times \frac{1}{901.0135906} = 10.2840\end{aligned}$$
-
-__Part 4__
-
-The modified duration using semi-annual yields (as in part 3) is twice as large as the modified duration using annual yields (as in part 2). This makes sense as an increase in the semi-annual yield of one percentage point (i.e. 5% to 6%) is         equivalent to an increase in the annual yield of two percentage points (i.e. 10% to 12%). Thus, a one percentage point increase in the semi-annual yield should have twice the effect of a one percentage point increase in the annual yield. Note that
-
-$$\begin{aligned}5.1419 \times 2\% \approx 10.2840 \times 1\%\end{aligned}$$
-
 """
 
 # ╔═╡ cdb2724b-9fa0-4dfe-b9c7-2406b2d1dcec
 md"""
-# Question 5
+# Question 4
 
 >Using the zero-coupon yield curve shown below, calculate the modified duration of portfolio A. Note that the yield curve is for annual yields that are semi-annually compounded.
 >
@@ -460,9 +443,9 @@ md"""
 >    MD & \approx -\frac{B(y + \Delta y) - B(y - \Delta y)}{2\times \Delta y}\times\frac{1}{B(y)} \\
 >    C & \approx \frac{B(y + \Delta y) + B(y - \Delta y) - 2\times B(y)}{(\Delta y)^2}\times\frac{1}{B(y)} \\\end{aligned}$$
 >
-> 1.  Calculate the modified duration (based on annual yields) for each of the three bonds and then calculate the portfolio modified duration.
+> 1.  Calculate the modified duration for each of the three bonds and then calculate the portfolio modified duration.
 >     
-> 2.  What is the approximate percentage change in the value of the portfolio if the term structure of (annual) interest rates increases by one percentage point (i.e. the whole zero-coupon yield curve shifts up)? Consider using Modified Duration only and then Modified Duration with Convexity. What is the actual percentage change in portfolio value?
+> 2.  What is the approximate percentage change in the value of the portfolio if the term structure of interest rates increases by one percentage point (i.e. the whole zero-coupon yield curve shifts up)? Consider using Modified Duration only and then Modified Duration with Convexity. What is the actual percentage change in portfolio value?
 """
 
 # ╔═╡ 25c2d01c-f648-48a7-b2cb-71bc9750d8d5
@@ -541,42 +524,42 @@ This is very close to the Modified Duration & Convexity approximation.
 
 # ╔═╡ c1a4b31e-dd81-41bf-badd-4c739962e25f
 md"""
-# Question 6
+# Question 5
 """
 
 # ╔═╡ ceed05db-b1d6-4136-b73d-8214f32b51a4
 md"""
-> In July 1993, Disney issued a bond with \$300,000,000 in face value.
-> -   The coupon rate was 7.55%, paid semi-annually.
-> -   The maturity was July 15, 2093. (100 years)
-> -   The yield at issuance was 7.55%, so the bond was issued at par.
+> On January 15, 2020, Company WD issued a bond with \$300,000,000 in face value.
+> -   The coupon rate was 3.775%, paid annually.
+> -   The maturity was January 15, 2220. (200 years)
+> -   The yield at issuance was 3.775%, so the bond was issued at par.
 > -   Assume \$100 par value throughout.
 >
-> 1. Approximate the modified duration (based on semi-annual yields) using the approximation formula: 
+> 1. Approximate the modified duration using the approximation formula: 
 >
 >$$\begin{aligned}
 >        MD \approx -\frac{B(y+\Delta y) - B(y - \Delta y)}{2\Delta y}\times\frac{1}{B(y)}
 >\end{aligned}$$
 >
->For $\Delta y$, use 0.001 (semi-annual yields of 3.875% and 3.675%).
+>For $\Delta y$, use 0.001.
 >
 > 2. Approximate the convexity using: 
 >
 >$$\begin{aligned}
->        \frac{B(y+\Delta y) + B(y - \Delta y) - 2 B(y)}{(\Delta y)^2}\times\frac{1}{B(y)}
+>        C \approx\frac{B(y+\Delta y) + B(y - \Delta y) - 2 B(y)}{(\Delta y)^2}\times\frac{1}{B(y)}
 >\end{aligned}$$
 >
-> 3. Calculate the prices of the Sleeping Beauty bonds if the annual yield (semi-annually compounded) is (i) 6.55%, (ii) 8.55%. It is recommended that you use the annuity formula to calculate the value of the coupons and then add back the present value of the par value.
-> 
-> 4. Given how sensitive the Sleeping Beauty bonds are to changes in interest rates, we want to hedge against interest rate movements. Suppose you own \$100 worth of Sleeping Beauty bonds and there are two other bonds that we can use to hedge interest rate shifts:
+> 3. Calculate the price of the bond if the yield (annually compounded) is (i) 3.275%, (ii) 4.275%. 
 >
-> - 2-year zero coupon bond with a 5% yield (semi-annually compounded, so a 2.5% semi-annual yield)
-> - 10-year zero coupon bond with a 6% yield (semi-annually compounded, so a 3% semi-annual yield)
-> - Calculate the modified duration and convexity of the two zero coupon bonds. Calculate these in terms of half-years.
+> 4. Given how sensitive the bonds are to changes in interest rates, we want to hedge against interest rate movements. Suppose you own \$100 worth of bonds and there are two other bonds that we can use to hedge interest rate shifts:
 >
-> 5.  Calculate how much you would short in the 2-year and 10-year bonds to hedge the interest rate sensitivity of the Sleeping Beauty bond. What is the overall value of your portfolio? What is the face value of your positions in the 2-year and 10-year bonds?
+> - 4-year zero coupon bond with a 2.5% yield (annually compounded). 
+> - 20-year zero coupon bond with a 3% yield (annually compounded)
+> - Calculate the modified duration and convexity of the two zero coupon bonds.
 >
-> 6. Calculate the market value of your portfolio if all (annual) yields increased by three percentage points.
+> 5.  Calculate how much you would short in the 4-year and 20-year bonds to hedge the interest rate sensitivity of the bond. What is the overall value of your portfolio? What is the face value of your positions in the 4-year and 20-year bonds?
+>
+> 6. Calculate the market value of your portfolio if all yields increased by three percentage points.
 
 
 
@@ -591,10 +574,13 @@ md"""
 md"""
 __Part 1__
 
+$y=3.775\%$ 
+$c=3.775\% \rightarrow C= 100 \times 0.03775 = 3.775$
+
 $$\begin{aligned}
-        B(y = 3.775\%) &= 3.775 \times \frac{1}{0.03775}\left[1 - \frac{1}{1.03775^{200}}\right] + \frac{100}{1.03775^{200}} = 100\\
-        B(y = 3.875\%) &= 3.775 \times \frac{1}{0.03875}\left[1 - \frac{1}{1.03875^{200}}\right] + \frac{100}{1.03875^{200}} = 97.42064167\\
-        B(y = 3.675\%) &= 3.775 \times \frac{1}{0.03675}\left[1 - \frac{1}{1.03675^{200}}\right] + \frac{100}{1.03675^{200}} = 102.7190935
+        B(y) &= 3.775 \times \frac{1}{0.03775}\left[1 - \frac{1}{1.03775^{200}}\right] + \frac{100}{1.03775^{200}} = 100\\
+        B(y + \Delta y) &= 3.775 \times \frac{1}{0.03875}\left[1 - \frac{1}{1.03875^{200}}\right] + \frac{100}{1.03875^{200}} = 97.42064167\\
+        B(y - \Delta y) &= 3.775 \times \frac{1}{0.03675}\left[1 - \frac{1}{1.03675^{200}}\right] + \frac{100}{1.03675^{200}} = 102.7190935
 \end{aligned}$$
 
 $$\begin{aligned}
@@ -612,8 +598,8 @@ $$\begin{aligned}
 __Part 3__
 
 $$\begin{aligned}
-        B(y = 6.55\%\text{ annually}) &= 3.775 \times \frac{1}{0.03275}\left[1-\frac{1}{1.03275^{200}}\right] +  \frac{100}{1.03275^{200}}= 115.24\\
-        B(y = 8.55\%\text{ annually}) &= 3.775 \times \frac{1}{0.04275}\left[1-\frac{1}{1.04275^{200}}\right] + \frac{100}{1.04275^{200}} = 88.31
+        B(y = 3.275\%) &= 3.775 \times \frac{1}{0.03275}\left[1-\frac{1}{1.03275^{200}}\right] +  \frac{100}{1.03275^{200}}= 115.24\\
+        B(y = 4.275\%) &= 3.775 \times \frac{1}{0.04275}\left[1-\frac{1}{1.04275^{200}}\right] + \frac{100}{1.04275^{200}} = 88.31
 \end{aligned}$$
 
 
@@ -624,33 +610,32 @@ $$\begin{aligned}
         MD &= \frac{T}{1+y}\\
         C &= \frac{T^2 + T}{(1+y)^2}
 \end{aligned}$$ 
-  - Note: Since we are using half-year yields and T is in half-years, we can use these formulas.
 
 $$\begin{aligned}
-        MD_2 &= \frac{4}{1.025} = 3.9024\\
-        MD_{10} &= \frac{20}{1.03} = 19.4175\\
-        C_2 &= \frac{4^2 + 4}{1.025^2} = 19.0363\\
-        C_{10} &= \frac{20^2 + 20}{1.03^2} = 395.8903
+        MD_4 &= \frac{4}{1.025} = 3.9024\\
+        MD_{20} &= \frac{20}{1.03} = 19.4175\\
+        C_4 &= \frac{4^2 + 4}{1.025^2} = 19.0363\\
+        C_{20} &= \frac{20^2 + 20}{1.03^2} = 395.8903
 \end{aligned}$$
 
 - Set up a balance sheet to illustrate the hedging portfolio.
 
 | Long | Short | |
 |----------------------------------------------------------------------------------------|--------------------|---------------------|
-| \$100 in Disney bonds                                                                  | \$x in 2-year zero | \$z in 10-year zero |
-| $MD = 26.4923$                                                                         | $MD_2 = 3.9024$    | $MD_{10} = 19.4175$ |
-| $C = 1397.3517$                                                                        | $C_2 = 19.0363$    | $C_{10} = 395.8903$ |
+| \$100 in WD bonds                                                                  | \$x in 4-year zero | \$z in 20-year zero |
+| $MD = 26.4923$                                                                         | $MD_4 = 3.9024$    | $MD_{20} = 19.4175$ |
+| $C = 1397.3517$                                                                        | $C_4 = 19.0363$    | $C_{20} = 395.8903$ |
 | | If yields increase by $\Delta y$ | |
-| $\frac{\Delta B_{D}}{B_{D}} \approx -MD_{D} \Delta y + \frac{1}{2} C_{D} (\Delta y)^2$ | $\frac{\Delta B_{2}}{B_{2}} \approx -MD_{2} \Delta y + \frac{1}{2} C_{2} (\Delta y)^2$ | $\frac{\Delta B_{10}}{B_{10}} \approx -MD_{10} \Delta y + \frac{1}{2} C_{10} (\Delta y)^2$                   |
+| $\frac{\Delta B_{D}}{B_{D}} \approx -MD_{D} \Delta y + \frac{1}{2} C_{D} (\Delta y)^2$ | $\frac{\Delta B_{4}}{B_{4}} \approx -MD_{4} \Delta y + \frac{1}{2} C_{4} (\Delta y)^2$ | $\frac{\Delta B_{20}}{B_{20}} \approx -MD_{20} \Delta y + \frac{1}{2} C_{20} (\Delta y)^2$                   |
 
 - Setting up the hedging equations.
 
-$\frac{\Delta B_{D}}{B_{D}} \approx -MD_{D} \Delta y + \frac{1}{2} C_{D} (\Delta y)^2$   $\frac{\Delta B_{2}}{B_{2}} \approx -MD_{2} \Delta y + \frac{1}{2} C_{2} (\Delta y)^2$   $\frac{\Delta B_{10}}{B_{D}} \approx -MD_{10} \Delta y + \frac{1}{2} C_{10} (\Delta y)^2$
+$$\Delta B_D = \Delta B_4 + \Delta B_{20}$$
 
 $$\begin{aligned}
         \Delta B_D &\approx 100\left[-26.4923 \times \Delta y + \frac{1}{2}(1397.3517)\left(\Delta y\right)^2\right]\\
-        \Delta B_2 &\approx x\left[-3.9024 \times \Delta y + \frac{1}{2}(19.0363)\left(\Delta y\right)^2\right]\\
-        \Delta B_{10} &\approx z\left[-19.4175 \times \Delta y + \frac{1}{2}(395.8903)\left(\Delta y\right)^2\right]\\
+        \Delta B_4 &\approx x\left[-3.9024 \times \Delta y + \frac{1}{2}(19.0363)\left(\Delta y\right)^2\right]\\
+        \Delta B_{20} &\approx z\left[-19.4175 \times \Delta y + \frac{1}{2}(395.8903)\left(\Delta y\right)^2\right]\\
 \end{aligned}$$
 
 - Modified Duration Equation ($\Delta y$ part) 
@@ -669,15 +654,15 @@ Solving for x and z:\
 
 - Value of the portfolio = 100 + 1416.85 - 421.0931 = 1095.753
 
-- Face value of 2yr: $1416.85(1.025)^4 = 1563.93$\
-- Face value of 10yr: $421.0931(1.03)^{20} = 760.5409$
+- Face value of 4yr: $1416.85(1.025)^4 = 1563.93$\
+- Face value of 20yr: $421.0931(1.03)^{20} = 760.5409$
 
 
 __Part 5__
 
-- Yield on the Disney bond is now 10.55%
-- Yield on the 2yr bond is now 8%
-- Yield on the 10yr bond is now 9%
+- Yield on the WD bond is now 5.275%
+- Yield on the 2yr bond is now 4%
+- Yield on the 10yr bond is now 4.5%
 
 $$\begin{aligned}
         B_D &= 3.775 \times \frac{1}{0.05275} \left[1 - \frac{1}{1.05275^{200}}\right] + \frac{100}{1.05275^{200}} = 71.565\\
@@ -693,8 +678,7 @@ $$\begin{aligned}
 
 # ╔═╡ 8ecefc50-ff60-4646-a4d8-491801f75085
 md"""
-# Question 7
-
+# Question 6
 """
 
 # ╔═╡ e9fd30bf-5a05-42f6-8071-66a1e0de43c0

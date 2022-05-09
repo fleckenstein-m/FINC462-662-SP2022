@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.0
+# v0.19.3
 
 using Markdown
 using InteractiveUtils
@@ -205,7 +205,7 @@ __1.2__  What is the value of a three-year zero coupon bond with a face value of
 md"""
 !!! correct
 
--   $$P = \frac{100}{1.02^{2\times 3}} = 88.7971$$
+-   $$P = \frac{100}{\left(1+\frac{4\%}{2}\right)^{2\times 3}} = 88.7971$$
 
 """
 
@@ -247,24 +247,24 @@ md"""
 	- The value of the fixed rate bond is: 
 
 	$$\begin{aligned}
-	        \frac{FC/4}{\left(1+\frac{0.0468}{2}\right)^{1/2}} + \frac{FC/4}{\left(1+\frac{0.0457}{2}\right)} + \frac{FC/4}{\left(1+\frac{0.0435}{2}\right)^{3/2}} + \frac{FC/4 + 100}{\left(1+\frac{0.0419}{2}\right)^2}
+	        \frac{C}{\left(1+\frac{0.0468}{2}\right)^{2\times 0.25}} + \frac{C}{\left(1+\frac{0.0457}{2}\right)^{2\times 0.50}} + \frac{C}{\left(1+\frac{0.0435}{2}\right)^{2\times 0.25}} + \frac{C + 100}{\left(1+\frac{0.0419}{2}\right)^{2\times 1.00}}
 	\end{aligned}$$
 
 	- Note that the first payment is in one quarter. Since the discount rates are semi-annually compounded, that is in a half period (one quarter is one half of a half year). Thus, the first cashflow is discounted by
 	
-	$\left(1+\frac{0.0468}{2}\right)^{1/2}$.
+	$\left(1+\frac{0.0468}{2}\right)^{2\times 0.25}$.
 	
 	- Set the fixed and floating bonds equal: 
 	
 	$$\begin{aligned}
-	        \frac{FC/4}{\left(1+\frac{0.0468}{2}\right)^{1/2}} + \frac{FC/4}{\left(1+\frac{0.0457}{2}\right)} + \frac{FC/4}{\left(1+\frac{0.0435}{2}\right)^{3/2}} + \frac{FC/4 + 100}{\left(1+\frac{0.0419}{2}\right)^2} = 100
+	        \frac{C}{\left(1+\frac{0.0468}{2}\right)^{2\times 0.25}} + \frac{C}{\left(1+\frac{0.0457}{2}\right)^{2\times 0.50}} + \frac{C}{\left(1+\frac{0.0435}{2}\right)^{2\times 0.75}} + \frac{C + 100}{\left(1+\frac{0.0419}{2}\right)^{2\times 1.00}} = 100
 	\end{aligned}$$
 	
-	$$\rightarrow FC = 4.17$$
+	$$\rightarrow C = 1.0425$$
 	
-	- Note that this can be solved either by hand (factor out FC) or by using Excel's Goal Seek or Solver.
+	- Since the cash flow is $C=\frac{f}{4}\times100$, we have $f=4\times C / 100=0.0417$.
 	
-	- The swap rate is 4.17/100 or 4.17%.
+	- The swap rate is $f=4.17\%$.
 
 """
 
@@ -292,12 +292,12 @@ md"""
 	- We also know that on the next interest reset date (in 2 months), the bond        will be worth \$100 after the coupon is paid. 
 	- Thus, the value of the floating rate bond is: 
 	$$\begin{aligned}
-	        \frac{\frac{4.68}{4} + 100}{\left(1+\frac{0.0311}{2}\right)^{2/6}} = 100.65
+	        \frac{\frac{4.68}{4} + 100}{\left(1+\frac{0.0311}{2}\right)^{2\times \frac{2}{12}}} = 100.65
 	\end{aligned}$$
 	
 	- The value of the fixed leg is: 
 	$$\begin{aligned}
-	        \frac{4.17/4}{\left(1+\frac{0.0311}{2}\right)^{2/6}} + \frac{4.17/4}{\left(1+\frac{0.0305}{2}\right)^{5/6}} \frac{4.17/4}{\left(1+\frac{0.0292}{2}\right)^{8/6}} + \frac{4.17/4+100}{\left(1+\frac{0.0283}{2}\right)^{11/6}} = 101.56
+	        \frac{1.0425}{\left(1+\frac{0.0311}{2}\right)^{2\times \frac{2}{12}}} + \frac{1.0425}{\left(1+\frac{0.0305}{2}\right)^{2\times \frac{5}{12}}} \frac{1.0425}{\left(1+\frac{0.0292}{2}\right)^{2\times \frac{8}{12}}} + \frac{1.0425+100}{\left(1+\frac{0.0283}{2}\right)^{2\times \frac{11}{12}}} = 101.56
 	\end{aligned}$$
 	
 	- The value of the fixed-for-floating interest rate swap is 100.65 - 101.56 = -0.91.
@@ -326,10 +326,10 @@ md"""
 	- Use the methodology where we add a principal payment at the end of both the fixed side and the floating side. 
 	- Thus, the interest rate swap becomes a swap of a fixed rate bond and a floating rate bond.
 	
-	- Value of fixed rate bond paying semi-annual coupons of $FC/2$ per period: 
+	- Value of fixed rate bond paying semi-annual coupons of $C$ per period: 
 	
 	$$\begin{aligned}
-	        \frac{FC/2}{1.01} + \frac{FC/2}{1.0125^2} + \frac{FC/2}{1.015^3} + \frac{FC/2}{1.015^4} + \frac{FC/2}{1.0175^5} + \frac{FC/2}{1.02^6} + \frac{100}{1.02^6}
+	        \frac{C}{1.01^{2\times 0.5}} + \frac{C}{1.0125^{2\times 1}} + \frac{C}{1.015^{2\times 1.5}} + \frac{C}{1.015^{2\times 2.0}} + \frac{C}{1.0175^{2\times 2.5}} + \frac{C}{1.02^{2\times 3.0}} + \frac{100}{1.02^{2\times 3.0}}
 	\end{aligned}$$
 	
 	- Value of the floating rate bond in this case: 
@@ -338,10 +338,11 @@ md"""
 	
 	- Set fixed and floating equal: 
 	$$\begin{aligned}
-	        \frac{FC/2}{1.01} + \frac{FC/2}{1.0125^2} + \frac{FC/2}{1.015^3} + \frac{FC/2}{1.015^4} + \frac{FC/2}{1.0175^5} + \frac{FC/2}{1.02^6} + \frac{100}{1.02^6}=100
+	        \frac{C}{1.01^{2\times 0.5}} + \frac{C}{1.0125^{2\times 1.0}} + \frac{C}{1.015^{2\times 1.5}} + \frac{C}{1.015^{2\times 2.0}} + \frac{C}{1.0175^{2\times 2.5}} + \frac{C}{1.02^{2\times 3.0}} + \frac{100}{1.02^{2\times 3.0}}=100
 	\end{aligned}$$
 	
-	- Solving, $FC/2 = 1.9762$ and $FC = 3.95$. 
+	- Solving, $C = 1.9762$.
+	- Since, $C=\frac{f}{2}\times 100$, we get $f = 2\times C/100=2\times 1.9762/100=0.0395$. 
 	- Thus, the fair fixed rate is 3.95% per year.
 	
 
@@ -358,12 +359,12 @@ md"""
 
 	- New value of the fixed rate bond: 
 	$$\begin{aligned}
-	        \frac{1.9762}{1.015} + \frac{1.9762}{1.0175^2} + \frac{1.9762}{1.02^3} + \frac{1.9762}{1.02^4} + \frac{1.9762}{1.0225^5} + \frac{1.9762}{1.025^6} + \frac{100}{1.025^6}=97.2242
+	        \frac{1.9762}{1.015^{2\times 0.5}} + \frac{1.9762}{1.0175^{2\times 1.0}} + \frac{1.9762}{1.02^{2\times 1.5}} + \frac{1.9762}{1.02^{2\times 2.0}} + \frac{1.9762}{1.0225^{2\times 2.5}} + \frac{1.9762}{1.025^{2\times 3.0}} + \frac{100}{1.025^{2\times 3.0}}=97.2242
 	\end{aligned}$$
 	
 	- New value of the floating rate bond: 
 	$$\begin{aligned}
-	        \frac{101}{1.015} = 99.5074
+	        \frac{101}{1.015^{2\times 0.5}} = 99.5074
 	\end{aligned}$$
 	
 	- Value of floating-for-fixed interest rate swap:
