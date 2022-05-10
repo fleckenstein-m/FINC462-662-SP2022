@@ -281,11 +281,6 @@ md"""
 # ╔═╡ 520998e4-c8c2-43bf-b109-41edf49d1fad
 md"""
 __2.3__ Suppose that it is now Feb 1, 2008. Use the LIBOR curve for that date given below. What is the value of the interest rate swap? 
-
-| t     | 1/12   | 2/12   | 3/12  | 4/12  | 5/12 |  6/12 | 7/12  | 8/12   | 9/12  | 10/12  | 11/12   | 12/12  |
-|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----  |:-----|
-| t     | 0.0314  | 0.0311   | 0.0310  | 0.0307  | 0.0305 | 0.0302 | 0.0297  | 0.0292   | 0.0288  | 0.0285  | 0.0283   | 0.0282  |
-
 - To do this, calculate the present value of the fixed and floating legs separately. Then determine the value of paying fixed and receiving floating.
 """
 
