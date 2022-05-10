@@ -458,9 +458,9 @@ md"""
 __Part 1__
 
 *4-yr bond* $$\begin{aligned}
-        B(y) &= \frac{2.5}{1 + \frac{0.0649}{2}} + \frac{2.5}{\left(1+\frac{0.0671}{2}\right)^2} + ... + \frac{102.5}{\left(1+\frac{0.0667}{2}\right)^8} = 94.18094\\
-        B(y + \Delta y) &= \frac{2.5}{1 + \frac{0.0649 + 0.001}{2}} + \frac{2.5}{\left(1+\frac{0.0671+0.001}{2}\right)^2} + ... + \frac{102.5}{\left(1+\frac{0.0667+0.001}{2}\right)^8} = 93.84779\\
-        B(y - \Delta y) &= \frac{2.5}{1 + \frac{0.0649 - 0.001}{2}} + \frac{2.5}{\left(1+\frac{0.0671-0.001}{2}\right)^2} + ... + \frac{102.5}{\left(1+\frac{0.0667-0.001}{2}\right)^8} = 94.5155\\\end{aligned}$$
+        B(y) &= \frac{2.5}{1 + \frac{0.0649}{2}} + \frac{2.5}{\left(1+\frac{0.0671}{2}\right)^2} + ... + \frac{102.5}{\left(1+\frac{0.0676}{2}\right)^8} = 94.18094\\
+        B(y + \Delta y) &= \frac{2.5}{1 + \frac{0.0649 + 0.001}{2}} + \frac{2.5}{\left(1+\frac{0.0671+0.001}{2}\right)^2} + ... + \frac{102.5}{\left(1+\frac{0.0676+0.001}{2}\right)^8} = 93.84779\\
+        B(y - \Delta y) &= \frac{2.5}{1 + \frac{0.0649 - 0.001}{2}} + \frac{2.5}{\left(1+\frac{0.0671-0.001}{2}\right)^2} + ... + \frac{102.5}{\left(1+\frac{0.0676-0.001}{2}\right)^8} = 94.5155\\\end{aligned}$$
 
 Using the approximation formulas above and plugging in for $B(y)$, $B(y + \Delta y)$, and $B(y - \Delta y)$
 
