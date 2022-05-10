@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.0
+# v0.19.3
 
 using Markdown
 using InteractiveUtils
@@ -481,7 +481,7 @@ md"""
 
 	Plugging in $D(T=0.5)=0.9692$ gives us
 
-	$$r_{0.5} = 2\times \left( \left(\frac{1}{0.9692}\right)^{\frac{1}{2\times 0.5}} -1\right) = 0.0635557573 = 3.66\%$$
+	$$r_{0.5} = 2\times \left( \left(\frac{1}{0.9692}\right)^{\frac{1}{2\times 0.5}} -1\right) = 0.0635557573 = 6.36\%$$
 """
 
 # ╔═╡ 82fe8645-a213-44ed-919d-18b0cbb0eeae
@@ -501,8 +501,6 @@ md"""
 
 	$$100\times \left(1+\frac{0.07016}{2}\right)=103.51$$
 
-	- The difference is about 0.33. This is within rounding error of the value of the forward rate agreement.
-
 """
 
 # ╔═╡ 3713b423-0ef4-4685-a22d-39ae73dbb094
@@ -512,7 +510,7 @@ md"""
 
 # ╔═╡ f41b3285-6ff5-4f16-b936-eca01600b5b4
 md"""
-Suppose the one-year spot interest rate is 4% and the two-year spot rate is 5%.
+Suppose the one-year spot interest rate is 4% and the two-year spot rate is 5%. Assume that all rates are annually compounded.
 
 __4.1__ What is the forward rate at time 0 for borrowing at time 1 for one year (i.e. compute $f_{1,2}$)?
 """
