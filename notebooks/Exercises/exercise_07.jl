@@ -559,7 +559,7 @@ md"""
 >
 > 5.  Calculate how much you would short in the 4-year and 20-year bonds to hedge the interest rate sensitivity of the bond. What is the overall value of your portfolio? What is the face value of your positions in the 4-year and 20-year bonds?
 >
-> 6. Calculate the market value of your portfolio if all yields increased by three percentage points.
+> 6. Calculate the market value of your portfolio if all yields increased by 1.5%.
 
 
 
@@ -661,13 +661,13 @@ Solving for x and z:\
 __Part 5__
 
 - Yield on the WD bond is now 5.275%
-- Yield on the 2yr bond is now 4%
-- Yield on the 10yr bond is now 4.5%
+- Yield on the 4yr bond is now 4%
+- Yield on the 20yr bond is now 4.5%
 
 $$\begin{aligned}
         B_D &= 3.775 \times \frac{1}{0.05275} \left[1 - \frac{1}{1.05275^{200}}\right] + \frac{100}{1.05275^{200}} = 71.565\\
-        B_2 &= \frac{1563.93}{1.04^4} = 1336.86\\
-        B_{10} &= \frac{760.5409}{1.045^{20}} = 315.3529
+        B_4 &= \frac{1563.93}{1.04^4} = 1336.86\\
+        B_{20} &= \frac{760.5409}{1.045^{20}} = 315.3529
 \end{aligned}$$
 
 - Portfolio value = 71.565 + 1336.86 - 315.3529 = 1093.07
