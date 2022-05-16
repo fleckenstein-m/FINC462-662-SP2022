@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.3
+# v0.19.4
 
 using Markdown
 using InteractiveUtils
@@ -247,7 +247,7 @@ md"""
 	- The value of the fixed rate bond is: 
 
 	$$\begin{aligned}
-	        \frac{C}{\left(1+\frac{0.0468}{2}\right)^{2\times 0.25}} + \frac{C}{\left(1+\frac{0.0457}{2}\right)^{2\times 0.50}} + \frac{C}{\left(1+\frac{0.0435}{2}\right)^{2\times 0.25}} + \frac{C + 100}{\left(1+\frac{0.0419}{2}\right)^{2\times 1.00}}
+	        \frac{C}{\left(1+\frac{0.0468}{2}\right)^{2\times 0.25}} + \frac{C}{\left(1+\frac{0.0457}{2}\right)^{2\times 0.50}} + \frac{C}{\left(1+\frac{0.0435}{2}\right)^{2\times 0.75}} + \frac{C + 100}{\left(1+\frac{0.0419}{2}\right)^{2\times 1.00}}
 	\end{aligned}$$
 
 	- Note that the first payment is in one quarter. Since the discount rates are semi-annually compounded, that is in a half period (one quarter is one half of a half year). Thus, the first cashflow is discounted by
