@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.19.4
 
 using Markdown
 using InteractiveUtils
@@ -1325,6 +1325,12 @@ git-tree-sha1 = "f6250b16881adf048549549fba48b1161acdac8c"
 uuid = "c1c5ebd0-6772-5130-a774-d5fcae4a789d"
 version = "3.100.1+0"
 
+[[LERC_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "bf36f528eec6634efc60d7ec062008f171071434"
+uuid = "88015f11-f218-50d7-93a8-a6af411a945d"
+version = "3.0.0+1"
+
 [[LZO_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "e5b909bcf985c5e2605737d2ce278ed791b89be6"
@@ -1398,10 +1404,10 @@ uuid = "4b2f31a3-9ecc-558c-b454-b3730dcb73e9"
 version = "2.35.0+0"
 
 [[Libtiff_jll]]
-deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
-git-tree-sha1 = "340e257aada13f95f98ee352d316c3bed37c8ab9"
+deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "LERC_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
+git-tree-sha1 = "c9551dd26e31ab17b86cbd00c2ede019c08758eb"
 uuid = "89763e89-9b03-5906-acba-b20f662cd828"
-version = "4.3.0+0"
+version = "4.3.0+1"
 
 [[Libuuid_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1410,7 +1416,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1472,6 +1478,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "887579a3eb005446d514ab7aeac5d1d027658b8f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+1"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1560,16 +1570,16 @@ uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 
 [[Qt5Base_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Fontconfig_jll", "Glib_jll", "JLLWrappers", "Libdl", "Libglvnd_jll", "OpenSSL_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libxcb_jll", "Xorg_xcb_util_image_jll", "Xorg_xcb_util_keysyms_jll", "Xorg_xcb_util_renderutil_jll", "Xorg_xcb_util_wm_jll", "Zlib_jll", "xkbcommon_jll"]
-git-tree-sha1 = "ad368663a5e20dbb8d6dc2fddeefe4dae0781ae8"
+git-tree-sha1 = "c6c0f690d0cc7caddb74cef7aa847b824a16b256"
 uuid = "ea2cea3b-5b76-57ae-a6ef-0a8af62496e1"
-version = "5.15.3+0"
+version = "5.15.3+1"
 
 [[REPL]]
 deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1905,6 +1915,10 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1952,7 +1966,7 @@ version = "0.9.1+5"
 
 # ╔═╡ Cell order:
 # ╟─a2f22b9d-13f8-4e39-b7dd-14b905d987ab
-# ╟─25448e4a-345b-4bd6-9cdb-a6a280cfd22c
+# ╠═25448e4a-345b-4bd6-9cdb-a6a280cfd22c
 # ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
 # ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
 # ╟─69dca09e-b572-436f-90c6-187af17cf027
@@ -1963,7 +1977,7 @@ version = "0.9.1+5"
 # ╟─b33e1473-e374-441b-a6a4-6c2a7b079c98
 # ╟─7bb29c12-c0a0-4eb0-a4d6-bd9c52443751
 # ╟─f89f6fc4-cb6f-4d7b-84c9-f8a18e764427
-# ╟─313959e0-eea6-449a-a6b8-29c9394e50b6
+# ╠═313959e0-eea6-449a-a6b8-29c9394e50b6
 # ╟─e20b95fa-e038-4d3b-82ca-8a38262c64c4
 # ╟─2bf62523-a0f1-400e-9178-79062e0a171e
 # ╟─206df1a6-bf12-4957-93f7-472ee89594c4
@@ -1991,7 +2005,7 @@ version = "0.9.1+5"
 # ╟─8de081f6-2b7f-4d03-b565-b4ac01c2773e
 # ╟─d296b99d-588d-48ac-8e0c-a0bcbde72c56
 # ╟─1c4db2fa-7187-4966-aa3f-9a7f56036497
-# ╟─3a3b7641-ed63-4cce-a98c-a4cf1b6e603d
+# ╠═3a3b7641-ed63-4cce-a98c-a4cf1b6e603d
 # ╟─2384b88b-e8dc-4e9c-9488-27828da0289d
 # ╟─0918383a-9a0b-4f8c-ba63-aaad1cf6d72c
 # ╟─c9b876e2-cb29-4a70-9c1f-abb2dedf3fe2
@@ -2010,7 +2024,7 @@ version = "0.9.1+5"
 # ╟─cf1fa1d8-da24-4f48-8762-affa1f58279a
 # ╟─3000e0f6-381f-4a9c-85c1-c517af617f14
 # ╟─5c8f4910-7b54-414a-8eb9-52104c0ff36e
-# ╟─972e44da-4614-4349-bcb7-edb0518fe24d
+# ╠═972e44da-4614-4349-bcb7-edb0518fe24d
 # ╟─a1c74635-2fb9-492c-8243-4232b771718b
 # ╟─45ffcfef-16f3-464a-b868-0d3f64cb6019
 # ╟─874afd1d-eba3-4295-9f96-7502c187b171
